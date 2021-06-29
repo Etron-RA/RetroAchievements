@@ -1,6 +1,8 @@
 # Heiankyo Alien Achievement Design
 ## Overview
+
 ## Excel Workbook
+I got experimental with this set and wrote it in Excel (this was done before I learned the way of RATools). I was able to apply conditions to a group of background cells by writing a small example in RALibretro and used excel to replace the example cell address with any address on the background map. I’m using this to track how many holes have been dug and detecting various hole patterns. To reduce the number of conditions I mapped out where the open spaces are for each stage and only apply conditions on cells where it is possible to dig a hole pattern.
 ### Code Spreadsheet
 The **Code** sheet contains the raw achievement code from the **Achievements** and the **Leaderboard** sheets.  The **Code** sheet is formated in a way that the you can copy the cells from here directly to the user.txt for RALibRatro.
 ### Text Spreadsheet
@@ -16,36 +18,52 @@ The **Stats** sheet is used to analyze the point distribution by both achievemen
 ### Leaderboards Spreadsheet
 The **Leaderboards** sheet collects all of the leaderboards information in one location for sorting and filtering purposes. This was sheet was used to test out leaderboard conditions before uploading them to the site. The conditions are defined on the **Start**, **Cancel**, and **Submit** sheets.
 ### Start Spreadsheet
-The **Start** sheet contians the find and replace formulas to generate the leaderboard start conditions for the old and new game modes.
+The **Start** sheet contains the find and replace formulas to generate the leaderboard start conditions for the old and new game modes.
 ### Cancel Spreadsheet
-The **Cancel** sheet contians the find and replace formulas to generate the leaderboard cancel conditions for the old and new game modes.
-### Sumbit Spreadsheet
-The **Sumbit** sheet contians the find and replace formulas to generate the leaderboard submit conditions for the old and new game modes.
+The **Cancel** sheet contains the find and replace formulas to generate the leaderboard cancel conditions for the old and new game modes.
+### Submit Spreadsheet
+The **Submit** sheet contains the find and replace formulas to generate the leaderboard submit conditions for the old and new game modes.
 ### Stages Spreadsheet
-The **Stages** sheet contians the find and replace formulas to generate the stage clear conditions for the old and new game modes.
+The **Stages** sheet contains the find and replace formulas to generate the stage clear conditions for the old and new game modes.
 ### Score Spreadsheet
-The **Score** sheet contians the find and replace formulas to generate the high score conditions for the old and new game modes.
+The **Score** sheet contains the find and replace formulas to generate the high score conditions for the old and new game modes.
 ### New Enemies Spreadsheet
-The **New Enemies** sheet contians the find and replace formulas to generate the conditions for tracking how many aliens and super aliens where buried in the new game modes.
+The **New Enemies** sheet contains the find and replace formulas to generate the conditions for tracking how many aliens and super aliens where buried in the new game modes.
 ### New Challenge Spreadsheet
-The **New Challenge** sheet contians the find and replace formulas to generate the challenges of clearing a group of new game mode stages without losing a live.
+The **New Challenge** sheet contains the find and replace formulas to generate the challenges of clearing a group of new game mode stages without losing a live.
 ### New Maps Spreadsheet
-The **New Maps** sheet contians calculations to figure out where the various hole patterns fit on the new game stage maps. Each hole pattern is marked with a 'X' if there are empty spaces under the entire pattern.  To simplify the logic the hole patterns for each stage are concatencated in one that can be applied to all stages.  The information on this sheet was used to optimize the hole pattern conditions so they they only check areas where it is possible to find a pattern. This was not nessacary for old game stages since the old game stages all have a similiar pattern that can be applied to every old game stage.
+The **New Maps** sheet contains calculations to figure out where the various hole patterns fit on the new game stage maps. Each hole pattern is marked with a 'X' if there are empty spaces under the entire pattern.  To simplify the logic the hole patterns for each stage are concatencated in one that can be applied to all stages.  The information on this sheet was used to optimize the hole pattern conditions so they they only check areas where it is possible to find a pattern. This was not nessacary for old game stages since the old game stages all have a similiar pattern that can be applied to every old game stage.
 ### Game Hex Spreadsheet
-The **Game Hex** sheet contians the one to one mapping the memory address for each background cell.  This sheet is reference on every hole pattern sheet to aid in the converision from X/Y cell coordinates to memory address.
+The **Game Hex** sheet contains the one to one mapping the memory address for each background cell.  This sheet is reference on every hole pattern sheet to aid in the converision from X/Y cell coordinates to memory address.
 ### New Hole Count Spreadsheet
+The **New Hole Count** sheet applies a set of conditions that counts the number of times a hole is dug on each background cell coloured green. Additional logic is concatenated to pause the achievement while on the main menu or in the old game mode and to reset the achievement if a game over occurs.
 ### New 3 Row Spreadsheet
+The **New 3 Row** sheet applies a set of conditions that can detect a pattern of 3 holes either horizontally or vertically. Orange cells check for a horizontal line, purple cells check for a vertical lines, and green cells check both. Additional logic is concatenated to pause the achievement while on the main menu or in the old game mode.
 ### New 4 Slash Spreadsheet
+The **New 4 Slash** sheet applies a set of conditions that can detect a pattern of 4 holes diagonally either slanted to the right or left. Orange cells check for lines slanted to the left, purple cells check for lines slanted to the right, and green cells check both.  Additional logic is concatenated to pause the achievement while on the main menu or in the old game mode.
 ### New 5 Row Spreadsheet
+The **New 5 Row** sheet applies a set of conditions that can detect a pattern of 5 holes either horizontally or vertically. Orange cells check for a horizontal line, purple cells check for a vertical lines, and green cells check both. Additional logic is concatenated to pause the achievement while on the main menu or in the old game mode.
 ### New 7 Row Spreadsheet
+The **New 7 Row** sheet applies a set of conditions that can detect a pattern of 7 holes either horizontally or vertically. Orange cells check for a horizontal line, purple cells check for a vertical lines, and green cells check both. Additional logic is concatenated to pause the achievement while on the main menu or in the old game mode.
 ### New 4 Square Spreadsheet
+The **New 4 Square** sheet applies a set of conditions that can detect a group of 4 holes in a square pattern on each background cell coloured green. Additional logic is concatenated to pause the achievement while on the main menu or in the old game mode and to reset the achievement if a game over occurs.
 ### New 5 Cross Spreadsheet
+The **New 5 Cross** sheet applies a set of conditions that can detect a group of 5 holes in a cross pattern on each background cell coloured purple. Additional logic is concatenated to pause the achievement while on the main menu or in the old game mode and to reset the achievement if a game over occurs.
 ### New Lantern Spreadsheet
+The **New Lantern** sheet applies a set of conditions that can detect if the player is over a cell on each background cell coloured green. Additional logic is concatenated to pause the achievement while on the main menu or in the old game mode and to reset the achievement if a game over occurs.
 ### Old Enemies Spreadsheet
+The **Old Enemies** sheet contains the find and replace formulas to generate the conditions for tracking how many aliens were buried in the old game modes.
 ### Old Recovery Spreadsheet
+The **Old Recovery** sheet contains the find and replace formulas to generate the conditions for tracking the state of each alien sprite.  If it detects that a sprite has escaped from a hole it will reset the condition until the next stage.
 ### Old Challenge Spreadsheet
+The **Old Challenge** sheet contains the find and replace formulas to generate the challenges of clearing a group of old game mode stages without losing a live.
 ### Old Hole Count Spreadsheet
+The **Old Hole Count** sheet applies a set of conditions that counts the number of times a hole is dug on each background cell coloured green. Additional logic is concatenated to pause the achievement while on the main menu or in the new game mode and to reset the achievement if a game over occurs.
 ### Old 3 Row Spreadsheet
+The **Old 3 Row** sheet applies a set of conditions that can detect a pattern of 3 holes either horizontally or vertically. Orange cells check for a horizontal line, purple cells check for a vertical lines, and green cells check both. Additional logic is concatenated to pause the achievement while on the main menu or in the new game mode.
 ### Old 5 Row Spreadsheet
+The **Old 5 Row** sheet applies a set of conditions that can detect a pattern of 5 holes either horizontally or vertically. Orange cells check for a horizontal line, purple cells check for a vertical lines, and green cells check both. Additional logic is concatenated to pause the achievement while on the main menu or in the new game mode.
 ### Old 5 Cross Spreadsheet
+The **Old 5 Cross** sheet applies a set of conditions that can detect a group of 5 holes in a cross pattern on each background cell coloured purple. Additional logic is concatenated to pause the achievement while on the main menu or in the new game mode and to reset the achievement if a game over occurs.
 ### Old 7 Row Spreadsheet
+The **Old 7 Row** sheet applies a set of conditions that can detect a pattern of 7 holes either horizontally or vertically. Orange cells check for a horizontal line, purple cells check for a vertical lines, and green cells check both. Additional logic is concatenated to pause the achievement while on the main menu or in the new game mode.
