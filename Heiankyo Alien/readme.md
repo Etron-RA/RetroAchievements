@@ -18,23 +18,23 @@ The **Stats** sheet is used to analyze the point distribution by both achievemen
 ### Leaderboards Spreadsheet
 The **Leaderboards** sheet collects all of the leaderboards information in one location for sorting and filtering purposes. This was sheet was used to test out leaderboard conditions before uploading them to the site. The conditions are defined on the **Start**, **Cancel**, and **Submit** sheets.
 ### Start Spreadsheet
-The **Start** sheet contains the find and replace formulas to generate the leaderboard start conditions for the old and *New Game* modes.
+The **Start** sheet contains the find and replace formulas to generate the leaderboard start conditions for the *Old Game* and *New Game* modes.
 ### Cancel Spreadsheet
-The **Cancel** sheet contains the find and replace formulas to generate the leaderboard cancel conditions for the old and *New Game* modes.
+The **Cancel** sheet contains the find and replace formulas to generate the leaderboard cancel conditions for the *Old Game* and *New Game* modes.
 ### Submit Spreadsheet
-The **Submit** sheet contains the find and replace formulas to generate the leaderboard submit conditions for the old and *New Game* modes.
+The **Submit** sheet contains the find and replace formulas to generate the leaderboard submit conditions for the *Old Game* and *New Game* modes.
 ### Stages Spreadsheet
-The **Stages** sheet contains the find and replace formulas to generate the stage clear conditions for the old and *New Game* modes.
+The **Stages** sheet contains the find and replace formulas to generate the stage clear conditions for the *Old Game* and *New Game* modes.
 ### Score Spreadsheet
-The **Score** sheet contains the find and replace formulas to generate the high score conditions for the old and *New Game* modes.
+The **Score** sheet contains the find and replace formulas to generate the high score conditions for the *Old Game* and *New Game* modes.
 ### New Enemies Spreadsheet
 The **New Enemies** sheet contains the find and replace formulas to generate the conditions for tracking how many aliens and super aliens where buried in the *New Game* modes.
 ### New Challenge Spreadsheet
 The **New Challenge** sheet contains the find and replace formulas to generate the challenges of clearing a group of *New Game* mode stages without losing a live.
 ### New Maps Spreadsheet
-The **New Maps** sheet contains calculations to figure out where the various hole patterns fit on the *New Game* stage maps. Each hole pattern is marked with a 'X' if there are empty spaces under the entire pattern.  To simplify the logic the hole patterns for each stage are concatenated in one that can be applied to all stages.  The information on this sheet was used to optimize the hole pattern conditions so they only check areas where it is possible to find a pattern. This was not necessary for *Old Game* stages since the *Old Game* stages all have a similar pattern that can be applied to every *Old Game* stage.
+The **New Maps** sheet contains calculations to figure out where the various hole patterns fit on the *New Game* stage maps. Each hole pattern is marked with a 'X' if there are empty spaces under the entire pattern.  To simplify the logic the hole patterns for each stage are concatenated into one set that can be applied to all stages.  The information on this sheet was used to optimize the hole pattern conditions so they only check areas where it is possible to find a pattern. This was not necessary for *Old Game* stages since the *Old Game* stages all have a similar pattern that can be applied to every *Old Game* stage.
 ### Game Hex Spreadsheet
-The **Game Hex** sheet contains the one to one mapping the memory address for each background cell.  This sheet is reference on every hole pattern sheet to aid in the conversion from X/Y cell coordinates to memory address.
+The **Game Hex** sheet contains the one to one mapping of the memory address for each background cell.  This sheet is referenced on every hole pattern sheet to aid in the conversion from X/Y cell coordinates to a memory address.
 ### New Hole Count Spreadsheet
 The **New Hole Count** sheet applies a set of conditions that counts the number of times a hole is dug on each background cell coloured green. Additional logic is concatenated to pause the achievement while on the main menu or in the *Old Game* mode and to reset the achievement if a game over occurs.
 ### New 3 Row Spreadsheet
