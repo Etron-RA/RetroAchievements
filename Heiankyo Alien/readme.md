@@ -1,8 +1,8 @@
 # Heiankyo Alien Achievement Design
 ## Overview
-Heiankyo Alien is a maze runner where you dig holes to trap an alien and once trapped, you have a limited time to fill the hole in to bury the alien alive. If another alien bumps into a trapped alien they instantly free the trapped alien.  Once all of the aliens in a stage have been buried the next stage begins with more and faster aliens. The Gameboy version of this Heiankyo Alien has both the *Old Game* mode based 1979 arcade and the *New Game* mode which a 1989 remake with better graphics and varied level design.
+Heiankyo Alien is a maze runner where you dig holes to trap an alien and once trapped, you have a limited time to fill the hole in to bury the alien alive. If another alien bumps into a trapped alien they instantly free the trapped alien. If an alien touchs the player the stage is reset and the player loses a life. Once all of the aliens in a stage have been buried the next stage begins with more and faster aliens. The Gameboy version of this Heiankyo Alien has both the *Old Game* mode based 1979 arcade and the *New Game* mode which a 1989 remake with better graphics and varied level design.
 ## Excel Workbook
-I got experimental with this set and wrote it in Excel (this was done before I learned the way of RATools). I was able to apply conditions to a group of background cells by writing a small example in RALibRetro and used excel to replace the example cell address with any address on the background map. I’m using this to track how many holes have been dug and detecting various hole patterns. To reduce the number of conditions I mapped out where the open spaces are for each stage and only apply conditions on cells where it is possible to dig a hole pattern. The excel workbook got complicated as more achievements were added so I’ve included some notes below about the purpose of each sheet.
+I got experimental with this set and wrote it in Excel (this was done before I learned the way of **RATools**). I was able to apply conditions to a group of background cells by writing a small example in RALibRetro and used excel to replace the example cell address with any address on the background map. I’m using this to track how many holes have been dug and detecting various hole patterns. To reduce the number of conditions I mapped out where the open spaces are for each stage and only apply conditions on cells where it is possible to dig a hole pattern. The excel workbook got complicated as more achievements were added so I’ve included some notes below about the purpose of each sheet.
 ### Code Spreadsheet
 The **Code** sheet contains the raw achievement code from the **Achievements** and the **Leaderboard** sheets.  The **Code** sheet is formatted in a way that you can copy the cells from here directly to the user.txt for RALibRetro.
 ### Text Spreadsheet
@@ -28,7 +28,7 @@ The **Stages** sheet contains the find and replace formulas to generate the stag
 ### Score Spreadsheet
 The **Score** sheet contains the find and replace formulas to generate the high score conditions for the *Old Game* and *New Game* modes.
 ### New Enemies Spreadsheet
-The **New Enemies** sheet contains the find and replace formulas to generate the conditions for tracking how many aliens and super aliens where buried in the *New Game* modes.
+The **New Enemies** sheet contains the find and replace formulas to generate the conditions for tracking how many aliens and super aliens were buried in the *New Game* modes.
 ### New Challenge Spreadsheet
 The **New Challenge** sheet contains the find and replace formulas to generate the challenges of clearing a group of *New Game* mode stages without losing a live.
 ### New Maps Spreadsheet
