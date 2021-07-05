@@ -59,6 +59,8 @@ The **Old Recovery** sheet contains the find and replace formulas to generate th
 The **Old Challenge** sheet contains the find and replace formulas to generate the challenges of clearing a group of *Old Game* mode stages without losing a live.
 ### Old Hole Count Spreadsheet
 The **Old Hole Count** sheet applies a set of conditions that counts the number of times a hole is dug on each background cell coloured green. Additional logic is concatenated to pause the achievement while on the main menu or in the *New Game* mode and to reset the achievement if a game over occurs.
+### Old Corner Spreadsheet
+The **Old Corner** sheet applies a set of conditions that detects if there four hole in each of the outside corners. Additional logic is concatenated to pause the achievement while on the main menu or in the *New Game* mode and to reset the achievement if a game over occurs.
 ### Old 3 Row Spreadsheet
 The **Old 3 Row** sheet applies a set of conditions that can detect a pattern of 3 holes either horizontally or vertically. Orange cells check for a horizontal line, purple cells check for a vertical lines, and green cells check both. Additional logic is concatenated to pause the achievement while on the main menu or in the *New Game* mode.
 ### Old 5 Row Spreadsheet
