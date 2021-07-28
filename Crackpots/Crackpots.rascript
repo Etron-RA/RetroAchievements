@@ -1,25 +1,33 @@
 // Crackpots
 // #ID = 13064
 
-// $0016: [8bit] Game Mode
+// $0014: [8-bit] Number of falling pots
+function falling_pots() => byte(0x0014)
+
+// $0016: [8-bit] Game Mode
 //        0x0 = 1 player
 //        0x1 = 2 player
 function mode() => byte(0x000016)
 
-// $0017: [8bit] Game State
+// $0017: [8-bit] Game State
 //        0x0 = menu
 //        0x1 = demo
-//        * = in game
+//        * = in game (increments everytime the game resets)
 function game_state() => byte(0x000017)
 
-// $003c: [8bit] How many bonus bugs remain (1 to 6)
+// $003c: [8-bit] How many bonus bugs remain (1 to 6)
 function bonus() => byte(0x00003c)
 
-// $0041: [8bit] How many bugs are remaining (0 to 12)
-//               After level completes this goes negative by the number of bonus bugs (-5 to 0)
+// $003e: [8-bit] Last pot from the bottom (top=0x79, decreases as falls 
+//                and then resets, lands at -1 the value in 0x0043)
+function last_pot() => byte(0x00003e)
+
+// $0041: [8-bit] How many bugs are remaining (0 to 12)
+//                A fter level completes this goes negative by the number 
+//                of bonus bugs (-5 to 0)
 function bugs_remaining() => byte(0x000041)
 
-// $0043: [8bit] How much of the building has been eaten
+// $0043: [8-bit] How much of the building has been eaten
 function building() => byte(0x000043)
 building_lookup = {   
     0x06: "brand new building", 
@@ -31,20 +39,23 @@ building_lookup = {
     0x36: "condemned building"
 }
 
-// $005c: [8bit] BCD Score 0000xx
+// $005c: [8-bit] BCD Score 0000xx
 function ones() => low4(0x00005c)
 function tens() => high4(0x00005c)
-// $005c: [8bit] BCD Score 00xx00
+// $005b: [8-bit] BCD Score 00xx00
 function hundreds() => low4(0x00005b)
 function thousands() => high4(0x00005b)
-// $005c: [8bit] BCD Score xx0000
+// $005a: [8-bit] BCD Score xx0000
 function tenthousands() => low4(0x00005a)
 function hundredthousands() => high4(0x00005a)
 
-// $0071: [8bit] Level/Multiplier
+// $005a: [24-bit] BCD Complete Score
+function score() => tbyte(0x00005a)
+
+// $0071: [8-bit] Level/Multiplier
 function multiplier() => byte(0x000071)
 
-// $0073: [8bit] Bug wave type 
+// $0073: [8-bit] Bug wave type 
 //        0x0 = Black
 //        0x1 = Blue
 //        0x2 = Red
@@ -58,170 +69,264 @@ bug_wave_lookup = {
 }
 
 // Macro for testing if 1 player and currently playing
-function ingame() => mode() == 0 && game_state() >= 2
+function in_game() => mode() == 0 && game_state() >= 2
+
+// Macro for resetting the hits when at the title, demo, in two player mode, 
+// or if the player presses reset.
+function in_menu() => never(mode() == 1) && never(game_state() < 2) 
+
+// Macro for resetting the hits when the player presses reset
+function player_reset() => never(prev(game_state()) < game_state())
+
+// Macro for detecting when the building has become condemed
+function end_game() => prev(building()) == 0x2e && building() == 0x36
 
 // Macro for testing if the level has incremented
-function completion(level) => prev(multiplier()) == level && multiplier() == level+1
+function completion(level) => prev(multiplier()) == level-1 && multiplier() == level
 
-achievement(
-    "Rookie Bug Hunter",
-    "Get a 2x Multiplier! (Beat all four bug waves to increase a mutliplier, losing a floor will decrease a mutliplier)", 
-    points=5,    
-    trigger=
-        ingame() &&
-        completion(1)   
-)
-achievement(
-    "Competent Bug Hunter",
-    "Get a 3x Multiplier! (Beat all four bug waves to increase a mutliplier, losing a floor will decrease a mutliplier)", 
-    points=5,    
-    trigger=
-        ingame() &&
-        completion(2)   
-)
-achievement(
-    "Proficient Bug Hunter",
-    "Get a 4x Multiplier! (Beat all four bug waves to increase a mutliplier, losing a floor will decrease a mutliplier)", 
-    points=5,    
-    trigger=
-        ingame() &&
-        completion(3)   
-)
-achievement(
-    "Seasoned Bug Hunter",
-    "Get a 5x Multiplier! (Beat all four bug waves to increase a mutliplier, losing a floor will decrease a mutliplier)", 
-    points=10,    
-    trigger=
-        ingame() &&
-        completion(4)   
-)
-achievement(
-    "Advanced Bug Hunter",
-    "Get a 6x Multiplier! (Beat all four bug waves to increase a mutliplier, losing a floor will decrease a mutliplier)", 
-    points=10,    
-    trigger=
-        ingame() &&
-        completion(5)   
-)
-achievement(
-    "Expert Bug Hunter",
-    "Get a 7x Multiplier! (Beat all four bug waves to increase a mutliplier, losing a floor will decrease a mutliplier)", 
-    points=10,    
-    trigger=
-        ingame() &&
-        completion(6)   
-)
-achievement(
-    "Champion Bug Hunter",
-    "Get a 8x Multiplier! (Beat all four bug waves to increase a mutliplier, losing a floor will decrease a mutliplier)", 
-    points=25,    
-    trigger=
-        ingame() &&
-        completion(7)   
-)
-achievement(
-    "Wave Novice",
-    "Complete 10 Waves!", 
-    points=5,    
-    trigger=
-        ingame() &&
-        repeated(
-            10,
-            bug_wave() == 1 && prev(bug_wave()) == 0 ||
-            bug_wave() == 2 && prev(bug_wave()) == 1 ||
-            bug_wave() == 3 && prev(bug_wave()) == 2 ||
-            bug_wave() == 0 && prev(bug_wave()) == 3
-        )
-)
-achievement(
-    "Black Bug Exterminator",
-    "Survive a wave of black bugs without losing a bonus bug!", 
-    points=5,    
-    trigger=
-        ingame() &&
-        prev(bugs_remaining()) == 0xfb &&
-        bugs_remaining() == 0xfa &&
-        bug_wave() == 0     
-)
-achievement(
-    "Blue Bug Exterminator",
-    "Survive a wave of blue bugs without losing a bonus bug!", 
-    points=5,    
-    trigger=
-        ingame() &&
-        prev(bugs_remaining()) == 0xfb &&
-        bugs_remaining() == 0xfa &&
-        bug_wave() == 1      
-)
-achievement(
-    "Red Bug Exterminator",
-    "Survive a wave of red bugs without losing a bonus bug!", 
-    points=10,    
-    trigger=
-        ingame() &&
-        prev(bugs_remaining()) == 0xfb &&
-        bugs_remaining() == 0xfa &&
-        bug_wave() == 2           
-)
-achievement(
-    "Green Bug Exterminator",
-    "Survive a wave of green bugs without losing a bonus bug!", 
-    points=10,    
-    trigger=
-        ingame() &&
-        prev(bugs_remaining()) == 0xfb &&
-        bugs_remaining() == 0xfa &&
-        bug_wave() == 3         
-)
-achievement(
-    "Pest Control",
-    "Score 25,000 points without losing the game!", 
-    points=5,    
-    trigger=
-        ingame() &&
-        tenthousands() >= 2 &&
-        thousands() >= 5
-)
-achievement(
-    "Rooftop Defender",
-    "Score 50,000 points without losing the game!", 
-    points=10,    
-    trigger=
-        ingame() &&
-        tenthousands() >= 5
-)
-achievement(
-    "Activision Crackpot",
-    "Score 75,000 points without losing the game!", 
-    points=25,    
-    trigger=
-        ingame() &&
-        tenthousands() >= 7 &&
-        thousands() >= 5
-)
-//======RP=====
+// ---------------------------------------------------------------------------
+// Wave Achievements
+// This group of achievements counts how many waves were completed from wave 1
+// ---------------------------------------------------------------------------
+function achievementWaves(name, waves, points) {
+    achievement(
+        name,
+        "Complete " + waves + " waves!", 
+        points=points,    
+        trigger=
+            in_menu() &&
+            player_reset() &&
+            measured(
+                tally(
+                    waves,
+                    prev(bug_wave()) == 0 && bug_wave() == 1,
+                    prev(bug_wave()) == 1 && bug_wave() == 2,
+                    prev(bug_wave()) == 2 && bug_wave() == 3,
+                    prev(bug_wave()) == 3 && bug_wave() == 0,
+                    always_false()
+                )
+            )
+    )
+}
+achievementWaves("Wave Novice", 10, 2)
+achievementWaves("Wave Expert", 20, 5)
+achievementWaves("Wave Master", 30, 10)
+achievementWaves("Wave Champion", 40, 25)
+
+// ---------------------------------------------------------------------------
+// Deathless Achievements
+// This group of achievements counts how many waves were completed without
+// losing a floor.
+// ---------------------------------------------------------------------------
+function achievementDeathless(name, waves, points) {
+    // This verision reset the count if you lose a building floor
+    achievement(
+        name,
+        "Complete " + waves + " waves without losing a floor!", 
+        points=points,    
+        trigger=
+            in_menu() &&
+            player_reset() &&
+            never(prev(building()) < building()) &&
+            measured(
+                tally(
+                    waves,
+                    prev(bug_wave()) == 0 && bug_wave() == 1,
+                    prev(bug_wave()) == 1 && bug_wave() == 2,
+                    prev(bug_wave()) == 2 && bug_wave() == 3,
+                    prev(bug_wave()) == 3 && bug_wave() == 0,
+                    always_false()
+                )
+            )
+     )
+}
+achievementDeathless("Hobby Gardener", 5, 3)
+achievementDeathless("Green Thumb", 10, 5)
+achievementDeathless("Landscaper", 15, 10)
+achievementDeathless("Horticulturist", 20, 25)
+
+// ---------------------------------------------------------------------------
+// Floor Specific Achievements
+// This group of achievements counts how many waves were completed on a
+// specific floor.
+// ---------------------------------------------------------------------------
+function achievementFloor(name, waves, building_height, points) {
+    achievement(
+        name,
+        "Complete " + waves + " waves while on the last floor before a game over!",
+        points=points,    
+        trigger=
+            in_menu() &&
+            player_reset() &&
+            never(building() != building_height) &&
+            measured(
+                tally(
+                    waves,
+                    prev(bug_wave()) == 0 && bug_wave() == 1,
+                    prev(bug_wave()) == 1 && bug_wave() == 2,
+                    prev(bug_wave()) == 2 && bug_wave() == 3,
+                    prev(bug_wave()) == 3 && bug_wave() == 0,
+                    always_false()
+                )
+            )
+     )
+}
+achievementFloor("Groundskeeper", 5, 0x2e, 5)
+
+// ---------------------------------------------------------------------------
+// Bug Hunter Achievements
+// This group of achievements are for tracking the hidden multipier which 
+// increments when you complete 4 waves in a row and decrements when you lose
+// a floor. The multipier caps at 8x however, in testing this was difficult
+// to achieve so it only tracks up to 5x.
+// ---------------------------------------------------------------------------
+function achievementBugHunter(name, level, points) {
+    achievement(
+        name,
+        "Get a " + level + "x multiplier! (Beat all four bug waves to " + 
+        "increase a multiplier, losing a floor will decrease a multiplier)", 
+        points=points,    
+        trigger=
+            in_game() &&
+            completion(level-1)
+    )
+}
+achievementBugHunter("Rookie Bug Hunter", 2, 3)
+achievementBugHunter("Expert Bug Hunter", 3, 5)
+achievementBugHunter("Master Bug Hunter", 4, 5)
+achievementBugHunter("Champion Bug Hunter", 5, 10)
+
+// ---------------------------------------------------------------------------
+// Bug Exterminator Achievements
+// This group of achievements are for surviving a wave of each colour bug
+// without allowing any of the bugs into the building.
+// ---------------------------------------------------------------------------
+function achievementBugExterminator(name, bug, points) {
+    if(bug == "black") wave = 0
+    else if(bug == "blue") wave = 1
+    else if(bug == "red") wave = 2
+    else if(bug == "green") wave = 3
+    
+    achievement(
+        name,
+        "Survive a wave of " + bug + " bugs without losing a bonus bug!", 
+        points=points,    
+        trigger=
+            in_game() &&
+            prev(bugs_remaining()) == 0xfb &&
+            bugs_remaining() == 0xfa &&
+            bug_wave() == wave
+    )
+}
+achievementBugExterminator("Black Bug Exterminator", "black", 2)
+achievementBugExterminator("Blue Bug Exterminator", "blue", 5)
+achievementBugExterminator("Red Bug Exterminator", "red", 10)
+achievementBugExterminator("Green Bug Exterminator", "green", 10)
+
+// ---------------------------------------------------------------------------
+// Bug Combo Achievements
+// This group of achievements checks how many bugs are squashed in a combo. 
+// Combos are active while pots are still falling and the combo count is
+// incremented by score changes. If two bugs are squashed in one frame it 
+// would be counted as one. Since the score of each bug is dependent on the 
+// bug colour and multiplier it would require many alts to cover all the 
+// possiblilties. In testing it didn't look like double kills counting as
+// one was an issue since each pot is dropped at a different time.
+// ---------------------------------------------------------------------------
+function achievementCombo(name, combo, points) {
+    achievement(
+        name,
+        "Squash " + combo + " bugs in a combo! (Combos end when all the " + 
+        "pots have been reset)", 
+        points=points,    
+        trigger=
+            in_game() &&
+            never(last_pot() == 0x79) &&
+            repeated(combo, score() != prev(score()))
+    )
+}
+achievementCombo("Two for One", 2, 2)
+achievementCombo("Triple Play", 3, 3)
+achievementCombo("Five in a Row", 5, 5)
+achievementCombo("Seven in One Blow", 7, 10)
+
+// ---------------------------------------------------------------------------
+// Score Achievements
+// This group of achievements are for when the score goes above the passed 
+// variables, only tests the thousands and ten thousands column.
+// ---------------------------------------------------------------------------
+function achievementScore(name, x10000, x1000, points) {
+    achievement(
+        name,
+        "Score "+ x10000 + "" + x1000 + ",000 points without losing the game!", 
+        points=points,    
+        trigger=
+            in_game() &&
+            tenthousands() >= x10000 && tenthousands() <= 9 &&
+            thousands() >= x1000 && thousands() <= 9
+    )
+}
+achievementScore("Pest Control", 2, 5, 5)
+achievementScore("Rooftop Defender", 5, 0, 10)
+achievementScore("Activision Crackpot", 7, 5, 25)
+
+// ---------------------------------------------------------------------------
+// Dynamic Rich Presence
+// ---------------------------------------------------------------------------
 rich_presence_conditional_display(game_state() == 0, "In Menu")
 rich_presence_conditional_display(game_state() == 1, "Watching Demo")
-rich_presence_display("Multiplier {0} | Score {1} | Potsy is on top of a {2} fighting an infestation of {3} bugs",
-rich_presence_value("Multiplier", multiplier() + 1),
-rich_presence_value("Score", bcd(ones()) + bcd(tens()) * 10 + bcd(hundreds()) * 100 + bcd(thousands()) * 1000 + bcd(tenthousands()) * 10000 + bcd(hundredthousands()) * 100000),
-rich_presence_lookup("Building", building(), building_lookup),
-rich_presence_lookup("Bugs", bug_wave(), bug_wave_lookup)
+rich_presence_display("Multiplier {0}x | Score {1} | Potsy is on top of a {2}, " +
+        "fighting an infestation of {3} bugs.",
+    rich_presence_value("Multiplier", multiplier() + 1),
+    rich_presence_value("Score",
+        bcd(ones()) + 
+        bcd(tens()) * 10 + 
+        bcd(hundreds()) * 100 +
+        bcd(thousands()) * 1000 + 
+        bcd(tenthousands()) * 10000 +
+        bcd(hundredthousands()) * 100000),
+    rich_presence_lookup("Building", building(), building_lookup),
+    rich_presence_lookup("Bugs", bug_wave(), bug_wave_lookup)
 )
-//=====LB=====
+
+// ---------------------------------------------------------------------------
+// Leaderboards
+// ---------------------------------------------------------------------------
 leaderboard(
     "Highest Score",
-    "Starting from wave 1, highest score before the building is condemned.",
-    ingame() && multiplier() == 0 && building() == 0x06,
+    "Starting from wave 1, highest score before the building is condemned!",
+    in_game(),
     always_false(),
-    prev(building()) == 0x2e && building() == 0x36,
-    bcd(ones()) + bcd(tens()) * 10 + bcd(hundreds()) * 100 + bcd(thousands()) * 1000 + bcd(tenthousands()) * 10000 + bcd(hundredthousands()) * 100000    
+    end_game(),
+        bcd(ones()) + 
+        bcd(tens()) * 10 +
+        bcd(hundreds()) * 100 +
+        bcd(thousands()) * 1000 + 
+        bcd(tenthousands()) * 10000 + 
+        bcd(hundredthousands()) * 100000    
 )
 leaderboard(
     "Highest Wave",
-    "Starting from wave 1, most number of waves completed before the building is condemned.",
-    ingame() && multiplier() == 0 && building() == 0x06,
+    "Starting from wave 1, most number of waves completed before the building is condemned!",
+    in_game(),
     always_false(),
-    prev(building()) == 0x2e && building() == 0x36,
-    always_false() // count number of waves
+    end_game(),
+    always_false()
+    // Acutal leaderboard code in core
+    // R:d0xH0017<0xH0017_N:d0xH0073=0_C:0xH0073=1_N:d0xH0073=1_C:0xH0073=2_N:d0xH0073=2_C:0xH0073=3_N:d0xH0073=3_C:0xH0073=0_M:1=0
+    //
+    // NOTE: the below code is what was intended however, it cause an out of memory error
+    // so I ended up copying over one of the wave achievements and took off the hit counts 
+    // and some of the resets covered by the cancel code.
+    //player_reset() &&
+    //measured(
+    //    tally(
+    //        0,
+    //        prev(bug_wave()) == 0 && bug_wave() == 1,
+    //        prev(bug_wave()) == 1 && bug_wave() == 2,
+    //        prev(bug_wave()) == 2 && bug_wave() == 3,
+    //        prev(bug_wave()) == 3 && bug_wave() == 0,
+    //        always_false()
+    //    )
+    //)
 )

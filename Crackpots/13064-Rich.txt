@@ -1,0 +1,25 @@
+Lookup:Building
+6=brand new building
+14=building with one floor devoured
+22=building with two floors devoured
+30=building with three floors devoured
+38=building with four floors devoured
+46=building with five floors devoured
+54=condemned building
+
+Lookup:Bugs
+0=black
+1=blue
+2=red
+3=green
+
+Format:Multiplier
+FormatType=VALUE
+
+Format:Score
+FormatType=VALUE
+
+Display:
+?0xH000017=0?In Menu
+?0xH000017=1?Watching Demo
+Multiplier @Multiplier(0xH000071_v1)x | Score @Score(b0xL00005c_b0xU00005c*10_b0xL00005b*100_b0xU00005b*1000_b0xL00005a*10000_b0xU00005a*100000) | Potsy is on top of a @Building(0xH000043), fighting an infestation of @Bugs(0xH000073) bugs.
