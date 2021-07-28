@@ -1,5 +1,5 @@
 # Discworld Achievement Design
-**Note: this set was done before I learned the RATools and is here purely for archiving purposes**
+**Note: this set was done before I learned RATools and is here purely for archiving purposes**
 ## Game Site
 https://retroachievements.org/game/11605
 ## Overview
