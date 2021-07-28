@@ -1,8 +1,10 @@
 # Heiankyo Alien Achievement Design
+## Game Site
+https://retroachievements.org/game/4209
 ## Overview
 Heiankyo Alien is a maze runner where you dig holes to trap an alien and once trapped, you have a limited time to fill the hole in to bury the alien alive. If another alien bumps into a trapped alien they instantly free the trapped alien. If an alien touchs the player the stage is reset and the player loses a life. Once all of the aliens in a stage have been buried the next stage begins with more and faster aliens. The Gameboy version of this Heiankyo Alien has both the *Old Game* mode based 1979 arcade and the *New Game* mode which a 1989 remake with better graphics and varied level design.
 ## Excel Workbook
-I got experimental with this set and wrote it in Excel (this was done before I learned the way of **RATools**). I was able to apply conditions to a group of background cells by writing a small example in RALibRetro and used excel to replace the example cell address with any address on the background map. I’m using this to track how many holes have been dug and detecting various hole patterns. To reduce the number of conditions I mapped out where the open spaces are for each stage and only apply conditions on cells where it is possible to dig a hole pattern. The excel workbook got complicated as more achievements were added so I’ve included some notes below about the purpose of each sheet.
+I got experimental with this set and wrote it in Excel (this was done before I learned the way of **RATools** https://github.com/Jamiras/RATools). I was able to apply conditions to a group of background cells by writing a small example in RALibRetro and used excel to replace the example cell address with any address on the background map. I’m using this to track how many holes have been dug and detecting various hole patterns. To reduce the number of conditions I mapped out where the open spaces are for each stage and only apply conditions on cells where it is possible to dig a hole pattern. The excel workbook got complicated as more achievements were added so I’ve included some notes below about the purpose of each sheet.
 ### Code Spreadsheet
 The **Code** sheet contains the raw achievement code from the **Achievements** and the **Leaderboard** sheets.  The **Code** sheet is formatted in a way that you can copy the cells from here directly to the user.txt for RALibRetro.
 ### Text Spreadsheet
@@ -59,6 +61,8 @@ The **Old Recovery** sheet contains the find and replace formulas to generate th
 The **Old Challenge** sheet contains the find and replace formulas to generate the challenges of clearing a group of *Old Game* mode stages without losing a live.
 ### Old Hole Count Spreadsheet
 The **Old Hole Count** sheet applies a set of conditions that counts the number of times a hole is dug on each background cell coloured green. Additional logic is concatenated to pause the achievement while on the main menu or in the *New Game* mode and to reset the achievement if a game over occurs.
+### Old Intersection Spreadsheet
+The **Old Intersectio*** sheet applies a set of conditions that detects if there six holes in each of the inside intersections. Additional logic is concatenated to pause the achievement while on the main menu or in 
 ### Old Corner Spreadsheet
 The **Old Corner** sheet applies a set of conditions that detects if there four hole in each of the outside corners. Additional logic is concatenated to pause the achievement while on the main menu or in the *New Game* mode and to reset the achievement if a game over occurs.
 ### Old 3 Row Spreadsheet
