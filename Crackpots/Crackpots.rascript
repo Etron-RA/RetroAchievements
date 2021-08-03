@@ -88,14 +88,31 @@ function completion(level) => prev(multiplier()) == level-1 && multiplier() == l
 // Wave Achievements
 // This group of achievements counts how many waves were completed from wave 1
 // ---------------------------------------------------------------------------
-function achievementWaves(name, waves, points) {
+function achievementWaves(name, waves, building_height, points) {
+    setup = in_menu() && player_reset()
+    text = "Complete " + waves + " waves!"
+    
+    
+    if(building_height == 0xff)
+    {
+        // If 0xff then make it a deathless run
+        setup = setup && never(prev(building()) < building())
+        text = "Complete " + waves + " waves without losing a floor!"
+    
+    }
+    else if(building_height > 0x00)
+    {
+        // If non zero then achievment is only achievemnt on spefic floor
+        setup = setup && never(building() != building_height)
+        text = "Complete " + waves + " waves while on the last floor before a game over!"
+    }
+        
     achievement(
         name,
-        "Complete " + waves + " waves!", 
+        text,
         points=points,    
         trigger=
-            in_menu() &&
-            player_reset() &&
+            setup &&
             measured(
                 tally(
                     waves,
@@ -108,70 +125,15 @@ function achievementWaves(name, waves, points) {
             )
     )
 }
-achievementWaves("Wave Novice", 10, 2)
-achievementWaves("Wave Expert", 20, 5)
-achievementWaves("Wave Master", 30, 10)
-achievementWaves("Wave Champion", 40, 25)
-
-// ---------------------------------------------------------------------------
-// Deathless Achievements
-// This group of achievements counts how many waves were completed without
-// losing a floor.
-// ---------------------------------------------------------------------------
-function achievementDeathless(name, waves, points) {
-    // This verision reset the count if you lose a building floor
-    achievement(
-        name,
-        "Complete " + waves + " waves without losing a floor!", 
-        points=points,    
-        trigger=
-            in_menu() &&
-            player_reset() &&
-            never(prev(building()) < building()) &&
-            measured(
-                tally(
-                    waves,
-                    prev(bug_wave()) == 0 && bug_wave() == 1,
-                    prev(bug_wave()) == 1 && bug_wave() == 2,
-                    prev(bug_wave()) == 2 && bug_wave() == 3,
-                    prev(bug_wave()) == 3 && bug_wave() == 0,
-                    always_false()
-                )
-            )
-     )
-}
-achievementDeathless("Hobby Gardener", 5, 3)
-achievementDeathless("Green Thumb", 10, 5)
-achievementDeathless("Landscaper", 15, 10)
-achievementDeathless("Horticulturist", 20, 25)
-
-// ---------------------------------------------------------------------------
-// Floor Specific Achievements
-// This group of achievements counts how many waves were completed on a
-// specific floor.
-// ---------------------------------------------------------------------------
-function achievementFloor(name, waves, building_height, points) {
-    achievement(
-        name,
-        "Complete " + waves + " waves while on the last floor before a game over!",
-        points=points,    
-        trigger=
-            in_menu() &&
-            player_reset() &&
-            never(building() != building_height) &&
-            measured(
-                tally(
-                    waves,
-                    prev(bug_wave()) == 0 && bug_wave() == 1,
-                    prev(bug_wave()) == 1 && bug_wave() == 2,
-                    prev(bug_wave()) == 2 && bug_wave() == 3,
-                    prev(bug_wave()) == 3 && bug_wave() == 0,
-                    always_false()
-                )
-            )
-     )
-}
-achievementFloor("Groundskeeper", 5, 0x2e, 5)
+achievementWaves("Wave Novice", 10, 0, 2)
+achievementWaves("Wave Expert", 20, 0, 5)
+achievementWaves("Wave Master", 30, 0, 10)
+achievementWaves("Wave Champion", 40, 0, 25)
+achievementWaves("Hobby Gardener", 5, 0xff, 3)
+achievementWaves("Green Thumb", 10, 0xff, 5)
+achievementWaves("Landscaper", 15, 0xff,10)
+achievementWaves("Horticulturist", 20, 0xff, 25)
+achievementWaves("Groundskeeper", 5, 0x2e, 5)
 
 // ---------------------------------------------------------------------------
 // Bug Hunter Achievements
@@ -187,7 +149,7 @@ function achievementBugHunter(name, level, points) {
         "increase a multiplier, losing a floor will decrease a multiplier)", 
         points=points,    
         trigger=
-            in_game() &&
+            in_game() && 
             completion(level-1)
     )
 }
