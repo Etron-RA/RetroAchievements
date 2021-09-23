@@ -1,6 +1,6 @@
 # Streets of Rage 2 Achievement Design
 ## Game Site
-https://retroachievements.org/game/13064
+https://retroachievements.org/game/13237
 ## Overview
 Streets of Rage 2, AKA Bare Knuckle II: The Requiem of the Deadly Battle in Japan, is side scrolling beat ‘em up that was developed and published by Sega. The game was ported to the Mega Drive/Genesis, the Arcade, the Master System, and the Game Gear (which is the system this achievement set was designed for). Notably, the game features an amazing soundtrack by Yuzo Koshiro and Motohiro Kawashima.  Streets of Rage 2 was praised for its excellent graphics and gameplay when it was released and it considered one of the best beat ‘em ups to this day.
 ## Set Design
