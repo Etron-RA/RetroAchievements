@@ -1,0 +1,65 @@
+Lookup:Character
+0=Axel
+1=Blaze
+2=Skate
+
+Lookup:Difficulty
+0=easy
+1=normal
+2=hard
+
+Lookup:Enemy
+1=a Motorcycle Spiker
+7=a Spiker
+15=a Teleporter
+23=a Thug
+27=an Armed Thug
+31=a Bald Punk
+41=an Old Ninja
+49=a Demolition Droid
+51=an Armed Knife Punk
+59=a Knife Punk
+67=a Dancer
+77=a Ninja
+87=a Knife Ninja
+95=an Armed Knife Ninja
+103=a Fat Burner
+117=a Bouncer
+129=Jet
+143=Zamza
+157=a Boxer
+169=a Robot
+227=Shiva
+251=Mr. X
+
+Lookup:Stage
+0=Downtown
+1=Amusement Park
+2=Alien Adventure
+3=Marine Mayhem
+4=Munitions Plant
+5=Syndicate Stronghold
+
+Lookup:Weapon
+0=bare knuckels
+1=a knife
+2=a bar
+
+Format:Score
+FormatType=VALUE
+
+Format:Value
+FormatType=VALUE
+
+Display:
+?0xH00036a<=4?In Menu
+?0xH00036a=6?@Character(0xH0003bf) Beat the Game
+?0xH00036a=7?Game Over
+?0xH000d3d!=0_0xT000d4a=0_0xH000dad!=0_0xT000dba=0_0xH000e1d!=0_0xT000e2a=0?@Character(0xH0003bf) has @Score(0xL00098a_0xL00098b*10_0xL00098c*100_0xL00098d*1000_0xL00098e*10000_0xL00098f*100000) points in Stage @Value(0xH000383_v1): @Stage(0xH000383) on @Difficulty(0xH000387) difficulty fighting @Enemy(0xH000d3d), @Enemy(0xH000dad), and @Enemy(0xH000e1d) with @Weapon(0xH00097d) 
+?0xH000d3d!=0_0xT000d4a=0_0xH000dad!=0_0xT000dba=0?@Character(0xH0003bf) has @Score(0xL00098a_0xL00098b*10_0xL00098c*100_0xL00098d*1000_0xL00098e*10000_0xL00098f*100000) points in Stage @Value(0xH000383_v1): @Stage(0xH000383) on @Difficulty(0xH000387) difficulty fighting @Enemy(0xH000d3d) and @Enemy(0xH000dad) with @Weapon(0xH00097d) 
+?0xH000d3d!=0_0xT000d4a=0_0xH000e1d!=0_0xT000e2a=0?@Character(0xH0003bf) has @Score(0xL00098a_0xL00098b*10_0xL00098c*100_0xL00098d*1000_0xL00098e*10000_0xL00098f*100000) points in Stage @Value(0xH000383_v1): @Stage(0xH000383) on @Difficulty(0xH000387) difficulty fighting @Enemy(0xH000d3d) and @Enemy(0xH000e1d) with @Weapon(0xH00097d) 
+?0xH000dad!=0_0xT000dba=0_0xH000e1d!=0_0xT000e2a=0?@Character(0xH0003bf) has @Score(0xL00098a_0xL00098b*10_0xL00098c*100_0xL00098d*1000_0xL00098e*10000_0xL00098f*100000) points in Stage @Value(0xH000383_v1): @Stage(0xH000383) on @Difficulty(0xH000387) difficulty fighting @Enemy(0xH000dad) and @Enemy(0xH000e1d) with @Weapon(0xH00097d) 
+?0xH000d3d!=0_0xT000d4a=0?@Character(0xH0003bf) has @Score(0xL00098a_0xL00098b*10_0xL00098c*100_0xL00098d*1000_0xL00098e*10000_0xL00098f*100000) points in Stage @Value(0xH000383_v1): @Stage(0xH000383) on @Difficulty(0xH000387) difficulty fighting @Enemy(0xH000d3d) with @Weapon(0xH00097d) 
+?0xH000dad!=0_0xT000dba=0?@Character(0xH0003bf) has @Score(0xL00098a_0xL00098b*10_0xL00098c*100_0xL00098d*1000_0xL00098e*10000_0xL00098f*100000) points in Stage @Value(0xH000383_v1): @Stage(0xH000383) on @Difficulty(0xH000387) difficulty fighting @Enemy(0xH000dad) with @Weapon(0xH00097d) 
+?0xH000e1d!=0_0xT000e2a=0?@Character(0xH0003bf) has @Score(0xL00098a_0xL00098b*10_0xL00098c*100_0xL00098d*1000_0xL00098e*10000_0xL00098f*100000) points in Stage @Value(0xH000383_v1): @Stage(0xH000383) on @Difficulty(0xH000387) difficulty fighting @Enemy(0xH000e1d) with @Weapon(0xH00097d) 
+@Character(0xH0003bf) has @Score(0xL00098a_0xL00098b*10_0xL00098c*100_0xL00098d*1000_0xL00098e*10000_0xL00098f*100000) points in Stage @Value(0xH000383_v1): @Stage(0xH000383) on @Difficulty(0xH000387) difficulty fighting the clock with @Value(0xL000738_0xL000739*10)s remaining
