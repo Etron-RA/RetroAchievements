@@ -663,7 +663,7 @@ CharacterAchievement("Kid Speedster", "Skate", 10)
 
 // Special Emeny Achievments
 KnockoutEnemyAchievement("You Call That a Knife?", "a Knife Punk", 1)
-KnockoutEnemyAchievement("Hold Me Closer Tiny Dancer", "Electra", 2)
+KnockoutEnemyAchievement("Ladies Night", "Electra", 2)
 KnockoutEnemyAchievement("Everyone was Kung Fu Fighting", "Hakuyo", 2)
 KnockoutEnemyAchievement("Rocketeer", "Rocket", 3)
 KnockoutEnemyAchievement("Now You Realize the Powers I Possess!", "Zamza", 4)
