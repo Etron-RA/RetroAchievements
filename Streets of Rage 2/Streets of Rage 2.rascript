@@ -576,8 +576,8 @@ function SpecialAchievement(name, description, condition, points)
 function AirRecovery(name, description, points)
 {
     description = description + " (on any difficulty)"
-    trigger = StartingLives() <= 5 && 
-        Immortality() == 0 && 
+    trigger = once(NoCheats()) &&
+        never(GameReset()) &&
         Easy() &&
         (SelectedCharacter("Axel") && prev(Moves()) == 0xbd && Moves() == 0xde ||        
         SelectedCharacter("Blaze") && prev(Moves()) == 0xec && Moves() == 0x0d ||        
@@ -644,16 +644,16 @@ ChallengeAchievement("Look Out Above!",
     ChallengeSubStage(2,3), LifeLost(), 5)
 ChallengeAchievement("Into the Maw of Madness!",
     "Survive the second spiker attack without taking damage (middle of stage 3-2 ", 
-    ChallengeSubsection(3,2,3), HealthLost(), 5)
+    ChallengeSubsection(3,2,3), HealthLost(), 10)
 ChallengeAchievement("All Hands on Deck!",
     "Survive the lower decks without dying (complete stage 4-2 ", 
-    ChallengeSubStage(4,2), LifeLost(), 10)
+    ChallengeSubStage(4,2), LifeLost(), 25)
 ChallengeAchievement("It’s Always Good to Know Where the Emergency Exit Is!",
     "Fight through the factory without dying (complete stage 5-2 ", 
-    ChallengeSubStage(5,2), LifeLost(), 10)
+    ChallengeSubStage(5,2), LifeLost(), 50)
 ChallengeAchievement("Elevator of Doom!",
     "Survive the elevator gauntlet without dying (complete stage 6-2 ", 
-    ChallengeSubStage(6,2), LifeLost(), 25)
+    ChallengeSubStage(6,2), LifeLost(), 50)
 
 
 // Character Specfic Challeneges
@@ -693,7 +693,7 @@ ChallengeAchievement("I Need a Montage!",
     ChallengeSubsection(4, 3, 3), HealthLost(), 10)
 ChallengeAchievement("We Robots!",
     "Knock out the stage 5 bosses, Particle and Molecule, without taking damage (", 
-    ChallengeSubsection(5, 3, 2), HealthLost(), 10)
+    ChallengeSubsection(5, 3, 2), HealthLost(), 25)
 ChallengeAchievement("X minus One!",
     "Knock out the stage 6 boss, Mr. X, without dying (", 
     ChallengeSubsection(6, 3, 2), LifeLost(), 25)
