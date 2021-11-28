@@ -1,0 +1,39 @@
+Lookup:Difficulty
+1=Low Difficulty
+2=Medium Difficulty
+3=High Difficulty
+
+Format:Level
+FormatType=VALUE
+
+Format:Score
+FormatType=POINTS
+
+Format:Lines
+FormatType=VALUE
+
+Format:Moles
+FormatType=VALUE
+
+Format:Hearts
+FormatType=VALUE
+
+Format:Missles
+FormatType=VALUE
+
+Format:Planes
+FormatType=VALUE
+
+Format:Time
+FormatType=SECS
+
+Display:
+?0xH0=2_0xHbe!=0_0xHe3=0?Playing Blastris A | @Difficulty(0xHe5) | 🚩 @Level(0xH58a) | 🌟 @Lines(0xH5b4) | 💯 @Score(0xX586)
+?0xH0=2_0xHbe!=0_0xHe3=1_0xe4=0?Playing Blastris B - Type A | @Difficulty(0xHe5)  | 🚩 @Level(0xH184) | 💯 @Score(0xXec)
+?0xH0=2_0xHbe!=0_0xHe3=1_0xe4=1?Playing Blastris B - Type B | @Difficulty(0xHe5) | 🚩 @Level(0xH184) | 💯 @Score(0xXec)
+?0xH0=2_0xHbe!=0_0xHe3=2?Playing Mole Patrol | @Difficulty(0xHe5) | 🐭 @Moles(0xH7b7) | ❤️ @Hearts(0xH7b6) | ⏳ @Time(0xH7af) | 💯 @Score(0xW0e8)
+?0xH0=1_0xH6f!=0_0xH4fe=1?Playing LaserBlazer - Intercept | @Difficulty(0xH51e_v1) | 🚩 @Level(0xHec0) | 🚀 @Missles(0xHeca)/@Missles(0xHf41) | 💯 @Score(0xX4b0_0xX4d2)
+?0xH0=1_0xH6f!=0_0xH4fe=2?Playing LaserBlazer - Engage | @Difficulty(0xH51e_v1) | 🚩 @Level(0xH1132_v1) | ✈ @Planes(0xH10fe)/@Planes(0xH1100) | 💯 @Score(0xX88a)
+?0xH0=1_0xH6f!=0_0xH4fe=3?Playing LaserBlazer - Confront | @Difficulty(0xH51e_v1) | 🚩 @Level(0xH95e) | ✈ @Planes(0xH968)/@Planes(0xH96a) | 💯 @Score(0xX928)
+?S0xH0=2_0xHbe!=0S0xH0=1_0xH6f!=0?Watching Demo
+In Menu

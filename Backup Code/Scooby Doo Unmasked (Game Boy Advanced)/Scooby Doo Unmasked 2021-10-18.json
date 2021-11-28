@@ -1,0 +1,36 @@
+{
+	"ID": 67541,
+	"MemAddr": "R:0xH01e4a7!=3_R:0xH01e508!=20_d0xH01e508=14_0xH01f0bb=8",
+	"Title": "Caught the Caveman",
+	"Description": "Help Fred trap the Caveman",
+	"Points": 5,
+	"Author": "SpeedHacked",
+	"Modified": 1542896560,
+	"Created": 1541475786,
+	"BadgeName": "72063",
+	"Flags": 3
+},
+{
+	"ID": 67525,
+	"MemAddr": "R:0xH01e4a7!=1_R:0xH01e508!=20_d0xH01e508=6_0xH01f98f=8",
+	"Title": "Caught Zen Tuo",
+	"Description": "Help Fred trap Zen Tuo",
+	"Points": 5,
+	"Author": "SpeedHacked",
+	"Modified": 1571180461,
+	"Created": 1541475716,
+	"BadgeName": "72047",
+	"Flags": 3
+},
+{
+	"ID": 67533,
+	"MemAddr": "R:0xH01e4a7!=2_R:0xH01e508!=20_d0xH01e508=10_0xH01f147=8",
+	"Title": "Caught Guitar Ghoul",
+	"Description": "Help Fred trap Guitar Ghoul",
+	"Points": 5,
+	"Author": "SpeedHacked",
+	"Modified": 1542896480,
+	"Created": 1541475750,
+	"BadgeName": "72055",
+	"Flags": 3
+}

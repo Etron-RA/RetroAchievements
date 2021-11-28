@@ -1,0 +1,24 @@
+{
+	"ID": 4992,
+	"MemAddr": "0xH00f414>=15_0xH00d904>=0_0xH00d905>=0_0xH00f4a8>=0_R:0xH00f414=28",
+	"Title": "Warrior Golds",
+	"Description": "Defeat Warrior Golds",
+	"Points": 10,
+	"Author": "Pereira006",
+	"Modified": 1612925173,
+	"Created": 1392234989,
+	"BadgeName": "05596",
+	"Flags": 3
+},
+{
+	"ID": 4994,
+	"MemAddr": "0xH00f414>=20_0xH00d904>=0_0xH00d905>=0_0xH00f4ac>=2_R:0xH00f414=28_0xH00f4a8=100.1.",
+	"Title": "Asura",
+	"Description": "Defeat Asura",
+	"Points": 10,
+	"Author": "Pereira006",
+	"Modified": 1612925181,
+	"Created": 1392234995,
+	"BadgeName": "05598",
+	"Flags": 3
+}

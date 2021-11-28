@@ -1,0 +1,48 @@
+{
+	"ID": 155666,
+	"MemAddr": "0xH13615c=2_0x 056748=13929_0xM1369ca>d0xM1369ca",
+	"Title": "Repressed Sub-Neural Mogrophosis!",
+	"Description": "Visit the Psychiatrickerist",
+	"Points": 3,
+	"Author": "Etron",
+	"Modified": 1623644210,
+	"Created": 1622180900,
+	"BadgeName": "175338",
+	"Flags": 3
+},
+{
+	"ID": 155667,
+	"MemAddr": "0x 056748=13929_0x 056824=32_0xM1369c0<d0xM1369c0S0xH13615c=2S0xH13615c=3_0x 056828=328S0xH13615c=3_0x 056828=330",
+	"Title": "Ill Work Has Been Afoot [m]",
+	"Description": "Help the Beggar Improve Business",
+	"Points": 2,
+	"Author": "Etron",
+	"Modified": 1623644211,
+	"Created": 1622181008,
+	"BadgeName": "175339",
+	"Flags": 3
+},
+{
+	"ID": 155682,
+	"MemAddr": "0xH13615c=3_0x 056748=11546_0x 056624=190_0xM135de4=1",
+	"Title": "The Casting Couch",
+	"Description": "See the Casting Director",
+	"Points": 5,
+	"Author": "Etron",
+	"Modified": 1623764719,
+	"Created": 1622181267,
+	"BadgeName": "175354",
+	"Flags": 3
+},
+{
+	"ID": 155693,
+	"MemAddr": "0xH13615c>=3_0xH13615c<=4_0x 056748=451_p0x 05663c=21_0xO1369b0<d0xO1369b0",
+	"Title": "Your Mother Was a Hamster and Your Father Smells of Elderberries",
+	"Description": "Drink Some Elderberry Wine",
+	"Points": 2,
+	"Author": "Etron",
+	"Modified": 1623741227,
+	"Created": 1622181478,
+	"BadgeName": "175365",
+	"Flags": 3
+}

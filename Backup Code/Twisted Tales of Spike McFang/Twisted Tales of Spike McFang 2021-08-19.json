@@ -1,0 +1,36 @@
+{
+	"ID": 26163,
+	"MemAddr": "0xH004ce5=255_0xH0009f1=204_0xH000b00=0_0xH000a55<4_N:0xH000a3f=1_R:0x 000a5b<50_N:0xH000a3f=2_R:0x 000a5b<100_N:0xH000a3f=3_R:0x 000a5b<250_N:0xH000a3f=4_R:0x 000a5b<500_N:0xH000a3f=5_R:0x 000a5b<1000_N:0xH000a3f=6_R:0x 000a5b<1800_N:0xH000a3f=7_R:0x 000a5b<2800_N:0xH000a3f=8_R:0x 000a5b<4300_N:0xH000a3f=9_R:0x 000a5b<6500_N:0xH000a3f=10_R:0x 000a5b<10000_N:0xH000a3f=11_R:0x 000a5b<15000_N:0xH000a3f=12_R:0x 000a5b<23000_N:0xH000a3f=13_R:0x 000a5b<35000_N:0xH000a3f=14_R:0x 000a5b<50000_N:0xH000a3f=15_R:0x 000a5b<65000",
+	"Title": "Let's See How Tough You Really Are",
+	"Description": "Beat up Croc. That water is for everyone, green man.",
+	"Points": 5,
+	"Author": "HeroRobb",
+	"Modified": 1574823287,
+	"Created": 1437687492,
+	"BadgeName": "26649",
+	"Flags": 3
+},
+{
+	"ID": 26164,
+	"MemAddr": "0xH0009f1=156_d0xH0009f1=205_0xH000b00=0_0xH000a55<4_N:0xH000a3f=1_R:0x 000a5b<50_N:0xH000a3f=2_R:0x 000a5b<100_N:0xH000a3f=3_R:0x 000a5b<250_N:0xH000a3f=4_R:0x 000a5b<500_N:0xH000a3f=5_R:0x 000a5b<1000_N:0xH000a3f=6_R:0x 000a5b<1800_N:0xH000a3f=7_R:0x 000a5b<2800_N:0xH000a3f=8_R:0x 000a5b<4300_N:0xH000a3f=9_R:0x 000a5b<6500_N:0xH000a3f=10_R:0x 000a5b<10000_N:0xH000a3f=11_R:0x 000a5b<15000_N:0xH000a3f=12_R:0x 000a5b<23000_N:0xH000a3f=13_R:0x 000a5b<35000_N:0xH000a3f=14_R:0x 000a5b<50000_N:0xH000a3f=15_R:0x 000a5b<65000",
+	"Title": "GAAAAA...",
+	"Description": "Defeat the Kalala Root. Let's fight, Root.",
+	"Points": 10,
+	"Author": "HeroRobb",
+	"Modified": 1574823291,
+	"Created": 1437687561,
+	"BadgeName": "26650",
+	"Flags": 3
+},
+{
+	"ID": 26048,
+	"MemAddr": "0xH004e3e>=1_0xH004e3e<=54_B:20=231_d0x 000a57=0x 000a57.1._A:1>=1_d0xH004e3e=0xH004e3e",
+	"Title": "Sanctuary",
+	"Description": "Get a Transport card. Do you think those balloons are sentient? O.o",
+	"Points": 1,
+	"Author": "HeroRobb",
+	"Modified": 1572594196,
+	"Created": 1437538127,
+	"BadgeName": "26539",
+	"Flags": 3
+}

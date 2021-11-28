@@ -1,0 +1,36 @@
+{
+	"ID": 28482,
+	"MemAddr": "0xH61a2=2_0xH6b06=30_0xH6104=33_0x 6108=21515_0x 6109=55124",
+	"Title": "The Final Frontier",
+	"Description": "Finish the game with the 'space' ending.",
+	"Points": 10,
+	"Author": "Dexterspet",
+	"Modified": 1616103054,
+	"Created": 1441496424,
+	"BadgeName": "28942",
+	"Flags": 3
+},
+{
+	"ID": 28493,
+	"MemAddr": "0xT66a7=1_0xN66a8=0_0xM66a8=0_0xL6638=0",
+	"Title": "Lights Out",
+	"Description": "Suffer a catastrophic nuclear meltdown via power overload.",
+	"Points": 5,
+	"Author": "Dexterspet",
+	"Modified": 1616103056,
+	"Created": 1441496480,
+	"BadgeName": "28908",
+	"Flags": 3
+},
+{
+	"ID": 28481,
+	"MemAddr": "0xH61a2=3_0xH6b06=30_0xH6104=33S0x 6108=45067S0x 6108=45065S0x 6108=45066S0x 6108=45061",
+	"Title": "Arrested Developments",
+	"Description": "Finish the game with the 'police' ending.",
+	"Points": 10,
+	"Author": "Dexterspet",
+	"Modified": 1616103364,
+	"Created": 1441496421,
+	"BadgeName": "28941",
+	"Flags": 3
+}

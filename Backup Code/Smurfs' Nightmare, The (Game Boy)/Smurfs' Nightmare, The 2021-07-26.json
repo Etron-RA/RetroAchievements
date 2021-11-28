@@ -1,0 +1,69 @@
+{
+	"ID": 107427,
+	"MemAddr": "0xH00ffee>d0xH00ffee.47._0xH00ff92=8_R:0xH00fff1<d0xH00fff1_R:0xH00ffee=0",
+	"Title": "Sarsaparilla Master of the Manor 1",
+	"Description": "Collect all leaves of the first Manor level and finish it",
+	"Points": 5,
+	"Author": "Legentim",
+	"Modified": 1587938303,
+	"Created": 1587330821,
+	"BadgeName": "118839",
+	"Flags": 3
+}, {
+	"ID": 107433,
+	"MemAddr": "0xH00ffee>d0xH00ffee.47._0xH00ff92=9_R:0xH00fff1<d0xH00fff1_R:0xH00ffee=0",
+	"Title": "Sarsaparilla Master of the Workbench 1",
+	"Description": "Collect all leaves of the first Workbench level and finish it",
+	"Points": 5,
+	"Author": "Legentim",
+	"Modified": 1587919535,
+	"Created": 1587330856,
+	"BadgeName": "118849",
+	"Flags": 3
+}, {
+	"ID": 107435,
+	"MemAddr": "0xH00ffee>d0xH00ffee.47._0xH00ff92=11_R:0xH00fff1<d0xH00fff1_R:0xH00ffee=0",
+	"Title": "Sarsaparilla Master of the Laboratory 1",
+	"Description": "Collect all leaves of the first Laboratory level and finish it",
+	"Points": 5,
+	"Author": "Legentim",
+	"Modified": 1587918152,
+	"Created": 1587330868,
+	"BadgeName": "118841",
+	"Flags": 3
+
+}, {
+	"ID": 107409,
+	"MemAddr": "0xH00ffee>d0xH00ffee.47._0xH00ff92=4_R:0xH00fff1<d0xH00fff1_R:0xH00ffee=0",
+	"Title": "Sarsaparilla Master of the Library 1",
+	"Description": "Collect all leaves of the first Library level and finish it",
+	"Points": 5,
+	"Author": "Legentim",
+	"Modified": 1587938299,
+	"Created": 1587330669,
+	"BadgeName": "118499",
+	"Flags": 3
+}, {
+}, {
+	"ID": 107400,
+	"MemAddr": "0xH00ffee>d0xH00ffee.47._0xH00ff92=2_R:0xH00fff1<d0xH00fff1_R:0xH00ffee=0",
+	"Title": "Sarsaparilla Master of the Kitchen 1",
+	"Description": "Collect all leaves of the first Kitchen level and finish it",
+	"Points": 5,
+	"Author": "Legentim",
+	"Modified": 1587741857,
+	"Created": 1587330593,
+	"BadgeName": "118370",
+	"Flags": 3
+}, {
+	"ID": 107418,
+	"MemAddr": "0xH00ffee>d0xH00ffee.47._0xH00ff92=6_R:0xH00fff1<d0xH00fff1_R:0xH00ffee=0",
+	"Title": "Sarsaparilla Master of the Planet 1",
+	"Description": "Collect all leaves of the first Planet level and finish it",
+	"Points": 5,
+	"Author": "Legentim",
+	"Modified": 1587916575,
+	"Created": 1587330753,
+	"BadgeName": "118836",
+	"Flags": 3
+}

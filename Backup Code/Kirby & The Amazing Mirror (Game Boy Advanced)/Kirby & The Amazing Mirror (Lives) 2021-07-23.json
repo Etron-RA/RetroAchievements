@@ -1,0 +1,34 @@
+{
+	"ID": 7327,
+	"MemAddr": "p0xH028fe2=9_0xH028fe2=10",
+	"Title": "Pocket Full of Kirby",
+	"Description": "Get 10 extra lifes.",
+	"Points": 3,
+	"Author": "denine",
+	"Modified": 1622250613,
+	"Created": 1397383168,
+	"BadgeName": "153904",
+	"Flags": 3
+}, {
+	"ID": 7439,
+	"MemAddr": "p0xH028fe2=19_0xH028fe2=20",
+	"Title": "Kirby to the Power of 20",
+	"Description": "Collect 20 extra lifes!",
+	"Points": 5,
+	"Author": "denine",
+	"Modified": 1622250603,
+	"Created": 1397748761,
+	"BadgeName": "153905",
+	"Flags": 3
+}, {
+	"ID": 7440,
+	"MemAddr": "p0xH028fe2=29_0xH028fe2=30",
+	"Title": "A Case Full of Kirby",
+	"Description": "Collect 30 extra lifes!",
+	"Points": 10,
+	"Author": "denine",
+	"Modified": 1622250604,
+	"Created": 1397748858,
+	"BadgeName": "153906",
+	"Flags": 3
+}

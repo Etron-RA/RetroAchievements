@@ -1,0 +1,45 @@
+{
+	"ID": 74479,
+	"MemAddr": "0xH01bc=1_0xH01dc=1_0xH019c=1_0x 01fb=0_0x 021b=0_0x 023b=0",
+	"Title": "Grade D Killshot",
+	"Description": "Defeat All Enemies in 1 Shot [3]",
+	"Points": 10,
+	"Author": "caricatur",
+	"Modified": 1553995064,
+	"Created": 1553726144,
+	"BadgeName": "79741",
+	"Flags": 3
+}, {
+	"ID": 74480,
+	"MemAddr": "0xH01bc=1_0xH01dc=1_0xH019c=1_0xH01fc=1_0x 021b=0_0x 023b=0",
+	"Title": "Grade C Killshot",
+	"Description": "Defeat All Enemies in 1 Shot [4]",
+	"Points": 25,
+	"Author": "caricatur",
+	"Modified": 1563156435,
+	"Created": 1553726149,
+	"BadgeName": "79741",
+	"Flags": 3
+}, {
+	"ID": 74481,
+	"MemAddr": "0xH01bc=1_0xH01dc=1_0xH019c=1_0xH01fc=1_0xH021c=1_0x 023b=0",
+	"Title": "Grade B Killshot",
+	"Description": "Defeat All Enemies in 1 Shot [5]",
+	"Points": 25,
+	"Author": "caricatur",
+	"Modified": 1563156440,
+	"Created": 1553726154,
+	"BadgeName": "79741",
+	"Flags": 3
+}, {
+	"ID": 74482,
+	"MemAddr": "0xH01bc=1_0xH01dc=1_0xH019c=1_0xH01fc=1_0xH021c=1_0xH023c=1",
+	"Title": "Grade A Killshot",
+	"Description": "Defeat All Enemies in 1 Shot [6]",
+	"Points": 25,
+	"Author": "caricatur",
+	"Modified": 1563156445,
+	"Created": 1553726159,
+	"BadgeName": "79741",
+	"Flags": 3
+}
