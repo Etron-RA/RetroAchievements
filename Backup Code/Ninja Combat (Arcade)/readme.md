@@ -12,7 +12,7 @@ Fixed final ending with a character:
 * Katana Master (10) https://retroachievements.org/achievement/150193
 * Fists of Fury (10) https://retroachievements.org/achievement/150194
 * Butterfly Effect (10) https://retroachievements.org/achievement/150195
-Ticket: https://retroachievements.org/ticketmanager.php?i=43592
+* Ticket: https://retroachievements.org/ticketmanager.php?i=43592
 
 Upsized Icon 95x95 => 96x96
 
