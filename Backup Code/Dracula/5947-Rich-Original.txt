@@ -1,0 +1,5 @@
+Format:Digit
+FormatType=VALUE
+ 
+Display:
+Searching for blood to survive the night with a score of @Digit(0x0c58)

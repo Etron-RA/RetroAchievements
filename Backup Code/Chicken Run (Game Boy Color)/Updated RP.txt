@@ -1,0 +1,42 @@
+Lookup:Stages
+1=Meeting in Hut 17!
+2=The Dig!
+3=Hiding Away!
+4=Mud Bath!
+5=What Are All These Boxes For?
+6=As Fast as You Can Say Mixed Vegetables!
+7=Meat to the Left!
+8=Workout!
+9=Those Chickens Are up to Something!
+10=Steaming!
+11=Just a Touch of Gravy!
+12=What We Need Is Thrust!
+13=Mud Fight!
+14=A Fence Too Far!
+15=Sticky Stuff!
+16=Chicken Pies... Not Apple!
+17=Caught in the Light!
+18=Lights Out
+19=It’s Like an Oven in Here!
+20=Chickens Go In, Pies Come Out!
+21=The Great Escape!
+22=Escape the Machine!
+23=Entrapment!
+24=Mine Field!
+25=You’re Free!
+
+Lookup:Difficulties
+1=Easy
+2=Normal
+3=Hard
+
+Format:Number
+FormatType=VALUE
+
+Display:
+?0xH00c01a!=0S0xH00c1e4>1S0xH00c1e5>1S0xH00c1e6>1S0xH00c1e7>1?Ginger is playing with passwords (achievements are DISABLED when using passwords)!
+?0xH00c01a=25?Ginger has escaped the Tweedy's Farm!
+?0xH00c01a!=0?Ginger is on Stage @Number(0xH00c01a) - @Stages(0xH00c01a) | 💀 @Difficulties(0xH00c022) | ⏱ @Number(0xH00c1d1_v1)/16 | 🌽 @Number(0xH00c1d0) | 🐔 @Number(0xH00dc30)
+In Menu
+
+// RP By Etrom 2021-10-05
