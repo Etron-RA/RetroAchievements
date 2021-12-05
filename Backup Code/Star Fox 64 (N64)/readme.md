@@ -5,9 +5,9 @@ https://retroachievements.org/game/10248
 
 ## Changes
 Fixed final endings for going through Bolse or Area 6:
-*M1 - Air Force Cross (25) https://retroachievements.org/achievement/48895
-*M1 - Legion of Merit (25) https://retroachievements.org/achievement/48894
-*Ticket: https://retroachievements.org/ticketmanager.php?i=31407
+* M1 - Air Force Cross (25) https://retroachievements.org/achievement/48895
+* M1 - Legion of Merit (25) https://retroachievements.org/achievement/48894
+* Ticket: https://retroachievements.org/ticketmanager.php?i=31407
 
 Fixed damageless/killess except the final boss run on level 1:
 * C2 - Cornerian Flyby (10) https://retroachievements.org/achievement/48716
