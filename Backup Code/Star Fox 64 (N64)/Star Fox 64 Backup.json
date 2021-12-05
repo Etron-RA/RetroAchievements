@@ -1,0 +1,68 @@
+{
+	"ID": 10248,
+	"Title": "Star Fox 64",
+	"ConsoleID": 2,
+	"ForumTopicID": 4711,
+	"Flags": 0,
+	"ImageIcon": "/Images/014372.png",
+	"ImageTitle": "/Images/014375.png",
+	"ImageIngame": "/Images/014379.png",
+	"ImageBoxArt": "/Images/048362.png",
+	"Publisher": "Nintendo (v1.0)",
+	"Developer": "Nintendo EAD",
+	"Genre": "Rail Shooter",
+	"Released": "July 1, 1997",
+	"IsFinal": false,
+	"ConsoleName": "Nintendo 64",
+	"RichPresencePatch": "Lookup:Paused\r\n0=\r\n1=▌▌ \r\n\r\nLookup:Mode\r\n0=\r\n1=[Intro] \r\n2=[☰|Rank] \r\n3=[⭐Map] \r\n4=\r\n5=\r\n6=\r\n7=\r\n8=|Credits| \r\n\r\nLookup:Expert\r\n0=\r\n1= Expert\r\n\r\nFormat:Level\r\nFormatType=VALUE\r\n\r\nLookup:Stage\r\n0xff=Victory\r\n0=Corneria\r\n1=Meteo\r\n2=Sector X\r\n3=Area 6\r\n4=\r\n5=Sector Y\r\n6=Venom\r\n7=Solar\r\n8=Zoness\r\n9=Andross\r\n0xa=training\r\n0xB=Macbeth\r\n0xC=Titania\r\n0xD=Aquas\r\n0xE=Fortuna\r\n0x10=Katina\r\n0x11=Bolse\r\n0x12=Sector Z\r\n0x13=Venom\r\n0x14=Multiplayer\r\n\r\nLookup:Laser\r\n0=1\r\n1=2\r\n2=2🔷\r\n\r\nFormat:Bombs\r\nFormatType=VALUE\r\n\r\nFormat:Lives\r\nFormatType=VALUE\r\n\r\nFormat:Hits\r\nFormatType=VALUE\r\n\r\nFormat:TotalHits\r\nFormatType=VALUE\r\n\r\nFormat:Medals\r\nFormatType=VALUE\r\n\r\nFormat:MedalsEx\r\nFormatType=VALUE\r\n\r\nLookup:Peppy\r\n0=🆗\r\n0xff=X\r\n\r\nLookup:Slippy\r\n0=🆗\r\n0xff=X\r\n\r\nLookup:Falco\r\n0=🆗\r\n0xff=X\r\n\r\nDisplay:\r\n@Paused(0xh157680)Fox in @Mode(0xh16d708)@Level(0xh16d9b8_v+1):@Stage(0xh16e0a4)@Expert(0xh16d868) Hits:@Hits(0x157908) | T.Hits:@TotalHits(0x157584) Medals:@Medals(0xN16e6e0_0xN16e6e1_0xN16e6e2_0xN16e6e3_0xN16e6e4_0xN16e6e5_0xN16e6e6_0xN16e6e7_0xN16e6e8_0xN16e6e9_0xN16e6ea_0xN16e6eb_0xN16e6ec_0xN16e6ee_0xN16e6ef_0xQ16e6e0_0xQ16e6e1_0xQ16e6e2_0xQ16e6e3_0xQ16e6e4_0xQ16e6e5_0xQ16e6e6_0xQ16e6e7_0xQ16e6e8_0xQ16e6e9_0xQ16e6ea_0xQ16e6eb_0xQ16e6ec_0xQ16e6ee_0xQ16e6ef) Peppy@Peppy(0xh16d72b) Slippy@Slippy(0xh16d72b) Falco@Falco(0xh16d727)",
+	"Achievements": [
+		{
+			"ID": 49264,
+			"MemAddr": "0xH16d6a4=4S0xN16e6e0=1_d0xN16e6e0=0S0xN16e6e1=1_d0xN16e6e1=0S0xN16e6e2=1_d0xN16e6e2=0S0xN16e6e3=1_d0xN16e6e3=0S0xN16e6e4=1_d0xN16e6e4=0S0xN16e6e5=1_d0xN16e6e5=0S0xN16e6e6=1_d0xN16e6e6=0S0xN16e6e7=1_d0xN16e6e7=0S0xN16e6e8=1_d0xN16e6e8=0S0xN16e6e9=1_d0xN16e6e9=0S0xN16e6ea=1_d0xN16e6ea=0S0xN16e6eb=1_d0xN16e6eb=0S0xN16e6ec=1_d0xN16e6ec=0S0xN16e6ee=1_d0xN16e6ee=0S0xN16e6ef=1_d0xN16e6ef=0",
+			"Title": "M1 - Bronze Star Medal",
+			"Description": "Earn a medal on any stage (normal)",
+			"Points": 5,
+			"Author": "kdecks",
+			"Modified": 1625933401,
+			"Created": 1496511304,
+			"BadgeName": "50990",
+			"Flags": 3
+		},
+		{
+			"ID": 48894,
+			"MemAddr": "0x 16e0a4=19_0xH16e0a4=17.10._0xH146602=64",
+			"Title": "M1 - Legion of Merit",
+			"Description": "Defeat Andross going through Bolse",
+			"Points": 25,
+			"Author": "tuinj",
+			"Modified": 1625933401,
+			"Created": 1495995616,
+			"BadgeName": "50997",
+			"Flags": 3
+		},		
+		{
+			"ID": 48895,
+			"MemAddr": "0x 16e0a4=19_0xH16e0a4=3.10._0xH146602=64",
+			"Title": "M1 - Air Force Cross",
+			"Description": "Defeat Andross going through Area 6",
+			"Points": 25,
+			"Author": "tuinj",
+			"Modified": 1625933400,
+			"Created": 1495995647,
+			"BadgeName": "50996",
+			"Flags": 3
+		},		
+		{
+			"ID": 48716,
+			"MemAddr": "R:0x 157908>11_0x 157908=11_0xH146602=255_R:0x 137c44<d0x 137c44_0x 16db92<17839.10._0xH16e0a4=0",
+			"Title": "C2 - Cornerian Flyby",
+			"Description": "Complete Corneria destroying no enemies except the boss and not taking any hits",
+			"Points": 10,
+			"Author": "tuinj",
+			"Modified": 1613012062,
+			"Created": 1495823785,
+			"BadgeName": "50999",
+			"Flags": 3
+		}
+	]
+}
