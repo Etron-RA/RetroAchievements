@@ -1,0 +1,32 @@
+{
+	"ID": 1234,
+	"Title": "~Homebrew~ New Super Mario Land",
+	"ConsoleID": 3,
+	"ForumTopicID": 9670,
+	"Flags": 0,
+	"ImageIcon": "/Images/028580.png",
+	"ImageTitle": "/Images/028075.png",
+	"ImageIngame": "/Images/028076.png",
+	"ImageBoxArt": "/Images/028081.png",
+	"Publisher": "Unknown",
+	"Developer": "Unknown",
+	"Genre": "Platformer",
+	"Released": "November 21, 2019",
+	"IsFinal": false,
+	"ConsoleName": "SNES",
+	"RichPresencePatch": "//Rich Presence by eldexter 29-Nov-2019\r\nLookup:players\r\n0x1=\r\n0x2=2 Players |\r\n0x3=3 Players |\r\n0x4=4 Players |\r\n\r\nFormat:lifes\r\nFormatType=VALUE\r\n\r\nFormat:coins\r\nFormatType=VALUE\r\n\r\nFormat:hits\r\nFormatType=VALUE\r\n\r\nFormat:deaths\r\nFormatType=VALUE\r\n\r\nDisplay:\r\n?0xh201e=1? Demo Mode\r\n?0xh200e=29? Bonus Minigame\r\n@players(0xhfd2e) 🚶‍x@lifes(0xfcd0_0xfcd8_0xfce0_0xfce8) Lifes | 💰x@coins(0xfcd4_0xfcdc_0xfce4_0xfcec) Coins | 👊x@hits(0xfcd6_0xfcde_0xfce6_0xfcee) Hits | ☠️‍x@deaths(0xfcd2_0xfcda_0xfce2_0xfcea) Deaths",
+	"Achievements": [
+		{
+			"ID": 89441,
+			"MemAddr": "0xH00201e!=1_0xH00200e=6_0xH00fd12=17_0xH002018=0_d0xH002018=1_d0xX00fd55!=4294967295",
+			"Title": "Friends",
+			"Description": "Beat 2-3 without beating the boss",
+			"Points": 5,
+			"Author": "eldexter",
+			"Modified": 1576776169,
+			"Created": 1575000249,
+			"BadgeName": "97750",
+			"Flags": 3
+		}
+	]
+}
