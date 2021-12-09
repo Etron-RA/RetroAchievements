@@ -1,0 +1,68 @@
+{
+	"ID": 11787,
+	"Title": "Punisher, The",
+	"ConsoleID": 27,
+	"ForumTopicID": 6293,
+	"Flags": 0,
+	"ImageIcon": "/Images/016671.png",
+	"ImageTitle": "/Images/016669.png",
+	"ImageIngame": "/Images/016670.png",
+	"ImageBoxArt": "/Images/016637.png",
+	"Publisher": "Capcom",
+	"Developer": "Capcom",
+	"Genre": "Beat 'em up",
+	"Released": "1993",
+	"IsFinal": false,
+	"ConsoleName": "Arcade",
+	"RichPresencePatch": "Lookup:Stage\r\n0x0=🚩1:Back to the War\r\n0x1=🚩2:Raid on Pantaberde\r\n0x2=🚩3:Waterfront Warfare\r\n0x3=🚩4:Death On Rails\r\n0x4=🚩5:Kingpin's Wrath\r\n0x5=🚩6:Final Punishment\r\n0x6=Bonus Stage\r\n0x7=Bonus Stage\r\n\r\nFormat:Lives\r\nFormatType=VALUE\r\n\r\nFormat:Grenades\r\nFormatType=VALUE\r\n\r\nFormat:Items\r\nFormatType=VALUE\r\n\r\nFormat:Enemies\r\nFormatType=VALUE\r\n\r\nFormat:Difficulty\r\nFormatType=VALUE\r\n\r\nFormat:Score\r\nFormatType=VALUE\r\n\r\nDisplay:\r\n?0xh5b41=0? Attract Mode\r\n@Stage(0xl5bb8)|🚶@Lives(0xl5ba5)|💣@Grenades(0xl5bcb)|📦@Items(0xh5fba)|🤕@Enemies(0x5ba2)|💯:@Score(0xu5bab*10000000_0xl5bab*1000000_0xu5baa*100000_0xl5baa*10000_0xu5bad*1000_0xl5bad*100)|⚖LEVEL-@Difficulty(v+1_0xl5b45)",
+	"Achievements": [
+		{
+			"ID": 60787,
+			"MemAddr": "R:0xN5b3c=1_R:0xH5b42<2_R:0xH5b52=0_R:0xH5b45<3_d0x 5ba2<0x 5ba2.10._P:0xH8e74!=108",
+			"Title": "The Parkournisher",
+			"Description": "Defeat 10 enemies using Wall Rebound Jump Kick (P1, dif>=3, oth opt<=default)",
+			"Points": 5,
+			"Author": "Salsa",
+			"Modified": 1570735681,
+			"Created": 1527655227,
+			"BadgeName": "63845",
+			"Flags": 3
+		},
+		{
+			"ID": 60788,
+			"MemAddr": "R:0xN5b3c=1_R:0xH5b42<2_R:0xH5b52=0_R:0xH5b45<3_d0x 5ba2<0x 5ba2.10._P:0xH8e74!=48_P:0xH8ebd!=255",
+			"Title": "Izuna Encounter",
+			"Description": "Defeat 10 enemies using Super Izuna Drop (P1, dif>=3, oth opt<=default)",
+			"Points": 5,
+			"Author": "Salsa",
+			"Modified": 1571259421,
+			"Created": 1527655229,
+			"BadgeName": "63846",
+			"Flags": 3
+		},
+		{
+			"ID": 60789,
+			"MemAddr": "R:0xN5b3c=1_R:0xH5b42<2_R:0xH5b52=0_R:0xH5b45<3_d0x 5ba2<0x 5ba2.10._P:0xH8e74!=24_P:0xH8ebd=255",
+			"Title": "Chronic Sonic",
+			"Description": "Defeat 10 enemies using Sonic Kick, while not grappling (P1, dif>=3, oth opt<=default)",
+			"Points": 5,
+			"Author": "Salsa",
+			"Modified": 1527974925,
+			"Created": 1527655231,
+			"BadgeName": "63847",
+			"Flags": 3
+		},
+		{
+			"ID": 60795,
+			"MemAddr": "R:0xN5b3c=1_R:0xH5b42<2_R:0xH5b52=0_R:0xH5b45<3_R:0xH5bb8!=5_R:0xH6013!=4_P:0xH184e!=13_0xH8ebd=255.5._P:d0xH8ebd=255",
+			"Title": "Goodnight Fat Boy!",
+			"Description": "Lift Kingpin 5 times (P1, dif>=3, oth opt<=default)",
+			"Points": 10,
+			"Author": "Salsa",
+			"Modified": 1611889059,
+			"Created": 1527655242,
+			"BadgeName": "63854",
+			"Flags": 3
+		}
+	"Leaderboards": []
+}
