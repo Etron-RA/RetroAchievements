@@ -1,0 +1,10 @@
+Format:Value
+FormatType=VALUE
+
+Display:
+?0xH00006b=0_0xH00be3e=60?Tech-Wing Fighter is the cheating, achivements locked!
+?0xH00006b=0_0xH0002d2=7?Tech-Wing Fighter beat KAOS!
+?0xH00006b=0_0xH0002d2>=1_0xH0002d2<=6?🚩 @Value(0xH0002d2) | ✈ @Value(0xH0002f4) | 💯 @Value(0x 00889e*100) | ⛽ @Value(0x 0002e2*100) | 🛡 @Value(0xH0087c8) | 💨 @Value(0xH0088a0) | 🚀 @Value(0xH0088a2_v-2)
+In Menu
+
+// RP By Etron 2021-11-01
