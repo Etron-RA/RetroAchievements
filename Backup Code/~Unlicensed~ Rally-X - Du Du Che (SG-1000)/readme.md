@@ -1,4 +1,4 @@
-# ~Unlicensed~ Rally-X | Du Du Che (SG-1000)
+# (Unlicensed) Rally-X | Du Du Che (SG-1000)
 
 ## Game Site
 https://retroachievements.org/game/14188
