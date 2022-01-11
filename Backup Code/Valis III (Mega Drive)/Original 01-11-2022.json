@@ -1,0 +1,33 @@
+{
+	"ID": 2268,
+	"Title": "Valis III",
+	"ConsoleID": 1,
+	"ForumTopicID": 6351,
+	"Flags": 0,
+	"ImageIcon": "/Images/039835.png",
+	"ImageTitle": "/Images/001415.png",
+	"ImageIngame": "/Images/001416.png",
+	"ImageBoxArt": "/Images/001418.png",
+	"Publisher": "Sega",
+	"Developer": "Telenet Japan",
+	"Genre": "Action, Adventure",
+	"Released": "March 22, 1991",
+	"IsFinal": false,
+	"ConsoleName": "Mega Drive",
+	"RichPresencePatch": null,
+	"Achievements": [
+		{
+			"ID": 4994,
+			"MemAddr": "0xH00f414=19_0xH00d904>=0_0xH00d905>=0_0xH00f4ac>=2_R:0xH00f414=28_0xH00f4a8=100.1.",
+			"Title": "Asura",
+			"Description": "Defeat Asura",
+			"Points": 10,
+			"Author": "Pereira006",
+			"Modified": 1636970367,
+			"Created": 1392234995,
+			"BadgeName": "05598",
+			"Flags": 3
+		}
+	],
+	"Leaderboards": []
+}
