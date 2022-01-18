@@ -134,17 +134,18 @@ function InGame() => byte(0x000292)
 ///////////////////////////////////////////////////////////////
 // Functions
 
-// Check if the player has clear the stage 
+// Check if the player has cleared the stage 
 function StageClear(stage)
 {
-    return once(Enemies() == StartingEnemies()) &&
+    return InGame() == 1 &&
+        Stage() == stage &&
+        Lives() != 0 &&
         prev(Enemies()) == 1 &&
-        Enemies() == 0 &&
-        never(Stage() != stage) &&
-        never(InGame() == 0)   
+        Enemies() == 0
+        
 }
 
-// Check if the player has clear the stage on hard w/o dying
+// Check if the player has cleared the stage on hard w/o dying
 function StageClearHard(stage)
 {
     return once(
