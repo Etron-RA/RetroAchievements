@@ -43,4 +43,4 @@ Fixed hard progression achievements and added triggers:
 Fixed score achievements and added measures:
 * Scorer (5) https://retroachievements.org/achievement/43095
 * Super Scorer (10) https://retroachievements.org/achievement/43096
-*Master Scorer (25) https://retroachievements.org/achievement/43108
+* Master Scorer (25) https://retroachievements.org/achievement/43108
