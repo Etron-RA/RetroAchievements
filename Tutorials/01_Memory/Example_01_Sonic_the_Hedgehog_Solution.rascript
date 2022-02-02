@@ -133,6 +133,22 @@ SpecialStagePurpleEmerald = 3
 SpecialStageGreenEmerald = 4
 SpecialStageRedEmerald = 5
 
-// Homework #1
-// Using the memory addresses provided in this example make a function that
-// can generate achievements for collecting each chaos emeralds
+function ChaosEmeraldCollected(color, stage)
+{
+    achievement(
+        title = "Example 1C: " + color + " Emerald",
+        description = "Collect the " + color + " Emerald",
+        points = 0,
+        trigger = Active() && 
+            InSpecialStage() &&
+            SpecialStage == stage &&
+            prev(ChaosEmeralds) + 1 == ChaosEmeralds
+    )
+}
+
+ChaosEmeraldCollected("White", SpecialStageWhiteEmerald)
+ChaosEmeraldCollected("Blue", SpecialStageBlueEmerald)
+ChaosEmeraldCollected("Yellow", SpecialStageYellowEmerald)
+ChaosEmeraldCollected("Purple", SpecialStagePurpleEmerald)
+ChaosEmeraldCollected("Green", SpecialStageGreenEmerald)
+ChaosEmeraldCollected("Red", SpecialStageRedEmerald)
