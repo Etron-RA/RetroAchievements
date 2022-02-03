@@ -1,6 +1,6 @@
 # Tutorial 1 - Memory Basics
 ## Overview
-This tutorial will show a few examples of how to use both variables and functions to create some basic achievements in RAScript.  [Sonic the Hedgehog](https://retroachievements.org/game/1) was chosen for the example due to its simple memory and since it is such a well know title.  The [example script](/Example_01_Sonic_the_Hedgehog.rascript) will used to highlight aspects of the tutorial.
+This tutorial will show a few examples of how to use both variables and functions to create some basic achievements in RAScript.  [Sonic the Hedgehog](https://retroachievements.org/game/1) was chosen for the example due to its simple memory and since it is such a well know title.  The [example script](Example_01_Sonic_the_Hedgehog.rascript) will used to highlight aspects of the tutorial.
 Note that this tutorial will touch on some programming fundamentals but will not go in to depth.  If you are new to the programming world there several free sites online that would be a good introduction.  This series of tutorials will use video links from [Khan Academy](https://www.khanacademy.org/) to help explain programming basics where appropriate. 
 ## Variables
 Variables are abstract data elements that allow the programmer to store and manipulate different types of data.  As a programmer you can create and manipulate variable as needed. If you are unfamiliar with the concept of variables then review [Variables](https://www.khanacademy.org/computing/computer-programming/programming/variables/pt/intro-to-variables) and [More on Variables](https://www.khanacademy.org/computing/computer-programming/programming/variables/pt/more-on-variables) videos from Khan Academy.
@@ -138,7 +138,7 @@ achievement(
 )
 ```
 Even through the above code is equivalent to what we started with, it would be more difficult to understand what is going on if it was written like this.  Now that we are down to checking memory location and values the code be can converted into something that RALibRetro would understand.
-![Example 1A Logic](\Example_1A.PNG)
+![Example 1A Logic](Example_1A.PNG)
  
 
 ## Example 1B - Level Transitions
@@ -227,7 +227,7 @@ achievement(
 )
 ```
 Here’s how the achievement looks in RALibRetro.
-![Example 1B Logic](\Example_1B.PNG) 
+![Example 1B Logic](Example_1B.PNG) 
 ## Example 1C - Collect Chaos Emeralds
 The Chaos Emeralds are rare collection items that are hidden in the special zones.  Sonic the Hedgehog has six emeralds total and you get an opportunity to collect them in the six special stages. To get to a special stage you need to complete a non-boss act with 50 or more rings. Doing so will make a gaint wrap ring at the end of the act which you can jump in to go to the special stage.
 ### Homework 1

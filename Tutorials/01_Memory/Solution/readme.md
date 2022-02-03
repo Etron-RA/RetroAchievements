@@ -75,5 +75,5 @@ achievement(
 )
 ```
 Here’s how the achievement looks in RALibRetro.
-![Example 1C Logic](\Example_1C.PNG) 
+![Example 1C Logic](Example_1C.PNG) 
 
