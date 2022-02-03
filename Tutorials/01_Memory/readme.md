@@ -242,5 +242,5 @@ SpecialStagePurpleEmerald = 3
 SpecialStageGreenEmerald = 4
 SpecialStageRedEmerald = 5
 ```
-[Solution](/Solutions/readme.md)
+[Solution](Solutions/readme.md)
 
