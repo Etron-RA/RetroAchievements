@@ -54,36 +54,36 @@ ZoneComplete("Green Hill Zone", GreenHillZoneAct3, MarbleZoneAct1)
 Being a function the compiler will jump to the ZoneComplete function and use *zone* = "Green Hill Zone", *last* = GreenHillZoneAct3, and *next* = MarbleZoneAct1.
 ```
 achievement(
-	title = "Example 1B: Green Hill Zone",
-	description = "Complete Green Hill Zone",
-	points = 0,
-	trigger = Active() && Transition(GreenHillZoneAct3, MarbleZoneAct1)
+    title = "Example 1B: Green Hill Zone",
+    description = "Complete Green Hill Zone",
+    points = 0,
+    trigger = Active() && Transition(GreenHillZoneAct3, MarbleZoneAct1)
 )
 ```
 Now let’s replace Active() and the Transition() with the parameters *last* = GreenHillZoneAct3 and *next* = MarbleZoneAct1.
 ```
 achievement(
-	title = "Example 1B: Green Hill Zone",
-	description = "Complete Green Hill Zone",
-	points = 0,
-	trigger = LevelSelect == 0 &&
-		DemoMode == 0 &&
-		DebugMode == 0 &&
-		prev(Level) == GreenHillZoneAct3 && 
-		Level == MarbleZoneAct1
+    title = "Example 1B: Green Hill Zone",
+    description = "Complete Green Hill Zone",
+    points = 0,
+    trigger = LevelSelect == 0 &&
+        DemoMode == 0 &&
+        DebugMode == 0 &&
+        prev(Level) == GreenHillZoneAct3 && 
+        Level == MarbleZoneAct1
 )
 ```
 Finally the variables are replaced with the actual memory addresses and values.
 ```
 achievement(
-	title = "Example 1B: Green Hill Zone",
-	description = "Complete Green Hill Zone",
-	points = 0,
-	trigger = byte(0xFFE1) == 0 &&
-		byte(0xFFF0) == 0 &&
-		byte(0xFFFB) == 0 &&
-		prev(word(0xFE10)) == 0x0002 && 
-		word(0xFE10)== 0x0200
+    title = "Example 1B: Green Hill Zone",
+    description = "Complete Green Hill Zone",
+    points = 0,
+    trigger = byte(0xFFE1) == 0 &&
+        byte(0xFFF0) == 0 &&
+        byte(0xFFFB) == 0 &&
+        prev(word(0xFE10)) == 0x0002 && 
+        word(0xFE10)== 0x0200
 )
 ```
 Here’s how the achievement looks in RALibRetro.

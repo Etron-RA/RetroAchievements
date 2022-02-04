@@ -37,41 +37,41 @@ ChaosEmeraldCollected("White", SpecialStageWhiteEmerald)
 The compiler will jump to the ChaosEmeraldCollected function and use *color* = "White and *stage* = SpecialStageWhiteEmerald.
 ```
 achievement(
-	title = "Example 1C: White Emerald",
-	description = "Collect the White Emerald",
-	points = 0,
-	trigger = Active() && 
-		InSpecialStage() &&
-		SpecialStage == SpecialStageWhiteEmerald &&
-		prev(ChaosEmeralds) + 1 == ChaosEmeralds
+    title = "Example 1C: White Emerald",
+    description = "Collect the White Emerald",
+    points = 0,
+    trigger = Active() && 
+        InSpecialStage() &&
+        SpecialStage == SpecialStageWhiteEmerald &&
+        prev(ChaosEmeralds) + 1 == ChaosEmeralds
 )
 ```
 Now let’s replace the Active() and the InSpecialStage() functions
 ```
 achievement(
-	title = "Example 1C: White Emerald",
-	description = "Collect the White Emerald",
-	points = 0,
-	trigger = LevelSelect == 0 &&
-		DemoMode == 0 &&
-		DebugMode == 0 &&
-		StageType == 0x10 &&
-		SpecialStage == SpecialStageWhiteEmerald &&
-		prev(ChaosEmeralds) + 1 == ChaosEmeralds
+    title = "Example 1C: White Emerald",
+    description = "Collect the White Emerald",
+    points = 0,
+    trigger = LevelSelect == 0 &&
+        DemoMode == 0 &&
+        DebugMode == 0 &&
+        StageType == 0x10 &&
+        SpecialStage == SpecialStageWhiteEmerald &&
+        prev(ChaosEmeralds) + 1 == ChaosEmeralds
 )
 ```
 Finally the variables are replaced with the actual memory addresses and values.
 ```
 achievement(
-	title = "Example 1C: White Emerald",
-	description = "Collect the White Emerald",
-	points = 0,
-	trigger = byte(0xFFE1) == 0 &&
-		byte(0xFFF0) == 0 &&
-		byte(0xFFFB) == 0 &&
-		byte(0xF601) == 0x10 &&
-		byte(0xFE17) == 0 &&
-		prev(byte(0xFE56)) + 1 == byte(0xFE56)
+    title = "Example 1C: White Emerald",
+    description = "Collect the White Emerald",
+    points = 0,
+    trigger = byte(0xFFE1) == 0 &&
+        byte(0xFFF0) == 0 &&
+        byte(0xFFFB) == 0 &&
+        byte(0xF601) == 0x10 &&
+        byte(0xFE17) == 0 &&
+        prev(byte(0xFE56)) + 1 == byte(0xFE56)
 )
 ```
 Here’s how the achievement looks in RALibRetro.\
