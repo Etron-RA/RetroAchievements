@@ -1,0 +1,25 @@
+## Example 1C - Collect Chaos Emeralds
+The Chaos Emeralds are rare collection items that are hidden in the special zones.  Sonic the Hedgehog has six emeralds total and you get an opportunity to collect them in the six special stages. To get to a special stage you need to complete a non-boss act with 50 or more rings. Doing so will make a gaint wrap ring at the end of the act which you can jump in to go to the special stage.
+
+![Sonic the Hedgehohg about to collect a Chaos Emerald](Sonic_Emerald.PNG)
+
+### Homework 1
+A)	Using the memory addresses provided in this example make a function that can generate achievements for collecting each chaos emerald. 
+B)	Using the same method as Example 1A and 1B dissect one of the achievements functions step by step until all the variables and functions are removed.
+The following variables have been created to help with figuring out which emeralds is in which special zone.
+```
+SpecialStageWhiteEmerald = 0
+SpecialStageBlueEmerald = 1
+SpecialStageYellowEmerald = 2
+SpecialStagePurpleEmerald = 3
+SpecialStageGreenEmerald = 4
+SpecialStageRedEmerald = 5
+```
+\
+[Solution](Solution/readme.md)\
+\
+Links:\
+[Tutorial #1](readme.md)\
+[Example 1A](Example_1A.md)\
+[Example 1B](Example_1B.md)\
+Example 1C
