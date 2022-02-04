@@ -1,7 +1,7 @@
 ## Example 1B - Level Transitions
 Sonic the Hedgehog is divided into seven zones each with three acts (except the final which is an end game boss battle).  It appears that the developers changed around the order of the zones and acts since they are non-sequential.  This means we need to know the last and next level id to detect a level transition. Note that in the code below a series of variables are declared for each level in the game.  That way when we are looking for a level transition we can use the name of the level rather than needing to know the id value.
 
-![Sonic the Hedgehohg in a boss fight before the end of an act.](Sonic_Boss.PNG)
+![Sonic the Hedgehohg in a boss fight before the end of an act.](Sonic_Boss.png)
 
 ```
 // Shortcut variables for each level
@@ -87,7 +87,7 @@ achievement(
 )
 ```
 Here’s how the achievement looks in RALibRetro.
-![Example 1B Logic](Example_1B.PNG) 
+![Example 1B Logic](Example_1B.PNG)\
 \
 Links:\
 [Tutorial #1](readme.md)\

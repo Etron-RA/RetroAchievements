@@ -2,7 +2,7 @@
 ## Example 1A - Counting Rings
 Rings are the main object that Sonic collects and Sonic gets a life for every 100 rings accumulated. The memory for rings is a byte making it easy to check when the value of the rings goes above a certain threshold. To make sure that the player is not watching the demo or cheating the follow code uses the Active() and InNormalStage() functions to the trigger condition.
 
-![Sonic the Hedgehohg Collecting Rings](Sonic_Rings.PNG)
+![Sonic the Hedgehohg Collecting Rings](Sonic_Rings.png)
 
 ```
 // Create an achievement for when the player collects X rings
@@ -67,10 +67,10 @@ achievement(
 )
 ```
 Even through the above code is equivalent to what we started with, it would be more difficult to understand what is going on if it was written like this.  Now that we are down to checking memory location and values the code be can converted into something that RALibRetro would understand.
-![Example 1A Logic](Example_1A.PNG)
+![Example 1A Logic](Example_1A.PNG)\
 \
 Links:\
 [Tutorial #1](readme.md)\
-Example 1A
+Example 1A\
 [Example 1B](Example_1B.md)\
 [Example 1C](Example_1C.md)

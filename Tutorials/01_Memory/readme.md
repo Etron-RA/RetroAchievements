@@ -75,7 +75,7 @@ function Active()
 
 The InNormalStage() and InSpecialStage() are used as shortcuts that return a condition to check if player is currently in a normal stage or a special stage. The Active() function returns a more complicated condition that handles the demo and cheat protection for the set.  The benefit of wrapping up all of the protection conditions in one function is that if new type of protection was needed then you could simply update the Active() function and each achievement will get updated with the new protection.
 
-The Transition() function is unique since it takes the parameters *last* and *next* which change how the function operates.  You can use the parameters inside a function like variables that only exist inside of the function.  In this case the function checks if previous (delta) value of the level is the *last* value and current value of the level is the *next* value.  A different condition will be created depending on the parameters were used.
+The Transition() function is unique since it takes the parameters *last* and *next* which change how the function operates.  You can use the parameters inside a function like variables that only exist inside of the function.  In this case the function checks if previous (delta) value of the level is the *last* value and current value of the level is the *next* value.  A different condition will be created depending on the parameters that were used.\
 \
 Links:\
 Tutorial #1\
