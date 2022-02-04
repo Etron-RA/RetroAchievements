@@ -1,4 +1,4 @@
-# Tutorial 1 Solutions
+# Tutorial #1 Solution
 ## Solution A
 The below script is a possible solution to the achievements for collecting chaos emeralds. This solution uses the current special stage number to determine which emerald was obtained when the number of emeralds increments by one.  The line prev(ChaosEmeralds) < ChaosEmeralds could also have been used with the same results.
 ```
@@ -34,7 +34,7 @@ Let’s dissect the white emerald achievement function step by step until we get
 ```
 ChaosEmeraldCollected("White", SpecialStageWhiteEmerald)
 ```
-The compiler will jump to the ChaosEmeraldCollected function and use *color* = "White and *stage* = SpecialStageWhiteEmerald.
+The compiler will jump to the ChaosEmeraldCollected() function and use the parameters *color* = "White" and *stage* = SpecialStageWhiteEmerald.
 ```
 achievement(
     title = "Example 1C: White Emerald",

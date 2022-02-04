@@ -1,6 +1,6 @@
 
 ## Example 1A - Counting Rings
-Rings are the main object that Sonic collects and Sonic gets a life for every 100 rings accumulated. The memory for rings is a byte making it easy to check when the value of the rings goes above a certain threshold. To make sure that the player is not watching the demo or cheating the follow code uses the Active() and InNormalStage() functions to the trigger condition.
+Rings are the main object which Sonic collects and Sonic gets a life for every 100 rings accumulated. The memory for rings is a byte which makes it easy to check when the value of the rings goes above a certain threshold. To make sure that the player is not watching the demo or cheating the following code uses the Active() and InNormalStage() functions to the trigger condition.
 
 ![Sonic the Hedgehohg Collecting Rings](Sonic_Rings.png)
 
@@ -29,7 +29,7 @@ To help understand how this script is compiled by RATools we will dissect it ste
  ```
 CollectRings(15)
 ```
-Being a function the compiler will jump to the CollectRings function and use 15 in place of the parameter *count*.
+Being a function the compiler will jump to CollectRings() and use 15 in place of the parameter *count*.
 ```
 achievement(
     title = "Example 1A: 15 Rings",
@@ -66,7 +66,7 @@ achievement(
         byte(0xFE20) >= 15
 )
 ```
-Even through the above code is equivalent to what we started with, it would be more difficult to understand what is going on if it was written like this.  Now that we are down to checking memory location and values the code be can converted into something that RALibRetro would understand.
+Even though the above code is equivalent to what we started with, it would be more difficult to understand what is going on if it was written like this.  Now that we are down to checking memory locations and values, the code be can converted into something that RALibRetro would understand.
 ![Example 1A Logic](Example_1A.PNG)\
 \
 Links:\

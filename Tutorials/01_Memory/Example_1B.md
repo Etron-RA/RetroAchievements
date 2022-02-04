@@ -1,5 +1,5 @@
 ## Example 1B - Level Transitions
-Sonic the Hedgehog is divided into seven zones each with three acts (except the final which is an end game boss battle).  It appears that the developers changed around the order of the zones and acts since they are non-sequential.  This means we need to know the last and next level id to detect a level transition. Note that in the code below a series of variables are declared for each level in the game.  That way when we are looking for a level transition we can use the name of the level rather than needing to know the id value.
+Sonic the Hedgehog is divided into seven zones each with three acts (except the final zone which is an end game boss battle).  It appears that the developers changed around the order of the zones and acts since they are non-sequential.  This means we need to know the last and next level id to detect a level transition. Note that in the code below, a series of variables are declared for each level in the game.  That way when we are looking for a level transition we can use the name of the level rather than needing to know the id value.
 
 ![Sonic the Hedgehohg in a boss fight before the end of an act.](Sonic_Boss.png)
 
@@ -47,11 +47,11 @@ ZoneComplete("Scrap Brain Zone", ScrapBrainZoneAct3, FinalZone)
 ZoneComplete("Final Zone", FinalZone, EndGame)
 ```
 ### Example Translation
-Like the previous example let’s dissect the one of the achievement functions step by step until we get to the code used in RALibRetro.
+Like the previous example let’s dissect one of the achievement functions step by step until we get to the code used in RALibRetro.
 ```
 ZoneComplete("Green Hill Zone", GreenHillZoneAct3, MarbleZoneAct1)
 ```
-Being a function the compiler will jump to the ZoneComplete function and use *zone* = "Green Hill Zone", *last* = GreenHillZoneAct3, and *next* = MarbleZoneAct1.
+Being a function the compiler will jump to the ZoneComplete() function and use *zone* = "Green Hill Zone", *last* = GreenHillZoneAct3, and *next* = MarbleZoneAct1 for the parameter values.
 ```
 achievement(
     title = "Example 1B: Green Hill Zone",
@@ -60,7 +60,7 @@ achievement(
     trigger = Active() && Transition(GreenHillZoneAct3, MarbleZoneAct1)
 )
 ```
-Now let’s replace Active() and the Transition() with the parameters *last* = GreenHillZoneAct3 and *next* = MarbleZoneAct1.
+Now let’s replace Active() and the Transition() functions with the parameters *last* = GreenHillZoneAct3 and *next* = MarbleZoneAct1.
 ```
 achievement(
     title = "Example 1B: Green Hill Zone",
