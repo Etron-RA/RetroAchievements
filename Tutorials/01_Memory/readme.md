@@ -3,7 +3,7 @@
 This tutorial will show a few examples of how to use both variables and functions to create some basic achievements in RAScript.  [Sonic the Hedgehog](https://retroachievements.org/game/1) was chosen for the example due to its simple memory and since it is such a well know title.  The [example script](Example_01_Sonic_the_Hedgehog.rascript) will used to highlight aspects of the tutorial.
 Note that this tutorial will touch on some programming fundamentals but will not go in to depth.  If you are new to the programming world there several free sites online that would be a good introduction.  This series of tutorials will use video links from [Khan Academy](https://www.khanacademy.org/) to help explain programming basics where appropriate. 
 
-![Sonic the Hedgehohg Title Screen](Sonic_Title.PNG)
+![Sonic the Hedgehog Title Screen](Sonic_Title.png)
 
 ## Variables
 Variables are abstract data elements that allow the programmer to store and manipulate different types of data.  As a programmer you can create and manipulate variable as needed. If you are unfamiliar with the concept of variables then review [Variables](https://www.khanacademy.org/computing/computer-programming/programming/variables/pt/intro-to-variables) and [More on Variables](https://www.khanacademy.org/computing/computer-programming/programming/variables/pt/more-on-variables) videos from Khan Academy.

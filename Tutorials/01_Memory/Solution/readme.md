@@ -74,6 +74,7 @@ achievement(
 		prev(byte(0xFE56)) + 1 == byte(0xFE56)
 )
 ```
-Here’s how the achievement looks in RALibRetro.
-![Example 1C Logic](Example_1C.PNG) 
-
+Here’s how the achievement looks in RALibRetro.\
+![Example 1C Logic](Example_1C.PNG)\
+\
+[Complete script with the above solution](Example_01_Sonic_the_Hedgehog_Solution.rascript)
