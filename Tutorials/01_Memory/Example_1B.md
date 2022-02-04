@@ -51,7 +51,7 @@ Like the previous example let’s dissect one of the achievement functions step 
 ```
 ZoneComplete("Green Hill Zone", GreenHillZoneAct3, MarbleZoneAct1)
 ```
-Being a function the compiler will jump to the ZoneComplete() function and use *zone* = "Green Hill Zone", *last* = GreenHillZoneAct3, and *next* = MarbleZoneAct1 for the parameter values.
+Being a function the compiler will jump to ZoneComplete() and use *zone* = "Green Hill Zone", *last* = GreenHillZoneAct3, and *next* = MarbleZoneAct1 for the parameter values.
 ```
 achievement(
     title = "Example 1B: Green Hill Zone",

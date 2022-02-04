@@ -78,3 +78,9 @@ Here’s how the achievement looks in RALibRetro.\
 ![Example 1C Logic](Example_1C.PNG)\
 \
 [Complete script with the above solution](Example_01_Sonic_the_Hedgehog_Solution.rascript)
+\
+Links:\
+[Tutorial #1](./readme.md)\
+[Example 1A](./Example_1A.md)\
+[Example 1B](./Example_1B.md)\
+[Example 1C](./Example_1C.md)
