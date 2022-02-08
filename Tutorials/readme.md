@@ -3,7 +3,8 @@
 The RAScript Tutorials series of coding by example tutorials to complement the [RATools wiki](https://github.com/Jamiras/RATools/wiki). Each one would focus on a certain aspect of writing scripts using classic games as examples. I’m still brain storming topics and games to use so feel free to make suggestions.
 
 ## RAScript topics:
-* [**Memory**](https://github.com/Etron-RA/RetroAchievements/tree/main/Tutorials/01_Memory): Examples of variables and functions - Sonic Rings, Levels
+* [**Getting Started**](/Tutorials/00_Getting_Started/readme.md): Introduction to using RATools
+* [**Memory**](/Tutorials/01_Memory/readme.md): Examples of variables and functions - Sonic Rings, Levels
 * **Add Hits**: Examples of counting with tally - Streets of Rage 2 knock outs
 * **Bitflags**: Examples of checking bit flags - *? Epic RPG*
 * **Arithmetic Operations**: Example of using arithmetic functions together - Streets of Rage 2 scores
