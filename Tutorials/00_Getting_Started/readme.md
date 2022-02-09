@@ -3,7 +3,7 @@
 Before you start scripting you will need to download the newest release of [RATools](https://github.com/Jamiras/RATools/releases). The program needs a little setup before you can use it:
 1) Open the settings menu by clicking on *File -> Settings…*
 2) Enter your in name in the *User Name* textbox
-3) Click **Add*** and browse to the file location of RALibRetro. The icon next to the file location will change to a green checkmark if the emulator was correctly detected.
+3) Click **Add** and browse to the file location of RALibRetro. The icon next to the file location will change to a green checkmark if the emulator was correctly detected.
 4) (Optional) Click on the *Colors* tab and click on the **Dark Theme** button.
 5) Press the **OK** button at the bottom of the screen.<br>
 ![Screenshot of the settings dialog](RATools_Settings.PNG)
@@ -59,7 +59,7 @@ Notice how you can easily read the above function and understand what is going o
 If you wish to see how the script changes you made compare to what’s in the core then select the achievement from the list on the left panel. A filled in circle next to an achievement indicates that it is new and does not exist in core, a half circle indicates the achievement has changed from the core, and a hollow circle means that the script matches the core. Lines added by the script will be colored green and lines remove will be colored red. To get back to the code view, click on the script name at the top left. Note that RATools has some optimizations built in so it will automatically improve existing code.  The example below shows such a case where the optimizations has made the code cleaner although no changes were made in the script.<br>
 ![Screenshot of comparing the script with the code in the Core](Code_Compare.PNG)
 ## Updating Code
-Once you are ready to test you can export the updated code back into RALibRetro with *Edit -> Update Local*.  Note that the script must be error free to proceed with the update. Select all of the achievements you wish to update and press the *OK* button.  Your new updates will appear next time you open RALibRetro. If RALibRetro was open during the update you’ll need to select the achievements that were updated and press the *Reset* button to reload them from the local cache.
+Once you are ready to test you can export the updated code back into RALibRetro with *Edit -> Update Local*.  Note that the script must be error free to proceed with the update. Select all of the achievements you wish to update and press the **OK** button.  Your new updates will appear next time you open RALibRetro. If RALibRetro was open during the update you’ll need to select the achievements that were updated and press the **Reset** button to reload them from the local cache.
 ## Homework
 1. Import an existing game in to RATools.
 2. Pick an achievement and replace the memory address with variable using the find and replace technique.
