@@ -62,5 +62,5 @@ If you wish to see how the script changes you made compare to what’s in the co
 Once you are ready to test you can export the updated code back into RALibRetro with *Edit -> Update Local*.  Note that the script must be error free to proceed with the update. Select all of the achievements you wish to update and press the **OK** button.  Your new updates will appear next time you open RALibRetro. If RALibRetro was open during the update you’ll need to select the achievements that were updated and press the **Reset** button to reload them from the local cache.
 ## Homework
 1. Import an existing game in to RATools.
-2. Pick an achievement and replace the memory address with variable using the find and replace technique.
+2. Pick an achievement and replace the memory address with variables using the find and replace technique.
 3. Make a small change to an achievement and use the compare panel to see what the change looks like.
