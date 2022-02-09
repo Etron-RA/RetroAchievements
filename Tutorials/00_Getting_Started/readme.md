@@ -3,9 +3,9 @@
 Before you start scripting you will need to download the newest release of [RATools](https://github.com/Jamiras/RATools/releases). The program needs a little setup before you can use it:
 1) Open the settings menu by clicking on *File -> Settings…*
 2) Enter your in name in the *User Name* textbox
-3) Click *Add* and browse to the file location of RALibRetro. The icon next to the file location will change to a green checkmark if the emulator was correctly detected.
-4) (Optional) Click on the *Colors* tab and click on the *Dark Theme* button.
-5) Press the OK button at the bottom of the screen. \
+3) Click **Add*** and browse to the file location of RALibRetro. The icon next to the file location will change to a green checkmark if the emulator was correctly detected.
+4) (Optional) Click on the *Colors* tab and click on the **Dark Theme** button.
+5) Press the **OK** button at the bottom of the screen. \
 ![Screenshot of the settings dialog](RATools_Settings.PNG)
  
 ## Importing Code
