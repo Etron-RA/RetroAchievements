@@ -14,6 +14,7 @@ When first learning RAScripts it can be a little daunting to know where to start
 * Fixing tickets
 * Converting existing code to an RAScript
 * Creating Rich Presences and/or Leaderboards<br>
+<br>
 If you are just learning RAScripts then it is extremely useful to import a set your familiar with to see how it looks in script form. To import a new script:<br>
 1) Load and play a game in RALibRetro (or any of the RA emulators that support editing achievements).  You only need to start playing the game which will trigger downloading the necessary achievement data to the RACache folder.
 2) Record the game id number which can be found on the top of the menu item *RetroAchievements -> Asset List*.  For this example we will be looking at Sonic the Hedgehog which is game id 1.<br>
