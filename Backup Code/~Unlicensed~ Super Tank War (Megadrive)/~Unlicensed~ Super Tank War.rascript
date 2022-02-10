@@ -18,8 +18,8 @@ function Lives() => byte(0x000115)
 // $0119: [8-bit] Starting Enemies
 function StartingEnemies() => byte(0x000119)
 
-// $0187: [8-bit] Timer
-function Timer() => byte(0x000187)
+// $0187: [bit 7] Player Active
+function PlayerActive() => bit7(0x000187)
 
 // $01D6: [8-bit] Difficulty (0 = Normal, 1 = Hard, 2 = Normal)
 function Difficulty() => byte(0x0001D6)
@@ -137,12 +137,11 @@ function InGame() => byte(0x000292)
 // Check if the player has cleared the stage 
 function StageClear(stage)
 {
-    return InGame() == 1 &&
+    return InGame() == 1 &&   
         Stage() == stage &&
         Lives() != 0 &&
-        prev(Enemies()) == 1 &&
-        Enemies() == 0
-        
+        prev(PlayerActive()) == 1 &&
+        PlayerActive() == 0  
 }
 
 // Check if the player has cleared the stage on hard w/o dying
@@ -150,13 +149,15 @@ function StageClearHard(stage)
 {
     return once(
             Difficulty() == 1 &&
-            Enemies() == StartingEnemies()
+            prev(PlayerActive()) == 0 &&
+            PlayerActive() == 1  
         ) &&
         trigger_when(
-            prev(Enemies()) == 1 &&
-            Enemies() == 0   
+            prev(PlayerActive()) == 1 &&
+            PlayerActive() == 0    
         ) &&
         never(prev(Lives()) > Lives()) &&
+        never(Lives() == 0) &&
         never(Stage() != stage) &&
         never(InGame() == 0)      
 }
