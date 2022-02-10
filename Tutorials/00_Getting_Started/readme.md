@@ -35,23 +35,31 @@ achievement(
     trigger = word(0x00FE20) >= 20 && word(0x00FFF0) == 0 && byte(0x00FFFB) == 0 && byte(0x00F601) == 12
 )
 ```
-To make the script easier to understand and maintain it is recommended that you replace the memory address and constant values with variables. By using the find/replace function (Ctrl+H) in RATools you can replace all of the instances of the same memory with variables quickly.  Then make a variable before the function for each replaced address. For this example we will replace:<br>
-* **Find** word(0x00FE20) -> **Replace** Rings
-* **Find** word(0x00FFF0) -> **Replace** DemoMode
-* **Find** word(0x00FFFB) -> **Replace** DebugMode
-* **Find** byte(0x00F601) -> **Replace** StageType
-* **Find** 12 -> **Replace** SpecialStage
+To make the script easier to understand and maintain it is recommended that you replace the memory address with functions. By using the **Function** column on the *Referenced Memory Addresses* panel you can specify a function name for each address in the code notes.  These functions will replace the memory address when the code is generated. In the below example we import the same achievement and give a name to each memory function used.<br>
+![Screenshot of creating a new script with functions](New_Script_With_Functions.PNG)
+
 ```
-Rings = word(0x00FE20)
-DemoMode = word(0x00FFF0)
-DebugMode = word(0x00FFFB)
-StageType = byte(0x00F601)
-SpecialStage = 12
+// Sonic the Hedgehog
+// #ID = 1
+
+// $F601: stage number/ type
+//        10 = special
+//        c = normal?
+function StageType() => byte(0x00F601)
+
+// $FE20: 8-bit - Ring counter
+function Rings() => word(0x00FE20)
+
+// $FFF0: Demo Mode Active
+function DemoMode() => word(0x00FFF0)
+
+// $FFFB: Debug Mode active
+function DebugMode() => byte(0x00FFFB)
 
 achievement(
     title = "Amateur Collector", description = "Collect 20 Rings", points = 2,
-    id = 2, badge = "00199", published = "2012-11-02 12:03:12 AM", modified = "2021-03-01 5:48:45 PM",
-    trigger = Rings >= 20 && DemoMode == 0 && DebugMode == 0 && StageType == SpecialStage
+    id = 2, badge = "00199", published = "11/2/2012 12:03:12 AM", modified = "3/1/2021 5:48:45 PM",
+    trigger = Rings() >= 20 && DemoMode() == 0 && DebugMode() == 0 && StageType() == 12
 )
 ```
 Notice how you can easily read the above function and understand what is going on.  By using the find and replace method any achievement that uses the memory word(0x00FE20) will now reference Rings instead. The next step would be to use functions for similar types of achievements.  For example, the above ring collecting achievement has a 100 and 200 rings variation where the only difference is the number of rings to collect.  There is an example of how to make a function for this type of achievement in [Example 1A](../01_Memory/Example_1A.md).
@@ -62,5 +70,5 @@ If you wish to see how the script changes you made compare to what’s in the co
 Once you are ready to test you can export the updated code back into RALibRetro with *Edit -> Update Local*.  Note that the script must be error free to proceed with the update. Select all of the achievements you wish to update and press the **OK** button.  Your new updates will appear next time you open RALibRetro. If RALibRetro was open during the update you’ll need to select the achievements that were updated and press the **Reset** button to reload them from the local cache.
 ## Homework
 1. Import an existing game in to RATools.
-2. Pick an achievement and replace the memory address with variables using the find and replace technique.
+2. Pick an achievement and import it in to RATools replacing the memory addresses  with functions.
 3. Make a small change to an achievement and use the compare panel to see what the change looks like.
