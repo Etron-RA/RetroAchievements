@@ -65,6 +65,7 @@ The result of the above evaluation for that frame would add three *hits* to the 
 * 6 Triple knock outs
 * 24 Double knock outs
 * 126 Single knock outs
+<br>
 ![Screenshot of hits counts for Example 2B](Untouchable_Hits.PNG)<br>
   
 If we were just using the condition ```prev(Player1KO()) < Player1KO()``` then **42 knock outs would have been missed!**  I wasn’t able to get a quintuple knock out during the test however, you can sleep well knowing that if a player does get five knock outs simultaneously all five will be counted.<br>

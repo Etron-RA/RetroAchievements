@@ -37,6 +37,7 @@ achievement(
               never(HoldingWeapon() != 1)
 )
 ```
+There many cases where you might want to use *AddHits* to count in game events that increment/decrement by multiple values. It's a good practice to test knocking out multiple enemies at once or collecting multiple items at once.  When in doubt, assume that a piece of memory could increment/decrement by multiple values.  It's minimal overhead that will potential save future hassle.<br>
 <br>
 [Complete Example #2C with the above solution](Example_02C_Streets_of_Rage_2_Solution.rascript)<br>
 <br>
