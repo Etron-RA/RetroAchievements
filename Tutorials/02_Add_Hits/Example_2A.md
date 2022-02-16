@@ -58,7 +58,7 @@ This is a simple example of combining hits from multiple events. Next we will lo
 <br>
 Scripts: [Example #2A script](Example_02A_Streets_of_Rage_2.rascript) <br>
 <br>
-Links: <br>
+### Links
 [Tutorial #2](readme.md) <br>
 Example #2A<br>
 [Example #2B](Example_2B.md) <br>

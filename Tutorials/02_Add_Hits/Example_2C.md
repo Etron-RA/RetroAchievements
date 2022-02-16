@@ -38,7 +38,7 @@ Scripts: [Example #2C script with no solution](Example_02C_Streets_of_Rage_2.ras
 <br>
 Solutions: [Tutorial #2 Solution](./Solution/readme.md)<br>
 <br>
-Links:<br>
+### Links
 [Tutorial #2](readme.md)<br>
 [Example #2A](Example_2A.md)<br>
 [Example #2B](Example_2B.md)<br>

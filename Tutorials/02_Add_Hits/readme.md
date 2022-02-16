@@ -8,7 +8,7 @@ Each comparison in an achievement's logic is evaluated every frame. By default e
 <br>
 In some cases you’ll want to combine *hits* together from multiple comparisons.  The following examples will show how to add *hits* together for tracking which characters the player has used and to count how many enemies the player has knocked out. This tutorial will use a few different type of RAScript *hits* related commands which can be found on the RATools wiki in the [Trigger-Functions](https://github.com/Jamiras/RATools/wiki/Trigger-Functions) section.<br>
 <br>
-Links:<br>
+### Links
 Tutorial #2<br>
 [Example #2A](Example_2A.md)<br>
 [Example #2B](Example_2B.md)<br>
