@@ -53,6 +53,7 @@ achievement(
               )
 )
 ```
+This is a simple example of combining hits from multiple events. Next we will look at using hits to count enemy knockouts.
 <br>
 Scripts: [Example 2A script](Example_02A_Streets_of_Rage_2.rascript) <br>
 <br>
