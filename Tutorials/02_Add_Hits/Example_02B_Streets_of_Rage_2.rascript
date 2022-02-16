@@ -20,12 +20,12 @@ achievement(
         never(Player1Lives() < prev(Player1Lives()))
 )
 
-
 // Count how many enemies where knocked out in one life
 // This variation counts instance of multiple enemies getting knocked out at once.
 achievement(
-    title = "Example 2B: Untouchable", description = "Defeat 200 enemies without dying", points = 0,
-    id = 111000006,
+    title = "Example 2B: Untouchable", 
+    description = "Defeat 200 enemies without dying",
+    points = 0,
     trigger = measured(
                   tally(200, 
                       prev(Player1KO()) < Player1KO(),

@@ -26,4 +26,4 @@ achievement(
 )
 
 // Homework: Adapt the Steel Grip achievement above to use AddHits and AddSource
-// similiar to Example 2B
+// similar to Example 2B
