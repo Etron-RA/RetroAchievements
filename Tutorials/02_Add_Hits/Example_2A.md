@@ -35,7 +35,7 @@ achievement(
         once(SkateSelected() == 255)
 )
 ```
-The above works perfectly fine for tracking which character is used.  A measure could be added to this function to give the player some feedback of how many characters they have used. To add the measure we will need to combine the *hits* using the *tally* function.  Since the pause would disable the achievement while not in-game another modification was made to check the game mode with the selected player at the same time.  When two or more comparisons are combined together like this in an *once* command they are grouped together with *AndNext* flags.  So the result of this following code is a *AddHits* and *AndNext* chain that will sum up to four when every character has been selected.<br>
+The above works perfectly fine for tracking which character is used.  A measure could be added to this function to give the player some feedback of how many characters they have used. To add the measure we will need to combine the *hits* using the *tally* function.  Since the pause would disable the achievement while not in-game another modification was made to check the game mode with the selected player at the same time.  When two or more comparisons are combined together like this in an *once* command they are grouped together with *AndNext* flags.  So the result of this following code is a *AddHits* and *AndNext* chain that will sum up to four when every character has been selected.
 ```
 // Record a hit for each character active during gameplay
 // This variation of the using add hits to support using measure
@@ -54,10 +54,10 @@ achievement(
 )
 ```
 <br>
-Scripts: [Example 2A script](./Example_02A_Streets_of_Rage_2.rascript) <br>
+Scripts: [Example 2A script](Example_02A_Streets_of_Rage_2.rascript) <br>
 <br>
 Links: <br>
-[Tutorial #2](./readme.md) <br>
+[Tutorial #2](readme.md) <br>
 Example 2A<br>
-[Example 2B](./Example_2B.md) <br>
-[Example 2C](./Example_2C.md) <br>
+[Example 2B](Example_2B.md) <br>
+[Example 2C](Example_2C.md) <br>

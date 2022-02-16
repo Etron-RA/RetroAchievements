@@ -1,5 +1,5 @@
  ## Example 2C - Steel Grip
-Besides beating up enemies with your bare knuckles the player can pick up and use weapons that the enemies drop.  Weapons significantly increase your damage so once you get a weapon, it is best to hold on to it for as long as possible.  The Steel Grip achievement rewards the player for holding on to the same weapon for ten or more knockouts.
+Besides beating up enemies with your bare knuckles the player can pick up and use weapons that the enemies drop.  Weapons significantly increase your damage so once you get a weapon, it is best to hold on to it for as long as possible.  The Steel Grip achievement rewards the player for holding on to the same weapon for ten or more knockouts.<br>
 ![Screenshot of Blaze knocking an enemy out with a knife](Blaze_Knife.png)<br>
  
 ```
@@ -38,7 +38,7 @@ Scripts: [Example 2C script with no solution](Example_02C_Streets_of_Rage_2.rasc
 Solutions: [Tutorial #2 Solution](./Solution/readme.md)<br>
 <br>
 Links:<br>
-[Tutorial #2](./readme.md)<br>
-[Example 2A](./Example_2A.md)<br>
-[Example 2B](./Example_2B.md)<br>
+[Tutorial #2](readme.md)<br>
+[Example 2A](Example_2A.md)<br>
+[Example 2B](Example_2B.md)<br>
 Example 2C
