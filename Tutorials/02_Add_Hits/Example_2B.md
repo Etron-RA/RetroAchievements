@@ -73,7 +73,6 @@ Using the code Example 2B you can see the hit distribution that occurred during 
 If we were just using the condition ```prev(Player1KO()) < Player1KO()``` then **42 knock outs would have been missed!**  I wasn’t able to get a quintuple knock out during the test however, you can sleep well knowing that if a player does get five knock outs simultaneously all five will be counted.<br>
 <br>
 Scripts: [Example #2B script](Example_02B_Streets_of_Rage_2.rascript) <br>
-<br>
 ### Links
 [Tutorial #2](readme.md) <br>
 [Example #2A](Example_2A.md) <br>
