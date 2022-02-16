@@ -35,10 +35,10 @@ A) Adapt the Steel Grip achievement above to use *tally* similar to Example 2B s
 <br>
 [Example 2C script with no solution](Example_02C_Streets_of_Rage_2.rascript)<br>
 <br>
-[Tutorial #2 Solution](Solution/readme.md)<br>
+[Tutorial #2 Solution](./Solution/readme.md)<br>
 <br>
 Links:<br>
-[Tutorial #2](readme.md)<br>
-[Example 2A](Example_2A.md)<br>
-[Example 2B](Example_2B.md)<br>
+[Tutorial #2](./readme.md)<br>
+[Example 2A](./Example_2A.md)<br>
+[Example 2B](./Example_2B.md)<br>
 Example 2C

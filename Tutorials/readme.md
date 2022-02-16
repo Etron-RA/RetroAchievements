@@ -5,7 +5,6 @@ The RAScript Tutorials series of coding by example tutorials to complement the [
 ## RAScript topics:
 * [**Getting Started**](/Tutorials/00_Getting_Started/readme.md): Introduction to using RATools
 * [**Memory**](/Tutorials/01_Memory/readme.md): Examples of variables and functions - Sonic Rings, Levels
-* **Add Hits**
 * [**Add Hits**](/Tutorials/02_Add_Hits/readme.md): Examples of counting with tally - Streets of Rage 2 knock outs
 * **Bitflags**: Examples of checking bit flags - *? Epic RPG*
 * **Arithmetic Operations**: Example of using arithmetic functions together - Streets of Rage 2 scores

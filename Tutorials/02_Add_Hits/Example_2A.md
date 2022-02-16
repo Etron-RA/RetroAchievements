@@ -54,10 +54,10 @@ achievement(
 )
 ```
 <br>
-[Example 2A script](Example_02A_Streets_of_Rage_2.rascript)<br>
+[Example 2A script](./Example_02A_Streets_of_Rage_2.rascript) <br>
 <br>
-Links:<br>
-[Tutorial #2](readme.md)<br>
+Links: <br>
+[Tutorial #2](./readme.md) <br>
 Example 2A<br>
-[Example 2B](Example_2B.md)<br>
-[Example 2C](Example_2C.md)<br>
+[Example 2B](./Example_2B.md) <br>
+[Example 2C](./Example_2C.md) <br>
