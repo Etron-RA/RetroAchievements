@@ -38,10 +38,10 @@ achievement(
 )
 ```
 <br>
-[Complete Example 2C with the above solution](Example_02C_Streets_of_Rage_2_Solution.rascript)<br>
+[Complete Example #2C with the above solution](Example_02C_Streets_of_Rage_2_Solution.rascript)<br>
 <br>
 Links:<br>
 [Tutorial #2](../readme.md)<br>
-[Example 2A](../Example_2A.md)<br>
-[Example 2B](../Example_2B.md)<br>
-[Example 2C](../Example_2C.md)
+[Example #2A](../Example_2A.md)<br>
+[Example #2B](../Example_2B.md)<br>
+[Example #2C](../Example_2C.md)

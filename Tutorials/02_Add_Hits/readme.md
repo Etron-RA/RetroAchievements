@@ -10,6 +10,6 @@ In some cases you’ll want to combine *hits* together from multiple comparisons
 <br>
 Links:<br>
 Tutorial #2<br>
-[Example 2A](Example_2A.md)<br>
-[Example 2B](Example_2B.md)<br>
-[Example 2C](Example_2C.md)
+[Example #2A](Example_2A.md)<br>
+[Example #2B](Example_2B.md)<br>
+[Example #2C](Example_2C.md)

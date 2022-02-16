@@ -1,4 +1,4 @@
-## Example 2B – Untouchable
+## Example #2B – Untouchable
 The main goal of Streets of Rage 2 is to fight your way through eight different stages full of enemies trying to stop you from getting to their boss, Mr X. As such, you are constantly beating up and knocking out enemies as you play through the game.  The game memory tracks how many enemies you have knocked out overall from stage one.  You can use this information to add challenges like tracking how many enemies the player has knocked out in one life. <br>
 ![Screenshot of Axel knocking out multiple enemies](Axel_Uppercut.png)<br>
  
@@ -13,7 +13,8 @@ function Player1KO() => word(0x00EF4E)
 // $EF82: Player one lives
 function Player1Lives() => word(0x00EF82)
 
-// $FC02: Screen Mode- 0=segalogo, 4=pressstart, 8=demo, c=mainmenu, 10=options, 14=ingame, 18=charselect, 1c=ending, 24=introcards, 28=credits
+// $FC02: Screen Mode- 0=segalogo, 4=pressstart, 8=demo, c=mainmenu, 10=options, 14=ingame, 
+//        18=charselect, 1c=ending, 24=introcards, 28=credits
 function ScreenMode() => byte(0x00FC02)
 
 // Count how many enemies where knocked out in one life
@@ -68,10 +69,10 @@ The result of the above evaluation for that frame would add three *hits* to the 
   
 If we were just using the condition ```prev(Player1KO()) < Player1KO()``` then **42 knock outs would have been missed!**  I wasn’t able to get a quintuple knock out during the test however, you can sleep well knowing that if a player does get five knock outs simultaneously all five will be counted.<br>
 <br>
-Scripts: [Example 2B script](Example_02B_Streets_of_Rage_2.rascript) <br>
+Scripts: [Example #2B script](Example_02B_Streets_of_Rage_2.rascript) <br>
 <br>
 Links: <br>
 [Tutorial #2](readme.md) <br>
-[Example 2A](Example_2A.md) <br>
-Example 2B <br>
-[Example 2C](Example_2C.md)
+[Example #2A](Example_2A.md) <br>
+Example #2B <br>
+[Example #2C](Example_2C.md)

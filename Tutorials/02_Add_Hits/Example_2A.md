@@ -1,4 +1,4 @@
-## Example 2A - Team Game
+## Example #2A - Team Game
 Streets of Rage 2 has four playable characters: Max, Axel, Blaze, and Skate. Each character has their own statistics and abilities that are significantly different enough to require a different strategy for each character.  You are given the chance to select a character once at the beginning of the game and you may change your selection after continuing.<br> 
 ![Character selection screenshot with Skate selected](Skate_Select.png)<br>
 <br>
@@ -7,7 +7,8 @@ Streets of Rage 2 has four playable characters: Max, Axel, Blaze, and Skate. Eac
 // Streets of Rage 2
 // #ID = 3
 
-// $FC02: Screen Mode- 0=segalogo, 4=pressstart, 8=demo, c=mainmenu, 10=options, 14=ingame, 18=charselect, 1c=ending, 24=introcards, 28=credits
+// $FC02: Screen Mode- 0=segalogo, 4=pressstart, 8=demo, c=mainmenu, 10=options, 14=ingame, 
+//        18=charselect, 1c=ending, 24=introcards, 28=credits
 function ScreenMode() => byte(0x00FC02)
 
 // $FC50: Axel selected = 0xff
@@ -53,12 +54,12 @@ achievement(
               )
 )
 ```
-This is a simple example of combining hits from multiple events. Next we will look at using hits to count enemy knockouts.
+This is a simple example of combining hits from multiple events. Next we will look at using hits to count enemy knockouts.<br>
 <br>
-Scripts: [Example 2A script](Example_02A_Streets_of_Rage_2.rascript) <br>
+Scripts: [Example #2A script](Example_02A_Streets_of_Rage_2.rascript) <br>
 <br>
 Links: <br>
 [Tutorial #2](readme.md) <br>
-Example 2A<br>
-[Example 2B](Example_2B.md) <br>
-[Example 2C](Example_2C.md) <br>
+Example #2A<br>
+[Example #2B](Example_2B.md) <br>
+[Example #2C](Example_2C.md) <br>
