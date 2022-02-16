@@ -54,7 +54,7 @@ achievement(
 )
 ```
 <br>
-[Example 2A script](./Example_02A_Streets_of_Rage_2.rascript) <br>
+Scripts: [Example 2A script](./Example_02A_Streets_of_Rage_2.rascript) <br>
 <br>
 Links: <br>
 [Tutorial #2](./readme.md) <br>
