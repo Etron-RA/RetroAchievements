@@ -53,11 +53,11 @@ achievement(
 ```
 The above code might be easier to understand if we put some numbers to it. Let say that the previous number of knockouts prev(Player1KO()) is 100 and the player just knocked out three enemies at once raising the current number knockouts Player1KO() value to 103.  The following comparisons for that frame would evaluate to:
 ```
-prev(Player1KO()) < Player1KO() ➡ 100 < 103 ➡ true add hit
-prev(Player1KO()) + 1 < Player1KO() ➡ 101 < 103 ➡ true add hit
-prev(Player1KO()) + 2 < Player1KO() ➡ 102 < 103 ➡ true add hit
-prev(Player1KO()) + 3 < Player1KO() ➡ 103 < 103 ➡ false no hit
-prev(Player1KO()) + 4 < Player1KO() ➡ 104 < 103 ➡ false no hit
+prev(Player1KO()) < Player1KO() ➡ 100 < 103 ➡ **true add hit**
+prev(Player1KO()) + 1 < Player1KO() ➡ 101 < 103 ➡ **true add hit**
+prev(Player1KO()) + 2 < Player1KO() ➡ 102 < 103 ➡ **true add hit**
+prev(Player1KO()) + 3 < Player1KO() ➡ 103 < 103 ➡ **false no hit**
+prev(Player1KO()) + 4 < Player1KO() ➡ 104 < 103 ➡ **false no hit**
 ```
 The result of the above evaluation for that frame would add three *hits* to the total. This may seem like an edge case scenario however, multiple knockouts occur often since the enemies will clump in front of the player. <br>
 ### Test Run
