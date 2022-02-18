@@ -12,16 +12,16 @@ Streets of Rage 2 has four playable characters: Max, Axel, Blaze, and Skate. Eac
 function ScreenMode() => byte(0x00FC02)
 
 // $FC50: Axel selected = 0xff
-function AxelSelected() => word(0x00FC50)
+function AxelSelected() => word(0x00FC50) == 0xff
 
 // $FC51: Max selected = 0xff
-function MaxSelected() => word(0x00FC51)
+function MaxSelected() => word(0x00FC51) == 0xff
 
 // $FC52: Skate selected = 0xff
-function SkateSelected() => word(0x00FC52)
+function SkateSelected() => word(0x00FC52) == 0xff
 
 // $FC53: Blaze selected = 0xff
-function BlazeSelected() => word(0x00FC53)
+function BlazeSelected() => word(0x00FC53) == 0xff
 
 // Record a hit for each character active during gameplay
 // This variation is the current core achievement
@@ -30,10 +30,10 @@ achievement(
     description = "Play once as every character",
     points = 4,
     trigger = unless(ScreenMode() != 20) &&
-        once(AxelSelected() == 255) && 
-        once(BlazeSelected() == 255) &&
-        once(MaxSelected() == 255) && 
-        once(SkateSelected() == 255)
+        once(AxelSelected()) && 
+        once(BlazeSelected()) &&
+        once(MaxSelected()) && 
+        once(SkateSelected())
 )
 ```
 The above works perfectly fine for tracking which character is used.  A measure could be added to this function to give the player some feedback of how many characters they have used. To add the measure we will need to combine the *hits* using the *tally* function.  Since the pause would disable the achievement while not in-game another modification was made to check the game mode with the selected character at the same time.  When two or more comparisons are combined together like this in an *once* command they are grouped together with *AndNext* flags.  So the result of this following code is a *AddHits* and *AndNext* chain that will sum up to four when every character has been selected.
@@ -46,10 +46,10 @@ achievement(
     points = 0,
     trigger = measured(
                   tally(4,
-                      once(ScreenMode() == 20 && AxelSelected() == 255),
-                      once(ScreenMode() == 20 && MaxSelected() == 255),
-                      once(ScreenMode() == 20 && SkateSelected() == 255),
-                      once(ScreenMode() == 20 && BlazeSelected() == 255)
+                      once(ScreenMode() == 20 && AxelSelected()),
+                      once(ScreenMode() == 20 && MaxSelected()),
+                      once(ScreenMode() == 20 && SkateSelected()),
+                      once(ScreenMode() == 20 && BlazeSelected())
                   )
               )
 )

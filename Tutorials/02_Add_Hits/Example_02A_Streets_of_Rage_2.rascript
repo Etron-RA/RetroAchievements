@@ -5,16 +5,16 @@
 function ScreenMode() => byte(0x00FC02)
 
 // $FC50: Axel selected = 0xff
-function AxelSelected() => word(0x00FC50)
+function AxelSelected() => word(0x00FC50) == 0xff
 
 // $FC51: Max selected = 0xff
-function MaxSelected() => word(0x00FC51)
+function MaxSelected() => word(0x00FC51) == 0xff
 
 // $FC52: Skate selected = 0xff
-function SkateSelected() => word(0x00FC52)
+function SkateSelected() => word(0x00FC52) == 0xff
 
 // $FC53: Blaze selected = 0xff
-function BlazeSelected() => word(0x00FC53)
+function BlazeSelected() => word(0x00FC53) == 0xff
 
 // Record a hit for each character active during gameplay
 // This variation is the current core achievement
@@ -23,10 +23,10 @@ achievement(
     description = "Play once as every character",
     points = 4,
     trigger = unless(ScreenMode() != 20) &&
-        once(AxelSelected() == 255) && 
-        once(BlazeSelected() == 255) &&
-        once(MaxSelected() == 255) && 
-        once(SkateSelected() == 255)
+        once(AxelSelected()) && 
+        once(BlazeSelected()) &&
+        once(MaxSelected()) && 
+        once(SkateSelected())
 )
 
 // Record a hit for each character active during gameplay
@@ -37,10 +37,10 @@ achievement(
     points = 0,
     trigger = measured(
                   tally(4,
-                      once(ScreenMode() == 20 && AxelSelected() == 255),
-                      once(ScreenMode() == 20 && MaxSelected() == 255),
-                      once(ScreenMode() == 20 && SkateSelected() == 255),
-                      once(ScreenMode() == 20 && BlazeSelected() == 255)
+                      once(ScreenMode() == 20 && AxelSelected()),
+                      once(ScreenMode() == 20 && MaxSelected()),
+                      once(ScreenMode() == 20 && SkateSelected()),
+                      once(ScreenMode() == 20 && BlazeSelected())
                   )
               )
 )

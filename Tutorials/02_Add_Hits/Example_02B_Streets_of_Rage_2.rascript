@@ -2,7 +2,7 @@
 // #ID = 3
 
 // $EF4E: Player one, number KOs
-function Player1KO() => word(0x00EF4E)
+function Player1KOs() => word(0x00EF4E)
 
 // $EF82: Player one lives
 function Player1Lives() => word(0x00EF82)
@@ -16,7 +16,7 @@ achievement(
     title = "Untouchable",
     description = "Defeat 200 enemies without dying", 
     points = 25,
-    trigger = repeated(200, Player1KO() > prev(Player1KO())) &&
+    trigger = repeated(200, Player1KOs() > prev(Player1KOs())) &&
         never(Player1Lives() < prev(Player1Lives()))
 )
 
@@ -28,11 +28,11 @@ achievement(
     points = 0,
     trigger = measured(
                   tally(200, 
-                      prev(Player1KO()) < Player1KO(),
-                      prev(Player1KO()) + 1 < Player1KO(),
-                      prev(Player1KO()) + 2 < Player1KO(),
-                      prev(Player1KO()) + 3 < Player1KO(),
-                      prev(Player1KO()) + 4 < Player1KO()
+                      prev(Player1KOs()) < Player1KOs(),
+                      prev(Player1KOs()) + 1 < Player1KOs(),
+                      prev(Player1KOs()) + 2 < Player1KOs(),
+                      prev(Player1KOs()) + 3 < Player1KOs(),
+                      prev(Player1KOs()) + 4 < Player1KOs()
                   )
               ) &&
               never(ScreenMode() != 20) &&
