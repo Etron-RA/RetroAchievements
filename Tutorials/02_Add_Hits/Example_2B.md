@@ -29,16 +29,23 @@ achievement(
 ```
 Using *AddHits* to count like this has a potential issue that would throw the count off.  If the player knocks out two or more enemies at once the count would only increment by one. To remedy this you would need to add additional *hits* when the player knocks out two enemies, three enemies, four enemies, and five enemies.  Since Streets of Rage 2 has a maximum of five active enemies at once you would only need to track up to five simultaneous knock outs. The following code uses a combination of *AddHits* and *AddSource* to count how many knock outs have occurred:
 ``` 
-// Count how many enemies where knocked out while holding a weapon
-// This variation is the current core achievement
+// Count how many enemies where knocked out in one life
+// This variation counts instance of multiple enemies getting knocked out at once.
 achievement(
-    title = "Steel Grip", 
-    description = "Defeat 10 enemies without dropping your weapon", 
-    points = 10,
-    trigger = once(HoldingWeapon() == 1) &&
-              repeated(10, Player1KOs() > prev(Player1KOs())) && 
-              never(WeaponType() != prev(WeaponType())) &&
-              never(!HoldingWeapon())
+    title = "Example 2B: Untouchable", 
+    description = "Defeat 200 enemies without dying",
+    points = 0,
+    trigger = measured(
+                  tally(200, 
+                      prev(Player1KOs()) < Player1KOs(),
+                      prev(Player1KOs()) + 1 < Player1KOs(),
+                      prev(Player1KOs()) + 2 < Player1KOs(),
+                      prev(Player1KOs()) + 3 < Player1KOs(),
+                      prev(Player1KOs()) + 4 < Player1KOs()
+                  )
+              ) &&
+              never(ScreenMode() != 20) &&
+              never(Player1Lives() < prev(Player1Lives()))
 )
 ```
 The above code might be easier to understand if we put some numbers to it. Let say that the previous number of knockouts prev(Player1KOs()) is 100 and the player just knocked out three enemies at once raising the current number knockouts Player1KOs() value to 103.  The following comparisons for that frame would evaluate to:
