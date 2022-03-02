@@ -13,23 +13,28 @@ DreamTeam = [
     bit2(0xd307)  // Lapras
 ]
 
-// Count each pokemon that is part of the DreamTeam
-function DreamTeamCount()
+// Count the value of each flag in the passed array
+function FlagCount(Flags)
 {
     count = 0
-    for Pokemon in DreamTeam {
-        count = count + Pokemon
+    for Flag in Flags {
+        count = count + Flag
     }
     return count
 }
 
-// Create an achievement for when the player goes from
-// 150 Pokemon to 151 Pokemon in the Pokedex
+// Check if array of passed flags goes from previously all but one flag is true
+// to all flags being true.
+function FlagsComplete(Flags)
+{
+    return prev(FlagCount(Flags)) == length(Flags) - 1 &&
+        measured(FlagCount(Flags) == length(Flags)) 
+}
+
+// Create an achievement for when the player collects the entire Dream Team
 achievement(
     title = "Example 3C: Assemble the Dream Team", 
     description = "Catch Pikachu, Squirtle, Tauros, Lapras, Bulbasaur, and Charizard.", 
     points = 0,
-    trigger = never(TitleMusic()) &&
-              prev(DreamTeamCount()) == 5 &&
-              measured(DreamTeamCount() == 6)
+    trigger = never(TitleMusic()) && FlagsComplete(DreamTeam)
 )

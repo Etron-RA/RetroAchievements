@@ -9,7 +9,7 @@ function TitleMusic() => word(0x00C06E) == 4105
 // Pokemon in the Pokedex
 function PokedexCount()
 {
-    count = 0
+   count = 0
     for address in range(0xD2F7, 0xD308) {
         count = count + sum_of(range(0,7), b => bit(b,address))
     }
