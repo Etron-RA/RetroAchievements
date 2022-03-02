@@ -1,4 +1,24 @@
 # Tutorial #0 - Getting Started
+## Why Use RAScripts?
+You may be wondering why the effort of learning a new language to make achievements when you can already code it directly in the GUI?  Below is a non-exhaustive list of benefits of learning RAScripts.
+### Improved Readability
+With RAScripts you can name memory locations and special values making it easier to understand what’s going on at a glance.  You might not remember what memory location 0x075e does however you’ll instantly know what the function Coins() means.
+
+### Code Quicker with Less Errors
+RAScripts excel at creating many similar slightly varying achievements quickly and without mistakes. No more copy and paste errors. 
+
+### More Complicated Achievements
+Using arrays and loops you can create complex achievements that would be tedious to do by hand.  Got a big idea but not sure how to code it? RAScripts can help do the heavy lifting!
+
+### Easier to Maintain
+It’s easy to update and change a set written in RAScripts.  Need to add or update save protection for every achievement in a set? A well written RAScript will make small edits to many achievements much easier.
+
+### Test Achievements
+Quickly create test achievements to help better understand a game.  Record important details as you play like level transitions, high scores, speed run times, and enemy kill counts. Curious how a game mechanic works or what a reasonable achievement goal should be? A script of test achievements will help answer those questions.
+
+### Updating Existing Sets
+RATools can import code from sets in the core.  Using the import process to name memory addresses in the code which makes it easier to update, add rich presence, and leaderboards to existing sets.
+
 ## Getting the Right Tools
 Before you start scripting you will need to download the newest release of [RATools](https://github.com/Jamiras/RATools/releases). The program needs a little setup before you can use it:
 1) Open the settings menu by clicking on *File -> Settings…*
