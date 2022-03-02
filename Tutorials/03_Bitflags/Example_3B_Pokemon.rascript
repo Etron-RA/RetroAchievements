@@ -11,7 +11,7 @@ function PokedexCount()
 {
    count = 0
     for address in range(0xD2F7, 0xD308) {
-        count = count + sum_of(range(0,7), b => bit(b,address))
+        count = count + bitcount(address)
     }
     count = count + sum_of(range(0,6), b => bit(b,0xD309))
     return count
