@@ -5,8 +5,8 @@
 function TitleMusic() => word(0x00C06E) == 4105
 
 // Count each bit between $D2F7 bit 0 to $D309 bit 6 
-// these are the consecutive bitflags for each the 151 
-// Pokemon in the Pokedex
+// these are the consecutive bitflags for each of the  
+// 151 Pokemon in the Pokedex
 function PokedexCount()
 {
    count = 0
