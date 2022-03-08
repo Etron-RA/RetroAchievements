@@ -1,6 +1,6 @@
 ## Example #XA - Team Game
 <br>
-Scripts: [Example #2A script](Example_02X.rascript) <br>
+Scripts: [Example #2A script](Example_0XA.rascript) <br>
 ### Links
 [Tutorial #X](readme.md) <br>
 Example #XA<br>

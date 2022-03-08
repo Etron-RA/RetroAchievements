@@ -1,6 +1,6 @@
 # Example 3B: Gotta ACTUALLY Catch 'em All
 The main gimmick of Pokémon is that you can catch and train any of the 151 Pokémon in the game.  This is emphasized by the games’ catch phrase “Gotta Catch ‘em All”.  The game tracks both which Pokémon you have seen and/or caught in the Pokédex. When it was released Pokémon was sold as a Red and Blue version, each version with its own game exclusive Pokémon. So to actually catch all of the Pokémon you needed to trade Pokémon with someone else who had a different version of the game. Additionally some Pokémon like Mew require glitches to catch them.  Because of the requirement to trade with another person or use glitches the achievement this example is based on is from the bonus set. The reason why it was chosen as one of the examples is because catching all 151 Pokémon is tracked in consecutive bit flags which allows for some interesting optimizations.<br>  
-!(Screenshot of the Pokedex)[Pokemon_Pokedex.png]
+![Screenshot of the Pokedex](Pokemon_Pokedex.png)
 ```
 // Pokémon Red Version | Pokémon Blue Version
 // #ID = 724
