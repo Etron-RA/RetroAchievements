@@ -3,7 +3,7 @@ When battling other Trainers you can choose up to six Pokémon to fight for you.
 ![Challenger Approching](Pokemon_Challenger_Approaching.png)
 ## Homework #3
 A)	Pick your six favorite Pokémon available in Pokémon Red | Blue.<br>
-B)	Using the Pokedex memory of **bitflags** between $D2F7 bit 0 to $D309 bit 6 create an achievement for catching all six Pokémon selected in part A.<br>
+B)	Using the Pokedex memory of **Bit Flags** between $D2F7 bit 0 to $D309 bit 6 create an achievement for catching all six Pokémon selected in part A.<br>
 <br>
 Solutions: [Tutorial #3 Solution](./Solution/readme.md)<br>
 ### Links
