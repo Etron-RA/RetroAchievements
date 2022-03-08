@@ -1,4 +1,4 @@
-// Pokemon Red Version | Pokemon Blue Version
+// Pokémon Red Version | Pokémon Blue Version
 // #ID = 724
 
 // $C06E: Music Playng, title screen = 4105

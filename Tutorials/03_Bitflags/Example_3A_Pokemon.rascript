@@ -1,4 +1,4 @@
-// Pokemon Red Version | Pokemon Blue Version
+// Pokémon Red Version | Pokémon Blue Version
 // #ID = 724
 
 // An array on all the bitflags in the Viridian Forest

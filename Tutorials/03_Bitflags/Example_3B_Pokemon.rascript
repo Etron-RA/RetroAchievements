@@ -1,4 +1,4 @@
-// Pokemon Red Version | Pokemon Blue Version
+// Pokémon Red Version | Pokémon Blue Version
 // #ID = 724
 
 // $C06E: Music Playng, title screen = 4105
@@ -6,7 +6,7 @@ function TitleMusic() => word(0x00C06E) == 4105
 
 // Count each bit between $D2F7 bit 0 to $D309 bit 6 
 // these are the consecutive bitflags for each of the  
-// 151 Pokemon in the Pokedex
+// 151 Pokémon in the Pokédex
 function PokedexCount()
 {
    count = 0
@@ -18,7 +18,7 @@ function PokedexCount()
 }
 
 // Create an achievement for when the player goes from
-// 150 Pokemon to 151 Pokemon in the Pokedex
+// 150 Pokémon to 151 Pokémon in the Pokédex
 achievement(
     title = "Example 3B: Gotta ACTUALLY Catch 'em All", 
     description = "Catch all 151 Pokemon. Yes ALL of them.", 
