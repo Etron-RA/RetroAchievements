@@ -71,7 +71,7 @@ sum = sum + prev(bit2(0xd7f3)) // Bug Catcher 01
 sum = sum + prev(bit3(0xd7f3)) // Bug Catcher 02
 sum = sum + prev(bit4(0xd7f3)) // Bug Catcher 03
 ```
-Both code snippets are equivalent however, the one using the **For Loop** is easier to write and there is less chance of a typo in the code.  **For Loops** become even more desirable when the number of elements in the **Array** increases.
+Both code snippets are equivalent however, the one using the **For Loop** is easier to write and there is less chance of a typo in the code.  **For Loops** become even more desirable when the number of elements in the **Array** increases.<br>
 <br>
 Scripts: [Example #3A script](Example_3A_Pokemon.rascript) <br>
 ### Links
