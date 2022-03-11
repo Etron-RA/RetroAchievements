@@ -47,11 +47,9 @@ function Frames(minutes, seconds, milliseconds) => minutes * 3600 + seconds * 60
 // Check if the score goes from between low and high score to above the high score
 function ScoreRange(lowScore, highScore)
 {
-    return measured(
-               prev(Score()) > lowScore &&
-               prev(Score()) < highScore &&
-               Score() >= highScore
-           )
+    return prev(Score()) > lowScore &&
+        prev(Score()) < highScore &&
+        measured(Score() >= highScore)
 }
 
 // Create an achievement for scoring more than 75,000 points in 10 minutes or less

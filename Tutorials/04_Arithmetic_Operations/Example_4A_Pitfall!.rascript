@@ -26,11 +26,9 @@ function Score()
 // Check if the score goes from between low and high score to above the high score
 function ScoreRange(lowScore, highScore)
 {
-    return measured(
-               prev(Score()) > lowScore &&
-               prev(Score()) < highScore &&
-               Score() >= highScore
-           )
+    return prev(Score()) > lowScore &&
+        prev(Score()) < highScore &&
+        measured(Score() >= highScore)
 }
 
 // Create an achievement for scoring more than 25,000 points
