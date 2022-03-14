@@ -92,6 +92,7 @@ function ItemPickUp() => SFX() == 0x25
 
 // $0061: Harry's Horizontal position on screen
 function HarryHorizontal() => byte(0x000061)
+function MiddleGator() => HarryHorizontal() >= 0x48 && HarryHorizontal() <= 0x50
 
 // $0065: Harry's sprite direction
 //        bit3=left
@@ -258,26 +259,27 @@ leaderboard(
 leaderboard(
      "Crocodile Rock",
      "Most jumps from crocodile to crocodile without leaving the area or losing a life (three jumps to start)", 
-     tally(3,
-         prev(HarryHorizontal()) == 0x44 && HarryHorizontal() == 0x45,
+     tally(2,
          prev(HarryHorizontal()) == 0x45 && HarryHorizontal() == 0x44,
-         prev(HarryHorizontal()) == 0x54 && HarryHorizontal() == 0x55,
-         prev(HarryHorizontal()) == 0x55 && HarryHorizontal() == 0x54
+         prev(HarryHorizontal()) == 0x54 && HarryHorizontal() == 0x55
      ) && 
      never(HasVine()) &&
      never(!HasGators()) &&
      never(!GameActive()) &&
      never(HarryDungeon()) &&
-     never(prev(Screen()) != Screen()),
+     never(prev(Screen()) != Screen()) &&
+     never(MiddleGator() && prev(HarryDirection()) != HarryDirection()),
      always_false(), 
-     HasVine() || !HasGators() || !GameActive() || HarryDungeon() || prev(Screen()) != Screen(),
+     HasVine() || 
+     !HasGators() || 
+     !GameActive() ||
+     HarryDungeon() || 
+     prev(Screen()) != Screen() ||
+     MiddleGator() && prev(HarryDirection()) != HarryDirection(),
      tally(0,
-         once(prev(HarryHorizontal())!=HarryHorizontal()),
-         once(prev(HarryHorizontal())!=HarryHorizontal()),         
-         prev(HarryHorizontal()) == 0x44 && HarryHorizontal() == 0x45,
+         once(prev(HarryHorizontal())!=HarryHorizontal()),   
          prev(HarryHorizontal()) == 0x45 && HarryHorizontal() == 0x44,
-         prev(HarryHorizontal()) == 0x54 && HarryHorizontal() == 0x55,
-         prev(HarryHorizontal()) == 0x55 && HarryHorizontal() == 0x54
+         prev(HarryHorizontal()) == 0x54 && HarryHorizontal() == 0x55
      ), 
      format="VALUE"
 )
