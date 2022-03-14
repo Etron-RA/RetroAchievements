@@ -13,6 +13,8 @@ function Score00X000() => high4(0x000056)
 function Score000X00() => low4(0x000056)
 function Score0000X0() => high4(0x000057)
 function Score00000X() => low4(0x000057)
+
+// Converts the BCD score values into Base 10 decimal
 function Score()
 {
     return ScoreX00000() * 100000 +

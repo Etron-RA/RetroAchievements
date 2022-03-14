@@ -6,6 +6,8 @@
 //        bit7=2nd extra life
 function Life1() => bit5(0x000000)
 function Life2() => bit7(0x000000)
+
+// Converts the two life bits to a decimal value
 function Lives() => Life1() + Life2()
 
 // $001E: 00=game active
@@ -20,6 +22,8 @@ function Score00X000() => high4(0x000056)
 function Score000X00() => low4(0x000056)
 function Score0000X0() => high4(0x000057)
 function Score00000X() => low4(0x000057)
+
+// Converts the BCD score values into Base 10 decimal
 function Score()
 {
     return ScoreX00000() * 100000 +
@@ -38,10 +42,10 @@ function ScoreRange(lowScore, highScore)
         measured(Score() >= highScore)
 }
 
-// Create an achievement for scoring more than 25,000 without losing a life
+// Create an achievement for scoring more than 50,000 without losing a life
 achievement(
     title = "Example 4C: Golden Survivor", 
-    description = "Score 25000 without losing a life", 
+    description = "Score 50000 without losing a life", 
     points = 0,
-    trigger = GameActive() && ScoreRange(15000, 25000) && unless(Lives() != 2)
+    trigger = GameActive() && ScoreRange(40000, 50000) && unless(Lives() != 2)
 )

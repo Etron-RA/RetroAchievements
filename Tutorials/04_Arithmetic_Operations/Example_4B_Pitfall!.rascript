@@ -13,6 +13,8 @@ function Score00X000() => high4(0x000056)
 function Score000X00() => low4(0x000056)
 function Score0000X0() => high4(0x000057)
 function Score00000X() => low4(0x000057)
+
+// Converts the BCD score values into Base 10 decimal
 function Score()
 {
     return ScoreX00000() * 100000 +
@@ -32,6 +34,9 @@ function Time0X0000() => low4(0x000058)
 function Time00X000() => high4(0x000059)
 function Time000X00() => low4(0x000059)
 function Time0000XX() => byte(0x00005A)
+
+// Converts the BCD time values into frames
+// Note that minutes and seconds are BCD and milliseconds are already Base 10
 function Time()
 {
     return TimeX00000() * 36000 +
@@ -52,12 +57,12 @@ function ScoreRange(lowScore, highScore)
         measured(Score() >= highScore)
 }
 
-// Create an achievement for scoring more than 75,000 points in 10 minutes or less
+// Create an achievement for scoring more than 75,000 points in 15 minutes or less
 achievement(
     title = "Example 4B: Golden Scorpion", 
-    description = "Score 70000 points in 10 minutes or less", 
+    description = "Score 70000 points in 15 minutes or less", 
     points = 0,
     trigger = GameActive() && 
     ScoreRange(60000, 70000) && 
-    unless(Time() < Frames(10,0,0))
+    unless(Time() < Frames(5,0,0))
 )
