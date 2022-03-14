@@ -11,7 +11,6 @@ function Lives() => Life1() + Life2()
 // $0001: Screen id
 function Screen() => byte(0x000001)
 
-
 // $0013: Objects on screen layout
 function GroundObjects() => byte(0x000013)
 function HasVine() => GroundObjects() == 0x2
@@ -65,7 +64,7 @@ function Score(){
 // $0059: Time 00:XX (BCD)
 // $005A: Time (miliseconds)
 function TimeXX0000() => byte(0x000058)
-function GameOver() => TimeXX0000() > 0x20
+function GameOver() => TimeXX0000() >= 0x20
 function TimeX00000() => high4(0x000058)
 function Time0X0000() => low4(0x000058)
 function Time00X000() => high4(0x000059)
@@ -92,6 +91,7 @@ function ItemPickUp() => SFX() == 0x25
 
 // $0061: Harry's Horizontal position on screen
 function HarryHorizontal() => byte(0x000061)
+function MiddleGator() => HarryHorizontal() >= 0x48 && HarryHorizontal() <= 0x50
 
 // $0065: Harry's sprite direction
 //        bit3=left
@@ -119,13 +119,6 @@ function Treasures() {
         Treasures3() +
         Treasures4()
 }
-function PickUpTreasure()
-{
-    return  prev(Treasures1()) < Treasures1() ||
-        prev(Treasures2()) < Treasures2() ||
-        prev(Treasures3()) < Treasures3() ||
-        prev(Treasures4()) < Treasures4()  
-}
 
 // $0072: 05=damage by logs
 function LogDamage() => byte(0x000072)
@@ -142,28 +135,40 @@ function Countdown()
         Frames(20,00,00) 
 }
 
-// Start the when the clock starts ticking down
-// Cancel if score above 120,000 (impossible)
-// Submit when the player dies
+// Starts the when score is > 2000
+// Cancel if score above 114,000 (impossible)
+// Submit on reset
 leaderboard(
-    title = "High Score Deathless",
-    description = "Highest score in the first life",
-    start  = prev(Time()) == Frames(20,00,00) && Time() == Frames(19,59,59),
+    title = "High Score",
+    description = "Highest score (starts when score > 2,000 and submits on reset)",
+    start  = Time() < Frames(20,00,00) && prev(Score()) <= 2000 && Score() > 2000,
     cancel = Score() > 114000,
-    submit = !GameActive() || GameOver(),
-    value = Score(),
+    submit = GameOver(),
+    value = prev(Score()),
     format = "SCORE"
 )
 
+// Starts the when score is > 2000
+// Cancel if score above 114,000 (impossible)
+// Submit when the player dies or on reset
+leaderboard(
+    title = "High Score Deathless",
+    description = "Highest score in the first life (starts when score > 2,000 and submits on reset)",
+    start  = Time() < Frames(20,00,00) && Lives() == 2 && prev(Score()) <= 2000 && Score() > 2000,
+    cancel = Score() > 114000,
+    submit = !GameActive() || GameOver(),
+    value = prev(Score()),
+    format = "SCORE"
+)
 
 // Start the when the clock starts ticking down
 // Cancel if clock resets (game over)
 // Submit when the silver bar is picked up
 leaderboard(
-    title = "Money Race",
+    title = "Bank Heist",
     description = "Fastest time to pick up the first money bag",
     start  = prev(Time()) == Frames(20,00,00) && Time() == Frames(19,59,59),
-    cancel = !GameActive() && Lives() == 0,
+    cancel = !GameActive() && Lives() == 0 || GameOver(),
     submit = prev(GroundObject()) == MoneyBag && ItemPickUp(),
     value = Countdown(),
     format = "FRAMES",
@@ -174,10 +179,10 @@ leaderboard(
 // Cancel if clock resets (game over)
 // Submit when the silver bar is picked up
 leaderboard(
-    title = "Silver Race",
+    title = "Silver Speedster",
     description = "Fastest time to pick up the first silver bar",
     start  = prev(Time()) == Frames(20,00,00) && Time() == Frames(19,59,59),
-    cancel = !GameActive() && Lives() == 0,
+    cancel = !GameActive() && Lives() == 0 || GameOver(),
     submit = prev(GroundObject()) == SilverBar && ItemPickUp(),
     value = Countdown(),
     format = "FRAMES",
@@ -189,10 +194,10 @@ leaderboard(
 // Cancel if clock resets (game over)
 // Submit when the silver bar is picked up
 leaderboard(
-    title = "Gold Race",
+    title = "Gold Rush",
     description = "Fastest time to pick up the first gold bar",
     start  = prev(Time()) == Frames(20,00,00) && Time() == Frames(19,59,59),
-    cancel = !GameActive() && Lives() == 0,
+    cancel = !GameActive() && Lives() == 0 || GameOver(),
     submit = prev(GroundObject()) == GoldBar && ItemPickUp(),
     value = Countdown(),
     format = "FRAMES",
@@ -203,10 +208,10 @@ leaderboard(
 // Cancel if clock resets (game over)
 // Submit when the diamond ring is picked up
 leaderboard(
-    title = "Diamond Race",
+    title = "Diamond Run",
     description = "Fastest time to pick up the first diamond ring",
     start  = prev(Time()) == Frames(20,00,00) && Time() == Frames(19,59,59),
-    cancel = !GameActive() && Lives() == 0,
+    cancel = !GameActive() && Lives() == 0 || GameOver(),
     submit = prev(GroundObject()) == DiamondRing && ItemPickUp(),
     value = Countdown(),
     format = "FRAMES",
@@ -217,10 +222,10 @@ leaderboard(
 // Cancel if clock resets (game over)
 // Submit when the diamond ring is picked up
 leaderboard(
-    title = "Collect Them All!",
+    title = "Collect 'em All!",
     description = "Fastest time to pick up a money bag, silver bar, gold bar, and diamond ring",
     start  = prev(Time()) == Frames(20,00,00) && Time() == Frames(19,59,59),
-    cancel = !GameActive() && Lives() == 0,
+    cancel = !GameActive() && Lives() == 0 || GameOver(),
     submit = tally(4,
                 once(prev(GroundObject()) == MoneyBag && ItemPickUp()),
                 once(prev(GroundObject()) == SilverBar && ItemPickUp()),
@@ -232,6 +237,19 @@ leaderboard(
     lower_is_better = true
 )
 
+// Start the when the clock starts ticking down
+// Cancel if clock resets (game over)
+// Submit when all the treasures have been picked up
+leaderboard(
+    title = "Treasure Hunter",
+    description = "Fastest time to pick up all 32 treasures",
+    start  = prev(Time()) == Frames(20,00,00) && Time() == Frames(19,59,59),
+    cancel = !GameActive() && Lives() == 0 || GameOver(),
+    submit = prev(Treasures()) == 31 && Treasures() == 32,
+    value = Countdown(),
+    format = "FRAMES",
+    lower_is_better = true
+)
 
 // Start the count of the second jump over the Scorpion
 // Cancel none
@@ -257,27 +275,28 @@ leaderboard(
 // Submit on death, leaving ground, or screen change
 leaderboard(
      "Crocodile Rock",
-     "Most jumps from crocodile to crocodile without leaving the area or losing a life (three jumps to start)", 
-     tally(3,
-         prev(HarryHorizontal()) == 0x44 && HarryHorizontal() == 0x45,
+     "Most jumps from outside crocodile to outside crocodile without turning around in the middle, leaving the area, or losing a life (two jumps to start)", 
+     tally(2,
          prev(HarryHorizontal()) == 0x45 && HarryHorizontal() == 0x44,
-         prev(HarryHorizontal()) == 0x54 && HarryHorizontal() == 0x55,
-         prev(HarryHorizontal()) == 0x55 && HarryHorizontal() == 0x54
+         prev(HarryHorizontal()) == 0x54 && HarryHorizontal() == 0x55
      ) && 
      never(HasVine()) &&
      never(!HasGators()) &&
      never(!GameActive()) &&
      never(HarryDungeon()) &&
-     never(prev(Screen()) != Screen()),
+     never(prev(Screen()) != Screen()) &&
+     never(MiddleGator() && prev(HarryDirection()) != HarryDirection()),
      always_false(), 
-     HasVine() || !HasGators() || !GameActive() || HarryDungeon() || prev(Screen()) != Screen(),
+     HasVine() || 
+     !HasGators() || 
+     !GameActive() ||
+     HarryDungeon() || 
+     prev(Screen()) != Screen() ||
+     MiddleGator() && prev(HarryDirection()) != HarryDirection(),
      tally(0,
-         once(prev(HarryHorizontal())!=HarryHorizontal()),
-         once(prev(HarryHorizontal())!=HarryHorizontal()),         
-         prev(HarryHorizontal()) == 0x44 && HarryHorizontal() == 0x45,
+         once(prev(HarryHorizontal())!=HarryHorizontal()),   
          prev(HarryHorizontal()) == 0x45 && HarryHorizontal() == 0x44,
-         prev(HarryHorizontal()) == 0x54 && HarryHorizontal() == 0x55,
-         prev(HarryHorizontal()) == 0x55 && HarryHorizontal() == 0x54
+         prev(HarryHorizontal()) == 0x54 && HarryHorizontal() == 0x55
      ), 
      format="VALUE"
 )
