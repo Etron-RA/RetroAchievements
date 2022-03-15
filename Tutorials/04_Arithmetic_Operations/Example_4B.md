@@ -68,7 +68,7 @@ achievement(
     points = 0,
     trigger = GameActive() && 
         ScoreRange(60000, 70000) && 
-        unless(Time() < Frames(5,0,0))
+        unless(Time() < TimeSpan(5,0,0))
 ) 
 ```
 ## Time()
