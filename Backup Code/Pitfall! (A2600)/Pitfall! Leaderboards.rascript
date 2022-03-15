@@ -25,7 +25,7 @@ function HasVine() => GroundObjects() == 0x2
 //        06=vanishing pit and vine
 //        07=vanishing pond
 function GroundLayout() => byte(0x000014)
-function HasGators() => GroundLayout() == 0x4
+function HasCrocs() => GroundLayout() == 0x4
 
 // $001E: 00=game active
 function GameActive() => byte(0x00001E) == 0
@@ -91,7 +91,12 @@ function ItemPickUp() => SFX() == 0x25
 
 // $0061: Harry's Horizontal position on screen
 function HarryHorizontal() => byte(0x000061)
-function MiddleGator() => HarryHorizontal() >= 0x48 && HarryHorizontal() <= 0x50
+function MiddleCroc() => HarryHorizontal() >= 0x38 && HarryHorizontal() <= 0x60
+function AllCrocs() => HarryHorizontal() >= 0x48 && HarryHorizontal() <= 0x50
+function JumpCroc2Croc1() => prev(HarryHorizontal()) == 0x45 && HarryHorizontal() == 0x44
+function JumpCroc2Croc3() => prev(HarryHorizontal()) == 0x54 && HarryHorizontal() == 0x55
+function JumpCroc1Shore() => prev(HarryHorizontal()) == 0x32 && HarryHorizontal() == 0x31
+function JumpCroc3Shore() => prev(HarryHorizontal()) == 0x64 && HarryHorizontal() == 0x65
 
 // $0065: Harry's sprite direction
 //        bit3=left
@@ -270,33 +275,64 @@ leaderboard(
      format="VALUE"
 )
 
-// Start the count of the second jump over the Scorpion
+// Start the count of the second jump over the corcodiles
+// Cancel none
+// Submit on death, leaving ground, or screen change
+//leaderboard(
+//     "Crocodile Hop",
+//     "Most jumps from outside crocodile to outside crocodile without turning around on the middle crocodile, leaving the screen, or losing a life (two jumps to start)", 
+//     tally(2,
+//         JumpCroc2Croc1(),
+//         JumpCroc2Croc3()
+//     ) && 
+//     never(HasVine()) &&
+//     never(!HasCrocs()) &&
+//     never(!GameActive()) &&
+//     never(HarryDungeon()) &&
+//     never(prev(Screen()) != Screen()) &&
+//     never(MiddleCroc() && prev(HarryDirection()) != HarryDirection()),
+//     always_false(), 
+//     HasVine() || 
+//     !HasCrocs() || 
+//     !GameActive() ||
+//     HarryDungeon() || 
+//     prev(Screen()) != Screen() ||
+//     MiddleCroc() && prev(HarryDirection()) != HarryDirection(),
+//     tally(0,
+//         once(prev(HarryHorizontal())!=HarryHorizontal()),          
+//         JumpCroc2Croc1(),
+//         JumpCroc2Croc3()
+//     ), 
+//     format="VALUE"
+//)
+
+// Start the count of the second jump over the corcodiles
 // Cancel none
 // Submit on death, leaving ground, or screen change
 leaderboard(
      "Crocodile Rock",
-     "Most jumps from outside crocodile to outside crocodile without turning around in the middle, leaving the area, or losing a life (two jumps to start)", 
+     "Most jumps between the shores of the crocodile pond without turning around on a crocodile, leaving the screen, or losing a life (two jumps to start)", 
      tally(2,
-         prev(HarryHorizontal()) == 0x45 && HarryHorizontal() == 0x44,
-         prev(HarryHorizontal()) == 0x54 && HarryHorizontal() == 0x55
+         JumpCroc1Shore(),
+         JumpCroc3Shore()
      ) && 
      never(HasVine()) &&
-     never(!HasGators()) &&
+     never(!HasCrocs()) &&
      never(!GameActive()) &&
      never(HarryDungeon()) &&
      never(prev(Screen()) != Screen()) &&
-     never(MiddleGator() && prev(HarryDirection()) != HarryDirection()),
+     never(AllCrocs() && prev(HarryDirection()) != HarryDirection()),
      always_false(), 
      HasVine() || 
-     !HasGators() || 
+     !HasCrocs() || 
      !GameActive() ||
      HarryDungeon() || 
      prev(Screen()) != Screen() ||
-     MiddleGator() && prev(HarryDirection()) != HarryDirection(),
+     AllCrocs() && prev(HarryDirection()) != HarryDirection(),
      tally(0,
          once(prev(HarryHorizontal())!=HarryHorizontal()),   
-         prev(HarryHorizontal()) == 0x45 && HarryHorizontal() == 0x44,
-         prev(HarryHorizontal()) == 0x54 && HarryHorizontal() == 0x55
+         JumpCroc1Shore(),
+         JumpCroc3Shore()
      ), 
      format="VALUE"
 )
