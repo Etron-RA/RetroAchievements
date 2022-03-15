@@ -7,7 +7,7 @@ The RAScript Tutorials series of coding by example tutorials to complement the [
 * [**Memory**](/Tutorials/01_Memory/readme.md): Examples of variables and functions - Sonic Rings, Levels
 * [**Add Hits**](/Tutorials/02_Add_Hits/readme.md): Examples of counting with tally - Streets of Rage 2 knock outs
 * [**Bitflags**](/Tutorials/03_Bitflags/readme.md): Examples of counting bit flags with For Loops - Pokémon Red | Blue
-* [**Arithmetic Operations**](/Tutorials/04_Bitflags/readme.md): Example of using arithmetic functions to convert values from BCD - Pitfall!
+* [**Arithmetic Operations**](/Tutorials/04_Arithmetic_Operations/readme.md): Examples of using arithmetic functions to convert values from Binary-Coded Decimal (BCD) - Pitfall!
 * **Pointers**: Examples of pointer use and data structures - Spiderman web cartridges
 * **If/if else/else**: Examples of using logic conditions to build an achievement - *? Game with different level completion conditions for first, middle, and last level*
 * **Condition building**: Examples of building conditions - *? Game with cheat protection, difficulty checks, and variable amount of logic.*

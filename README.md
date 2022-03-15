@@ -8,3 +8,6 @@ This directory contains backup code and any scripts used for fixing tickets.
 
 ## My Sets
 This directory contains any scripts and resources used for creating new sets.
+
+## Tutorial
+This directory contains the source and text for the RATools tutorials.
