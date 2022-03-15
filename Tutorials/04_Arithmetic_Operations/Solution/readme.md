@@ -1,6 +1,5 @@
 # Solution #4
-By adding the two life bitflags together we get a decimal value for how many **Lives()** the player has.  The example below could have been done by only checking if bit 7 was on however, the **Lives()** function return a value that we can use in other parts of the code like rich presences or leaderboards.
- 
+By adding the two life bitflags together we get a decimal value for how many **Lives()** the player has.  The example below could have been done by only checking if bit 7 was on however, the **Lives()** function return a value that we can use in other parts of the code like rich presences or leaderboards.<br>
 ![Pitfall Harry swinging over a pond of crocodiles](Pitfall_Vine_Swing.png)
 ```
 // Pitfall!
@@ -57,8 +56,9 @@ achievement(
         unless(Lives() != 2)
 ) 
 ```
+By converting the memory values to **Base 10** decimals we allow for many types of possible achievements.<br>
 <br>
-Scripts: [Example #XC script with no solution](Example_4C_Pitfall!.rascript)<br>
+Scripts: [Example #4C](Example_4C_Pitfall!.rascript)<br>
 ### Links
 [Tutorial #4](../readme.md)<br>
 [Example #4A](../Example_4A.md)<br>

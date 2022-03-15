@@ -1,6 +1,5 @@
 # Example 4B: Golden Scorpion
-The challenge of **Pitfall!** comes from the strict time limit of needing to collect all 32 treasures in 20 minutes.  The time limit is so strict that you need to utilize some of the underground shortcuts to collect all the treasures in time.  Traversing an underground passage is equivalent to traversing three screens above ground so you can speed through very quickly underground. However, treasures only appear above ground and some underground passages are dead ends so you must map you route carefully to succeed. The following achievement rewards the player for scoring 70,000 points in under 15 minutes.  To accomplish this the player must utilize the underground passages.
- 
+The challenge of **Pitfall!** comes from the strict time limit of needing to collect all 32 treasures in 20 minutes.  The time limit is so strict that you need to utilize some of the underground shortcuts to collect all the treasures in time.  Traversing an underground passage is equivalent to traversing three screens above ground so you can speed through very quickly underground. However, treasures only appear above ground and some underground passages are dead ends so you must map you route carefully to succeed. The following achievement rewards the player for scoring 70,000 points in under 15 minutes.  To accomplish this the player must utilize the underground passages.<br> 
 ![Pitfall Harry about to pickup a diamond ring](Pitfall_Golden_Scorpion.png)
 ```
 // Pitfall!
@@ -82,7 +81,7 @@ The **Time()** function in this example handles the conversion from the displaye
 10 minutes = 600 seconds = 36000 Frames
 ```
 ## TimeSpan()
-To complement the **Time()** function we use the ** TimeSpan()** function to figure out how many frames are in a time span. The ** TimeSpan()** function takes the parameters *minutes*, *seconds*, and *frames* then multiplies the *hours* by 3600 frames, *seconds* by 60 frames, and adds them to the *frames* which is already in frames.  The code uses this helper function to figure out how many frames there are left when the game clock is 5:00 (ie. 15 minutes after the start of the game).  You could use the value 18,000 frames directly however, writing a helper function like this is more convenient and makes the code easier to read.<br>
+To complement the **Time()** function we use the **TimeSpan()** function to figure out how many frames are in a time span. The **TimeSpan()** function takes the parameters *minutes*, *seconds*, and *frames* then multiplies the *hours* by 3600 frames, *seconds* by 60 frames, and adds them to the *frames* which is already in frames.  The code uses this helper function to figure out how many frames there are left when the game clock is 5:00 (ie. 15 minutes after the start of the game).  You could use the value 18,000 frames directly however, writing a helper function like this is more convenient and makes the code easier to read.<br>
 <br>
 Scripts: [Example #4B script](Example_4B_Pitfall!.rascript) <br>
 ### Links
