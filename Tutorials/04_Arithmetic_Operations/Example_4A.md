@@ -53,7 +53,7 @@ The **ScoreRange()** function uses the **Score()** function to convert the previ
 <br>
 Since this function converts the **BCD** score to a decimal value we can enter any score value as parameters.  The *lowScore* 15,000 and *highScore* 25,000 were selected since the maximum frame score you can get in one frame is 5,000 points for collecting a diamond ring. By doubling the maximum frame score to 10,000 points we give ourselves a comfortable test range.  If the player is playing legitimately they will never increase more than 10,000 points in a frame so the achievement will trigger when they reach 25,000 points.  However, if the player is cheating, loads a save file, or the score memory is initially a large value when the emulator starts up then, the achievement will not trigger.  We don’t have to worry about save files for an Atari 2600 game however, the other two issues are a concern.<br>
 <br>
-Scripts: [Example #2A script](Example_4A_Pitfall!.rascript)<br>
+Scripts: [Example #4A script](Example_4A_Pitfall!.rascript)<br>
 ### Links
 [Tutorial #4](readme.md) <br>
 Example #4A<br>

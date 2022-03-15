@@ -56,7 +56,7 @@ achievement(
         unless(Lives() != 2)
 ) 
 ```
-By converting the memory values to **Base 10** decimals we allow for many types of possible achievements.<br>
+By converting the memory values to **Base 10** decimals we allow for many different types of possible achievements.<br>
 <br>
 Scripts: [Example #4C](Example_4C_Pitfall!.rascript)<br>
 ### Links
