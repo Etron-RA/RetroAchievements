@@ -36,7 +36,7 @@ function Time000X00() => low4(0x000059)
 function Time0000XX() => byte(0x00005A)
 
 // Converts the BCD time values into frames
-// Note that minutes and seconds are BCD and milliseconds are already Base 10
+// Note that minutes and seconds are BCD and the frames are already Base 10
 function Time()
 {
     return TimeX00000() * 36000 +
@@ -46,8 +46,8 @@ function Time()
         Time0000XX()
 }
 
-// Convert the time minutes:seconds:milliseconds to frames (1/60s each)
-function Frames(minutes, seconds, milliseconds) => minutes * 3600 + seconds * 60 + milliseconds
+// Convert the time minutes:seconds:frames to frames (1/60s each)
+function TimeSpan(minutes, seconds, frames) => minutes * 3600 + seconds * 60 + frames
 
 // Check if the score goes from between low and high score to above the high score
 function ScoreRange(lowScore, highScore)
@@ -63,6 +63,6 @@ achievement(
     description = "Score 70000 points in 15 minutes or less", 
     points = 0,
     trigger = GameActive() && 
-    ScoreRange(60000, 70000) && 
-    unless(Time() < Frames(5,0,0))
+        ScoreRange(60000, 70000) && 
+        unless(Time() < Frames(5,0,0))
 )

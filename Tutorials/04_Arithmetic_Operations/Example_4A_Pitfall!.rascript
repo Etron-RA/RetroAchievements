@@ -38,5 +38,6 @@ achievement(
     title = "Example 4A: Golden Log", 
     description = "Score 25000 points", 
     points = 0,
-    trigger =  GameActive() && ScoreRange(15000, 25000)
+    trigger =  GameActive() && 
+        ScoreRange(15000, 25000)
 )

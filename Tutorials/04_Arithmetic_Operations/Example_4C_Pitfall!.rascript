@@ -47,5 +47,7 @@ achievement(
     title = "Example 4C: Golden Survivor", 
     description = "Score 50000 without losing a life", 
     points = 0,
-    trigger = GameActive() && ScoreRange(40000, 50000) && unless(Lives() != 2)
+    trigger = GameActive() && 
+        ScoreRange(40000, 50000) && 
+        unless(Lives() != 2)
 )
