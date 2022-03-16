@@ -236,7 +236,9 @@ leaderboard(
                 once(prev(GroundObject()) == SilverBar && ItemPickUp()),
                 once(prev(GroundObject()) == GoldBar && ItemPickUp()),
                 once(prev(GroundObject()) == DiamondRing && ItemPickUp())
-             ),
+             ) &&
+			 never(GameOver()) &&
+			 never(!GameActive() && Lives() == 0),
     value = Countdown(),
     format = "FRAMES",
     lower_is_better = true
