@@ -78,6 +78,12 @@ function Cheat2() => byte(0x00EEF2)
 //-----------------------------------------------------------------
 // Lookups
 
+DifficultyLookup = {
+    0:"easy",
+    1:"normal",
+    2:"hard"
+}
+
 level1 = "Evil Awakens"
 level2 = "Siege of the Rookery"
 level3 = "Stone and Steel"
@@ -118,14 +124,13 @@ EnemyLookup = {
     "Valkyrie": [0x010e,0xcdd0],
     "Crossbow Viking": [0x0102,0xacf0],
     "Melting Pot Viking": [0x011a,0xe540],
-    "Hunter": [0x00d2,0],
+    "Hunter": [0x00d2,0xb004],
     "Arachnibot": [0x00de,0],
     "Hornet": [0x00d8,0x0e2a],
     "Raptor": [0x00e4,0],
     "Thor 3000": [0x00f0,0x701a],
     "Steel Clan": [0x00ea,0],
-    "Garmech": [0x00f6,0xa65a],
-    "Electrical Expolision": [0x0096, 0xde84]
+    "Garmech": [0x00f6,0xa65a]
 }
 
 Vikings = [
@@ -263,40 +268,58 @@ function SectionComplete(begin, end, difficulty)
             // Figure out the transistion for this section
             levelName = LevelLookup[levelID]
             transisitions = LevelTransistions[levelName]
-            startTransistion = transisitions[1]
+            startTransistion = transisitions[0]
+            midTransistion = transisitions[1]
             endTransistion = transisitions[2]
+            
+            // Put an extra hit on the beginning of the 1st section
+            if (levelID == beginID)
+            {
+                if (startTransistion == 0)
+                {
+                    // Use aa special function if start of game
+                    array_push(levels, once(difficulty &&  StartGame()))                   
+                }
+                else
+                {
+                    // Add an extra hit for the 1st level
+                    array_push(levels,
+                        once(
+                            difficulty &&
+                            prev(Progression()) == startTransistion &&
+                            Progression() == midTransistion
+                        )
+                    ) 
+                }                
+            }
 
             // Add hit if transistion occured without a cheat code
             array_push(levels,
                 once(
                     difficulty &&
-                    Cheat1() != 0x4 && 
-                    Cheat2() != 0xB &&
-                    prev(Progression()) == startTransistion &&
+                    prev(Progression()) == midTransistion &&
                     Progression() == endTransistion
                 )
             )            
         }
     }
     
-    return measured(tally(length(levels),levels))
+    return never(GameOver()) && 
+        never(LevelSkip()) &&
+        measured(tally(length(levels),levels), format="percent")
 }
 
 // Setup the progression achievements
 function ProgressLevels(title, description, points, difficulty, beginName, endName)
 {
-    trigger = CheatLock() && 
-        SectionComplete(beginName, endName, difficulty) 
+    trigger = CheatLock() && SectionComplete(beginName, endName, difficulty) 
     achievement(title, description, points, trigger)
 }
 
 // Setup the progression achievements that have resets
 function CompleteGame(title, description, points, difficulty)
 {
-    trigger = CheatLock() &&
-        never(GameOver()) && 
-        never(LevelSkip()) &&
-        SectionComplete("1-1", "5-6", difficulty) 
+    trigger = CheatLock() && SectionComplete("1-1", "5-6", difficulty) 
     achievement(title, description, points, trigger)
 }
 
@@ -312,9 +335,9 @@ ProgressLevels("Free Fall","Beat the level 3 boss on hard", 10, Hard(), "3-4", "
 ProgressLevels("Steel Clan","Beat the level 4 boss on hard", 10, Hard(), "4-1", "4-1")
 ProgressLevels("Angel of the Night","Beat the level 5 boss on hard", 25, Hard(), "5-6", "5-6")
 
-CompleteGame("Without Trust, There Can Be No Clan","Complete the game without skipping levels on easy+", 10, Easy())
-CompleteGame("Stone by Day, Warrior by Night","Complete the game without skipping levels on normal+", 25, Normal())
-CompleteGame("A Gargoyle Doesn't Whine. He Roars!","Complete the game without skipping levels on hard", 50, Hard())
+CompleteGame("Without Trust, There Can Be No Clan","Complete the game on easy+", 10, Easy())
+CompleteGame("Stone by Day, Warrior by Night","Complete the game on normal+", 25, Normal())
+CompleteGame("A Gargoyle Doesn't Whine. He Roars!","Complete the game on hard", 50, Hard())
 
 //----------------------------------------------------------
 // Speedruns
@@ -358,7 +381,10 @@ function Speedrun(title, race, points, level, boundsBox, startBox, goalBox, seco
     descriptionLB = race + " " + level + " on normal+ (see comments for map)"
     
     // Setup the start conditions
-    start = CheatLock() && BossZone() == 0x0 && BoxCheck(startBox)
+    if (level == "4-1")
+        start = CheatLock() && ScreenID() != 0x45 &&  BoxCheck(startBox)
+    else    
+    start = CheatLock() && BoxCheck(startBox)
     
     // Build the cancel condition as an array
     cancel = BoundsCheck(boundsBox)
@@ -482,7 +508,7 @@ sr5GoalBox = [0x1a0, 0x560, 0x1b0, 0x5d8]
 
 SpeedrunLevel("Any % Speedrun", "Fastest time to complete the game on normal+", "1-1","5-6")
 SpeedrunLevel("Evil Awakens Speedrun", "Fastest time to complete level 1 on normal+", "1-1","1-4")
-SpeedrunLevel("iege of the Rookery Speedrun", "Fastest time to complete level 2 on normal+", "2-1","2-4")
+SpeedrunLevel("Siege of the Rookery Speedrun", "Fastest time to complete level 2 on normal+", "2-1","2-4")
 SpeedrunLevel("Stone and Steel Speedrun", "Fastest time to complete level 3 on normal+", "3-1","3-4")
 SpeedrunLevel("Subterranean Terror Speedrun", "Fastest time to complete level 4 on normal+", "4-1","4-1")
 SpeedrunLevel("The Forge Speedrun", "Fastest time to complete level 5 on normal+", "5-1","5-6")
@@ -524,6 +550,7 @@ function Collect(title, description, points, level, memory)
         Easy() &&
         Cutscene() == 0 &&
         GameActive() == 0xff &&
+        GoliathHealth() > 0 &&
         Level() == levelID &&
         trigger_when(
             prev(memory) == 0 &&
@@ -563,7 +590,7 @@ enemyStatus1Offset = 0x4e
 enemyStatus2Offset = 0x4f
 
 // Check if an enemy lost health in any of the possible enemy locations
-function EnemyKill(index, enemy)
+function EnemyNormalKill(index, enemy)
 {
     // Look up the type id and the size of the passed enemy
     enemyArray = EnemyLookup[enemy]
@@ -576,39 +603,58 @@ function EnemyKill(index, enemy)
     enemyFrame = word(memoryBase + enemyFrameOffset)
     enemyHealth = word(memoryBase + enemyHealthOffset)
     
-    if (frameID == 0)
-    {
-    
-        trigger = prev(enemyType) == typeID &&
-            enemyType == typeID &&
-            prev(enemyHealth) > 0 &&        
-            enemyHealth == 0
-    }
-    else
-    {
-        trigger = prev(enemyType) == typeID &&
-            enemyType == typeID &&
-            prev(enemyFrame) != frameID &&        
-            enemyFrame == frameID
-    }
+    trigger = prev(enemyType) == typeID &&
+        enemyType == typeID &&
+        prev(enemyHealth) > 0 &&        
+        enemyHealth == 0
     
     // Return code to check if this enemy is dead
     return  trigger
 }
 
 // Check if an enemy lost health in any of the possible enemy locations
-function EnemyExplode(index, enemy)
+function EnemyInstantKill(index, enemy)
 {
     // Look up the type id and the size of the passed enemy
     enemyArray = EnemyLookup[enemy]
     typeID = enemyArray[0]
+    frameID = enemyArray[1]
 
     // Calculate the memory location for this index
     memoryBase = index * 0x80 + enemyMemoryBase
     enemyType = word(memoryBase + enemyTypeOffset)
+    enemyFrame = word(memoryBase + enemyFrameOffset)
+    enemyHealth = word(memoryBase + enemyHealthOffset)
+   
+    trigger = prev(enemyType) == typeID &&
+        enemyType == typeID &&
+        enemyHealth > 0 &&  
+        prev(enemyFrame) != frameID &&        
+        enemyFrame == frameID
     
     // Return code to check if this enemy is dead
-    return prev(enemyType) == typeID && enemyType == 0x96
+    return  trigger
+}
+
+// Check if an enemy lost health in any of the possible enemy locations
+function EnemyExplodeKill(index, enemy)
+{
+    // Look up the type id and the size of the passed enemy
+    enemyArray = EnemyLookup[enemy]
+    typeID = enemyArray[0]
+    frameID = enemyArray[1]
+
+    // Calculate the memory location for this index
+    memoryBase = index * 0x80 + enemyMemoryBase
+    enemyType = word(memoryBase + enemyTypeOffset)
+    enemyHealth = word(memoryBase + enemyHealthOffset)
+   
+    trigger = prev(enemyHealth) > 0 && 
+        prev(enemyType) == typeID &&
+        enemyType == 0x96 
+    
+    // Return code to check if this enemy is dead
+    return trigger
 }
 
 // Count the passed array of enemies dying in any enemy location
@@ -619,8 +665,9 @@ function EnemyCount(title, description, points, count, array)
     {
         for index in range (0,31)
         {
-            array_push(enemyCount, EnemyKill(index, enemy))
-            array_push(enemyCount, EnemyExplode(index, enemy))
+            array_push(enemyCount, EnemyInstantKill(index, enemy))
+            array_push(enemyCount, EnemyNormalKill(index, enemy))
+            array_push(enemyCount, EnemyExplodeKill(index, enemy))
         }
     }
 
@@ -641,7 +688,8 @@ EnemyCount("No, Machine, You’ll Not Get Rid of Me That Easily!","Knock out 10 
 rich_presence_conditional_display(DetectCheat(), "Goliath is cheating! Achievements paused, reset emulator to reactivate achievements.")
 rich_presence_conditional_display(Progression() == 0 && GameActive() == 0xff && Cutscene() == 0xff && Lives() == 0 && Continues() == 0, "Goliath is in menu.")
 rich_presence_conditional_display(Demo() == 0xff, "Goliath is watching the demo.")
-rich_presence_display("Goliath is in {0} {1} with {2} lives and {3} continues.",  
+rich_presence_display("Goliath is playing on {0} in {1} {2} with {3} live(s) and {4} continue(s).",  
+    rich_presence_lookup("Difficulty", Difficulty(), DifficultyLookup),
     rich_presence_lookup("Area", Level(), AreaLookup), 
     rich_presence_lookup("Level", Level(), LevelLookup),
     rich_presence_value("Value", Lives()),
