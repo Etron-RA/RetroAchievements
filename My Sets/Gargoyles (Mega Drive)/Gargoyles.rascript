@@ -19,6 +19,9 @@ function GameActive() => byte(0x000073)
 // $0074: [8-bit] Level Progression
 function Progression() => byte(0x000074)
 
+// $0079 [8-bit] Flying Cheat (0x0 = Off, 0xFF = On)
+function Flying() => byte(0x000079)
+
 // $007C: [16-bit] Health (0x100=Full, 0x0=Dead)
 function GoliathHealth() => word(0x00007C)
 
@@ -233,6 +236,7 @@ function LevelSkip()
 function CheatLock()
 {            
     return unless(Demo() == 0xff) &&
+        unless(Flying() == 0xff) &&
         unless(once(FlyingCheat())) && 
         unless(once(RegenCheat())) && 
         unless(once(InvincibleCheat())) && 
