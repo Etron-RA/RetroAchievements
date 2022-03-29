@@ -134,13 +134,14 @@ function PoliceChase(title, description, points)
     // Reset if a police officer is harmed
     // This is a pointer of a pointer, the player stats pointer has a target pointer in it.
     // When the target pointer is pointing to a police officer check if their health decreases.
-    officerDown = never(
-        (!PlayerStatsNull() && (PlayerCutscene() == 0) &&
+    officerSafe = never(
+        (!PlayerStatsNull() && 
+		(PlayerCutscene() == 0) &&
         (PlayerTargetType() == 128) &&
         (PlayerTargetPointer() == prev(PlayerTargetPointer())) &&
         PlayerTargetHealth() < prev(PlayerTargetHealth()))
     )
 
-    achievement(title, description, points, progress && start && officerDown && NoCheats())
+    achievement(title, description, points, progress && start && officerSafe && NoCheats())
 }
 PoliceChase("Example 5B: I'm Not the Bad Guy!", "Complete all five levels of the police chase without attacking any cops", 10)

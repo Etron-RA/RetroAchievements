@@ -70,7 +70,7 @@ function PlayerHealth() => byte(PlayerStatsPointer() + 0x0000DE)
 //          +DE - Health
 //          +140 - Animation ID
 function JamesonPointer() => tbyte(0x0B5640)
-function JamesonPointerNull() => dword(0x0B5640) == 0
+function JamesonNull() => dword(0x0B5640) == 0
 function JamesonHealth() => byte(JamesonPointer() + 0x0000DE)
 function JamesonAnimation() => byte(JamesonPointer() + 0x000140)
 
@@ -116,13 +116,13 @@ function ScorpionBossFight(title, description, points)
 
     // Reset if Jameson's health decreases
     jamesonDamageless = never(
-        !JamesonPointerNull() &&
+        !JamesonNull() &&
         JamesonHealth() < prev(JamesonHealth()))
 
     // Reset if Jameson's is found (cutscene occurs and Jameson animation changes)
     jamesonNotFound = never(
         CutscreenSize() == 0 && 
-        !JamesonPointerNull() && 
+        !JamesonNull() && 
         JamesonAnimation() != prev(JamesonAnimation()) && 
         JamesonAnimation() == 59)
         

@@ -116,7 +116,7 @@ function DocOckBossFight(title, description, points)
     spidyDamageless = never((!PlayerStatsNull() &&  PlayerHealth() < prev(PlayerHealth())))
 
     //  Reset if the player loses armor
-    spidyNoArmor =never((!PlayerStatsNull() &&  PlayerArmor() < prev(PlayerArmor())))
+    spidyNoArmor = never((!PlayerStatsNull() &&  PlayerArmor() < prev(PlayerArmor())))
 
     //  Reset if game flags are anything other than in game or level complete
     gameActive = never((Flags() != 0 && Flags() != 3))
