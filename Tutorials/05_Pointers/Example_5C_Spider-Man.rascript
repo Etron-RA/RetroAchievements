@@ -65,17 +65,15 @@ function UnlimitedWebbingCheat() => byte(0x0B4F98)
 function PlayerStatsPointer() => tbyte(0x0B5268)
 function PlayerStatsNull() => dword(0x0B5268) == 0
 function PlayerHealth() => byte(PlayerStatsPointer() + 0x0000DE)
+function PlayerArmor() => byte(PlayerStatsPointer() + 0x0005F8)
 
-// $0B5640: Jameson Health/Stats Pointer
-//          +DE - Health
-//          +140 - Animation ID
-function JamesonPointer() => tbyte(0x0B5640)
-function JamesonPointerNull() => dword(0x0B5640) == 0
-function JamesonHealth() => byte(JamesonPointer() + 0x0000DE)
-function JamesonAnimation() => byte(JamesonPointer() + 0x000140)
-
-// $0B58D8: Cutscene Letterbox Size (1E) (US)
-function CutscreenSize() => byte(0x0B58D8)
+// $0B563C: Boss Pointer (US)
+//          +DE - Boss Health
+//          +2F4 - Water Level (Spidey Vs Venom Again)
+//          +40C - Number of switches remaining to deactivate Ock's shield
+function BossPointer() => tbyte(0x0B563C)
+function BossNull() => dword(0x0B563C) == 0
+function BossSwitchesRemaining() => byte(BossPointer() + 0x00040C)
 
 // No cheating conditions common for the entire set.
 function NoCheats()
@@ -94,43 +92,40 @@ function NoCheats()
     return noSpecialCostumes && noKidsMode && noCheats
 }
 
-//---------------------------------------------------------------------
-// Function to build the "Example 5A: Get Over Here!" achievement
-function ScorpionBossFight(title, description, points)
+// ------------------------------------------------------------------------
+// Function to build the "Example 5C:No Idea What You're In For" achievement
+function DocOckBossFight(title, description, points)
 {
-    // Trigger achievement when we are on the level Spidey Vs. Scorpion! and
-    // the level complete flag turns on
-    progress = trigger_when((
-        prev(ChapterID()) == 50 && 
-        prev(LevelID()) == 50 &&
-        Flags() != prev(Flags()) &&
-        Flags() == 3))
+    //  Trigger the achievement when the level is complete
+    progress = trigger_when((Flags() != prev(Flags()) && Flags() == 3))
 
-    // Add a measure for how long until Jameson is found
+    // Add a hit at the beginning of the level
     start = measured(once(prev(LevelTime()) < 32))
 
-    // Reset if the players health decreases
-    spidyDamageless = never(
-        !PlayerStatsNull() &&
-        PlayerHealth() < prev(PlayerHealth()))
+    // Reset when Dr. Octopus heals twice
+    noDocOckRegen = never(
+        repeated(2, 
+            BossPointer() == prev(BossPointer()) && 
+            !BossNull() && 
+            (prev(BossSwitchesRemaining()) == 0) &&
+            BossSwitchesRemaining() == 4
+        )
+    )
 
-    // Reset if Jameson's health decreases
-    jamesonDamageless = never(
-        !JamesonPointerNull() &&
-        JamesonHealth() < prev(JamesonHealth()))
+    //  Reset if the player loses health
+    spidyDamageless = never((!PlayerStatsNull() &&  PlayerHealth() < prev(PlayerHealth())))
 
-    // Reset if Jameson's is found (cutscene occurs and Jameson animation changes)
-    jamesonNotFound = never(
-        CutscreenSize() == 0 && 
-        !JamesonPointerNull() && 
-        JamesonAnimation() != prev(JamesonAnimation()) && 
-        JamesonAnimation() == 59)
-        
-    // Reset if the level changes
-    noLevelChange = never(prev(ChapterID()) != 50) && 
-        never(prev(LevelID()) != 50)
-        
-    achievement(title, description, points, progress && start && spidyDamageless && 
-        jamesonDamageless && jamesonNotFound && noLevelChange && NoCheats())
+    //  Reset if the player loses armor
+    spidyNoArmor =never((!PlayerStatsNull() &&  PlayerArmor() < prev(PlayerArmor())))
+
+    //  Reset if game flags are anything other than in game or level complete
+    gameActive = never((Flags() != 0 && Flags() != 3))
+
+    //  Reset if we are any level other than Spidey Vs. Dr. Octopus
+    noLevelChange = never(prev(ChapterID()) != 56) &&
+        never(prev(LevelID()) != 52)
+    
+    achievement(title, description, points, progress && start && noDocOckRegen && spidyDamageless &&
+        spidyNoArmor && gameActive && noLevelChange && NoCheats())
 }
-ScorpionBossFight("Example 5A: Get Over Here!", "Defeat Scorpion without Spidey or Jameson taking damage and without letting Scorpion find Jameson", 25)
+DocOckBossFight("Example 5C: No Idea What You're In For", "Defeat Doc Ock without taking damage before his shield can regenerate for a second time", 25)

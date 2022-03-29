@@ -75,6 +75,7 @@ function UnlimitedWebbingCheat() => byte(0x0B4F98)
 //          +5F8 - Spidey Armor Strength
 //          +5EC - Magnesium Webbing (01)
 //          +EE8 - Pointer to Current Enemy
+//          +EEB - Target Type
 //          +1014 - Max Health
 function PlayerStatsPointer() => tbyte(0x0B5268)
 function PlayerStatsNull() => dword(0x0B5268) == 0
@@ -83,60 +84,63 @@ function PlayerTargetType() => dword(PlayerStatsPointer() + 0x000EEB)
 function PlayerTargetPointer() => tbyte(PlayerStatsPointer() + 0x000EE8)
 function PlayerTargetHealth() => byte(PlayerTargetPointer() + 0x0000DE)
 
+// No cheating conditions common for the entire set.
+function NoCheats()
+{
+    // Pause if any the costume with special abilities are selected
+    // ie. Spider-Man 2099, Symbiote Spider-Man, Captain Universe, Spider-Man Unlimited
+    noSpecialCostumes = unless((CostumeSelected() >= 1 && CostumeSelected() <= 4))
+
+    // Pause if the player is in kid mode (difficulty 0)
+    noKidsMode = unless(Difficulty() == 0)
+
+    // Pause if the player is cheating
+    noCheats = unless(InvincibilityCheat() != 0) && 
+        unless(UnlimitedWebbingCheat() != 0)
+
+    return noSpecialCostumes && noKidsMode && noCheats
+}
+
 // ------------------------------------------------------------------------
-// Start build the condition for the achievement
-
-// Count the completion of each of the 5 police missions
-conditions = trigger_when(
-    tally(5,
-        once(PoliceChopperChaseComplete() > prev(PoliceChopperChaseComplete())), 
-        once(MissileAttackComplete() > prev(MissileAttackComplete())), 
-        once(BuildingTopChaseComplete() > prev(BuildingTopChaseComplete())), 
-        once(ScaleTheGirdersComplete() > prev(ScaleTheGirdersComplete())), 
+// Function to build the "Example 5B: I'm Not the Bad Guy!" achievement
+function PoliceChase(title, description, points)
+{
+    // Count the completion of each of the 5 police missions
+    progress = trigger_when(
+        tally(5,
+            once(PoliceChopperChaseComplete() > prev(PoliceChopperChaseComplete())), 
+            once(MissileAttackComplete() > prev(MissileAttackComplete())), 
+            once(BuildingTopChaseComplete() > prev(BuildingTopChaseComplete())), 
+            once(ScaleTheGirdersComplete() > prev(ScaleTheGirdersComplete())), 
+            once(
+                prior(ChapterID()) == 51 && 
+                prior(LevelID()) == 53 && 
+                PoliceEvadedComplete() > prev(PoliceEvadedComplete()) && 
+                Flags() == 3
+            ), 
+            always_false()
+        )
+    )
+        
+    // Add a hit at the beginning of the level
+    start = measured(
         once(
-            prior(ChapterID()) == 51 && 
-            prior(LevelID()) == 53 && 
-            PoliceEvadedComplete() > prev(PoliceEvadedComplete()) && 
-            Flags() == 3
-        ), 
-        always_false()
+            ChapterID() == 51 && 
+            LevelID() == 49 && 
+            prev(LevelTime()) < 32
+        )
     )
-)
-    
-// Measure when level time is less then 32
-conditions = conditions && measured(
-    once(
-        ChapterID() == 51 && 
-        LevelID() == 49 && 
-        prev(LevelTime()) < 32
+
+    // Reset if a police officer is harmed
+    // This is a pointer of a pointer, the player stats pointer has a target pointer in it.
+    // When the target pointer is pointing to a police officer check if their health decreases.
+    officerDown = never(
+        (!PlayerStatsNull() && (PlayerCutscene() == 0) &&
+        (PlayerTargetType() == 128) &&
+        (PlayerTargetPointer() == prev(PlayerTargetPointer())) &&
+        PlayerTargetHealth() < prev(PlayerTargetHealth()))
     )
-)
 
-// Reset if a police officer is harmed
-// This is a pointer of a pointer, the player stats pointer has a target pointer in it.
-// When the target pointer is pointing to a police officer check if their health decreases.
-conditions = conditions && never(
-    (!PlayerStatsNull() && (PlayerCutscene() == 0) &&
-    (PlayerTargetType() == 128) &&
-    (PlayerTargetPointer() == prev(PlayerTargetPointer())) &&
-    PlayerTargetHealth() < prev(PlayerTargetHealth()))
-)
-
-// Pause if any the costume with special abilities are selected
-// ie. Spider-Man 2099, Symbiote Spider-Man, Captain Universe, Spider-Man Unlimited
-conditions = conditions && unless((CostumeSelected() >= 1 && CostumeSelected() <= 4))
-
-// Pause if the player is in kid mode (difficulty 0)
-conditions = conditions && unless(Difficulty() == 0)
-
-// Pause if the player is cheating
-conditions = conditions && 
-    unless(InvincibilityCheat() != 0) && 
-    unless(UnlimitedWebbingCheat() != 0)
-
-achievement(
-    title = "Example 5B: I'm Not the Bad Guy!",
-    description = "Complete all five levels of the police chase without attacking any cops",
-    points = 10,
-    trigger = conditions
-)
+    achievement(title, description, points, progress && start && officerDown && NoCheats())
+}
+PoliceChase("Example 5B: I'm Not the Bad Guy!", "Complete all five levels of the police chase without attacking any cops", 10)
