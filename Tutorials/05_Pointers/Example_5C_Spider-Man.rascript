@@ -63,7 +63,7 @@ function UnlimitedWebbingCheat() => byte(0x0B4F98)
 //          +EEB - Target Type
 //          +1014 - Max Health
 function PlayerStatsPointer() => tbyte(0x0B5268)
-function PlayerStatsNull() => dword(0x0B5268) == 0
+function PlayerStatsNotNull() => dword(0x0B5268) != 0
 function PlayerHealth() => byte(PlayerStatsPointer() + 0x0000DE)
 function PlayerArmor() => byte(PlayerStatsPointer() + 0x0005F8)
 
@@ -72,7 +72,7 @@ function PlayerArmor() => byte(PlayerStatsPointer() + 0x0005F8)
 //          +2F4 - Water Level (Spidey Vs Venom Again)
 //          +40C - Number of switches remaining to deactivate Ock's shield
 function BossPointer() => tbyte(0x0B563C)
-function BossNull() => dword(0x0B563C) == 0
+function BossNotNull() => dword(0x0B563C) != 0
 function BossSwitchesRemaining() => byte(BossPointer() + 0x00040C)
 
 // No cheating conditions common for the entire set.
@@ -106,17 +106,17 @@ function DocOckBossFight(title, description, points)
     noDocOckRegen = never(
         repeated(2, 
             BossPointer() == prev(BossPointer()) && 
-            !BossNull() && 
+            BossNotNull() && 
             (prev(BossSwitchesRemaining()) == 0) &&
             BossSwitchesRemaining() == 4
         )
     )
 
     //  Reset if the player loses health
-    spidyDamageless = never((!PlayerStatsNull() &&  PlayerHealth() < prev(PlayerHealth())))
+    spidyDamageless = never((PlayerStatsNotNull() &&  PlayerHealth() < prev(PlayerHealth())))
 
     //  Reset if the player loses armor
-    spidyNoArmor = never((!PlayerStatsNull() &&  PlayerArmor() < prev(PlayerArmor())))
+    spidyNoArmor = never((PlayerStatsNotNull() &&  PlayerArmor() < prev(PlayerArmor())))
 
     //  Reset if game flags are anything other than in game or level complete
     gameActive = never((Flags() != 0 && Flags() != 3))

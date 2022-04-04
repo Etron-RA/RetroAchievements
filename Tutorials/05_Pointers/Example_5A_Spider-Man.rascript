@@ -63,14 +63,14 @@ function UnlimitedWebbingCheat() => byte(0x0B4F98)
 //          +EEB - Target Type
 //          +1014 - Max Health
 function PlayerStatsPointer() => tbyte(0x0B5268)
-function PlayerStatsNull() => dword(0x0B5268) == 0
+function PlayerStatsNotNull() => dword(0x0B5268) != 0
 function PlayerHealth() => byte(PlayerStatsPointer() + 0x0000DE)
 
 // $0B5640: Jameson Health/Stats Pointer
 //          +DE - Health
 //          +140 - Animation ID
 function JamesonPointer() => tbyte(0x0B5640)
-function JamesonNull() => dword(0x0B5640) == 0
+function JamesonNotNull() => dword(0x0B5640) != 0
 function JamesonHealth() => byte(JamesonPointer() + 0x0000DE)
 function JamesonAnimation() => byte(JamesonPointer() + 0x000140)
 
@@ -111,18 +111,18 @@ function ScorpionBossFight(title, description, points)
 
     // Reset if the players health decreases
     spidyDamageless = never(
-        !PlayerStatsNull() &&
+        PlayerStatsNotNull() &&
         PlayerHealth() < prev(PlayerHealth()))
 
     // Reset if Jameson's health decreases
     jamesonDamageless = never(
-        !JamesonNull() &&
+        JamesonNotNull() &&
         JamesonHealth() < prev(JamesonHealth()))
 
     // Reset if Jameson's is found (Jameson animation changes)
     jamesonNotFound = never(
         CutscreenSize() == 0 && 
-        !JamesonNull() && 
+        JamesonNotNull() && 
         JamesonAnimation() != prev(JamesonAnimation()) && 
         JamesonAnimation() == 59)
         

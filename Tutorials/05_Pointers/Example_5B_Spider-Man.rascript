@@ -78,7 +78,7 @@ function UnlimitedWebbingCheat() => byte(0x0B4F98)
 //          +EEB - Target Type
 //          +1014 - Max Health
 function PlayerStatsPointer() => tbyte(0x0B5268)
-function PlayerStatsNull() => dword(0x0B5268) == 0
+function PlayerStatsNotNull() => dword(0x0B5268) != 0
 function PlayerCutscene() => byte(PlayerStatsPointer() + 0x0001A8)
 function PlayerTargetType() => dword(PlayerStatsPointer() + 0x000EEB)
 function PlayerTargetPointer() => tbyte(PlayerStatsPointer() + 0x000EE8)
@@ -135,7 +135,7 @@ function PoliceChase(title, description, points)
     // This is a pointer of a pointer, the player stats pointer has a target pointer in it.
     // When the target pointer is pointing to a police officer check if their health decreases.
     officerSafe = never(
-        (!PlayerStatsNull() && 
+        (PlayerStatsNotNull() && 
 		(PlayerCutscene() == 0) &&
         (PlayerTargetType() == 128) &&
         (PlayerTargetPointer() == prev(PlayerTargetPointer())) &&
