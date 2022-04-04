@@ -113,6 +113,7 @@ function ScoreMeasure(lowScore, highScore)
 achievement("Private","Score 10,000", 3, GameActive() && ScoreMeasure(8000, 10000))
 achievement("Corporal","Score 25,000", 5, GameActive() && ScoreMeasure(23000, 25000))
 achievement("Sergeant","Score 50,000", 10, GameActive() && ScoreMeasure(48000, 50000))
+achievement("Sergeant Major","Score 100,000", 25, GameActive() && ScoreMeasure(98000, 100000))
 
 // Check if the score goes from between low to high, to above the high score (trigger version)
 // This is to complement the deathless score achievements
@@ -137,6 +138,7 @@ function DeathlessScore(lowScore, highScore)
 // Deathless score achievements
 achievement("Tough as Nails","Score 10,000 without dying", 5, DeathlessScore(8000, 10000))
 achievement("One-Man Army","Score 25,000 without dying", 10, DeathlessScore(23000, 25000))
+achievement("Indestructible","Score 50,000 without dying", 25, DeathlessScore(48000, 50000))
 
 // Check if the player reached the spped up phase and a certain mode
 
