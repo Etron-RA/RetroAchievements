@@ -111,8 +111,8 @@ function ScoreMeasure(lowScore, highScore)
 
 // Basic score achievements
 achievement("Private","Score 10,000", 3, GameActive() && ScoreMeasure(8000, 10000))
-achievement("Corporal ","Score 25,000", 5, GameActive() && ScoreMeasure(23000, 25000))
-achievement("Sergeant ","Score 50,000", 10, GameActive() && ScoreMeasure(48000, 50000))
+achievement("Corporal","Score 25,000", 5, GameActive() && ScoreMeasure(23000, 25000))
+achievement("Sergeant","Score 50,000", 10, GameActive() && ScoreMeasure(48000, 50000))
 
 // Check if the score goes from between low to high, to above the high score (trigger version)
 // This is to complement the deathless score achievements
