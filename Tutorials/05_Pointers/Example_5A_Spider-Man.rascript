@@ -119,7 +119,7 @@ function ScorpionBossFight(title, description, points)
         !JamesonNull() &&
         JamesonHealth() < prev(JamesonHealth()))
 
-    // Reset if Jameson's is found (cutscene occurs and Jameson animation changes)
+    // Reset if Jameson's is found (Jameson animation changes)
     jamesonNotFound = never(
         CutscreenSize() == 0 && 
         !JamesonNull() && 

@@ -93,7 +93,7 @@ function NoCheats()
 }
 
 // ------------------------------------------------------------------------
-// Function to build the "Example 5C:No Idea What You're In For" achievement
+// Function to build the "Example 5C: No Idea What You're In For" achievement
 function DocOckBossFight(title, description, points)
 {
     //  Trigger the achievement when the level is complete
@@ -102,7 +102,7 @@ function DocOckBossFight(title, description, points)
     // Add a hit at the beginning of the level
     start = measured(once(prev(LevelTime()) < 32))
 
-    // Reset when Dr. Octopus heals twice
+    // Reset when Dr. Octopus raises the shield twice
     noDocOckRegen = never(
         repeated(2, 
             BossPointer() == prev(BossPointer()) && 
