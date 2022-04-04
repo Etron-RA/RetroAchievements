@@ -108,7 +108,7 @@ function ScorpionDirection() => byte(0x000066)
 // $0069: Harry's Vertical position on screen
 function HarryVertical() => byte(0x000069)
 function HarryGround() => HarryVertical() >= 0x15 && HarryVertical() <= 0x4A
-function HarryDungeon() => HarryVertical() >= 0x4B && HarryVertical() <= 0x56
+function HarryDungeon() => HarryVertical() >= 0x4B && HarryVertical() <= 0x56 &&  HarryHorizontal() <= 0x93 && HarryHorizontal() >= 0x09
 
 // $006D: Treasures flags
 // $006E: Treasures flags
@@ -276,6 +276,25 @@ leaderboard(
      ), 
      format="VALUE"
 )
+
+// Start the count of the second jump over the Scorpion
+// Cancel none
+// Submit on death, leaving ground, or screen change
+leaderboard(
+     "Scorpion Run",
+     "Most jumps over a scorpion without turning around or losing a life (two jumps to start)", 
+     repeated(2,HarryDungeon() && prev(ScorpionDirection()) != ScorpionDirection()) && 
+     never(!GameActive()) &&
+     never(prev(HarryDirection()) != HarryDirection()),
+     always_false(), 
+     !GameActive() || prev(HarryDirection()) != HarryDirection(),
+     tally(0,
+         once(HarryDungeon() && prev(ScorpionDirection()) != ScorpionDirection()),
+         HarryDungeon() && prev(ScorpionDirection()) != ScorpionDirection()
+     ), 
+     format="VALUE"
+)
+
 
 // Start the count of the second jump over the corcodiles
 // Cancel none
