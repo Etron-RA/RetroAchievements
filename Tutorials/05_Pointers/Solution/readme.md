@@ -136,7 +136,6 @@ function DocOckBossFight(title, description, points)
 }
 DocOckBossFight("Example 5C: No Idea What You're In For", "Defeat Doc Ock without taking damage before his shield can regenerate for a second time", 25)
 ```
-<br>
 [Complete Example #5C with the above solution](Example_5C_Spider-Man.rascript)<br>
 ### Links
 [Tutorial #5](../readme.md)<br>
