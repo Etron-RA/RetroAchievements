@@ -1,5 +1,5 @@
 # Example 5A: Get Over Here!
-Spider-Man has an impressive rogues gallery of animal based villains that he must stop to protect the citizens of New York.  In this achievement Scorpion is trying to settle a score with J. Jonah Jameson and Spider-Man is the only one who can save him.  As a challenge the web-slinging Spider-Man must defeat Scorpion without taking damage, letting Jameson take damage, or letting Scorpion find Jameson’s hiding place.<br>
+Spider-Man has an impressive rogues gallery of animal based villains that he must stop to protect the citizens of New York.  In this achievement Scorpion is trying to settle a score with J. Jonah Jameson and Spider-Man is the only one who can save him.  As a challenge the web-slinger must defeat Scorpion without taking damage, letting Jameson take damage, or letting Scorpion find Jameson’s hiding place.<br>
  
 ![Spider-Man Vs. Scorpion](Spiderman_Vs_Scorpion.png)
 ```
@@ -138,7 +138,8 @@ function ScorpionBossFight(title, description, points)
     achievement(title, description, points, progress && start && spidyDamageless && 
         jamesonDamageless && jamesonNotFound && noLevelChange && NoCheats())
 }
-ScorpionBossFight("Example 5A: Get Over Here!", "Defeat Scorpion without Spidey or Jameson taking damage and without letting Scorpion find Jameson", 25)
+ScorpionBossFight("Example 5A: Get Over Here!", 
+    "Defeat Scorpion without Spidey or Jameson taking damage and without letting Scorpion find Jameson", 25)
 ```
 ## Pointer Functions
 ```

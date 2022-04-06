@@ -5,6 +5,7 @@ Following the animal theme, Doctor Octopus is a scientist driven mad by the acci
 ## Boss Pointer
 The boss *pointer* at address ```$0B563C``` uses the same data structure as the player stat’s pointer at memory ```$0B5268``` plus a few specific variables used to track events in the fight.  Doctor Octopus is using a shield to protect himself from Spider-Man which can be turned off temporary by turning off four switches. The offset ```+40c``` tracks how many of the four switches are currently on.  Once all four switches are off the shield will drop and Spider-Man can attack Doctor Octopus directly.  After a few seconds the shield will be restored and the switch count will go from zero to four again.
 ```
+Boss Data Structure
 +DE - Boss Health
 +2F4 - Water Level (Spidey Vs Venom Again)
 +40C - Number of switches remaining to deactivate Ock's shield

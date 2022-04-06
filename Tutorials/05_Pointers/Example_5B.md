@@ -149,7 +149,8 @@ function PoliceChase(title, description, points)
 
     achievement(title, description, points, progress && start && officerSafe && NoCheats())
 }
-PoliceChase("Example 5B: I'm Not the Bad Guy!", "Complete all five levels of the police chase without attacking any cops", 10)
+PoliceChase("Example 5B: I'm Not the Bad Guy!", 
+    "Complete all five levels of the police chase without attacking any cops", 10)
 ```
 ## Double Pointers
 ```
@@ -157,7 +158,7 @@ function PlayerStatsPointer() => tbyte(0x0B5268)
 function PlayerTargetPointer() => tbyte(PlayerStatsPointer() + 0x000EE8)
 function PlayerTargetHealth() => byte(PlayerTargetPointer() + 0x0000DE)
 ```
-A major complexity with *pointers* is that they can point to another *pointer* otherwise known as a double *pointer*.  You can have a chain of *pointers* that continually point to the next or previous piece of memory also known as a linked list.  Hopefully you only have to deal with single *pointers* however, if you do have double or more pointers you can use the same process described here for each *pointer* reference.  In the above example the player’s stats *pointer* has a target *pointer* in it which points to the enemy Spider-Man is looking at. The game uses a red arrow over Spider-Man’s current target.  To reference the health of a police officer you’ll need to follow the *pointer* from the players’ stats *pointer* to the player target *pointer*.  Fortunately it appears that Spider-Man and the police officers share the same data structure so the police officers health is ```+0xde``` from the address in the player’s target *pointer*.  The above functions simplify following the *pointer* addresses’ so you can use ```PlayerTargetHealth()``` as you would for regular memory.<br>
+A major complexity with *pointers* is that they can point to another *pointer* otherwise known as a double *pointer*.  You can have a chain of *pointers* that continually point to the next or previous piece of memory also known as a linked list.  Hopefully you only have to deal with single *pointers* however, if you do have double or more *pointers* you can use the same process described here for each *pointer* reference.  In the above example the player’s stats *pointer* has a target *pointer* in it which points to the enemy Spider-Man is looking at. The game uses a red arrow over Spider-Man’s current target to show who Spider-Man would attack if commanded to. To reference the health of a police officer you’ll need to follow the *pointer* from the players’ stats *pointer* to the player target *pointer*.  Fortunately it appears that Spider-Man and the police officers share the same data structure so the police officers health is ```+0xde``` from the address in the player’s target *pointer*.  The above functions simplify following the *pointer* addresses’ so you can use ```PlayerTargetHealth()``` as you would for regular memory.<br>
 <br>
 Scripts: [Example #5B script](Example_5B_Spider-Man.rascript) <br>
 ### Links

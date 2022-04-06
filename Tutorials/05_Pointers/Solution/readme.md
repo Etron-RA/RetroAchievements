@@ -1,5 +1,5 @@
 # Tutorial #5 Solution
-Like the player stat pointer the boss pointer should have a null check before using it. It’s worth noting that Spider-Man may have armor at this point so the achievement will reset if Spider-Man loses armor or health. By leveraging the RA scripts the hardest thing about *pointers* becomes trying to dig them in memory.  Good luck true believers!<br>
+Like the player stat pointer the boss pointer should have a null check before using it. It’s worth noting that Spider-Man may have armor at this point so the achievement will reset if Spider-Man loses armor or health. By leveraging the RA scripts the hardest thing about *pointers* becomes digging for them.  Good luck true believers!<br>
 
  
 ![Spider-Man Vs. Doctor Octopus](Spiderman_Vs_DocOck_Wins.png)
@@ -134,7 +134,8 @@ function DocOckBossFight(title, description, points)
     achievement(title, description, points, progress && start && noDocOckRegen && spidyDamageless &&
         spidyNoArmor && gameActive && noLevelChange && NoCheats())
 }
-DocOckBossFight("Example 5C: No Idea What You're In For", "Defeat Doc Ock without taking damage before his shield can regenerate for a second time", 25)
+DocOckBossFight("Example 5C: No Idea What You're In For", 
+    "Defeat Doc Ock without taking damage before his shield can regenerate for a second time", 25)
 ```
 [Complete Example #5C with the above solution](Example_5C_Spider-Man.rascript)<br>
 ### Links
