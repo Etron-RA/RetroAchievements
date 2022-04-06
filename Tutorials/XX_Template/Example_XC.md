@@ -1,4 +1,4 @@
- ## Example #XC - Steel Grip
+# Example #XC - 
 <br>
 Scripts: [Example #XC script with no solution](Example_0XC.rascript)<br>
 <br>

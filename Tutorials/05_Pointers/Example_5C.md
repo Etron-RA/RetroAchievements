@@ -1,5 +1,4 @@
- ## Example #5C - Steel Grip
- # Example 5C: No Idea What You're In For
+# Example 5C: No Idea What You're In For
 Following the animal theme, Doctor Octopus is a scientist driven mad by the accident that fused four robotic tentacle arms to his body.  In this achievement Spider-Man must defeat Doctor Octopus without taking damage or letting Doctor Octopus regenerate his shield two or more times.
  
 ![Spider-Man Vs. Doctor Octopus](Spiderman_Vs_DocOck_Fight.png)

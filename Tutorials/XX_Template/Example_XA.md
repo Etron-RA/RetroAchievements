@@ -1,4 +1,4 @@
-## Example #XA - Team Game
+# Example #XA
 <br>
 Scripts: [Example #2A script](Example_0XA.rascript) <br>
 ### Links
