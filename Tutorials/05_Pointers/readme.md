@@ -6,7 +6,7 @@ This tutorial will show a few examples of how to create achievements for a game 
 ## Pointers
 *Pointers* are variables that point to another memory address. They are commonly used for dynamic memory where the program will ask for a specified amount of memory and the operating system will allocate the next available block of memory to it.  The *pointer* is then assigned the memory address for the newly created memory.  Once the program is done with the memory it is returned to the operating system.  Because of the dynamic nature of acquiring and releasing memory a *pointer* will rarely point to the same address.<br>
 <br>
-Dynamic memory is a modern feature so you’re more likely to run into *pointers* on newer systems like the N64, Playstation, or Dreamcast although they do show up occasionally on earlier systems.  Pointers are often 32-bits with the address being in the bottom 24-bits and the top 8-bits commonly being 0x80, 0x90, 0xc0, or 0xff (depends on the underlying operating system).  We can ignore the top 8-bits and use the bottom 24-bits to figure out where the memory is located.  A 24-bit *pointer* can address up to 16MB of memory so later generation consoles may use the full 32-bits to represent higher memory addresses and likewise older generation consoles may have 16-bit *pointers*.
+Dynamic memory is a modern feature so you’re more likely to run into *pointers* on newer systems like the N64, Playstation, or Dreamcast although they do show up occasionally on earlier systems.  Pointers are often 32-bits with the address being in the bottom 24-bits and the top 8-bits commonly being 0x80, 0x90, 0xc0, or 0xff. These prefixes are based on where the RAM is located in the memory map of the system. For example, Playstation and N64 starts at 0x80000000, so that's why the upper byte is 0x80 on those systems. Similiarly, the Mega Drive RAM starts at 0xFF0000, so you will often see pointers with that prefix on that system.  Knowing this, we can ignore the prefix and use the rest of the *pointer* value to figure out where the memory is located.  A 24-bit *pointer* can address up to 16MB of memory so later generation consoles may use the full 32-bits to represent higher memory addresses and likewise older generation consoles may have 16-bit *pointers*.
 ## Data Structures
 *Data structures* are a specialized way for organizing memory in object oriented programming. *Data structures* are used to group pieces of data together and are sometimes organized to improve performance.  Consider the *data structure* used for Spider-Man’s player stats below:
 ```
@@ -41,7 +41,7 @@ Mem_3 = Memory address in state 3
 MemDiff1_2 = Mem_2 – Mem_1
 MemDiff2_3 = Mem_3 – Mem_2
 ```
-3)	Start in state 1 and filter the memory for a 32-bit address (may be 16-bit for Mega Drive or SNES).
+3)	Start in state 1 and filter the memory for a 32-bit address (may be 16-bit for Mega Drive or SNES).  *Pointers* are often aligned in memory so try using an aligned 32-bit filter if you have too many candidates.
 4)	Continuously filter by "= Last Value" and play the game for a little bit to reduce the possible candidates
 5)	Turn off the continuous filter and switch to state 2 
 ```
