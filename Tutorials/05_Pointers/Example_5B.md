@@ -1,7 +1,7 @@
 # Example 5B: I'm Not the Bad Guy!
 Despite his heroism, Spider-Man is a vigilante so he often finds himself in trouble with the law.  To make matters worse, someone impersonated Spider-Man during a recent heist making him public enemy #1. In this achievement the police are chasing Spider-Man over a series of five different levels.  Despite being hunted Spider-Man is a moral superhero who believes that “with great power comes great responsibility” so he must evade the police without harming them.<br>
  
-!(Spider-Man Vs. the Police)[Spiderman_Vs_Police.png]
+![Spider-Man Vs. the Police](Spiderman_Vs_Police.png)
 ```
 // Spider-Man
 // #ID = 11319
@@ -158,7 +158,7 @@ function PlayerTargetPointer() => tbyte(PlayerStatsPointer() + 0x000EE8)
 function PlayerTargetHealth() => byte(PlayerTargetPointer() + 0x0000DE)
 ```
 A major complexity with *pointers* is that they can point to another *pointer* otherwise known as a double *pointer*.  You can have a chain of *pointers* that continually point to the next or previous piece of memory also known as a linked list.  Hopefully you only have to deal with single *pointers* however, if you do have double or more pointers you can use the same process described here for each *pointer* reference.  In the above example the player’s stats *pointer* has a target *pointer* in it which points to the enemy Spider-Man is looking at. The game uses a red arrow over Spider-Man’s current target.  To reference the health of a police officer you’ll need to follow the *pointer* from the players’ stats *pointer* to the player target *pointer*.  Fortunately it appears that Spider-Man and the police officers share the same data structure so the police officers health is ```+0xde``` from the address in the player’s target *pointer*.  The above functions simplify following the *pointer* addresses’ so you can use ```PlayerTargetHealth()``` as you would for regular memory.<br>
-
+<br>
 Scripts: [Example #5B script](Example_5B_Spider-Man.rascript) <br>
 ### Links
 [Tutorial #5](readme.md) <br>

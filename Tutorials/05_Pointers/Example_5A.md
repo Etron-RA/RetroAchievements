@@ -2,7 +2,7 @@
 # Example 5A: Get Over Here!
 Spider-Man has an impressive rogues gallery of animal based villains that he must stop to protect the citizens of New York.  In this achievement Scorpion is trying to settle a score with J. Jonah Jameson and Spider-Man is the only one who can save him.  As a challenge the web-slinging Spider-Man must defeat Scorpion without taking damage, letting Jameson take damage, or letting Scorpion find Jameson’s hiding place.<br>
  
-!(Spider-Man Vs. Scorpion)[Spiderman_Vs_Scorpion.png]
+![Spider-Man Vs. Scorpion](Spiderman_Vs_Scorpion.png)
 ```
 // Spider-Man
 // #ID = 11319
@@ -151,7 +151,7 @@ To make it easier to reference *pointers* you can write helper functions that ha
 ```
 function PlayerStatsNotNull() => dword(0x0B5640) != 0
 ```
-A *pointer* will be null (zero) before memory is allocated to it or after the memory has been released back to the operating system.  Its standard programming practice to check if a *pointer* is null before trying to access the memory it is pointing to.  It is also good practice to do the same when writing achievements otherwise you could be referencing the wrong memory.  For example, if the ```PlayerStatsPointer()``` was null the ```PlayerHealth()``` would be pointed to ```byte(0xDE)```.  To avoid this the function ```PlayerStatsNotNull()``` is used with the condition ``` PlayerStatsNotNull() && PlayerHealth() < prev(PlayerHealth()))``` to reset if a player has lost health.  Using a null check before referencing a pointer will save you many future headaches.
+A *pointer* will be null (zero) before memory is allocated to it or after the memory has been released back to the operating system.  Its standard programming practice to check if a *pointer* is null before trying to access the memory it is pointing to.  It is also good practice to do the same when writing achievements otherwise you could be referencing the wrong memory.  For example, if the ```PlayerStatsPointer()``` was null the ```PlayerHealth()``` would be pointed to ```byte(0xDE)```.  To avoid this the function ```PlayerStatsNotNull()``` is used with the condition ``` PlayerStatsNotNull() && PlayerHealth() < prev(PlayerHealth()))``` to reset if a player has lost health.  Using a null check before referencing a pointer will save you many future headaches.<br>
 <br>
 Scripts: [Example #5A script](Example_5A_Spider-Man.rascript) <br>
 ### Links
