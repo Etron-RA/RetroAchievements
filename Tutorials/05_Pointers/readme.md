@@ -30,7 +30,7 @@ Player Stats Data Structure
 Note that the *data structure* is incomplete and has many more variables that were not required for the achievements. When assigning a new *pointer* the address points to the root of the data structure at *data offset* 0x0.  If we want to know the address for Spider-Man’s health we would need to add 0xDE to the player stats *pointer*. Similarly, if we want to know who Spider-Man is targeting we would add 0xEE8 to the player stats *pointer*.  In this case we would have a double *pointer*, a *pointer* that points to another *pointer*, which is shown in [Example 5B](Example_5B.md).  One of the nice things about *data structures* is that since they group data together, once you find a useful memory address there will likely be other useful memory addresses around it.
 # Finding Pointers
 How do you know if you have a *pointer*? *Pointers* can change at any time but are usually set during a load sequence.  To find a *pointer* it’s best to dig memory in multiple game instances. If you notice that a memory address differs between instances you might have a *pointer* on your hands.  To find a pointer:
-1)	Make three or more save states and save a note for the memory address of interest in each state.  For this example we will be using three states.
+1)	Make three or more save states and save a note for the memory address of interest in each state.  For this example we will be using three states
 ```
 Mem_1 = Memory address in state 1
 Mem_2 = Memory address in state 2
@@ -43,7 +43,7 @@ MemDiff2_3 = Mem_3 – Mem_2
 ```
 3)	Start in state 1 and filter the memory for a 32-bit address (may be 16-bit for Mega Drive or SNES).
 4)	Continuously filter by "= Last Value" and play the game for a little bit to reduce the possible candidates
-5)	Turn off the continuous filter Switch to state 2 
+5)	Turn off the continuous filter and switch to state 2 
 ```
 If MemDiff1_2 > 0 then filter “Last Value Plus” by MemDiff1_2
 If MemDiff1_2 < 0 then filter “Last Value Minus” abs(MemDiff1_2)
@@ -53,7 +53,7 @@ If MemDiff1_2 < 0 then filter “Last Value Minus” abs(MemDiff1_2)
 If MemDiff2_3 > 0 then filter “Last Value Plus” by MemDiff2_3
 If MemDiff2_3 < 0 then filter “Last Value Minus” by abs(MemDiff2_3)
 ```
-7)	At this point you should have a couple of good *pointer* candidates. If not then you may need more than three save states. You can filter candidates further by using "constant <" the address of ```Mem_3``` (don't forget the memory prefixs for the system ie. 0x80, 0x90, 0xc0, etc...).
+7)	At this point you should have a couple of good *pointer* candidates. If not then you may need more than three save states. You can filter candidates further by using "constant <" the address of ```Mem_3``` (don't forget the memory prefixs for the system ie. 0x80, 0x90, 0xc0, etc...)
 8)	Select a pointer with the value that is a little less than the address of the memory you're testing.   The reason why it should be less is to account for the data structure of the memory ```Candidate = value of the pointer candidate```.
 9)	Figure out the *data offset* for the current memory by ```Data_Offset = Mem_3 - Candidate```
 10)	Make a small test achievement using the new *pointer* and *data offset* to check if it works for all the states. If we are testing a byte then the syntax would be ```byte(tbyte(Candidate) + Data_Offset)```
