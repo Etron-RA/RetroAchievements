@@ -41,22 +41,26 @@ Mem_3 = Memory address in state 3
 MemDiff1_2 = Mem_2 – Mem_1
 MemDiff2_3 = Mem_3 – Mem_2
 ```
-3)	Start in state 1 and filter the memory for a 32-bit address (may be 16-bit for Mega Drive or SNES).  *Pointers* are often aligned in memory so try using an aligned 32-bit filter if you have too many candidates.
-4)	Continuously filter by "= Last Value" and play the game for a little bit to reduce the possible candidates
-5)	Turn off the continuous filter and switch to state 2 
+3)	Start in state 1 and filter the memory for a 32-bit address (may be 16-bit for Mega Drive or SNES).
+4)	Switch to state 2 
 ```
 If MemDiff1_2 > 0 then filter “Last Value Plus” by MemDiff1_2
 If MemDiff1_2 < 0 then filter “Last Value Minus” abs(MemDiff1_2)
 ```
-6)	Switch to state 3 
+5)	Switch to state 3 
 ```
 If MemDiff2_3 > 0 then filter “Last Value Plus” by MemDiff2_3
 If MemDiff2_3 < 0 then filter “Last Value Minus” by abs(MemDiff2_3)
 ```
-7)	At this point you should have a couple of good *pointer* candidates. If not then you may need more than three save states. You can filter candidates further by using "constant <" the address of ```Mem_3``` (don't forget the memory prefixs for the system ie. 0x80, 0x90, 0xc0, etc...)
-8)	Select a pointer with the value that is a little less than the address of the memory you're testing.   The reason why it should be less is to account for the data structure of the memory ```Candidate = value of the pointer candidate```.
-9)	Figure out the *data offset* for the current memory by ```Data_Offset = Mem_3 - Candidate```
-10)	Make a small test achievement using the new *pointer* and *data offset* to check if it works for all the states. If we are testing a byte then the syntax would be ```byte(tbyte(Candidate) + Data_Offset)```
+6)	Continuously filter by ```= Last Value``` and play the game for a little bit to reduce the possible candidates (don't trigger a load scene or major event).
+7)	Turn off the continuous filter after the number of *pointer* candidates settles.
+8)	At this point you should have a couple of good *pointer* candidates. If you stil have too many candidates then try:
+	a)	More than three save states. 
+	b)	Filtering candidates further by using ```constant <``` the address of ```Mem_3``` (don't forget the memory prefixs for the system ie. 0x80, 0x90, 0xc0, etc...).
+	c)	An aligned 32-bit filter,  *Pointers* are usually aligned in memory.
+9)	Select a pointer with the value that is a little less than the address of the memory you're testing.  The reason why it should be less is to account for the data structure of the memory ```Candidate = value of the pointer candidate```.
+10)	Figure out the *data offset* for the current memory by ```Data_Offset = Mem_3 - Candidate```.
+11)	Make a small test achievement using the new *pointer* and *data offset* to check if it works for all the states. If we are testing a byte then the syntax would be ```byte(tbyte(Candidate) + Data_Offset)```.
 
 ### Links
 Tutorial #5<br>
