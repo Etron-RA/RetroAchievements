@@ -55,9 +55,9 @@ If MemDiff2_3 < 0 then filter “Last Value Minus” by abs(MemDiff2_3)
 6)	Continuously filter by ```= Last Value``` and play the game for a little bit to reduce the possible candidates (don't trigger a load scene or major event).
 7)	Turn off the continuous filter after the number of *pointer* candidates settles.
 8)	At this point you should have a couple of good *pointer* candidates. If you stil have too many candidates then try:
-	a)	More than three save states. 
-	b)	Filtering candidates further by using ```constant <``` the address of ```Mem_3``` (don't forget the memory prefixs for the system ie. 0x80, 0x90, 0xc0, etc...).
-	c)	An aligned 32-bit filter,  *Pointers* are usually aligned in memory.
+  a)	More than three save states. 
+  b)	Filtering candidates further by using ```constant <``` the address of ```Mem_3``` (don't forget the memory prefixs for the system ie. 0x80, 0x90, 0xc0, etc...).
+  c)	An aligned 32-bit filter,  *Pointers* are usually aligned in memory.
 9)	Select a pointer with the value that is a little less than the address of the memory you're testing.  The reason why it should be less is to account for the data structure of the memory ```Candidate = value of the pointer candidate```.
 10)	Figure out the *data offset* for the current memory by ```Data_Offset = Mem_3 - Candidate```.
 11)	Make a small test achievement using the new *pointer* and *data offset* to check if it works for all the states. If we are testing a byte then the syntax would be ```byte(tbyte(Candidate) + Data_Offset)```.
