@@ -1,0 +1,26 @@
+"Achievements": [
+	{
+		"ID": 308,
+		"MemAddr": "M:0x 00ef4e>d0x 00ef4e.200._R:0x 00ef82<d0x 00ef82",
+		"Title": "Untouchable",
+		"Description": "Defeat 200 enemies without dying",
+		"Points": 25,
+		"Author": "Scott",
+		"Modified": 1646199959,
+		"Created": 1366891640,
+		"BadgeName": "02302",
+		"Flags": 3
+	},
+	{
+		"ID": 55,
+		"MemAddr": "0xH00ef33=1.1._M:0x 00ef4e>d0x 00ef4e.10._R:0xH00ef37!=d0xH00ef37_R:0xH00ef33!=1",
+		"Title": "Steel Grip",
+		"Description": "Defeat 10 enemies without dropping your weapon",
+		"Points": 10,
+		"Author": "Scott",
+		"Modified": 1646199960,
+		"Created": 1352987132,
+		"BadgeName": "02306",
+		"Flags": 3
+	}
+]
