@@ -91,7 +91,7 @@ Scenes = {
     60:"in the Deltaur Jeffries Tube",
     61:"in the Deltaur Maintenance Room",
     62:"in the Deltaur Shuttle Room",
-    64:"on the Earnon Homeworld",
+    64:"on the Xenon Homeworld",
     65:"looking at Star Generator Keypad",
     67:"looking at Title Screen",
     70:"in the Ulence Flats Bar",
