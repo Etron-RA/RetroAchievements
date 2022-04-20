@@ -431,7 +431,7 @@ function BeatGame(name, description, points, lowScore, highScore)
 }
 BeatGame("Homeworld Saved!","Beat the game", 25, 0, 205)
 BeatGame("Space Hero!","Beat the game with a perfect score of 202 points", 25, 202, 205)
-BeatGame("Hero on a Budget!","Beat the game with a score of 165 points or less", 25, 0, 165)
+BeatGame("Hero on a Budget!","Beat the game with a score of 170 points or less", 25, 0, 170)
 
 // -----------------------------------------------------------------------------
 // Leaderboards
@@ -473,7 +473,7 @@ function DesertSurvivlist(name, description)
 {
     // Starts when crash lands on Kerona
     fromViewingKerona = prev(Scene()) == 0x0d
-    toCrashedPod = Scene() == 0x0e
+    toCrashedPod = Scene() == 0x1e
     start = DebugInactive() && fromViewingKerona && toCrashedPod
    
     // Cancel on debug menu, starting new game, or restoring a game   
@@ -489,7 +489,7 @@ function DesertSurvivlist(name, description)
     
     leaderboard(name, description, start, cancel, submit, measure, format="VALUE", lower_is_better=true)
 }
-DesertSurvivlist("Desert Survivlist", "Least amount of water lost in the Kerona Desert (cancels on game restore)")
+DesertSurvivlist("Desert Survivalist", "Least amount of water lost in the Kerona Desert (cancels on game restore)")
 
 // [8-bit] BuckAZoids count (Var 124 - 0-255)
 function BuckAZoids() => byte(Variable(124))
