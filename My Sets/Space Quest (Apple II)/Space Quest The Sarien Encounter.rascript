@@ -1,8 +1,6 @@
 // Space Quest: The Sarien Encounter
 // #ID = 18951
 
-// $002f: [8-bit] Loading (restore game 0xff => 0x7f)
-function Disk() => byte(0x2f)
 
 // $0EAF: [8-bit] Objects (0 = None, 0xff = In Inventory)
 function Object(objNumber)
@@ -12,8 +10,11 @@ function Object(objNumber)
     return byte(startAddress + offsetAddress)
 }
 
-// $89D1[8-bit] Restore Game (0xe3 = Saving, 0x3 = Loading)
+// $89D1: [8-bit] Restore Game (0xe3 = Saving, 0x3 = Loading)
 function LoadingGame() => byte(0x89D1) == 3
+
+// $928F: [8-bit] Disk Number (0x1-0x8 =>0xf save game)
+function Disk() => byte(0x928f)
 
 // $FEE0: [32 bytes] Flags 0-255 (each bit is big endian so flag 0 = byte 0.7, flag 1 = byte 0.6, ..., flag 255 byte 32.0)
 function Flag(flagNumber)
