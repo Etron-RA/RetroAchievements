@@ -12,7 +12,6 @@ function Object(objNumber)
     return byte(startAddress + offsetAddress)
 }
 
-
 // $89D1[8-bit] Restore Game (0xe3 = Saving, 0x3 = Loading)
 function LoadingGame() => byte(0x89D1) == 3
 
@@ -27,7 +26,6 @@ function Flag(flagNumber)
 
 // $FF00: [256 bytes] Variables 0-255
 function Variable(varNumber) => 0x00FF00 + varNumber
-
 
 //-----------------------------------------------------------------------------
 // Look ups
@@ -298,7 +296,7 @@ function HardNegotiator(name, description, points)
 }
 HardNegotiator("Hard Negotiator!","Make a good trade for the Skimmer", 2)
 
-// See all of the baNorth, Drallion model cruiser
+// See all of the bands in the Ulence Flats bar
 function XenoCultured(name, description, points)
 {
     delay = 3600
@@ -359,17 +357,16 @@ SarienFlagship("Sarien Flagship!","Find the Deltaur", 10)
 // Sneek on to the Deltaur
 function SolidRoger(name, description, points)
 {
-    fromShipExterior = prev(Scene()) == 0x2d
-    toShipInterior = Scene() == 0x3d
+    fromShipExterior = prev(Scene()) == 0x34
+    toShipInterior = Scene() == 0x35
     
     achievement(name, description, points, DebugInactive() && fromShipExterior && toShipInterior)  
 }
 SolidRoger("Solid Roger!","Sneak into the Deltaur", 3)
 
-// Sneek on to the Deltaur
+// Change in to a Sarien Uniform
 function BustonFreem(name, description, points)
-{
-    
+{    
     laundryRoom = Scene() == 0x35
     suitType = byte(Variable(81))
     changeSarienUniform = prev(suitType) <= 2 && suitType == 3
@@ -378,10 +375,10 @@ function BustonFreem(name, description, points)
 }
 BustonFreem("Buston Freem!","Wear a Sarien Uniform", 5)
 
-// Sneek on to the Deltaur
+// Say yes to play KQ2
 function SirRoger(name, description, points)
 {
-    onDeltaur = Scene() >= 42 && Scene() <= 62
+    onDeltaur = Scene() >= 0x2a && Scene() <= 0x3e
     askedAboutKQ2 = prev(Flag(218)) > Flag(218)
     hasPlayedKQ2 = prev(Flag(206)) < Flag(206)
     
@@ -389,6 +386,7 @@ function SirRoger(name, description, points)
 }
 SirRoger("Sir Roger of Wilco!","Admit to having played other Sierra Adventure games", 5)
 
+// Enter the self-destruct sequence
 function AppetiteForDestruction(name, description, points)
 {
     atStarGeneratorPanel = Scene() == 0x41
@@ -398,16 +396,18 @@ function AppetiteForDestruction(name, description, points)
 }
 AppetiteForDestruction("Appetite for Destruction!","Enter the self destruct code into the Star Generator", 5)
 
+// Shoot a Sarien soilder
 function SpaceWarrior(name, description, points)
 {
-    onDeltaur = Scene() >= 42 && Scene() <= 62
+    onDeltaur = Scene() >= 0x2a && Scene() <= 0x3e
     hasPulseray = Object(15) == 0xff
-    shotSarine = prev(Flag(207)) < Flag(207)
+    shotSarien  = prev(Flag(207)) < Flag(207)
     
-    achievement(name, description, points, DebugInactive() && onDeltaur && hasPulseray && shotSarine) 
+    achievement(name, description, points, DebugInactive() && onDeltaur && hasPulseray && shotSarien) 
 }
 SpaceWarrior("Space Warrior!","Shoot a Sarien Solider", 3)
 
+// Don't shoot anyone while escaping the Deltaur
 function SpacePaficst(name, description, points)
 {
     hasPulseray = Object(15) == 0xff
@@ -417,8 +417,9 @@ function SpacePaficst(name, description, points)
     
     achievement(name, description, points, DebugInactive() &&  peaceful && hasPulseray && trigger_when(fromShuttleBay && toEscape)) 
 }
-SpacePaficst("Space Paficst!","Escape the Deltaur without shooting anybody", 10)
+SpacePaficst("Space Pacifist!","Escape the Deltaur without shooting anybody", 10)
 
+// Beat the game with a certain score
 function BeatGame(name, description, points, lowScore, highScore)
 {
     pointsRange = Points() >= lowScore && Points() <= highScore 
@@ -430,7 +431,7 @@ function BeatGame(name, description, points, lowScore, highScore)
 }
 BeatGame("Homeworld Saved!","Beat the game", 25, 0, 205)
 BeatGame("Space Hero!","Beat the game with a perfect score of 202 points", 25, 202, 205)
-BeatGame("Hero on a Budget!","Beat the game with a score of a 165 points or less", 25, 0, 165)
+BeatGame("Hero on a Budget!","Beat the game with a score of 165 points or less", 25, 0, 165)
 
 // -----------------------------------------------------------------------------
 // Leaderboards
@@ -500,9 +501,8 @@ function BuckAZillionair(name, description)
     arrivedAtUlenceFlats = prev(Flag(32)) < Flag(32)
     start = DebugInactive() && ulenceFlats && arrivedAtUlenceFlats
     
-    // Cancel on debug menu, starting new game, or restoring a game   
-    cancel = DebugActive() || StartGame()
-    
+    // Cancel on debug menu or starting new game  
+    cancel = DebugActive() || StartGame()    
     
     // Submits when you arrive at the deltaur
     fromShipView = prev(Scene()) == 0x29
@@ -519,7 +519,7 @@ function BuckAZillionair(name, description)
 }
 BuckAZillionair("Buck-A-Zillionair", "Make the most Buck-A-Zoids after arriving at the Ulence Flats (submits on game restore or leaving Ulence Flats)")
 
-// Countdown to destruction of the star generator
+// [16-bit] Countdown to destruction of the star generator
 function SelfDestructLow() => byte(Variable(145))
 function SelfDestructHigh() => byte(Variable(144))
 function SelfDestruct() => SelfDestructHigh() * 256 + SelfDestructLow()
@@ -541,10 +541,10 @@ function DetlaurEscape(name, description)
     
     // Count the countdown timer x4 to get a more accurate time
     measure = tally(0,
-        prev(SelfDestruct()) != SelfDestruct(),
-        prev(SelfDestruct()) != SelfDestruct(),
-        prev(SelfDestruct()) != SelfDestruct(),
-        prev(SelfDestruct()) != SelfDestruct()
+        prev(SelfDestructLow()) != SelfDestructLow(),
+        prev(SelfDestructLow()) != SelfDestructLow(),
+        prev(SelfDestructLow()) != SelfDestructLow(),
+        prev(SelfDestructLow()) != SelfDestructLow()
     )
        
     leaderboard(name, description, start, cancel, submit, measure, format="MILLISECS", lower_is_better=true)
@@ -553,7 +553,7 @@ DetlaurEscape("Quick Escape Artist II", "Quickest time to escape the Deltaur aft
 
 // -----------------------------------------------------------------------------
 // Rich Presence
-rich_presence_conditional_display(DebugActive(), "Roger Wilco is in the debug menu! Achievements deactivated, restart the emulator to re-activate")
+rich_presence_conditional_display(DebugActive(), "Roger Wilco is in the debug menu, achievements deactivated!")
 
 rich_presence_display("Roger Wilco is {0} with {1} points", 
     rich_presence_lookup("Scenes", Scene(), Scenes, "is loading"),
