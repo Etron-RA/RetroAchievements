@@ -391,16 +391,16 @@ function CompletionAchievement(name, stage, difficulty, points)
     
     // Add condition for the passed stage
     if (stage == 1) trigger = trigger && CompletedStage1()
-    elseif (stage == 2) trigger = trigger && CompletedStage2()
-    elseif (stage == 3) trigger = trigger && CompletedStage3()
-    elseif (stage == 4) trigger = trigger && CompletedStage4()
-    elseif (stage == 5) trigger = trigger && CompletedStage5()
-    elseif (stage == 6) trigger = trigger && CompletedStage6()
+    else if (stage == 2) trigger = trigger && CompletedStage2()
+    else if (stage == 3) trigger = trigger && CompletedStage3()
+    else if (stage == 4) trigger = trigger && CompletedStage4()
+    else if (stage == 5) trigger = trigger && CompletedStage5()
+    else if (stage == 6) trigger = trigger && CompletedStage6()
     
     // Add condition for the difficulty level
     if (difficulty == "easy") trigger = trigger && Easy()
-    elseif (difficulty == "normal") trigger = trigger && Normal()
-    elseif (difficulty == "hard") trigger = trigger && Hard()
+    else if (difficulty == "normal") trigger = trigger && Normal()
+    else if (difficulty == "hard") trigger = trigger && Hard()
     
     achievement(name, description, points, trigger)
 }

@@ -40,7 +40,7 @@ function TetrisMap(map)
             if cell == NE 
                 // If any cell then test not empty
                 trigger = trigger && Cell(x,y) != MT
-            elseif cell != NO 
+            else if cell != NO 
                 // If not ignoring cell then test for current cell value
                 trigger = trigger && Cell(x,y) == cell
         }
