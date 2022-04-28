@@ -11,7 +11,7 @@ If (number < 5)
 }
 else
 {
-    // Execute this block of code if the number is greater than or equal to 
+    // Execute this block of code if the number is greater than or equal to 5
 }
 ```
 Note that if the block of code is only one line the curly brackets can be omitted. 
