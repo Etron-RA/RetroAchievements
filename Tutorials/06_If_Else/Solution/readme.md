@@ -1,3 +1,8 @@
+# Tutorial #6 Solution
+A) For this example we chose the “Tetris Deluxe” pattern which requires you to fill the bottom 4 rows with vertically stacked ‘I’ beams.  The ‘I’ beam is the most important Tetrimino type in the game since it is the only Tetrimino that can make a **Tetris** (clearing four lines at once). Note that the top, middle, and bottom cells of the ‘I’ beam are all different.  All of the other Tetrimino types share the same cell for every part of the block.<br> 
+![Tetris DX screenshot of a the Tetris Deluxe pattern](Tetris_DX_Deluxe.png)<br>
+B) Source code for “Tetris Deluxe” pattern.<br>
+```
 // Tetris DX
 // #ID = 4939
 
@@ -48,7 +53,7 @@ function TetrisMap(map)
     return all_of(mapArray, a => a)
 }
 
-grandmaster= [
+deluxe = [
     [NO,NO,NO,NO,NO,NO,NO,NO,NO,NO],
     [NO,NO,NO,NO,NO,NO,NO,NO,NO,NO],
     [NO,NO,NO,NO,NO,NO,NO,NO,NO,NO],
@@ -58,21 +63,29 @@ grandmaster= [
     [NO,NO,NO,NO,NO,NO,NO,NO,NO,NO],
     [NO,NO,NO,NO,NO,NO,NO,NO,NO,NO],
     [NO,NO,NO,NO,NO,NO,NO,NO,NO,NO],
-    [NE,NE,NE,NE,NE,NE,NE,NE,NE,MT],
-    [NE,NE,NE,NE,NE,NE,NE,NE,MT,NE],
-    [NE,NE,NE,NE,NE,NE,NE,MT,NE,NE],
-    [NE,NE,NE,NE,NE,NE,MT,NE,NE,NE],
-    [NE,NE,NE,NE,NE,MT,NE,NE,NE,NE],
-    [NE,NE,NE,NE,MT,NE,NE,NE,NE,NE],
-    [NE,NE,NE,MT,NE,NE,NE,NE,NE,NE],
-    [NE,NE,MT,NE,NE,NE,NE,NE,NE,NE],
-    [NE,MT,NE,NE,NE,NE,NE,NE,NE,NE],
-    [MT,NE,NE,NE,NE,NE,NE,NE,NE,NE]
+    [NO,NO,NO,NO,NO,NO,NO,NO,NO,NO],
+    [NO,NO,NO,NO,NO,NO,NO,NO,NO,NO],
+    [NO,NO,NO,NO,NO,NO,NO,NO,NO,NO],
+    [NO,NO,NO,NO,NO,NO,NO,NO,NO,NO],
+    [NO,NO,NO,NO,NO,NO,NO,NO,NO,NO],
+    [NO,NO,NO,NO,NO,NO,NO,NO,NO,NO],
+    [VT,VT,VT,VT,VT,VT,VT,VT,VT,VT],
+    [VM,VM,VM,VM,VM,VM,VM,VM,VM,VM],
+    [VM,VM,VM,VM,VM,VM,VM,VM,VM,VM],
+    [VB,VB,VB,VB,VB,VB,VB,VB,VB,VB]
 ]
 
 achievement(
-    title = "Example 6B: Not Quite a Grandmaster",
-    description = "Perform the secret grade grandmaster build up to the opposite wall", 
-    points = 25,
-    trigger = TetrisMap(grandmaster)
+    title = "Example 6C: Tetris Deluxe", 
+    description = "Get a Tetris by hoarding vertical I pieces in the bottom 4 blocks",
+    points = 10,
+    trigger = TetrisMap(deluxe)
 )
+```
+
+[Complete Example #6C with the above solution](Example_6C_Tetris_DX.rascript)<br>
+### Links
+[Tutorial #6](../readme.md)<br>
+[Example #6A](../Example_6A.md)<br>
+[Example #6B](../Example_6B.md)<br>
+[Example #6C](../Example_6C.md)

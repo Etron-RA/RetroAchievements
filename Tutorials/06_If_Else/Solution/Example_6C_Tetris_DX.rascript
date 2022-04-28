@@ -30,7 +30,7 @@ NO = 0x0  // Nothing (ignore)
 // Build a set of conditions to test for the passed map
 function TetrisMap(map)
 {
-    trigger = always_true()
+    mapArray = []
     for y in range(0,18)
     {
         for x in range(0,9)
@@ -39,13 +39,13 @@ function TetrisMap(map)
             cell = map[y][x]            
             if cell == NE 
                 // If any cell then test not empty
-                trigger = trigger && Cell(x,y) != MT
+                array_push(mapArray, Cell(x,y) != MT)
             else if cell != NO 
                 // If not ignoring cell then test for current cell value
-                trigger = trigger && Cell(x,y) == cell
+                array_push(mapArray, Cell(x,y) == cell)
         }
     }
-    return trigger
+    return all_of(mapArray, a => a)
 }
 
 deluxe = [
