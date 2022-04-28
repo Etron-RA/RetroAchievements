@@ -87,7 +87,8 @@ To test for the Grandmaster build a two-dimensional array (an array of arrays) i
 * ```NE``` then the cell must have a block in it but it can be any type of block
 * ```MT``` then cell must be empty
 * ```NO``` then cell is ignored so it can be any block or empty
-* Otherwise the cell value must match what is in the array<br>
+* Otherwise the cell value must match what is in the array
+## Data and Memory Alignment
 To align the two-dimensional array with the in-game memory the function ```Cell(x,y)``` takes in a x,y coordinate and returns the byte of memory for that cell.  When reading the desired value from the two-dimensional you can access the array by index ```map[y][x]```.  Note that the x and y are reversed for the array access.  This is because the array is define as an array of rows where ```row = map[y]``` gets you the array at row y. To get the cell value from the row you would need to index ```cell = row[x]``` which is the equivalent of ```map[y][x]```.  This is just one method for building this achievement, as the designer you can define the array configuration differently or use an entirely different method.
 ## all_of
 Because the ```TetrisMap()``` function is data driven we don’t know exactly how many conditions are needed until the function is called.  The conditions are then built up for any cell that is not ignored (any cell not equal to ```NO```).  An empty array ```mapArray[]``` is defined at the top of the function and all the not ignored cell conditions are pushed on to the array.  At the end of the function the ```all_of``` command takes the array of conditions and returns a single condition with everything &&’d together.  Similarly, the ```any_of``` command will take in an array and will ||’d together each condition.  The conditions could have been built using a similar method as [Example 6A](Example_6A.md) with ```trigger = trigger && condition``` however, the ```all_of``` is more concise.<br>
