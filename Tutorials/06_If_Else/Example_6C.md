@@ -4,7 +4,7 @@ The ultimate goal of Tetris is survival since the blocks will fall faster as the
 ![Tetris DX screenshot of a question mark](Tetris_DX_Question_Mark.png)<br>
  
 ## Homework #6
-A) Design a 10x19 Tetris pattern<\br>
+A) Design a 10x19 Tetris pattern<br>
 B) Use the code from [Example 6B](Example_6B.md) as a guide and replace the Tetris array map with the pattern defined in part A.<br>
 <br>
 Solutions: [Tutorial #6 Solution](./Solution/readme.md)<br>
