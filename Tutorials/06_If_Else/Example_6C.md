@@ -1,4 +1,3 @@
-# Example #6C - 
 # Example 6C: Pattern Design
 The ultimate goal of Tetris is survival since the blocks will fall faster as the game goes on giving you less time to react.  Being able to quickly recognize patterns can improve your ability to play at the high levels.  As such being able to create pre-defined patterns is the hallmark of a great Tetris player!<br>
 ![Tetris DX screenshot of a question mark](Tetris_DX_Question_Mark.png)<br>

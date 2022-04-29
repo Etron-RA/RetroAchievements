@@ -9,7 +9,7 @@ The RAScript Tutorials series of coding by example tutorials to complement the [
 * [**Bitflags**](/Tutorials/03_Bitflags/readme.md): Examples of counting bit flags with For Loops - Example Game: Pokémon Red | Blue
 * [**Arithmetic Operations**](/Tutorials/04_Arithmetic_Operations/readme.md): Examples of using arithmetic functions to convert values from Binary-Coded Decimal (BCD) - Example Game: Pitfall!
 * [**Pointers**](/Tutorials/05_Pointers/readme.md): Examples of pointer use and data structures - Example Game: Spider-Man
-* **If/if else/else**: Examples of using logic conditions to build an achievement - *? Game with different level completion conditions for first, middle, and last level*
+* [**If/if else/else**](/Tutorials/06_If_else/readme.md): Examples of using logic conditions to build an achievement - Example Game: Tetris DX
 * **Condition building**: Examples of building conditions - *? Game with cheat protection, difficulty checks, and variable amount of logic.*
 * **Measures**: Examples of adding a measure to an existing achievement - *? Possibly Sonic Rings and Street of Rage 2 Score*
 * **Triggers**: Examples of challenges - Mega man damageless, Mario speedrun

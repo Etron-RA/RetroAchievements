@@ -1,5 +1,5 @@
 # Example 6A: 40 Lines Mode
-Tetris is a puzzle game where the main goal is to rotate and align the falling Tetriminos to create a solid horizontal line. When a solid horizontal line is made the game will remove the line from the board and award points depending on how many lines were cleared at once. The 40 Lines Mode in [Tetris DX](https://retroachievements.org/game/4939) is a special mode were you must complete 40 lines at various starting heights and speeds. The higher the starting height and/or speed the more difficult the challenge is.<br>
+Tetris is a puzzle game where the main goal is to rotate and align the falling Tetriminos to create a solid horizontal line. When a solid horizontal line is made the game will remove the line from the board and award points depending on how many lines were cleared at once. The 40 Lines Mode in [Tetris DX](https://retroachievements.org/game/4939) is a special mode where you must complete 40 lines at various starting heights and speeds. The higher the starting height and/or speed the more difficult the challenge is.<br>
 ![Tetris DX screen of 40 lines mode at 5 starting height](Tetris_DX_40Lines.png)<br>
 ```
 // Tetris DX
