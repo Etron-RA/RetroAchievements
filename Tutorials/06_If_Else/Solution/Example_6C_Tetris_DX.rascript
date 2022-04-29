@@ -37,10 +37,10 @@ function TetrisMap(map)
         {
             // Get the value of current cell
             cell = map[y][x]            
-            if cell == NE 
+            if (cell == NE)
                 // If any cell then test not empty
                 array_push(mapArray, Cell(x,y) != MT)
-            else if cell != NO 
+            else if (cell != NO) 
                 // If not ignoring cell then test for current cell value
                 array_push(mapArray, Cell(x,y) == cell)
         }

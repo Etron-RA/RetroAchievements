@@ -5,7 +5,7 @@ This tutorial will show a few examples of how to create achievements using the *
 ## Logical Constructs
 **Logical constructs** allow you to control which blocks of code are executed.  The block of code that gets executed depends on value of the test condition. The test condition must be a **Boolean** value meaning the result is either **true** or **false**.  The *RATools* wiki has more information on how to use [Logical Constructs](https://github.com/Jamiras/RATools/wiki/Logical-Constructs).  For the following example assume a *number* that is randomly selected between 0 and 10. Depending on the value of the *number* different blocks of the code will be executed if number is between less than 5 or greater than or equal to 5.
 ```
-if number < 5
+if (number < 5)
 {
     // Execute this block of code if the number is less than 5
 }
@@ -16,13 +16,13 @@ else
 ```
 Note that if the block of code is only one line the curly brackets can be omitted. You can also omit the **else** clause altogether if it's not needed.  The **else** and **if** clauses can be chained together to make more complicated conditionals.  For the following example assume a *number* that is randomly selected between 0 and 3.  To execute a different block of code for each *number*:
 ```
-if number == 0
+if (number == 0)
     // Execute this block of code if the number is 0
-else if number == 1
+else if (number == 1)
 	// Execute this block of code if the number is 1
-else if number == 2
+else if (number == 2)
 	// Execute this block of code if the number is 2
-else if number == 3
+else if (number == 3)
 	// Execute this block of code if the number is 3
 ```
 ## Compile Time vs. Runtime
