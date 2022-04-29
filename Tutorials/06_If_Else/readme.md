@@ -19,11 +19,11 @@ Note that if the block of code is only one line the curly brackets can be omitte
 if (number == 0)
     // Execute this block of code if the number is 0
 else if (number == 1)
-	// Execute this block of code if the number is 1
+    // Execute this block of code if the number is 1
 else if (number == 2)
-	// Execute this block of code if the number is 2
+    // Execute this block of code if the number is 2
 else if (number == 3)
-	// Execute this block of code if the number is 3
+    // Execute this block of code if the number is 3
 ```
 ## Compile Time vs. Runtime
 A very important thing to note about **logical constructs** in *RAScripts* is that they are **Compile Time** operations!  Being **Compile Time** means that the *RAScript* code is ran once in *RATools* where it is translated into the achievement code used by *RALibretro* and other emulators. As a result, you **cannot** used emulation memory values for **logical constructs** since that memory does not exist when the *RAScript* is compiled. Conversely, the achievement code is ran at **Runtime** meaning that it is ran with the emulator and has access to the emulator’s memory values.  This might be a confusing point if you are new to the world of programming, just know that if you are having an issue with a **logical construct** it may be that you are trying to access emulator memory with it.
