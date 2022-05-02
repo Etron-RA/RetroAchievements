@@ -152,7 +152,7 @@ array_push(enemyHitOffset, once(prev(Score()) != Score()))
 array_push(enemyHitOffset, once(prev(Score()) != Score()))
 
 leaderboard("Expert Shot",
-    "Most amounts of enemies shot down without missing one (starts at 5)", 
+    "Most enemies shot down without missing one (starts at 5)", 
     tally(5,EnemyHit()) && all_of(OrGameOver(EnemyMiss()), s => never(s)), 
     always_false(),
     any_of(OrGameOver(EnemyMiss()), s => s),
