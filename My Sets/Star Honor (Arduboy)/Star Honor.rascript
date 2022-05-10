@@ -193,7 +193,7 @@ achievement("Star Fighter","Win 5 combat encounters", 2, CombatSuccessCount(5))
 achievement("Star Warrior","Win 10 combat encounters", 3, CombatSuccessCount(10))
 achievement("Star Conqueror","Win 20 combat encounters", 5, CombatSuccessCount(20))
 
-achievement("Planetary Defense","Win combat with a planet that has 13 or more defense", 5, StrongPlanetChallenge(13))
+achievement("Planetary Defense","Win combat with a planet that has 12 or more defense", 5, StrongPlanetChallenge(12))
 achievement("Crystalline Entity","Collect 6 or more crystals at once", 5, InGame() && Completion(Crystals(), 6))
 achievement("Space Diplomacy","Make contact every planet in a sector (do not run away)", 5, InGame() && Completion(SumContacts(), 10))
 
