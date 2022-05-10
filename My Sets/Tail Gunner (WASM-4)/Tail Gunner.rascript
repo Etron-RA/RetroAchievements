@@ -114,14 +114,14 @@ achievement("Wing Commander","Score higher than 500", 4, GameActive() && ScoreRa
 achievement("Air Marshal","Score higher than 1000", 5, GameActive() && ScoreRange(900, 1000))
 
 achievement("Led Zeppelin","Shoot down 5 zeppelins", 2, never(GameOver()) && GameActive() &&  tally(5,EnemyHit(zeppelin)))
-achievement("Wing to Wing","Shoot down 5 dual planes", 3, never(GameOver()) && GameActive() && tally(5,EnemyHit(dual_plane)))
+achievement("Wing to Wing","Shoot down 5 dual planes", 5, never(GameOver()) && GameActive() && tally(5,EnemyHit(dual_plane)))
 
 achievement("Thwarted Escape","Shoot down 8 enemies without any escaping", 2, NoMissChallenge(8))
 achievement("The Dead Tell No Secrets","Shoot down 16 enemies without any escaping", 3, NoMissChallenge(16))
 achievement("Don't Let a Single One Escape","Shoot down 24 enemies without any escaping", 5, NoMissChallenge(24))
 
-achievement("Peace Keeper","Survive for 1 minute from the start without shooting down anyone", 2, PacifistChallenge(60 * 60))
-achievement("Pacifist","Survive for 2 minutes from the start without shooting down anyone", 3, PacifistChallenge(2 * 60 * 60))
+achievement("Peace Keeper","Survive for 1 minute from the start without shooting down anyone", 3, PacifistChallenge(60 * 60))
+achievement("Pacifist","Survive for 2 minutes from the start without shooting down anyone", 10, PacifistChallenge(2 * 60 * 60))
 
 //----------------------------------------------------------------
 // Leaderboards
@@ -152,8 +152,8 @@ array_push(enemyHitOffset, once(prev(Score()) != Score()))
 array_push(enemyHitOffset, once(prev(Score()) != Score()))
 
 leaderboard("Expert Shot",
-    "Most enemies shot down without missing one (starts at 5)", 
-    tally(5,EnemyHit()) && all_of(OrGameOver(EnemyMiss()), s => never(s)), 
+    "Most enemies shot down without any escaping (starts at 8)", 
+    tally(8,EnemyHit()) && all_of(OrGameOver(EnemyMiss()), s => never(s)), 
     always_false(),
     any_of(OrGameOver(EnemyMiss()), s => s),
     tally(0,enemyHitOffset),
