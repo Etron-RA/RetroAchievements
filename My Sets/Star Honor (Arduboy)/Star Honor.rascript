@@ -184,7 +184,7 @@ achievement("Faster Than Light","Warp from the second system", 2, WarpSector(3))
 achievement("Half Way Home","Warp from the third system", 3, WarpSector(4))
 achievement("Space Odyssey","Warp from the fourth system", 4, WarpSector(5))
 achievement("Extraterrestrial Expedition","Warp from the fifth system", 5, WarpSector(6))
-achievement("Cure the Phage","Beat the game", 5, GameWin())
+achievement("Cure the Phage","Beat the game", 5, WarpSector(7))
 
 achievement("Two Minutes to Midnight","Beat the game with 2:00 or more left on the countdown", 10, TimeChallenge(2))
 achievement("Expendable Crew","Beat the game without reviving the crew", 10, RedShirtChallenge())
@@ -208,7 +208,7 @@ leaderboard(
     GameWin(),
     Frames(),
     "FRAMES",
-    true
+    false
 )
 
 leaderboard(
