@@ -23,6 +23,7 @@ function Lives() => byte(0x0000A6)
 function StageClear() => byte(0x0000BB) == 1
 
 // Uses once to start the challenge, never to cancel the challenge, and trigger_when to submit challenge
+// Each of the parameters are arrays of conditions
 function Challenge(start, cancel, submit)
 {
     return any_of(start, s => once(s)) && 

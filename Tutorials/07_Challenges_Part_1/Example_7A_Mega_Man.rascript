@@ -2,7 +2,7 @@
 // #ID = 1448
 
 // $001B: Universal stage scrolling progress big parts
-function StageBoss() => byte(0x00001B) == 22
+function StageBombmanBoss() => byte(0x00001B) == 22
 
 // $0031: Stage id
 function StageID() => byte(0x000031)
@@ -17,6 +17,7 @@ function Health() => byte(0x00006A)
 function StageClear() => byte(0x0000BB) == 1
 
 // Uses once to start the challenge, never to cancel the challenge, and trigger_when to submit challenge
+// Each of the parameters are arrays of conditions
 function Challenge(start, cancel, submit)
 {
     return any_of(start, s => once(s)) && 
@@ -24,8 +25,8 @@ function Challenge(start, cancel, submit)
         all_of(submit, s => trigger_when(s))
 }
 
-// Start at the beginning of the stage
-bombmanDamagelessStart = [StageBoss()]
+// Start at the beginning of the Bombman boss fight
+bombmanDamagelessStart = [StageBombmanBoss()]
 
 // Cancel if not Bombman Stage, health lost, or the pause glitch used
 bombmanDamagelessCancel = [
