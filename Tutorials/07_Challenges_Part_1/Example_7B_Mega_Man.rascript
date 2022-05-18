@@ -22,33 +22,22 @@ function Lives() => byte(0x0000A6)
 // $00BB: Stage clear flag
 function StageClear() => byte(0x0000BB) == 1
 
-// Uses once to start the challenge, never to cancel the challenge, and trigger_when to submit challenge
-// Each of the parameters are arrays of conditions
-function Challenge(start, cancel, submit)
-{
-    return any_of(start, s => once(s)) && 
-        all_of(cancel, c => never(c)) && 
-        all_of(submit, s => trigger_when(s))
-}
-
 // Start at the beginning of the stage
-bombmanDeathlessStart = [StageStart()]
+bombmanDeathlessStart = once(StageStart())
 
 // Cancel if not Bombman Stage, on stage selection screen, life lost, pause glitch used, or magnet gun used
-bombmanDeathlessCancel = [
-    StageID() != 2, 
-    StageSelect(), 
-    prev(Lives()) > Lives(), 
-    SolidPause(), 
-    prev(MagnetBeamAmmo()) > MagnetBeamAmmo()
-]
+bombmanDeathlessCancel = never(StageID() != 2) && 
+    never(StageSelect()) && 
+    never(prev(Lives()) > Lives()) &&
+    never(SolidPause()) && 
+    never(prev(MagnetBeamAmmo()) > MagnetBeamAmmo())
 
 // Submit when the stage is cleared
-bombmanDeathlessSubmit = [StageClear()]
+bombmanDeathlessSubmit = trigger_when(StageClear())
 
 achievement(
     title = "Example 7B: MM1 Survivalist I (Bombman)", 
     description = "Complete Bombman's Stage without losing a life, pausing, or Magnet Beam (Weapon Menu is OK)", 
     points = 5,    
-    trigger = Challenge(bombmanDeathlessStart, bombmanDeathlessCancel, bombmanDeathlessSubmit)
+    trigger = bombmanDeathlessStart && bombmanDeathlessCancel && bombmanDeathlessSubmit
 )

@@ -16,31 +16,20 @@ function Health() => byte(0x00006A)
 // $00BB: Stage clear flag
 function StageClear() => byte(0x0000BB) == 1
 
-// Uses once to start the challenge, never to cancel the challenge, and trigger_when to submit challenge
-// Each of the parameters are arrays of conditions
-function Challenge(start, cancel, submit)
-{
-    return any_of(start, s => once(s)) && 
-        all_of(cancel, c => never(c)) && 
-        all_of(submit, s => trigger_when(s))
-}
-
 // Start at the beginning of the Bombman boss fight
-bombmanDamagelessStart = [StageBombmanBoss()]
+bombmanDamagelessStart = once(StageBombmanBoss())
 
 // Cancel if not Bombman Stage, health lost, or the pause glitch used
-bombmanDamagelessCancel = [
-    StageID() != 2, 
-    Health() < prev(Health()), 
-    SolidPause()
-]
+bombmanDamagelessCancel = never(StageID() != 2) &&
+    never(Health() < prev(Health())) &&
+    never(SolidPause())
 
 // Submit when the stage is cleared
-bombmanDamagelessSubmit = [StageClear()]
+bombmanDamagelessSubmit = trigger_when(StageClear())
 
 achievement(
     title = "Example 7A: Blue Bomber",
     description = "Defeat Bombman without taking damage (pause glitch not allowed)", 
     points = 10,
-    trigger = Challenge(bombmanDamagelessStart, bombmanDamagelessCancel, bombmanDamagelessSubmit)
+    trigger = bombmanDamagelessStart && bombmanDamagelessCancel && bombmanDamagelessSubmit
 )

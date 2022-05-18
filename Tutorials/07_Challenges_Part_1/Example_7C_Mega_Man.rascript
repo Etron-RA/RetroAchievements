@@ -34,37 +34,27 @@ function MagnetBeamAmmo() => byte(0x000071)
 // $00BB: Stage clear flag
 function StageClear() => byte(0x0000BB) == 1
 
-// Uses once to start the challenge, never to cancel the challenge, and trigger_when to submit challenge
-// Each of the parameters are arrays of conditions
-function Challenge(start, cancel, submit)
-{
-    return any_of(start, s => once(s)) && 
-        all_of(cancel, c => never(c)) && 
-        all_of(submit, s => trigger_when(s))
-}
-
 // Start at the beginning of the stage
-bombmanBusterStart = [StageStart()]
+bombmanBusterStart = once(StageStart())
 
 // Cancel if not Bombman Stage, on stage selection screen, or any weapon other than the Mega Buster is used
-bombmanBusterCancel = [
-    StageID() != 2, 
-    StageSelect(), 
-    prev(RollingCutterAmmo()) > RollingCutterAmmo(), 
-    prev(IceSlasherAmmo()) > IceSlasherAmmo(), 
-    prev(HyperBombAmmo()) > HyperBombAmmo(), 
-    prev(FireStormAmmo()) > FireStormAmmo(), 
-    prev(ThunderBeamAmmo()) > ThunderBeamAmmo(), 
-    prev(PowerArmAmmo()) > PowerArmAmmo(),     
-    prev(MagnetBeamAmmo()) > MagnetBeamAmmo()
-]
+bombmanBusterCancel =
+    never(StageID() != 2) &&
+    never(StageSelect()) && 
+    never(prev(RollingCutterAmmo()) > RollingCutterAmmo()) && 
+    never(prev(IceSlasherAmmo()) > IceSlasherAmmo()) && 
+    never(prev(HyperBombAmmo()) > HyperBombAmmo()) &&
+    never(prev(FireStormAmmo()) > FireStormAmmo()) && 
+    never(prev(ThunderBeamAmmo()) > ThunderBeamAmmo()) &&
+    never(prev(PowerArmAmmo()) > PowerArmAmmo()) &&    
+    never(prev(MagnetBeamAmmo()) > MagnetBeamAmmo())
 
 // Submit when the stage is cleared
-bombmanBusterSubmit = [StageClear()]
+bombmanBusterSubmit = trigger_when(StageClear())
 
 achievement(
     title = "Example 7C: Master of the Robot Busters (B)",
     description = "Play through the whole Bombman's Stage using only Mega Buster",
     points = 10,
-    trigger = Challenge(bombmanBusterStart, bombmanBusterCancel, bombmanBusterSubmit)
+    trigger = bombmanBusterStart && bombmanBusterCancel && bombmanBusterSubmit
 )
