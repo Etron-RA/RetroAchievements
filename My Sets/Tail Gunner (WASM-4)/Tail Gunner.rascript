@@ -22,7 +22,7 @@ function GameState() => byte(0x0050CC)
 //----------------------------------------------------------------
 // Function Helpers
 
-function GameStart() => prev(GameState()) == 0 && GameState() == 1
+function GameStart() => GameState() == 1 && Score() == 0
 function GameOver() => prev(GameState()) == 1 && GameState() == 2
 function GameActive() => GameState() == 1
 
@@ -120,8 +120,8 @@ achievement("Thwarted Escape","Shoot down 8 enemies without any escaping", 2, No
 achievement("The Dead Tell No Secrets","Shoot down 16 enemies without any escaping", 3, NoMissChallenge(16))
 achievement("Don't Let a Single One Escape","Shoot down 24 enemies without any escaping", 5, NoMissChallenge(24))
 
-achievement("Peace Keeper","Survive for 1 minute from the start without shooting down anyone", 3, PacifistChallenge(60 * 60))
-achievement("Pacifist","Survive for 2 minutes from the start without shooting down anyone", 10, PacifistChallenge(2 * 60 * 60))
+achievement("Peace Keeper","Survive for 45 seconds from the start without shooting down anyone", 3, PacifistChallenge(45 * 60))
+achievement("Pacifist","Survive for 90 seconds from the start without shooting down anyone", 10, PacifistChallenge(90 * 60))
 
 //----------------------------------------------------------------
 // Leaderboards
@@ -142,7 +142,7 @@ leaderboard("Pacifist",
     any_of(OrGameOver(EnemyHit()), s => s), 
     always_true(),
     "FRAMES",
-    true)
+    false)
     
 enemyHitOffset = EnemyHit()
 array_push(enemyHitOffset, once(prev(Score()) != Score()))
