@@ -145,8 +145,8 @@ function Countdown()
 // Submit on reset
 leaderboard(
     title = "High Score",
-    description = "Highest score (starts when score > 2,000 and submits on reset)",
-    start  = Time() < Frames(20,00,00) && prev(Score()) <= 2000 && Score() > 2000,
+    description = "Highest score (submits on reset)",
+    start  = prev(Time()) == Frames(20,00,00) && Time() == Frames(19,59,59),
     cancel = Score() > 114000,
     submit = GameOver(),
     value = prev(Score()),
@@ -158,70 +158,37 @@ leaderboard(
 // Submit when the player dies or on reset
 leaderboard(
     title = "High Score Deathless",
-    description = "Highest score in the first life (starts when score > 2,000 and submits on reset)",
-    start  = Time() < Frames(20,00,00) && Lives() == 2 && prev(Score()) <= 2000 && Score() > 2000,
-    cancel = Score() > 114000,
-    submit = !GameActive() || GameOver(),
-    value = prev(Score()),
+    description = "Highest score in the first life (submits on reset)",
+    start  = Time() < Frames(20,00,00) && Score() <= 114000 && prev(Lives()) == 2 && Lives() == 1,
+    cancel = always_false(),
+    submit = always_true(),
+    value = Score(),
     format = "SCORE"
 )
 
 // Start the when the clock starts ticking down
 // Cancel if clock resets (game over)
-// Submit when the silver bar is picked up
-leaderboard(
-    title = "Bank Heist",
-    description = "Fastest time to pick up the first money bag",
-    start  = prev(Time()) == Frames(20,00,00) && Time() == Frames(19,59,59),
-    cancel = !GameActive() && Lives() == 0 || GameOver(),
-    submit = prev(GroundObject()) == MoneyBag && ItemPickUp(),
-    value = Countdown(),
-    format = "FRAMES",
-    lower_is_better = true
-)
-
-// Start the when the clock starts ticking down
-// Cancel if clock resets (game over)
-// Submit when the silver bar is picked up
-leaderboard(
-    title = "Silver Speedster",
-    description = "Fastest time to pick up the first silver bar",
-    start  = prev(Time()) == Frames(20,00,00) && Time() == Frames(19,59,59),
-    cancel = !GameActive() && Lives() == 0 || GameOver(),
-    submit = prev(GroundObject()) == SilverBar && ItemPickUp(),
-    value = Countdown(),
-    format = "FRAMES",
-    lower_is_better = true
-)
-
-
-// Start the when the clock starts ticking down
-// Cancel if clock resets (game over)
-// Submit when the silver bar is picked up
-leaderboard(
-    title = "Gold Rush",
-    description = "Fastest time to pick up the first gold bar",
-    start  = prev(Time()) == Frames(20,00,00) && Time() == Frames(19,59,59),
-    cancel = !GameActive() && Lives() == 0 || GameOver(),
-    submit = prev(GroundObject()) == GoldBar && ItemPickUp(),
-    value = Countdown(),
-    format = "FRAMES",
-    lower_is_better = true
-)
-
-// Start the when the clock starts ticking down
-// Cancel if clock resets (game over)
 // Submit when the diamond ring is picked up
-leaderboard(
-    title = "Diamond Run",
-    description = "Fastest time to pick up the first diamond ring",
-    start  = prev(Time()) == Frames(20,00,00) && Time() == Frames(19,59,59),
-    cancel = !GameActive() && Lives() == 0 || GameOver(),
-    submit = prev(GroundObject()) == DiamondRing && ItemPickUp(),
-    value = Countdown(),
-    format = "FRAMES",
-    lower_is_better = true
-)
+function ItemSpeedrunLB(titleLB, descriptionLB, item)
+{
+    leaderboard(
+        title = titleLB,
+        description = descriptionLB,
+        start  = once(GameActive() && prev(GroundObject()) == item && ItemPickUp()) &&    
+                 never(GameOver()) &&
+                 never(!GameActive() && Lives() == 0),
+        cancel = always_false(),
+        submit = always_true(),
+        value = Countdown(),
+        format = "FRAMES",
+        lower_is_better = true
+    )
+}
+ItemSpeedrunLB("Bank Heist", "Fastest time to pick up the first money bag", MoneyBag)
+ItemSpeedrunLB("Silver Speedster", "Fastest time to pick up the first silver bar", SilverBar)
+ItemSpeedrunLB("Gold Rush", "Fastest time to pick up the first gold bar", GoldBar)
+ItemSpeedrunLB("Diamond Run", "Fastest time to pick up the first diamond ring", DiamondRing)
+
 
 // Start the when the clock starts ticking down
 // Cancel if clock resets (game over)
@@ -229,16 +196,16 @@ leaderboard(
 leaderboard(
     title = "Collect 'em All!",
     description = "Fastest time to pick up a money bag, silver bar, gold bar, and diamond ring",
-    start  = prev(Time()) == Frames(20,00,00) && Time() == Frames(19,59,59),
-    cancel = !GameActive() && Lives() == 0 || GameOver(),
-    submit = tally(4,
+    start  = tally(4,
                 once(prev(GroundObject()) == MoneyBag && ItemPickUp()),
                 once(prev(GroundObject()) == SilverBar && ItemPickUp()),
                 once(prev(GroundObject()) == GoldBar && ItemPickUp()),
                 once(prev(GroundObject()) == DiamondRing && ItemPickUp())
              ) &&
-			 never(GameOver()) &&
-			 never(!GameActive() && Lives() == 0),
+             never(GameOver()) &&
+             never(!GameActive() && Lives() == 0),
+    cancel = always_false(),
+    submit = always_true(),
     value = Countdown(),
     format = "FRAMES",
     lower_is_better = true
