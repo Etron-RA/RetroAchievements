@@ -140,7 +140,7 @@ function Countdown()
         Frames(20,00,00) 
 }
 
-// Starts the when score is > 2000
+// Starts at the start of the game
 // Cancel if score above 114,000 (impossible)
 // Submit on reset
 leaderboard(
@@ -153,9 +153,9 @@ leaderboard(
     format = "SCORE"
 )
 
-// Starts the when score is > 2000
-// Cancel if score above 114,000 (impossible)
-// Submit when the player dies or on reset
+// Starts the when player dies for the 1st time
+// Cancel never
+// Submit always
 leaderboard(
     title = "High Score Deathless",
     description = "Highest score in the first life (submits on reset)",
@@ -166,9 +166,9 @@ leaderboard(
     format = "SCORE"
 )
 
-// Start the when the clock starts ticking down
-// Cancel if clock resets (game over)
-// Submit when the diamond ring is picked up
+// Start the when the player picks up the item for the 1st time
+// Cancel never
+// Submit always
 function ItemSpeedrunLB(titleLB, descriptionLB, item)
 {
     leaderboard(
@@ -189,10 +189,9 @@ ItemSpeedrunLB("Silver Speedster", "Fastest time to pick up the first silver bar
 ItemSpeedrunLB("Gold Rush", "Fastest time to pick up the first gold bar", GoldBar)
 ItemSpeedrunLB("Diamond Run", "Fastest time to pick up the first diamond ring", DiamondRing)
 
-
-// Start the when the clock starts ticking down
-// Cancel if clock resets (game over)
-// Submit when the diamond ring is picked up
+// Start the when the player picks up all four items for the 1st time
+// Cancel never
+// Submit always
 leaderboard(
     title = "Collect 'em All!",
     description = "Fastest time to pick up a money bag, silver bar, gold bar, and diamond ring",
@@ -261,7 +260,6 @@ leaderboard(
      ), 
      format="VALUE"
 )
-
 
 // Start the count of the second jump over the corcodiles
 // Cancel none
