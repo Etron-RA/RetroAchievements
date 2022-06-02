@@ -23,11 +23,10 @@ function Lives() => byte(0x0000A6)
 function StageClear() => byte(0x0000BB) == 1
 
 // Start at the beginning of the stage
-bombmanDeathlessStart = once(StageStart())
+bombmanDeathlessStart = once(StageStart() && StageID() == 2)
 
-// Cancel if not Bombman Stage, on stage selection screen, life lost, pause glitch used, or magnet gun used
-bombmanDeathlessCancel = never(StageID() != 2) && 
-    never(StageSelect()) && 
+// Cancel if on stage selection screen, life lost, pause glitch used, or magnet gun used
+bombmanDeathlessCancel = never(StageSelect()) && 
     never(prev(Lives()) > Lives()) &&
     never(SolidPause()) && 
     never(prev(MagnetBeamAmmo()) > MagnetBeamAmmo())

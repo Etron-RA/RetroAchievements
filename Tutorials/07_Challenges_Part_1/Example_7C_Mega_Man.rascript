@@ -35,12 +35,10 @@ function MagnetBeamAmmo() => byte(0x000071)
 function StageClear() => byte(0x0000BB) == 1
 
 // Start at the beginning of the stage
-bombmanBusterStart = once(StageStart())
+bombmanBusterStart = once(StageStart() && StageID() == 2)
 
-// Cancel if not Bombman Stage, on stage selection screen, or any weapon other than the Mega Buster is used
-bombmanBusterCancel =
-    never(StageID() != 2) &&
-    never(StageSelect()) && 
+// Cancel if on stage selection screen or any weapon other than the Mega Buster is used
+bombmanBusterCancel = never(StageSelect()) && 
     never(prev(RollingCutterAmmo()) > RollingCutterAmmo()) && 
     never(prev(IceSlasherAmmo()) > IceSlasherAmmo()) && 
     never(prev(HyperBombAmmo()) > HyperBombAmmo()) &&

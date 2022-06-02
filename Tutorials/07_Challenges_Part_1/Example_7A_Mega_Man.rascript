@@ -17,10 +17,10 @@ function Health() => byte(0x00006A)
 function StageClear() => byte(0x0000BB) == 1
 
 // Start at the beginning of the Bombman boss fight
-bombmanDamagelessStart = once(StageBombmanBoss())
+bombmanDamagelessStart = once(StageBombmanBoss() && StageID() == 2)
 
-// Cancel if not Bombman Stage, health lost, or the pause glitch used
-bombmanDamagelessCancel = never(StageID() != 2) &&
+// Cancel if on the stage select screen, health lost, or the pause glitch used
+bombmanDamagelessCancel = never(StageSelect()) && 
     never(Health() < prev(Health())) &&
     never(SolidPause())
 
