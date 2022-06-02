@@ -43,7 +43,7 @@ function BossHealth() => float(0x201270)
 //          "venus.nb" = Venus boss (pre battle)
 function ModelLoaded(offset = 0) => 0x20C124 + offset
 
-// $20d8d4: [8-bit] Game Type (3 = Play, 4 = Score, 5 = Beyond)
+// $20d8d4: [8-bit] Game Type (0 = Travelling, 2 = How To Play, 3 = Play, 4 = Score, 5 = Beyond)
 function GameType() => byte(0x20d8d4)
 
 // $210AC4: [24-bit] Game Pointer (null in menu)
@@ -60,7 +60,7 @@ function CurrentScore() => dword(0x210B40)
 
 // $28DE38: [8-bit] Area (0-9)
 //          Areas = {0:"Area 1", 1:"Area 2", 2:"Area 3", 3:"Area 4",  4:"Area 5", 
-//            5:"Area 5 Bosses", 7:"Boss Rush", 8:"Lost Area", 9:"Trace Mission"}
+//            5:"Area 5 Bosses", 6: "How to Play", 7:"Boss Rush", 8:"Lost Area", 9:"Trace Mission"}
 function Areas() => byte(0x28DE38)
 
 // $3A3304: [ASCII] Mars Boss Type ("Mars[Mega]","Mars[Giga]", and "Mars[Tera]")
@@ -223,9 +223,13 @@ Psychedelic = 4
 Trance = 5
 
 // Menus
+TravellingMenu = 0
+HowToPlayMenu = 2
 PlayMenu = 3
 ScoreMenu = 4
 BeyondMenu = 5
+
+function PlayMode() => GameType() != TravellingMenu && GameType() != HowToPlayMenu
 
 // Conditions when normal play menu selection is made
 function MenuPlayArea(area)
@@ -383,20 +387,20 @@ achievement("Earth High Score","Score 150,000 or higher in Area 1 score attack",
 achievement("Mars High Score","Score 150,000 or higher in Area 2 score attack", 10, ScoreChallenge(MenuScoreArea(Area2), 50000, 150000))
 achievement("Venus High Score","Score 150,000 or higher in Area 3 score attack", 10, ScoreChallenge(MenuScoreArea(Area3), 50000, 150000))
 achievement("Uranus High Score","Score 150,000 or higher in Area 4 score attack", 10, ScoreChallenge(MenuScoreArea(Area4), 50000, 150000))
-achievement("Eden High Score","Score 300,000 or higher in Area 5 score attack", 10, ScoreChallenge(MenuScoreArea(Area5), 200000, 300000))
+achievement("Eden High Score","Score 300,000 or higher in Area 5 score attack", 25, ScoreChallenge(MenuScoreArea(Area5), 200000, 300000))
 achievement("Lost Area High Score","Score 150,000 or higher in the Lost Area", 10, ScoreChallenge(BeyondMenu(LostArea), 50000, 150000))
-achievement("Boss Rush High Score","Score 300,000 or higher in Boss Rush", 10, ScoreChallenge(BeyondMenu(BossRush), 200000, 300000))
-achievement("Direct Assault High Score","Score 1,000,000 or higher in any Direct Assualt", 25, ScoreChallenge(BeyondMenu(DirectAssault), 900000, 1000000))
+achievement("Boss Rush High Score","Score 300,000 or higher in Boss Rush", 25, ScoreChallenge(BeyondMenu(BossRush), 200000, 300000))
+achievement("Direct Assault High Score","Score 1,000,000 or higher in any Direct Assault", 50, ScoreChallenge(BeyondMenu(DirectAssault), 900000, 1000000))
 
 //---------------------------------------------------------------------------
 // Upgrade achievements
 
-achievement("Autonomous","Reach Evolution Level 02", 1, GameActive() && prev(CurrentForm()) == 1 && CurrentForm() == 2)
-achievement("Cognitive","Reach Evolution Level 03", 2, GameActive() && prev(CurrentForm()) == 2 && CurrentForm() == 3)
-achievement("Analysis","Reach Evolution Level 04", 3, GameActive() && prev(CurrentForm()) == 3 && CurrentForm() == 4)
-achievement("Synthesis","Reach Evolution Level 05", 4, GameActive() && prev(CurrentForm()) == 4 && CurrentForm() == 5)
-achievement("Enlightenment","Reach Evolution Level 06", 5, GameActive() && prev(CurrentForm()) <= 5 && CurrentForm() == 6)
-achievement("Maximum Overdrive","Have 4 overdrive attacks built up at once", 5, GameActive() && prev(Overloads()) == 3 && Overloads() == 4)
+achievement("Autonomous","Reach Evolution Level 02", 1, GameActive() && PlayMode() && prev(CurrentForm()) == 1 && CurrentForm() == 2)
+achievement("Cognitive","Reach Evolution Level 03", 2, GameActive() && PlayMode() && prev(CurrentForm()) == 2 && CurrentForm() == 3)
+achievement("Analysis","Reach Evolution Level 04", 3, GameActive() && PlayMode() && prev(CurrentForm()) == 3 && CurrentForm() == 4)
+achievement("Synthesis","Reach Evolution Level 05", 4, GameActive() && PlayMode() && prev(CurrentForm()) == 4 && CurrentForm() == 5)
+achievement("Enlightenment","Reach Evolution Level 06", 5, GameActive() && PlayMode() && prev(CurrentForm()) <= 5 && CurrentForm() == 6)
+achievement("Maximum Overdrive","Have 4 overdrive attacks built up at once", 5, GameActive() && PlayMode() && prev(Overloads()) == 3 && Overloads() == 4)
 
 //---------------------------------------------------------------------------
 //  Leaderboards
