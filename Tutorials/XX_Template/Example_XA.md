@@ -1,6 +1,6 @@
 # Example #XA
 <br>
-Scripts: [Example #2A script](Example_0XA.rascript) <br>
+Scripts: [Example #XA script](Example_0XA.rascript) <br>
 ### Links
 [Tutorial #X](readme.md) <br>
 Example #XA<br>

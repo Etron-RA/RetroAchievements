@@ -1,7 +1,5 @@
 # Example #XC - 
 <br>
-Scripts: [Example #XC script with no solution](Example_0XC.rascript)<br>
-<br>
 Solutions: [Tutorial #X Solution](./Solution/readme.md)<br>
 ### Links
 [Tutorial #X](readme.md)<br>
