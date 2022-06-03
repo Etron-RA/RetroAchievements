@@ -362,24 +362,24 @@ achievement("Tera Venus","Defeat the Tera form Venus boss in Area 3", 10, BossTy
 achievement("Tera Uranus","Defeat the Tera form Uranus boss in Area 4", 10, BossTypeChallenge(UranusBossType(), UranusTera))
 
 // Damageless Bosses
-achievement("Earth Evolved","Defeat the Earth boss in Area 1 without Devolving", 10, Damageless(BossLoaded(EarthStart)))
-achievement("Mars Evolved","Defeat the Mars boss in Area 2 without Devolving", 10, Damageless(BossLoaded(MarsStart)))
-achievement("Venus Evolved","Defeat the Venus boss in Area 3 without Devolving", 10, Damageless(ShowingModel(VenusStart)))
-achievement("Uranus Evolved","Defeat the Uranus boss in Area 4 without Devolving", 10, Damageless(BossLoaded(UranusBoss)))
-achievement("Apex Earth Evolution","Defeat the Eden Earth boss in Area 5 without Devolving", 10, Damageless(BossLoaded(Eden1Boss)))
-achievement("Apex Mars Evolution","Defeat the Eden Mars boss in Area 5 without Devolving", 10, Damageless(BossLoaded(Eden2Boss)))
-achievement("Apex Venus Evolution","Defeat the Eden Venus boss in Area 5 without Devolving", 10, Damageless(BossLoaded(Eden3Boss)))
-achievement("Apex Uranus Evolution","Defeat the Eden Uranus boss in Area 5 without Devolving", 10, Damageless(BossLoaded(Eden4Boss)))
-achievement("Final Evolution","Defeat the Final Eden boss in Area 5 without Devolving", 10, Damageless(ShowingModel(Eden5Start)))
+achievement("Earth Evolved","Defeat the Earth boss in Area 1 without devolving", 10, Damageless(BossLoaded(EarthStart)))
+achievement("Mars Evolved","Defeat the Mars boss in Area 2 without devolving", 10, Damageless(BossLoaded(MarsStart)))
+achievement("Venus Evolved","Defeat the Venus boss in Area 3 without devolving", 10, Damageless(ShowingModel(VenusStart)))
+achievement("Uranus Evolved","Defeat the Uranus boss in Area 4 without devolving", 10, Damageless(BossLoaded(UranusBoss)))
+achievement("Apex Earth Evolution","Defeat the Eden Earth boss in Area 5 without devolving", 10, Damageless(BossLoaded(Eden1Boss)))
+achievement("Apex Mars Evolution","Defeat the Eden Mars boss in Area 5 without devolving", 10, Damageless(BossLoaded(Eden2Boss)))
+achievement("Apex Venus Evolution","Defeat the Eden Venus boss in Area 5 without devolving", 10, Damageless(BossLoaded(Eden3Boss)))
+achievement("Apex Uranus Evolution","Defeat the Eden Uranus boss in Area 5 without devolving", 10, Damageless(BossLoaded(Eden4Boss)))
+achievement("Final Evolution","Defeat the Final Eden boss in Area 5 without devolving", 10, Damageless(ShowingModel(Eden5Start)))
 
 //---------------------------------------------------------------------------
 // Low Level Challenges
 
-achievement("Primal Earth","Beat Area 1 without Evolving (form level 1 or lower)", 10, LowLevelChallenge(MenuPlayArea(Area1), ShowingModel(Results), 2))
-achievement("Primal Mars","Beat Area 2 without Evolving (form level 1 or lower)", 10, LowLevelChallenge(MenuPlayArea(Area2), ShowingModel(Results), 2))
-achievement("Primal Venus","Beat Area 3 without Evolving (form level 1 or lower)", 10, LowLevelChallenge(MenuPlayArea(Area3), ShowingModel(Results), 2))
-achievement("Primal Uranus","Beat Area 4 without Evolving (form level 1 or lower)", 10, LowLevelChallenge(MenuPlayArea(Area4), ShowingModel(Results), 2))
-achievement("Primal Lost Area","Beat Lost Area without Evolving (form level 1 or lower)", 10, LowLevelChallenge(BeyondMenu(LostArea), ShowingModel(Results), 2))
+achievement("Primal Earth","Beat Area 1 without evolving past the default starting form of level 1", 10, LowLevelChallenge(MenuPlayArea(Area1), ShowingModel(Results), 2))
+achievement("Primal Mars","Beat Area 2 without evolving past the default starting form of level 1", 10, LowLevelChallenge(MenuPlayArea(Area2), ShowingModel(Results), 2))
+achievement("Primal Venus","Beat Area 3 without evolving past the default starting form of level 1", 10, LowLevelChallenge(MenuPlayArea(Area3), ShowingModel(Results), 2))
+achievement("Primal Uranus","Beat Area 4 without evolving past the default starting form of level 1", 10, LowLevelChallenge(MenuPlayArea(Area4), ShowingModel(Results), 2))
+achievement("Primal Lost Area","Beat Lost Area without evolving past the default starting form of level 1", 10, LowLevelChallenge(BeyondMenu(LostArea), ShowingModel(Results), 2))
 
 //---------------------------------------------------------------------------
 // Score challenges
