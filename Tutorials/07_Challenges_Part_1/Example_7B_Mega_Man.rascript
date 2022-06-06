@@ -22,21 +22,21 @@ function Lives() => byte(0x0000A6)
 // $00BB: Stage clear flag
 function StageClear() => byte(0x0000BB) == 1
 
-// Start at the beginning of the stage
-bombmanDeathlessStart = once(StageStart() && StageID() == 2)
+// Start at the beginning of Gutsman's stage
+gutsmanDeathlessStart = once(StageStart() && StageID() == 5)
 
 // Cancel if on stage selection screen, life lost, pause glitch used, or magnet gun used
-bombmanDeathlessCancel = never(StageSelect()) && 
+gutsmanDeathlessCancel = never(StageSelect()) && 
     never(prev(Lives()) > Lives()) &&
     never(SolidPause()) && 
     never(prev(MagnetBeamAmmo()) > MagnetBeamAmmo())
 
 // Submit when the stage is cleared
-bombmanDeathlessSubmit = trigger_when(StageClear())
+gutsmanDeathlessSubmit = trigger_when(StageClear())
 
 achievement(
-    title = "Example 7B: MM1 Survivalist I (Bombman)", 
-    description = "Complete Bombman's Stage without losing a life, pausing, or Magnet Beam (Weapon Menu is OK)", 
+    title = "Example 7B: MM1 Survivalist I (Gutsman)", 
+    description = "Complete Gutsman's Stage without losing a life, pausing, or Magnet Beam (Weapon Menu is OK)", 
     points = 5,    
-    trigger = bombmanDeathlessStart && bombmanDeathlessCancel && bombmanDeathlessSubmit
+    trigger = gutsmanDeathlessStart && gutsmanDeathlessCancel && gutsmanDeathlessSubmit
 )

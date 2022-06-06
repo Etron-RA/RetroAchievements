@@ -1,5 +1,5 @@
 # Tutorial #7 Solution
-For this example the player must complete Bombman’s stage only using the Mega Buster.<br> 
+For this example the player must complete Cutman’s stage only using the Mega Buster.<br> 
 ![Mega Man Mega Busting through Bomb Man’s stage](Mega_Man_Buster_Solution.png)<br>
 ```
 // Mega Man
@@ -38,11 +38,11 @@ function MagnetBeamAmmo() => byte(0x000071)
 // $00BB: Stage clear flag
 function StageClear() => byte(0x0000BB) == 1
 
-// Start at the beginning of the stage
-bombmanBusterStart = once(StageStart() && StageID() == 2)
+// Start at the beginning of Cutman's stage
+cutmanBusterStart = once(StageStart() && StageID() == 0)
 
 // Cancel if on stage selection screen or any weapon other than the Mega Buster is used
-bombmanBusterCancel = never(StageSelect()) && 
+cutmanBusterCancel = never(StageSelect()) && 
     never(prev(RollingCutterAmmo()) > RollingCutterAmmo()) && 
     never(prev(IceSlasherAmmo()) > IceSlasherAmmo()) && 
     never(prev(HyperBombAmmo()) > HyperBombAmmo()) &&
@@ -52,17 +52,17 @@ bombmanBusterCancel = never(StageSelect()) &&
     never(prev(MagnetBeamAmmo()) > MagnetBeamAmmo())
 
 // Submit when the stage is cleared
-bombmanBusterSubmit = trigger_when(StageClear())
+cutmanBusterSubmit = trigger_when(StageClear())
 
 achievement(
-    title = "Example 7C: Master of the Robot Busters (B)",
-    description = "Play through the whole Bombman's Stage using only Mega Buster",
+    title = "Example 7C: Master of the Robot Busters (C)",
+    description = "Play through the whole Cutman's Stage using only Mega Buster",
     points = 10,
-    trigger = bombmanBusterStart && bombmanBusterCancel && bombmanBusterSubmit
+    trigger = cutmanBusterStart && cutmanBusterCancel && cutmanBusterSubmit
 )
 ```
 ## Start Conditions
-Similar to [Example 7B](../Example_7B.md), the start condition occurs when the player is at the beginning of Bombman’s stage.
+Similar to [Example 7B](../Example_7B.md), the start condition occurs when the player is at the beginning of Cutman’s stage.
 ## Cancel Conditions
 The challenge is cancelled when the player is on the level select screen or when the player uses ammo from any weapon other than the Mega Buster.  Note that unlike the previous examples the player can use as many lives as necessary and the pause glitch is allowed. However, if the player gets a game over they will be sent back to the stage select screen and the challenge will be canceled.
 ## Submit Conditions
