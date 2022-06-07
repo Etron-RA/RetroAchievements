@@ -23,8 +23,9 @@ function StageClear() => byte(0x0000BB) == 1
 // Start at the beginning of the Bombman boss fight
 bombmanDamagelessStart = once(StageBombmanBoss() && StageID() == 2)
 
-// Cancel if health lost or the pause glitch used
-bombmanDamagelessCancel = never(Health() < prev(Health())) &&
+// Cancel if on the stage select screen, health lost, or the pause glitch used
+bombmanDamagelessCancel = never(StageSelect()) && 
+    never(Health() < prev(Health())) &&
     never(SolidPause())
 
 // Submit when the stage is cleared
@@ -42,7 +43,7 @@ The challenge is set to begin when the player enters the boss’s ready room rig
 ## Cancel Conditions
 The challenge will cancel if the player is on the stage selection screen, takes damage, or pauses the game.  Each of these cancel conditions use a ```never``` command to reset the hit recorded during the start condition, thus removing the **challenge indicator** and blocking the player from getting the achievement if they beat the boss.  The cancel condition for taking damage is self-explanatory however the other two cancel conditions might not be so obvious.  Canceling when we are at the stage select screen will reset the challenge if the player returns to the stage select screen for any reason.  Canceling on pause is game specific, Mega Man has an infamous glitch that allows the enemy damage cool down timer to continue counting down while the game is paused.  The result is that you can hit an enemy multiple times with one shot if you mash the pause button while the projectile is over them.  By canceling on pause we don’t give the player credit for beating the boss with the pause glitch.
 ## Submit Conditions
-The challenge will be triggered when the submit conditions are true.  The submit conditions use a ```trigger_when()``` command to add a trigger flag to this condition.  Since the boss beat flag is the last condition to be met putting a trigger flag on that condition will cause a **challenge indicator** to appear while fighting the boss.  It is important that the submit conditions do not occur until the boss is defeated or the achievement will trigger prematurely.<br>
+The challenge will be triggered when the submit conditions are true.  The submit conditions use a ```trigger_when()``` command to add a trigger flag to this condition.  Since the boss beat flag is the last condition to be met, putting a trigger flag on that condition will cause a **challenge indicator** to appear while fighting the boss.  It is important that the submit conditions do not occur until the boss is defeated or the achievement will trigger prematurely.<br>
 <br>
 Scripts: [Example #7A script](Example_7A_Mega_Man.rascript) <br>
 ### Links
