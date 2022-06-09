@@ -101,7 +101,9 @@ function Score()
 
 // Game state functions
 function GameStart() => DemoMode() != Demo && prev(GameState()) == StartGame && GameState() == Ready
+function PlayingStart() => DemoMode() != Demo && prev(GameState()) == Ready && GameState() == InGame
 function MazeStart() => DemoMode() != Demo && prev(GameState()) == NextMaze && GameState() == InGame
+function AnyMazeComplete() => GameState() == MazeComplete
 function InGame() => DemoMode()  != Demo && GameState() == InGame
 function GameOver() => GameState() == GameOver
 function Dead() => GameState() == Dead
@@ -121,7 +123,7 @@ function GhostCombo(combo) => InGame() && Completion(GhostBonus(), combo)
 function MazeComplete(maze)
 {
    return DemoMode() != Demo &&
-       GameState() == MazeComplete &&
+       AnyMazeComplete() &&
        Maze() == maze 
 } 
 
@@ -238,7 +240,7 @@ function DeathlessMaze(difficulty)
         never(GameOver()) && 
         never(RackSkipCheat()) &&
         never(!difficulty) &&
-        trigger_when(GameState() == MazeComplete) &&
+        trigger_when(AnyMazeComplete()) &&
         (
             once(GameStart() && difficulty) ||
             once(MazeStart() && difficulty) 
@@ -255,7 +257,7 @@ function PacifistMaze(difficulty)
         never(GameOver()) && 
         never(RackSkipCheat()) &&
         never(!difficulty) &&
-        trigger_when(GameState() == MazeComplete) &&
+        trigger_when(AnyMazeComplete()) &&
         (
             once(GameStart() && difficulty) ||
             once(MazeStart() && difficulty) 
@@ -275,7 +277,7 @@ function NoReverseMaze(difficulty)
         never(GameOver()) && 
         never(RackSkipCheat()) &&
         never(!difficulty) &&
-        trigger_when(GameState() == MazeComplete) &&
+        trigger_when(AnyMazeComplete()) &&
         (
             once(GameStart() && difficulty) ||
             once(MazeStart() && difficulty) 
@@ -361,4 +363,15 @@ leaderboard(
     RackSkipCheat(),
     GameOver(),
     Maze() + 1
+)
+
+leaderboard(
+    "Ms. Accelerated",
+    "Fastest time to complete the first maze (3 lives start or less)",
+    PlayingStart() && DefaultSettings(),
+    RackSkipCheat() || GameOver(),
+    AnyMazeComplete(),
+    always_true(),
+    format="MILLISECS", 
+    lower_is_better=true
 )
