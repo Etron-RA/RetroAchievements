@@ -62,6 +62,10 @@ MazeComplete = 0xD
 RackSkipCheat = 0xE
 NextMaze = 0x24
 
+// $0609: [8-bit] Active Player (0 = P1, 1 = P2)
+function Player1() => byte(0x000609) == 0
+function Player2() => byte(0x000609) == 1
+
 // $0613: [8-bit] Maze
 function Maze() => byte(0x000613)
 
@@ -116,8 +120,8 @@ function Hard() => Difficulty() == Hard
 
 // Ghost combo counter
 function Completion(varible, goal) => prev(varible) == goal -1 && varible == goal
-function GhostEaten() => InGame() && prev(GhostBonus()) < GhostBonus()
-function GhostCombo(combo) => InGame() && Completion(GhostBonus(), combo)
+function GhostEaten() => InGame() && Player1() && prev(GhostBonus()) < GhostBonus()
+function GhostCombo(combo) => InGame() && Player1() && Completion(GhostBonus(), combo)
 
 // Test if the player has completed the current maze
 function MazeComplete(maze)
@@ -132,6 +136,7 @@ function MazeComplete(maze)
 function FoodEaten(type = 0xf)
 {
     trigger = InGame() &&
+         Player1() &&
          FruitX() != 0xc &&
          FruitX() != 0xf4 &&
          FruitType() == None
@@ -171,13 +176,13 @@ achievement("Junior the 3rd","Finish mazes 14, 15, 16, and 17", 25, Progress(14,
 
 // Check if the play has eaten a certain type of food
 
-achievement("Cherries Jubilee","Eat a cherry", 1, FoodEaten(Cherries))
-achievement("Strawberry Short Cake","Eat a strawberry", 2, FoodEaten(Strawberry))
-achievement("Orange Marmalade","Eat an orange", 3, FoodEaten(Orange))
-achievement("Hot Buttered Soft Pretzels","Eat a pretzel", 4, FoodEaten(Pretzel))
-achievement("Apple Pie","Eat an apple", 5, FoodEaten(Apple))
-achievement("Pear Cobbler","Eat a pear", 5, FoodEaten(Pear))
-achievement("Banana Split","Eat a banana", 5, FoodEaten(Banana))
+achievement("Cherries Jubilee","Eat a cherry", 1, FoodEaten(Cherries), id = 225135)
+achievement("Strawberry Short Cake","Eat a strawberry", 2, FoodEaten(Strawberry), id = 225136)
+achievement("Orange Marmalade","Eat an orange", 3, FoodEaten(Orange), id = 225137)
+achievement("Hot Buttered Soft Pretzels","Eat a pretzel", 4, FoodEaten(Pretzel), id = 225138)
+achievement("Apple Pie","Eat an apple", 5, FoodEaten(Apple), id = 225139)
+achievement("Pear Cobbler","Eat a pear", 5, FoodEaten(Pear), id = 225140)
+achievement("Banana Split","Eat a banana", 5, FoodEaten(Banana), id = 225141)
 
 // Check if the play has a certain number of any food items in a maze, cancel if the rack skip is detected
 function FoodCountNoSkip(count)
@@ -187,7 +192,7 @@ function FoodCountNoSkip(count)
         never(RackSkipCheat()) &&
         repeated(count,FoodEaten())
 }
-achievement("Back for Seconds","Eat any two food items in the same maze", 5, FoodCountNoSkip(2))
+achievement("Back for Seconds","Eat any two food items in the same maze", 5, FoodCountNoSkip(2), id = 225142)
 
 // Count if the total number of ghost eaten is equal to the count, cancel if the rack skip is detected
 function GhostEatenNoSkip(count)
@@ -253,7 +258,8 @@ achievement("Ms. Untouchable","Complete any maze on hard without dying", 10, Dea
 // Challenge to complete a maze without eating a ghost on normal on hard, cancel if the rack skip is detected
 function PacifistMaze(difficulty)
 {
-    return never(GhostEaten()) && 
+    return never(Player2()) && 
+        never(GhostEaten()) && 
         never(GameOver()) && 
         never(RackSkipCheat()) &&
         never(!difficulty) &&
@@ -284,8 +290,8 @@ function NoReverseMaze(difficulty)
         )
 }
 
-achievement("Ms. No Turning Back","Complete any maze on normal without reversing", 10, NoReverseMaze(Normal()))
-achievement("Ms. Full Speed Ahead","Complete any maze on hard without reversing", 25, NoReverseMaze(Hard()))
+achievement("Ms. No Turning Back","Complete any maze on normal without reversing", 5, NoReverseMaze(Normal()))
+achievement("Ms. Full Speed Ahead","Complete any maze on hard without reversing", 10, NoReverseMaze(Hard()))
 
 // --------------------------------------------------------
 // Rich Presence
