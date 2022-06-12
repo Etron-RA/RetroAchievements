@@ -372,9 +372,20 @@ leaderboard(
 )
 
 leaderboard(
+    "Ms. Supersonic",
+    "Fastest time to complete the first maze on normal (3 lives start or less)",
+    PlayingStart() && DefaultSettings() && Normal(),
+    RackSkipCheat() || GameOver(),
+    AnyMazeComplete(),
+    always_true(),
+    format="MILLISECS", 
+    lower_is_better=true
+)
+
+leaderboard(
     "Ms. Accelerated",
-    "Fastest time to complete the first maze (3 lives start or less)",
-    PlayingStart() && DefaultSettings(),
+    "Fastest time to complete the first maze on hard (3 lives start or less)",
+    PlayingStart() && DefaultSettings() && Hard(),
     RackSkipCheat() || GameOver(),
     AnyMazeComplete(),
     always_true(),
