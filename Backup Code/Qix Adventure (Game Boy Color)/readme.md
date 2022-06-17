@@ -4,4 +4,4 @@
 https://retroachievements.org/game/4246
 
 ## Changes
-* Updated Rich Presence to add score, money, of treasures collected
+* Updated Rich Presence to add score, money, and treasures collected
