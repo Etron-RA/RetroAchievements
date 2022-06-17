@@ -1,0 +1,17 @@
+Format:Digit
+FormatType=Value
+
+Lookup:Stage
+00=Field
+01=Starcoast
+02=Wood
+03=Mountain
+04=River
+05=Iced Lake
+06=Village
+07=Sleep Sea
+08=Castle
+09=Mt.Death
+
+Display:
+Qixing back at @Stage(0xha08e)
