@@ -280,6 +280,15 @@ function DestroyAnyEnemy(index)
     return trigger
 }
 
+// Tracks if player destroyed any enemy by an index
+function DestroyDragon(index)
+{
+    trigger = byte(EnemyType[index]) >= 0x21 &&
+        prev(word(EnemyHealth[index])) > 0 &&
+        word(EnemyHealth[index]) == 0
+    return trigger
+}
+
 // Tracks any enemy spawns by an index
 function SpawnAnyEnemy(index)
 {
@@ -291,9 +300,20 @@ function SpawnAnyEnemy(index)
 
 // Tracks if player destroyed a certian enemy by an index
 function DestroyEnemy(index, enemy)
-{
-    trigger = byte(EnemyType[index]) == enemy &&
-        prev(bit(15, EnemyHealth[index])) < bit(15, EnemyHealth[index])
+{   
+    trigger = byte(EnemyType[index]) == enemy
+    if enemy == 0x21
+    {
+        // Dragon go to 0 not 0xffff
+        trigger = trigger &&
+            prev(word(EnemyHealth[index])) > 0 &&
+            word(EnemyHealth[index]) == 0
+    }
+    else
+    {
+        trigger = trigger &&
+            prev(bit(15, EnemyHealth[index])) < bit(15, EnemyHealth[index])
+    }
     return trigger
 }
 
@@ -378,8 +398,8 @@ function ChallengeStage(stage)
 achievement("Docking Bay Ace","Complete stage 1 without dying (on hard difficulty)", 10, ChallengeStage(1))
 achievement("Underground Cave Ace","Complete stage 2 without dying (on hard difficulty)", 10, ChallengeStage(2))
 achievement("Underwater Passage Ace","Complete stage 3 without dying (on hard difficulty)", 10, ChallengeStage(3))
-achievement("Ancient Temple Ace","Complete stage 4 without dying (on hard difficulty)", 10, ChallengeStage(4))
-achievement("Fortress Defenses Ace","Complete stage 5 without dying (on hard difficulty)", 10, ChallengeStage(5))
+achievement("Ancient Temple Ace","Complete stage 4 without dying (on hard difficulty)", 25, ChallengeStage(4))
+achievement("Fortress Defenses Ace","Complete stage 5 without dying (on hard difficulty)", 50, ChallengeStage(5))
 achievement("Mainframe Ace","Complete stage 6 without dying (on hard difficulty)", 25, ChallengeStage(6))
 
 // Challenge game from start to finish without dying
@@ -394,7 +414,7 @@ function ChallengeGame(difficulty)
 }
 achievement("Easy Game Ace","Complete the game without dying (on easy+ difficulty)", 10, ChallengeGame(Easy()))
 achievement("Normal Game Ace","Complete the game without dying (on normal+ difficulty)", 25, ChallengeGame(Normal()))
-achievement("Hard Game Ace","Complete the game without dying (on hard difficulty)", 50, ChallengeGame(Hard()))
+//achievement("Hard Game Ace","Complete the game without dying (on hard difficulty)", 50, ChallengeGame(Hard()))
 
 // --------------------------------------------------------------------------------------
 // Enemies/Boss achievements
@@ -650,8 +670,8 @@ function ConserveFuel(fuel)
                        )
                    )
                ) || (
-                   // Never true this alt is used to show a measure of how close the fuel consumption is to the max
-                   Difficulty() ==  3 &&
+                   // This alt is used to show a measure of how close the fuel consumption is to the max
+                   WonGame() &&
                    measured(
                        tally(
                            rawFuel,
