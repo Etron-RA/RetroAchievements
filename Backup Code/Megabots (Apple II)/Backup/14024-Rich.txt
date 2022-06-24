@@ -1,0 +1,13 @@
+Lookup:Stage
+0xc0=04
+0xcf=03
+0xf1=02
+0xf3=01
+
+Format:Credit
+FormatType=VALUE
+
+Display:
+?0xh2bf3=h80?Enjoing the title screen
+?0xh2bf3=hfc?Listening for briefing before starting an adventure
+Exploring level @Stage(0xh2bf3) with @Credit(0xh98ea) power credits
