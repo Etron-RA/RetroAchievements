@@ -481,6 +481,7 @@ function ScoreRange(lowScore, highScore)
 {
     return unless(InMenu()) &&
            unless(Cheats()) &&
+           Normal() &&
            measured(
                prev(Score()) > lowScore &&
                prev(Score()) < highScore &&
