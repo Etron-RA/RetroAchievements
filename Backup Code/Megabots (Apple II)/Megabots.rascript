@@ -426,7 +426,7 @@ achievement(
 
 achievement(
     title = "Quick Draw", 
-    description = "Defeat 3 rouge robots in a row without taking damage or an emergency recharge (shooting good robots doesn't add to count)", 
+    description = "Defeat 3 bad robots in a row without taking damage or an emergency recharge (shooting good robots doesn't add to count)", 
     points = 5,
     trigger = ResetOnPlayerHit() && measured(repeated(3, MonsterDefeated()))
 )
@@ -434,14 +434,14 @@ achievement(
 
 achievement(
     title = "Robot Reflexes", 
-    description = "Defeat 5 rouge robots in a row without taking damage or an emergency recharge (shooting good robots doesn't add to count)",
+    description = "Defeat 5 bad robots in a row without taking damage or an emergency recharge (shooting good robots doesn't add to count)",
     points = 10,
     trigger = ResetOnPlayerHit() && measured(repeated(5, MonsterDefeated()))
 )
 
 achievement(
     title = "Quickest Gun on the Grid", 
-    description = "Defeat 10 rouge robots in a row without taking damage or an emergency recharge (shooting good robots doesn't add to count)", 
+    description = "Defeat 10 bad robots in a row without taking damage or an emergency recharge (shooting good robots doesn't add to count)", 
     points = 25,
     trigger = ResetOnPlayerHit() && measured(repeated(10, MonsterDefeated()))
 )
