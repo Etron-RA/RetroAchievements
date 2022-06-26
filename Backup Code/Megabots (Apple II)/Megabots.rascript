@@ -203,9 +203,18 @@ function LevelStart() => prev(RowA()) == 30 && RowA() != 30
 function GameStart() => Level() == Level4 && LevelStart()
 function GameEnd() => LevelEnd() && ClearY() >= 48 && ClearX() >= 48
 function Steps(count) => tally(count, Y() < 5 && Y() != prev(Y()), X() < 5 && X() != prev(X()))
-function PlayerHit() => Power() + 20 <= prev(Power())
+function Damage(level, hit) =>  Power() + hit <= prev(Power()) && Level() == level
 function PlayerRecharge() => Power() == 0
 function MonsterDefeated() => SceneDrawing() != 0 && AggressiveRobot() == 1 && prev(RobotAlive()) == 1 && RobotAlive() == 0
+
+function ResetOnPlayerHit()
+{
+return never(PlayerRecharge()) && 
+    never(Damage(Level4, 20)) &&
+    never(Damage(Level3, 40)) &&
+    never(Damage(Level2, 60)) &&
+    never(Damage(Level1, 80))
+}
 
 function RoomCount()
 {
@@ -350,7 +359,7 @@ achievement(
     description = "Access all rooms in level 4",
     points = 25,
     id = 73150,
-    trigger = never(Level() != Level4) && measured(RoomCount())
+    trigger = unless(Power() == 0) && never(Level() != Level4) && measured(RoomCount())
 )
 
 achievement(
@@ -358,7 +367,7 @@ achievement(
     description = "Access all rooms in level 3",
     points = 25, 
     id = 73151,
-    trigger = never(Level() != Level3) && measured(RoomCount())
+    trigger = unless(Power() == 0) && never(Level() != Level3) && measured(RoomCount())
 )
 
 achievement(
@@ -366,7 +375,7 @@ achievement(
     description = "Access all rooms in level 2",
     points = 25,
     id = 73152,
-    trigger = never(Level() != Level2) && measured(RoomCount())
+    trigger = unless(Power() == 0) && never(Level() != Level2) && measured(RoomCount())
 )
 
 achievement(
@@ -374,7 +383,7 @@ achievement(
     description = "Access all rooms in level 1",
     points = 25,
     id = 73153,
-    trigger = never(Level() != Level1) && measured(RoomCount())
+    trigger = unless(Power() == 0) && never(Level() != Level1) && measured(RoomCount())
 )
 achievement(
     title = "Power Conservation",
@@ -417,24 +426,24 @@ achievement(
 
 achievement(
     title = "Quick Draw", 
-    description = "Defeat 3 monsters in a row without taking damage or an emergency recharge", 
+    description = "Defeat 3 rouge robots in a row without taking damage or an emergency recharge (shooting good robots doesn't add to count)", 
     points = 5,
-    trigger = never(PlayerHit()) && never(PlayerRecharge()) && measured(repeated(3, MonsterDefeated()))
+    trigger = ResetOnPlayerHit() && measured(repeated(3, MonsterDefeated()))
 )
 
 
 achievement(
     title = "Robot Reflexes", 
-    description = "Defeat 5 monsters in a row without taking damage or an emergency recharge", 
+    description = "Defeat 5 rouge robots in a row without taking damage or an emergency recharge (shooting good robots doesn't add to count)",
     points = 10,
-    trigger = never(PlayerHit()) && never(PlayerRecharge()) && measured(repeated(5, MonsterDefeated()))
+    trigger = ResetOnPlayerHit() && measured(repeated(5, MonsterDefeated()))
 )
 
 achievement(
     title = "Quickest Gun on the Grid", 
-    description = "Defeat 10 monsters in a row without taking damage or an emergency recharge", 
+    description = "Defeat 10 rouge robots in a row without taking damage or an emergency recharge (shooting good robots doesn't add to count)", 
     points = 25,
-    trigger = never(PlayerHit()) && never(PlayerRecharge()) && measured(repeated(10, MonsterDefeated()))
+    trigger = ResetOnPlayerHit() && measured(repeated(10, MonsterDefeated()))
 )
 
 //-------------------------------------------------------------------------------
