@@ -1,0 +1,42 @@
+Rich Presence v1.1 by Arcaderama
+
+Lookup:Paused
+0=
+0xc4=▌▌
+
+Lookup:Stage
+00=Ripley rescuing prisoners, level 1
+01=Ripley rescuing prisoners, level 2
+02=Ripley rescuing prisoners, level 3
+03=Ripley fighting with the first Guardian
+04=Ripley rescuing prisoners, level 4
+05=Ripley rescuing prisoners, level 5
+06=Ripley rescuing prisoners, level 6
+07=Ripley fighting with the second Guardian
+08=Ripley rescuing prisoners, level 7
+09=Ripley rescuing prisonerslevel 8
+0x0a=Ripley rescuing prisoners, level 9
+0x0b=Ripley fighting with the third Guardian
+0x0c=Ripley rescuing prisoners, level 10
+0x0d=Ripley rescuing prisoners, level 11
+0x0e=Ripley rescuing prisoners, level 12
+0x0f=Ripley fighting with the fourth Guardian
+0x10=Ripley rescuing prisoners, level 13
+0x11=Ripley rescuing prisoners, level 14
+0x12=Ripley rescuing prisoners, level 15
+0x13=Ripley fighting with the fifth Guardian
+0x14=Ending
+
+
+Format:Score
+FormatType=VALUE
+
+Lookup:Demo
+0x02=[Demo]
+0x0= 
+
+
+
+Display:
+@Paused(0xh01fe5)@Demo(b0xh040d) @Stage(0xh0423) 💯:@Score(b0xh438*1_b0xh437*10_b0xh436*100_b0xh435*1000_b0xh434*10000)
+
