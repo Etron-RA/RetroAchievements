@@ -67,14 +67,14 @@ function Prisoners() => byte(0x0004C1)
 // $04C2: Free prisoners
 function Freed() => byte(0x0004C2)
 
-rich_presence_conditional_display(Demo() == 2, "Ripely is watching the demo!")
+rich_presence_conditional_display(Demo() == 2, "Ripley is watching the demo!")
 
-rich_presence_conditional_display(Lives() == 0, "Ripely is at the main menu!")
+rich_presence_conditional_display(Lives() == 0, "Ripley is at the main menu!")
 
-rich_presence_conditional_display(Stage() == 0x14, "Ripely beat the game!")
+rich_presence_conditional_display(Stage() == 0x14, "Ripley beat the game!")
 
 rich_presence_conditional_display(Stage() == 0x3 || Stage() == 0x7 || Stage() == 0xb || Stage() == 0xf || Stage() == 0x13,
-    "Ripely is fighting the {0} | 👩‍🚀 {1} | ♥ {2} | ⏲ {3} | 💯 {4} ",
+    "Ripley is fighting the {0} | 👩‍🚀 {1} | ♥ {2} | ⏲ {3} | 💯 {4} ",
     rich_presence_lookup("Level", Stage(), StageLookup),
     rich_presence_value("Lives", Lives(), "VALUE"),
     rich_presence_value("HP", Health(), "VALUE"),
@@ -82,7 +82,7 @@ rich_presence_conditional_display(Stage() == 0x3 || Stage() == 0x7 || Stage() ==
     rich_presence_value("Score", Score(), "VALUE")
 )
 rich_presence_display(
-    "Ripely has {0} prisoners left to rescue in {1} | 👩‍🚀 {2} | ♥ {3} | ⏲ {4} | 💯 {5}",
+    "Ripley has {0} prisoners left to rescue in {1} | 👩‍🚀 {2} | ♥ {3} | ⏲ {4} | 💯 {5}",
     rich_presence_value("Prisoners", Prisoners(), "VALUE"),    
     rich_presence_lookup("Level", Stage(), StageLookup),
     rich_presence_value("Lives", Lives(), "VALUE"),
