@@ -1,0 +1,4 @@
+Title: Sorfloid
+Description: Defeat the ninth boss
+Points: 10
+0x 001e88=2827_A1_d0xH001e32=0xH001e32
