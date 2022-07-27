@@ -53,7 +53,7 @@ function TripleShotMax() => StageStarted() == 1 && prev(TripleShotPower()) <= 1 
 
 // $C035: [8-bit] Special Activated (0 = no, 1 = yes)
 function Special() => byte(0x00C035)
-function SpecailUsed() => StageStarted() == 1 && prev(Special()) < Special()
+function SpecialUsed() => StageStarted() == 1 && prev(Special()) < Special()
 
 // $C037: [8-bit] Boss Type:
 //        0x0 = Dead
@@ -126,13 +126,57 @@ function ScoreAbove(goal, low)
         measured(Score() >= goal)
 }
 
+// Defeat a boss while the special is activated
+function SpecialBoss()
+{
+    start = once(
+        prev(Special()) < Special() &&
+        StageStarted() == 1 &&
+        Pallete() == 0x1f
+    )
+        
+    cancel = never(prev(Special()) > Special()) &&
+        never(prev(Stage()) != Stage()) &&
+        never(CreditsRolling()) &&
+        never(ContinueUsed()) &&
+        never(GameOver())
+       
+    submit = trigger_when(prev(BossType()) != 0 &&
+        BossType() == 0)
+        
+    return start && cancel && submit
+}
+
+// Defeat a boss without activating the specia
+function NoSpecialBoss()
+{
+    start = once(
+        StageStarted() == 1 &&
+        prev(BossType() ) == 0 &&
+        BossType() != 0        
+    )
+        
+    cancel = never(prev(Special()) < Special()) &&
+        never(prev(Stage()) != Stage()) &&
+        never(CreditsRolling()) &&
+        never(ContinueUsed()) &&
+        never(GameOver())
+       
+    submit = trigger_when(prev(BossType()) != 0 &&
+        BossType() == 0)
+        
+    return start && cancel && submit
+}
+
 achievement(stages[0],"Beat Stage 1", 5, BeatStage(0))
 achievement(stages[1],"Beat Stage 2", 5, BeatStage(1))
 achievement(stages[2],"Beat Stage 3", 10, BeatStage(2))
 achievement(stages[3],"Beat Stage 4", 10, BeatStage(3))
 achievement(stages[4],"Beat Stage 5", 25, BeatStage(4))
 achievement("Armour Force","Beat the game without using a continue", 50, NoContinues())
-achievement("Super Shot","Activate the special weapon", 1, SpecailUsed())
+achievement("Super Shot","Activate the special weapon", 1, SpecialUsed())
+achievement("Specialized Boss Slayer","Defeat a boss while the special is activated", 5, SpecialBoss())
+achievement("Nothing Special Here","Defeat a boss without activating the special", 10, NoSpecialBoss())
 achievement("Triple Shot","Maximize the standard shot power", 1, TripleShotMax())
 achievement("Fire Arm","Upgrade to the firearm shot", 2, Fileball())
 achievement("Armoured Core","Have 120 or more health at once", 3, HealthAbove(120))
