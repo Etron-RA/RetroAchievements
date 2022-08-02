@@ -97,7 +97,8 @@ function NoContinues()
 
     // cancel if a continue is used or a game over
     cancel = never(ContinueUsed()) &&
-         never(GameOver())
+        never(GameOver()) && 
+        never(CreditsRolling())
 
     // trigger/measure the number of stages beaten
     stageArray = []
@@ -175,8 +176,8 @@ achievement(stages[3],"Beat Stage 4", 10, BeatStage(3))
 achievement(stages[4],"Beat Stage 5", 25, BeatStage(4))
 achievement("Armour Force","Beat the game without using a continue", 50, NoContinues())
 achievement("Super Shot","Activate the special weapon", 1, SpecialUsed())
-achievement("Specialized Boss Slayer","Defeat a boss while the special is activated", 5, SpecialBoss())
-achievement("Nothing Special Here","Defeat a boss without activating the special", 10, NoSpecialBoss())
+achievement("Specialized Boss Slayer","Defeat a boss while the special weapon is activated", 5, SpecialBoss())
+achievement("Nothing Special Here","Defeat a boss without activating the special weapon", 10, NoSpecialBoss())
 achievement("Triple Shot","Maximize the standard shot power", 1, TripleShotMax())
 achievement("Fire Arm","Upgrade to the firearm shot", 2, Fileball())
 achievement("Armoured Core","Have 120 or more health at once", 3, HealthAbove(120))
