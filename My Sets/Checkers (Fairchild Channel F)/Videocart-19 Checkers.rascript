@@ -440,9 +440,9 @@ function QuickWin(turns)
     return start && cancel && (submit || measure)
 }
 achievement("Complete Victory!","Win a game by capturing all of the opponents pieces", 5, Win())
-achievement("Decisive Victory!","Win a game by capturing all of the opponents pieces in 65 turns or less", 5, QuickWin(65))
-achievement("Quick Victory!","Win a game by capturing all of the opponents pieces in 50 turns or less", 10, QuickWin(50))
-achievement("Absolute Victory!","Win a game by capturing all of the opponents pieces in 40 turns or less", 25, QuickWin(40))
+achievement("Decisive Victory!","Win a game by capturing all of the opponents pieces in 50 turns or less", 5, QuickWin(50))
+achievement("Quick Victory!","Win a game by capturing all of the opponents pieces in 40 turns or less", 10, QuickWin(40))
+achievement("Absolute Victory!","Win a game by capturing all of the opponents pieces in 30 turns or less", 25, QuickWin(30))
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Rich Presence
