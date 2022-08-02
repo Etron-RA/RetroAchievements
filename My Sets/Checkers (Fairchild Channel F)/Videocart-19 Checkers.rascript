@@ -114,7 +114,7 @@ function GreenCaptured() => byte(0x00002F)
 //     ################################
 function Board(offset = 0) => byte(0x30 + offset)
 
-// Bit locations for red kings in each square
+// Bit locationsfor red kings in each square
 Red_King_Array = [
     [bit0(0x30), 0, bit0(0x34), 0, bit0(0x38), 0, bit0(0x3c), 0],
     [0, bit0(0x32), 0, bit0(0x36), 0, bit0(0x3a), 0, bit0(0x3e)],
@@ -126,7 +126,7 @@ Red_King_Array = [
     [0, bit4(0x33), 0, bit4(0x37), 0, bit4(0x3b), 0, bit4(0x3f)]
 ]
 
-// Bit locations for red pieces in each square
+// Bit locationsfor red pieces in each square
 Red_Piece_Array = [
     [bit1(0x30), 0, bit1(0x34), 0, bit1(0x38), 0, bit1(0x3c), 0],
     [0, bit1(0x32), 0, bit1(0x36), 0, bit1(0x3a), 0, bit1(0x3e)],
@@ -440,9 +440,9 @@ function QuickWin(turns)
     return start && cancel && (submit || measure)
 }
 achievement("Complete Victory!","Win a game by capturing all of the opponents pieces", 5, Win())
-achievement("Decisive Victory!","Win a game by capturing all of the opponents pieces in 65 turns or less", 10, QuickWin(65))
-achievement("Quick Victory!","Win a game by capturing all of the opponents pieces in 50 turns or less", 25, QuickWin(50))
-achievement("Absolute Victory!","Win a game by capturing all of the opponents pieces in 40 turns or less", 50, QuickWin(40))
+achievement("Decisive Victory!","Win a game by capturing all of the opponents pieces in 65 turns or less", 5, QuickWin(65))
+achievement("Quick Victory!","Win a game by capturing all of the opponents pieces in 50 turns or less", 10, QuickWin(50))
+achievement("Absolute Victory!","Win a game by capturing all of the opponents pieces in 40 turns or less", 25, QuickWin(40))
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Rich Presence
