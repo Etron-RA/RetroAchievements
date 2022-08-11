@@ -377,15 +377,15 @@ function NoContinues(hard = false)
 // Normal Progression
 achievement("Hop-along Little Buster","Beat the western movie", 5, StageBeat(WesternMovie))
 achievement("The Twilight Samurai","Beat the samurai movie", 5, StageBeat(SamuraiMovie))
-achievement("Buster O'Hare","Beat the future movie", 10, StageBeat(FutureMovie))
-achievement("Stuff That Goes Bump in the Night","Beat the monster movie", 10, StageBeat(MonsterMovie))
-achievement("Behind the Scenes","Beat the studio", 10, StageBeat(Studio))
+achievement("Buster O'Hare","Beat the future movie", 5, StageBeat(FutureMovie))
+achievement("Stuff That Goes Bump in the Night","Beat the monster movie", 5, StageBeat(MonsterMovie))
+achievement("Behind the Scenes","Beat the studio", 5, StageBeat(Studio))
 
 // Hard Progression
 achievement("How Buster Bunny Won the West","Beat the western movie on hard", 10, StageBeat(WesternMovie) && Hard())
 achievement("The Last Samurai","Beat the samurai movie on hard", 10, StageBeat(SamuraiMovie) && Hard())
-achievement("Back to the Future","Beat the future movie on hard", 25, StageBeat(FutureMovie) && Hard())
-achievement("Night of the Lepus","Beat the monster movie on hard", 25, StageBeat(MonsterMovie) && Hard())
+achievement("Back to the Future","Beat the future movie on hard", 10, StageBeat(FutureMovie) && Hard())
+achievement("Night of the Lepus","Beat the monster movie on hard", 10, StageBeat(MonsterMovie) && Hard())
 achievement("All the Worlds are a Stage","Beat the studio on hard", 10, StageBeat(Studio) && Hard())
 
 // Hard Damageless Bosses
@@ -408,11 +408,11 @@ achievement("Flea Bath for Arnold","Win the tug of war bonus game", 5, TugOfWarB
 achievement("Bend it like Buster","Win the soccer bonus game", 10, SoccerBonus(15))
 
 // Speed runs
-achievement("Buster the Hedgehog","Beat the western movie with " + StageTimes[WesternMovie] + "s or more left in the clock", 10, Speedrun(WesternMovie))
-achievement("Buster the Dragon","Beat the samurai movie with " + StageTimes[SamuraiMovie] + "s or more left in the clock", 10, Speedrun(SamuraiMovie))
-achievement("Buster the Rocket","Beat the future movie with " + StageTimes[FutureMovie] + "s or more left in the clock", 25, Speedrun(FutureMovie))
-achievement("Buster the Were-Rabbit","Beat the monster movie with " + StageTimes[MonsterMovie] + "s or more left in the clock", 25, Speedrun(MonsterMovie))
-achievement("Buster the Fast and the Furriest","Beat the studio movie with " + StageTimes[Studio] + "s or more left in the clock", 10, Speedrun(Studio))
+achievement("Buster the Hedgehog","Beat the western movie with " + StageTimes[WesternMovie] + "s or more left in the clock", 5, Speedrun(WesternMovie))
+achievement("Buster the Dragon","Beat the samurai movie with " + StageTimes[SamuraiMovie] + "s or more left in the clock", 5, Speedrun(SamuraiMovie))
+achievement("Buster the Rocket","Beat the future movie with " + StageTimes[FutureMovie] + "s or more left in the clock", 10, Speedrun(FutureMovie))
+achievement("Buster the Were-Rabbit","Beat the monster movie with " + StageTimes[MonsterMovie] + "s or more left in the clock", 10, Speedrun(MonsterMovie))
+achievement("Buster the Fast and the Furriest","Beat the studio movie with " + StageTimes[Studio] + "s or more left in the clock", 5, Speedrun(Studio))
 
 // Deathless Sections
 achievement("Buster Rogers of the 24½th Century","Beat the rocket auto-scroller without dying (future movie 3-3 to 3-4)", 10, Deathless(FutureMovie, 3, 4))
