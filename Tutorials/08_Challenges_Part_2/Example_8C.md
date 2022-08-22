@@ -1,12 +1,12 @@
 # Example #8C: Small Boy Challenge
-The small boy challenge is to complete a level (or the whole game) without using a power up or riding Yoshi.  Super Mario World has many power ups like the fire flower or the cape which can trivialize completing a level. For example, using the cape for the [Yoshi's Island 1 Speedrun](Example_8A.md) would make the challenge too easy since you can fly over the entire level. Additionally, being powered up gives Mario one more hit point therefore the small boy challenge is also a damageless challenge.  Being small does have an advantage, small Mario has a smaller hitbox meaning that small Mario can pass by obstacles that would hit a powered up Mario.
+The small boy challenge is to complete a level (or the whole game) without using a power up or riding Yoshi.  Super Mario World has many power ups like the fire flower or the cape which can trivialize completing a level. For example, using the cape for the [Yoshi's Island 1 Speedrun](Example_8A.md) would make the challenge too easy since you can fly over the entire level. Additionally, being powered up gives Mario one more hit point therefore the small boy challenge is also a damageless challenge.  Being small does have an advantage, small Mario has a smaller hitbox meaning that small Mario can pass by obstacles that would hit a powered up Mario.<br>
 ![Mario is too small to ride]( Super_Mario_World_Small_Boy.png)<br>
 ## Homework #8
 Using similar logic from [Example 8A](Example_8A.md) create an achievement to beat any level as small Mario and without Yoshi.
 ## Useful Memory
-To complete the homework problem you’ll need the memory addresses:
-0x000019 -> [8-bit] Player's Power: 0 = Small, 1 = Super, 2 = Cape, 3 = Flower
-0x00187A -> [8-bit] Sitting on Yoshi: 0 = None, 1 = On Yoshi 2 = On Yoshi turning
+To complete the homework problem you’ll need the memory addresses:<br>
+0x000019 -> [8-bit] Player's Power: 0 = Small, 1 = Super, 2 = Cape, 3 = Flower<br>
+0x00187A -> [8-bit] Sitting on Yoshi: 0 = None, 1 = On Yoshi 2 = On Yoshi turning<br>
 0x0013bf -> [8-bit] Level ID<br>
 | ID | Level | ID | Level | ID | Level |
 |:----:|-----------------------|:----:|-----------------------|:----:|-----------------------|
@@ -31,7 +31,8 @@ To complete the homework problem you’ll need the memory addresses:
 | 0x18 | Sunken Ghost Ship     | 0x37 | Valley of Bowser 3    |      |                       |
 | 0x1A | Wendy's Castle        | 0x38 | Valley Ghost House    |      |                       |<br>
 <br>
-Solutions: [Tutorial #8 Solution](./Solution/readme.md)<br>
+###Solution
+[Tutorial #8 Solution](./Solution/readme.md)<br>
 ### Links
 [Tutorial #8](readme.md)<br>
 [Example #8A](Example_8A.md)<br>
