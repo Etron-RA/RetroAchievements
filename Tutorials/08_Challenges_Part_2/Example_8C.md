@@ -29,9 +29,9 @@ To complete the homework problem you’ll need the memory addresses:<br>
 | 0x13 | Donut Secret House    | 0x2F | Donut Secret 2        |      |                       |
 | 0x15 | Donut Plains 1        | 0x33 | Valley of Bowser 4    |      |                       |
 | 0x18 | Sunken Ghost Ship     | 0x37 | Valley of Bowser 3    |      |                       |
-| 0x1A | Wendy's Castle        | 0x38 | Valley Ghost House    |      |                       |<br>
-<br>
-###Solution
+| 0x1A | Wendy's Castle        | 0x38 | Valley Ghost House    |      |                       |
+
+### Solution
 [Tutorial #8 Solution](./Solution/readme.md)<br>
 ### Links
 [Tutorial #8](readme.md)<br>
