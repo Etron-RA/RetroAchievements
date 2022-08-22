@@ -586,7 +586,6 @@ Collect("The Forge Secret II","Collect the extra life in level 5-3 on easy+",2,"
 // Enemy Knockouts
 
 enemyMemoryBase = 0x1c70
-enemyCounterOffset = 0x32
 enemyFrameOffset = 0x40
 enemyTypeOffset = 0x46
 enemyHealthOffset = 0x56
@@ -632,7 +631,7 @@ function EnemyInstantKill(index, enemy)
    
     trigger = prev(enemyType) == typeID &&
         enemyType == typeID &&
-        enemyHealth > 0 &&  
+        enemyHealth > 0 &&
         prev(enemyFrame) != frameID &&        
         enemyFrame == frameID
     
@@ -661,8 +660,60 @@ function EnemyExplodeKill(index, enemy)
     return trigger
 }
 
+// Viking count (special version that count the enemies bit flag instead of the sprites)
+function VikingCount(title, description, points, count, cheevoId)
+{
+    levelID = ReverseLookup(LevelLookup,"2-4")
+    enemyCount = []
+
+    for index in range (0xa30,0xa5f)
+    {
+        array_push(enemyCount, 
+            Level() <= levelID &&
+            prev(byte(index)) == 00 && 
+            byte(index) == 0xff)
+    }
+        
+    trigger = CheatLock() && measured(tally(count, enemyCount))
+    achievement(title, description, points, trigger, id = cheevoId)
+}
+
+// Shortcut to track a Valkyrie death
+function ValkyrieDeath(level, address)
+{
+    levelID = ReverseLookup(LevelLookup,level)
+    return Level() == levelID &&
+        prev(byte(address)) == 00 && 
+        byte(address) == 0xff    
+}
+
+// Valkyrie  count (special version that count the Valkyrie bit flags instead of the sprites)
+function ValkyrieCount(title, description, points, count, cheevoId)
+{
+    enemyCount = [
+        ValkyrieDeath("1-1",0xa32),
+        ValkyrieDeath("1-1",0xa33),
+        ValkyrieDeath("1-1",0xa35),
+        ValkyrieDeath("1-2",0xa33),
+        ValkyrieDeath("1-2",0xa34),
+        ValkyrieDeath("1-2",0xa37),
+        ValkyrieDeath("1-3",0xa32),
+        ValkyrieDeath("1-3",0xa33),
+        ValkyrieDeath("2-1",0xa32),
+        ValkyrieDeath("2-1",0xa33),
+        ValkyrieDeath("2-1",0xa34),
+        ValkyrieDeath("2-1",0xa36),
+        ValkyrieDeath("2-1",0xa37),
+        ValkyrieDeath("2-2",0xa32),
+        ValkyrieDeath("2-2",0xa33)
+    ]
+
+    trigger = CheatLock() && measured(tally(count, enemyCount))
+    achievement(title, description, points, trigger, id = cheevoId)
+}
+
 // Count the passed array of enemies dying in any enemy location
-function EnemyCount(title, description, points, count, array)
+function EnemyCount(title, description, points, count, array, cheevoId)
 {
     enemyCount = []
     for enemy in array
@@ -676,18 +727,18 @@ function EnemyCount(title, description, points, count, array)
     }
 
     trigger = CheatLock() && measured(tally(count, enemyCount))
-    achievement(title, description, points, trigger)
+    achievement(title, description, points, trigger, id = cheevoId)
 }
 
 // Count knocks outs per grouping
-EnemyCount("Betrayal of Castle Wyvern!","Knock out 25 Vikings in a single session on normal+", 2, 25, Vikings)
-EnemyCount("Track Down the Vikings Before They Attack Again!","Knock out 50 Vikings in a single session on normal+", 5, 50, Vikings)
-EnemyCount("Ragnarök!","Knock out 100 Vikings in a single session on normal+", 10, 100, Vikings)
-EnemyCount("Valhalla, I'm Coming!","Knock out 10 Valkyries in a single session on normal+", 10, 10, ["Valkyrie"])
-EnemyCount("They’re Steel Instead of Stone?","Knock out 25 Robots in a single session on normal+", 3, 25, Robots)
-EnemyCount("Debugger!","Knock out 50 Robots in a single session on normal+", 5, 50, Robots)
-EnemyCount("System Purge!","Knock out 100 Robots in a single session on normal+", 10, 100, Robots)
-EnemyCount("No, Machine, You’ll Not Get Rid of Me That Easily!","Knock out 10 Thor 3000s in a single session on normal+", 10, 10, ["Thor 3000"])
+VikingCount("Betrayal of Castle Wyvern!","Knock out 25 Vikings in a single session on normal+", 2, 25, 206380)
+VikingCount("Track Down the Vikings Before They Attack Again!","Knock out 50 Vikings in a single session on normal+", 5, 50, 206381)
+VikingCount("Ragnarök!","Knock out 100 Vikings in a single session on normal+", 10, 100, 206382)
+ValkyrieCount("Valhalla, I'm Coming!","Knock out 10 Valkyries in a single session on normal+", 10, 10, 206383)
+EnemyCount("They’re Steel Instead of Stone?","Knock out 25 Robots in a single session on normal+", 3, 25, Robots, 206384)
+EnemyCount("Debugger!","Knock out 50 Robots in a single session on normal+", 5, 50, Robots, 206385)
+EnemyCount("System Purge!","Knock out 100 Robots in a single session on normal+", 10, 100, Robots, 206386)
+EnemyCount("No, Machine, You’ll Not Get Rid of Me That Easily!","Knock out 10 Thor 3000s in a single session on normal+", 10, 10, ["Thor 3000"], 206387)
 
 rich_presence_conditional_display(DetectCheat(), "Goliath is cheating! Achievements paused, reset emulator to reactivate achievements.")
 rich_presence_conditional_display(Progression() == 0 && GameActive() == 0xff && Cutscene() == 0xff && Lives() == 0 && Continues() == 0, "Goliath is in menu.")
