@@ -1,6 +1,6 @@
 # Example #8A: Yoshi's Island 1 Speedrun
 Yoshi’s Island 1 is the first level in Super Mario World and is one of the easiest levels to beat in the game.  The game gives you 300 seconds to complete the level however, once you reduce that time limit it becomes much more challenging.  When deciding on time limits for speedrun achievements be sure to add a small buffer of extra time to allow for a few mistakes.  Player’s can spend years perfecting a speedrun which is an unreasonable expectation for the average player.  Leave the world record times for leaderboards instead.<br>
-![Speeding through Yoshi’s Island]( Super_Mario_World_Yoshi_Island.png)<br>
+![Speeding through Yoshi’s Island 1]( Super_Mario_World_Yoshi_Island.png)<br>
 ```
 // Super Mario World
 // #ID = 228
@@ -84,7 +84,7 @@ achievement(
 )
 ```
 ### Start 
-The start condition for this challenge occurs when the player starts Yoshi’s Island 1 from the beginning.  It’s worth noting that most levels have a checkpoint in the middle that, if the player hits the white tape between the midpoint goal posts, acts as a starting location when the player die’s before completing the level.  Starting from the midpoint would negate the speedrun challenge so the ```StartLevel(level)``` function only triggers when starting from the beginning of the level.  By using a shortcut function like ```StartLevel(level)``` we can easily change which level the achievement is coded for by changing the level ID parameter.
+The start condition for this challenge occurs when the player starts Yoshi’s Island 1 from the beginning in single player mode.  It’s worth noting that most levels have a checkpoint in the middle that, if the player hits the white tape between the midpoint goal posts, acts as a starting location when the player die’s before completing the level.  Starting from the midpoint would negate the speedrun challenge so the ```StartLevel(level)``` function only triggers when starting from the beginning of the level.  By using a shortcut function like ```StartLevel(level)``` we can easily change which level the achievement is coded for by changing the level ID parameter.
 ### Cancel
 The cancel conditions for this challenge achievement are when the player leaves the level, a game over occurs, or the timer expires.  The achievement uses the level pointer to know when a player is in a level.  When the level is loaded the level pointer is not null (zero) and when the level is unloaded the pointer returns to null (zero).  In this case the pointer’s location is unimportant since we use the level ID to know which level is loaded.<br>
 <br>

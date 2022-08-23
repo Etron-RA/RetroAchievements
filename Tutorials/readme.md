@@ -11,3 +11,4 @@ The RAScript Tutorials series of coding by example tutorials to complement the [
 * [**Pointers**](/Tutorials/05_Pointers/readme.md): Examples of pointer use and data structures - Example Game: Spider-Man
 * [**If/else**](/Tutorials/06_If_Else/readme.md): Examples of using logic conditions to build an achievement - Example Game: Tetris DX
 * [**Challenges Part 1**](/Tutorials/07_Challenges_Part_1/readme.md): Examples of damageless, deathless, and weapon limited challenges - Example Game: Mega man
+* [**Challenges Part 2**](/Tutorials/08_Challenges_Part_2/readme.md): Examples of speedrun and time related challenges - Example Game: Super Mario World

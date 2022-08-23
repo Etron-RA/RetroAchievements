@@ -7,7 +7,7 @@ Using similar logic from [Example 8A](Example_8A.md) create an achievement to be
 To complete the homework problem you’ll need the memory addresses:<br>
 0x000019 -> [8-bit] Player's Power: 0 = Small, 1 = Super, 2 = Cape, 3 = Flower<br>
 0x00187A -> [8-bit] Sitting on Yoshi: 0 = None, 1 = On Yoshi 2 = On Yoshi turning<br>
-0x0013bf -> [8-bit] Level ID<br>
+0x0013BF -> [8-bit] Level ID<br>
 | ID | Level | ID | Level | ID | Level |
 |:----:|-----------------------|:----:|-----------------------|:----:|-----------------------|
 | 0x01 | Vanilla Secret 2      | 0x1B | Chocolate Fortress    | 0x38 | Valley Ghost House    |

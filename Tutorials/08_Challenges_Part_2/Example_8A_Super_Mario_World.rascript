@@ -43,7 +43,7 @@ function StartLevel(level)
         LevelPointer() != 0
 }
 
-// Shortcut for completeing a level (defaults to normal exit)
+// Shortcut for completing a level (defaults to normal exit)
 function ExitLevel(exit = 1)
 {
     return prev(LevelBeat()) == 0 &&

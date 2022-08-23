@@ -54,15 +54,12 @@ function StartLevel(level)
         LevelPointer() != 0
 }
 
-// Shortcut for completeing a level (defaults to normal exit)
+// Shortcut for completing a level (defaults to normal exit)
 function ExitLevel(exit = 1)
 {
     return prev(LevelBeat()) == 0 &&
         LevelBeat() == exit
 }
-
-// Convert the time minutes:seconds:frames to frames (1/60s each)
-function TimeSpan(minutes, seconds, frames) => minutes * 3600 + seconds * 60 + frames
 
 // Speedrun challenge to complete the level parameter in under the time parameter as small Mario
 // Start: When the player start the level parameter

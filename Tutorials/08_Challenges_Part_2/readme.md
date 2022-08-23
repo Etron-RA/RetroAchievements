@@ -1,7 +1,7 @@
 # Tutorial #8 – Challenges Part 2
 
 ## Overview
-This tutorial will show a few examples of how to create speedruns and other time related challenges.  This is the second tutorial on challenges and it will build on the concepts introduced in tutorial #7. [Super Mario World](https://retroachievements.org/game/228) was chosen for this tutorial because it is a platforming game where you can replay levels after they are beaten making it perfect for reattempting a speedrun. Additionally, the game can be completed quickly by using secret exits to bypass the standard progression route making it possible to quickly jump to the final confrontation with Bowser.<br>
+This tutorial will show a few examples of how to create speedruns and other time related challenges.  This is the second tutorial on challenges and it will build on the concepts introduced in [Tutorial #7 - Challenges Part 1](../07_Challenges_Part_1/readme.md). [Super Mario World](https://retroachievements.org/game/228) was chosen for this tutorial because it is a platforming game where you can replay levels after they are beaten making it perfect for reattempting a speedrun. Additionally, the game can be completed quickly by using secret exits to bypass the standard progression route making it possible to quickly jump to the final confrontation with Bowser.<br>
 ![Super Mario World](Super_Mario_World_Title.png)<br> 
  
 ## Leaderboard Analogy
