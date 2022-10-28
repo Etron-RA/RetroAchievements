@@ -200,6 +200,7 @@ StageLookup = {
 function ScreenID() => word(0x00055e)
 function ScreenByte() => byte(0x00055e)
 function OnOverworld() => ScreenID() <= 0x6
+function EnterStage() => prev(ScreenID()) <= 0x6 && ScreenID() > 0x6
 function BonusJump() => ScreenID() == 0x2A
 
 // $057B: Screen X
@@ -233,7 +234,7 @@ function Lives() => byte(0x000599)
 
 // $05E1: Kirby's current move (0xb == transform)
 function Moves() => byte(0x0005E1)
-function Eat() => Moves() == 0xb
+function Eat() => prev(Moves()) != 0xb && Moves() == 0xb
 
 // $05E2: Whats inside your mouth. Same ids as the powerups
 function InsideMouth() => byte(0x0005E2)
@@ -297,12 +298,15 @@ function QuickDrawEnd() => byte(0x006249)
 // $626C: UnderMenu
 function UnderMenu() => byte(0x00626C)
 
+// $62C7: Kirby Animation (0xff = none)
+function Animation() => byte(0x0062C7)
+
 // $66e9: [8-bit] Boss Health Display
 function BossHealth() => byte(0x66e9)
 
 // $66eb: Mix Ability (goes from 22 to 1 during transformation)
 function HUD() => byte(0x66eb)
-function Mix() => prev(HUD()) == 0x22 && HUD() == 0x1
+function Mix() => HUD() == 0x22
 function Nothing() => HUD() == 0x21
 
 //------------------------------------------------------------------
@@ -386,8 +390,8 @@ Levels = {
 0x75: ["Enchanted Express", 6, 4, BonusJump(), 0x06, 0x73, 0x76, 0xa3, 0xa5, 0xa4, 0xa6, 0xa8],
 0x76: ["Rainbow Islands", 6, 5, BonusJump(), 0x06, 0x7e, 0x9a, 0x9b, 0x9c, 0x9d, 0x9e, 0x9f, 0xa0, 0xa1],
 0x78: ["Concerto Dedede", 6, 7, BossBeat(0x0e), 0x06, 0x14, 0xe],
-0x88: ["Nightmare Angel", 7, 7, BossBeat(0x0f), 0x0e, 0x0f],
-0x89: ["Nightmare Reaper", 7, 7, BossBeat(0x10), 0x00, 0x10]
+0x88: ["Nightmare Angel", 7, 7, BossBeat(0x0f), 0xff0e, 0x0f],
+0x89: ["Nightmare Reaper", 7, 7, BossBeat(0x10), 0xff00, 0x10]
 }
 
 // Number to text conversion
@@ -430,74 +434,6 @@ function LevelStart(world, stage)
         ScreenID() == postScreen
 }
 
-// Get the code to a transistion to a certain screen number
-function LevelTransistion(world, stage, screenNum)
-{
-    hash = world * 0x10 + stage
-    levelInfo = Levels[hash]
-    
-    if (screenNum <= 1)
-        screenNum = 0
-    else
-        screenNum = screenNum - 1
-    
-    worldID = levelInfo[1]
-    stageID = levelInfo[2]
-    preScreen = levelInfo[4 + screenNum]
-    postScreen = levelInfo[5 + screenNum]
-    
-    return !DemoMode() &&
-        !Credits() &&
-        World() == worldID &&
-        Stage() == stageID &&
-        prev(ScreenID()) == preScreen && 
-        ScreenID() == postScreen
-}
-
-// Get the code to a certain screen number
-function LevelScreen(world, stage, screenNum)
-{
-    hash = world * 0x10 + stage
-    levelInfo = Levels[hash]
-    
-    if (screenNum <= 1)
-        screenNum = 0
-    else
-        screenNum = screenNum - 1
-    
-    worldID = levelInfo[1]
-    stageID = levelInfo[2]
-    screen = levelInfo[5 + screenNum]
-    
-    return !DemoMode() &&
-        !Credits() &&
-        World() == worldID &&
-        Stage() == stageID &&
-        ScreenID() == screen
-}
-
-// Get the code to a exempt screen number
-function LevelException(world, stage, screenNum)
-{
-    hash = world * 0x10 + stage
-    levelInfo = Levels[hash]
-    
-    if (screenNum <= 1)
-        screenNum = 0
-    else
-        screenNum = screenNum - 1
-    
-    worldID = levelInfo[1]
-    stageID = levelInfo[2]
-    screen = levelInfo[5 + screenNum]
-    
-    return !DemoMode() &&
-        !Credits() &&
-        World() == worldID &&
-        Stage() == stageID &&
-        ScreenID() != screen
-}
-
 // Gets the code for the end of the level
 function LevelEnd(world, stage)
 {
@@ -529,7 +465,7 @@ function MixAbility()
 {
     trigger = !DemoMode() &&
         !Credits() &&
-        Mix() &&
+        prev(HUD()) == 0x22 &&
         Eat()
     
     return trigger
@@ -559,7 +495,7 @@ achievement("Lightbringer!","Obtain the light ability", 1, ObtainAbility("light"
 achievement("Wanna Wrestle?","Obtain the wrestler ability", 1, ObtainAbility("wrestler"))
 achievement("Throwing Stars!","Obtain the throw ability", 1, ObtainAbility("throw"))
 achievement("It Came From Planet Dream Land!","Obtain the U.F.O. ability", 1, ObtainAbility("U.F.O."))
-achievement("Shaken, Not Stirred!","Obtain the mix ability", 1, MixAbility())
+achievement("Remixed!","Obtain the mix ability", 1, MixAbility())
 
 //------------------------------------------------------------------
 // Progress
@@ -584,8 +520,9 @@ function StartWorld(world, mode = 3)
     else if (world == 8)
     {
         trigger = trigger && 
-            ScreenID() == 0x0e &&
-            Music() == 0x38
+           BossHealth() == 0x0 &&
+           prev(ScreenID()) == 0x0e &&
+            ScreenID() == 0xff0e
     }
     else
     {
@@ -610,6 +547,7 @@ function EndWorld(world, mode = 3)
     if (world == 7)
     {
         trigger = trigger && 
+           BossHealth() == 0x0 &&
            prev(ScreenID()) == 0x0e &&
             ScreenID() == 0xff0e
     }
@@ -780,109 +718,6 @@ achievement("Egg Catcher!","Get 3 lives in the egg catcher bonus (any difficulty
 achievement("Quick Draw!","Get 3 lives in the quick draw bonus (any difficulty)", 5, QuickDraw())
 
 //------------------------------------------------------------------
-// Level Challenges
-
-function CopyAbility(world, stage, location, ability, points)
-{
-    name = LevelName(world, stage) + " Copy Challenge!"
-
-    description = format("Start with or obtain the {0} ability in the {1} section of {2}-{3} and complete the level without losing it",
-        ability, Transistions[location], world, stage)
-            
-    if (location == 0)
-    {
-        description = format("Start with the {0} ability in {1}-{2} and complete the level without losing it",
-            ability, world, stage)
-    }
-
-    abilityID = ReverseLookup(PowerupLookup, ability)
-
-    // Code for starting the room with the ability in it
-    start_room = once(LevelTransistion(world, stage, location))
-    
-    // Code for starting the level
-    start_level = once(
-        LevelStart(world, stage) &&
-        Ability() == abilityID
-    )
-    
-    // Code for obtaining the ability
-    obtain = once(            
-            LevelScreen(world, stage, location) && 
-            prev(Ability()) != abilityID &&          
-            Ability() == abilityID
-        )
-    
-    // Cancel when loses ability, on the overworld or, on the gameover screen
-    cancel = never(
-            prev(Ability()) == abilityID &&          
-            Ability() != abilityID
-        ) && never(
-            LevelException(world, stage, location) &&             
-            Ability() != abilityID
-        ) &&
-        never(OnOverworld()) &&
-        never(GameOver())
-    
-    // submit when the player finish the level
-    submit = trigger_when(LevelEnd(world, stage))
-    
-    achievement(name, description,points,cancel && submit && (start_room || start_level || obtain))
-}
-
-function Race(world, stage, time, ability, points)
-{
-    name = LevelName(world, stage) + " Race!"
-
-    description = format("Complete level {0}-{1} in {2} seconds or less using only the {3} and normal copy abilities",
-        world, stage, time, ability)
-        
-    abilityID = ReverseLookup(PowerupLookup, ability)
-    
-    start = once(LevelStart(world, stage))
-        
-    cancel = never(
-            Ability() != 0xff &&          
-            Ability() != abilityID
-        ) &&
-        never(repeated(time * 60, always_true())) &&
-        never(OnOverworld()) &&
-        never(GameOver())         
-    
-    // submit when the player finish the level
-    submit = trigger_when(LevelEnd(world, stage))
-    
-    achievement(name, description,points, start && cancel && submit)
-}
-
-function Diet(world, stage, points)
-{
-    name = LevelName(world, stage) + " Diet!"
-    
-    description = format("Complete level {0}-{1} without swallowing anything or using copy abilities except on the first screen (items are allowed since they are nutritious)",
-        world, stage)
-        
-    start = once(LevelStart(world, stage))
-        
-    cancel = never(
-            prev(Ability()) == 0xff &&          
-            Ability() != 0xff
-        ) && never(
-            LevelException(world, stage, 1) &&             
-            Ability() != 0xff
-        ) &&
-        never(Nothing()) &&
-        never(OnOverworld()) &&
-        never(GameOver())         
-    
-    // submit when the player finish the level
-    submit = trigger_when(LevelEnd(world, stage))
-    
-    achievement(name, description,points, start && cancel && submit)
-}
-// Removed level challenges
-
-//------------------------------------------------------------------
 // Hidden Switches
 
 function FoundSwitch(world, stage, switch)
@@ -929,7 +764,7 @@ rich_presence_display("{0}{1}{2} Kirby on {3}{4}{5} HP:{6} ❤️:{7}",
 // Leadrboards
 
 leaderboard(
-    "Speedrun",
+    "Speedrun!",
     "Fastest time to complete the game",
     StartWorld(1),
     GameOver(),
@@ -941,7 +776,7 @@ leaderboard(
 for index in range(1,8)
 {
     leaderboard(
-        "World " + index + " Speedrun",
+        "World " + index + " Speedrun!",
         "Fastest time to complete world " + index,
         StartWorld(index),
         GameOver(),
@@ -966,14 +801,14 @@ for levelHash in Levels
         Difficulty() < 0x2 &&
         World() == worldID &&
         Stage() == stageID &&
-        prev(ScreenID()) == previousID &&
-        ScreenID() == currentID 
+        prev(ScreenID()) == previousID && 
+        ScreenID() == currentID
     
     leaderboard(
         name + " Speedrun!",
         "Fastest time to complete " + name,
         start,
-        GameOver() || OnOverworld(),
+        always_true() && (GameOver() || (Animation() == 6 && OnOverworld())),
         submit,
         always_true(),
         format="FRAMES"
@@ -981,7 +816,7 @@ for levelHash in Levels
 }
 
 leaderboard(
-    "Speedrun V.S. Boss",
+    "Speedrun V.S. Boss!",
     "Fastest time to complete the V.S. boss rush.",
     StartVS(),
     GameOver(),
@@ -991,7 +826,7 @@ leaderboard(
 )
 
 leaderboard(
-    "The Wizard Copy Ability",
+    "The Wizard Copy Ability!",
     "Highest score in the 1st ten minutes of starting a new game",
      StartWorld(1, NormalMode) || StartWorld(1, ExtraMode),
      GameOver(),
