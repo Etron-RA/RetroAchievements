@@ -70,6 +70,9 @@ PausedLookup = {
     7: "▌▌ ",
 }
 
+// $0521: World Progress (7 bytes 1 per world)
+function WorldProgress(world) => byte(0x000521 + world)
+
 // $0528: Worlds Activated
 function WorldsActivated() => byte(0x000528)
 
@@ -514,6 +517,7 @@ function StartWorld(world, mode = 3)
     if (world == 1)
     {
         trigger = trigger && 
+           WorldProgress(0) == 0 &&
            WorldsActivated() == 0 &&
            GameMode() == 0x51
     }
@@ -527,6 +531,7 @@ function StartWorld(world, mode = 3)
     else
     {
         trigger = trigger && 
+           WorldProgress(world - 1) == 0 &&
            prev(WorldsActivated()) == (world - 2) &&
            WorldsActivated() == (world - 1)
     }
@@ -770,7 +775,8 @@ leaderboard(
     GameOver(),
     EndWorld(8),
     always_true(),
-    format="FRAMES"
+    format="FRAMES",
+    lower_is_better = true
 )
 
 for index in range(1,8)
@@ -782,7 +788,8 @@ for index in range(1,8)
         GameOver(),
         EndWorld(index),
         always_true(),
-        format="FRAMES"
+        format="FRAMES",
+        lower_is_better = true
     )
 }
 
@@ -811,7 +818,8 @@ for levelHash in Levels
         always_true() && (GameOver() || (Animation() == 6 && OnOverworld())),
         submit,
         always_true(),
-        format="FRAMES"
+        format="FRAMES",
+        lower_is_better = true        
     )
 }
 
@@ -822,7 +830,8 @@ leaderboard(
     GameOver(),
     EndVS(),
     always_true(),
-    format="FRAMES"
+    format="FRAMES",
+    lower_is_better = true
 )
 
 leaderboard(
