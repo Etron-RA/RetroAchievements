@@ -70,7 +70,7 @@ The achievement uses ```once()``` to add a hit when player one starts the first 
 The achievement uses ```never()``` to remove the hit from the **start** event when the attract demo is on, player two starts playing, or player one is not using Ryu during a fight.  Note that the player can move the selection cursor around to other fighters however, the cancel event will occur if they are actively fighting with another fighter.
 ## Goal
 The **goal** requirements are satisfied when the player beats the final boss, M. Bison (or Vega in the Japan region). Similar to the previous examples, the **goal** is used with a ```trigger_when()``` function to create the **submit** event and used with the ```measured``` function to create the **value** event.<br>
-<br>
+### Script
 [Complete Example #9C with the above solution](Street_Fighter_II_The_World_Warrior_Example_9C.rascript)<br>
 ### Links
 [Tutorial #9](../readme.md)<br>

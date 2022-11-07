@@ -93,7 +93,7 @@ The achievement uses ```once()``` to add a hit when player one starts any round.
 The achievement uses ```never()``` to remove the hit from the **start** event when the attract demo is on, player two starts playing, player one is not E-Honda, either player has been knocked out, or the player has landed an attack other than Hundred Hand Slap.  The final cancel condition is a little more complex and will cancel only when player two loses health while the attack in the attack buffer is not one of the three variations of the Hundred Hand Slap.
 ## Goal
 The **goal** requirements are satisfied when the player hits the opponent with only four Hundred Hand Slaps.  Similarly to the last example, the **goal** is used with a ```trigger_when()``` function to create the **submit** event and used with the ```measured``` function to create the **value** event.<br>
-<br>
+### Script
 Scripts: [Example #9B script](Street_Fighter_II_The_World_Warrior_Example_9B.rascript) <br>
 ### Links
 [Tutorial #9](readme.md) <br>

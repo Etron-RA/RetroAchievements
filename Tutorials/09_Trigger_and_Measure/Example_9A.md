@@ -64,10 +64,10 @@ When the function ```Beat1CC()``` returns the generated code to the achievement 
 return start && cancel && (submit || value)
 ```
 Note the parenthesis around the **submit** and **value** events.  The parenthesis separates the alt events from the core which will only contain the **start** and **cancel** events.<br>
-<br>
+### Script
 Scripts: [Example #9A script](Street_Fighter_II_The_World_Warrior_Example_9A.rascript) <br>
 ### Links
-[Tutorial #X](readme.md) <br>
+[Tutorial #9](readme.md) <br>
 Example #9A<br>
-[Example #XB](Example_9B.md) <br>
-[Example #XC](Example_9C.md) <br>
+[Example #9B](Example_9B.md) <br>
+[Example #9C](Example_9C.md) <br>

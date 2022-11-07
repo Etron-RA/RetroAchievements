@@ -44,7 +44,7 @@ function Player1Attacks() => byte(0x008AE2)
 // Challenge to hit the oponent 4 times with Hundred Hand Slap and nothing else
 function Kimarite()
 {
-    // Start at the begining of a round when the fight event changes to 0xa and the player has no hits
+    // Start at the beginning of a round when the fight event changes to 0xa and the player has no hits
     start = once(Player1Attacks() == 0 &&
         prev(Event()) != 0xa &&
         Event() == 0xa)

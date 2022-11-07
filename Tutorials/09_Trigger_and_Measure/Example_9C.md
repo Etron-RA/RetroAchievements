@@ -16,8 +16,7 @@ To complete the homework problem you’ll need the memory address:<br>
 | 0x5 | ChunLi |
 | 0x6 | Zangief |
 | 0x7 | Dhalsim | 
-<br>
-<br>
+### Script
 Solutions: [Tutorial #X Solution](./Solution/readme.md)<br>
 ### Links
 [Tutorial #9](readme.md)<br>
