@@ -1,6 +1,6 @@
 # Example #8C: Small Boy Challenge
 The small boy challenge is to complete a level (or the whole game) without using a power up or riding Yoshi.  Super Mario World has power ups like the fire flower or the cape which can trivialize completing a level. For example, using the cape for the [Yoshi's Island 1 Speedrun](Example_8A.md) would make the challenge too easy since you can fly over the entire level. Additionally, being powered up gives Mario one more hit point therefore the small boy challenge is also a damageless challenge.  Being small does have an advantage, small Mario has a smaller hitbox meaning that small Mario can pass by obstacles that would hit a powered up Mario.<br>
-![Mario is too small to ride]( Super_Mario_World_Small_Boy.png)<br>
+![Mario is too small to ride](Super_Mario_World_Small_Boy.png)<br>
 ## Homework #8
 Using similar logic from [Example 8A](Example_8A.md) create an achievement to beat any level as small Mario and without Yoshi.
 ## Useful Memory

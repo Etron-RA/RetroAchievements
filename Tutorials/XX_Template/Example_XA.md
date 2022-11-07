@@ -1,4 +1,4 @@
-# Example #XA
+# Example #XA -
 <br>
 Scripts: [Example #XA script](Example_0XA.rascript) <br>
 ### Links

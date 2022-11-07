@@ -1,3 +1,8 @@
+# Example #9B: Kimarite
+Every character in Street Fighter II has a unique move set of special moves to match there fighting style (except for Ken and Ryu since they were both taught to fight by the same master).  The Sumo wrestler E. Honda has a very powerful special move call the Hundred Hand Slap where his hands slap so fast that they start to blur on the screen.  This special move is easy to perform by rapidly pressing any of the three punch buttons. The goal of this achievement is to hit the opponent 4 times only using the Hundred Hand Slap. <br>
+![Street Fighter II: The World Warrior Hundred Hand Slap](Street_Fighter_2_Honda_100_Hand_Slap.png)<br>
+ 
+```
 // Street Fighter II: The World Warrior
 // #ID = 11808
 
@@ -44,7 +49,7 @@ function Player1Attacks() => byte(0x008AE2)
 // Challenge to hit the oponent 4 times with Hundred Hand Slap and nothing else
 function Kimarite()
 {
-    // Start at the begining of a round when the fight event changes to 0xa and the player has no hits
+    // Start at the beginning of a round when the fight event changes to 0xa and the player has no hits
     start = once(Player1Attacks() == 0 &&
         prev(Event()) != 0xa &&
         Event() == 0xa)
@@ -81,3 +86,17 @@ achievement(
     points = 5,
     trigger = Kimarite()
 )
+```
+## Start
+The achievement uses ```once()``` to add a hit when player one starts any round.  The hit will prime the achievement to show the trigger indicator until the **cancel** or **goal** events occur.
+## Cancel
+The achievement uses ```never()``` to remove the hit from the **start** event when the attract demo is on, player two starts playing, player one is not E-Honda, either player has been knocked out, or the player has landed an attack other than Hundred Hand Slap.  The final cancel condition is a little more complex and will cancel only when player two loses health while the attack in the attack buffer is not one of the three variations of the Hundred Hand Slap.
+## Goal
+The **goal** requirements are satisfied when the player hits the opponent with only four Hundred Hand Slaps.  Similarly to the last example, the **goal** is used with a ```trigger_when()``` function to create the **submit** event and used with the ```measured``` function to create the **value** event.<br>
+<br>
+Scripts: [Example #9B script](Street_Fighter_II_The_World_Warrior_Example_9B.rascript) <br>
+### Links
+[Tutorial #9](readme.md) <br>
+[Example #9A](Example_9A.md) <br>
+Example #9B <br>
+[Example #9C](Example_9C.md)

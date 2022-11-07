@@ -1,5 +1,5 @@
 # Tutorial #X Solution
-
+<br>
 [Complete Example #XC with the above solution](Example_0XC.rascript)<br>
 ### Links
 [Tutorial #X](../readme.md)<br>

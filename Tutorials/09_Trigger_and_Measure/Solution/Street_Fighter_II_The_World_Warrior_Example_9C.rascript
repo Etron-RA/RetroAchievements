@@ -20,8 +20,6 @@ ChunLi = 5
 Zangief = 6
 Dhalsim = 7
 
-// $86F0: P2 HP
-function Player2Health() => byte(0x0086F0)
 // $8955: P2 Status (1 = Active)
 function Player2Status() => byte(0x008955)
 function Player2Active() => Player2Status() == 1
