@@ -1,5 +1,5 @@
 # Example #9C: Already Seeking The Next Challenge
-This example is very similar to [Street Fighter II 1CC](..\Example_9A.md) with the main difference that the cancel code allows only one fighter with infinite credits.  Ryu was chosen since he is one of the most iconic fighters in the series however, the code can easily be adapted for any fighter by changing the parameter. <br>
+This example is very similar to [Street Fighter II 1CC](../Example_9A.md) with the main difference that the cancel code allows only one fighter with infinite credits.  Ryu was chosen since he is one of the most iconic fighters in the series however, the code can easily be adapted for any fighter by changing the parameter. <br>
 ![Street Fighter II: The World Warrior Ryu Wins!](Street_Fighter_2_Ryu_Wins.png)<br>
  
 ```
