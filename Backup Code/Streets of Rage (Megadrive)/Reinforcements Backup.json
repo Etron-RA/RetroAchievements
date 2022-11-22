@@ -1,0 +1,38 @@
+{
+	"ID": 55,
+	"Title": "Streets of Rage",
+	"ConsoleID": 1,
+	"ForumTopicID": 246,
+	"Flags": 0,
+	"ImageIcon": "/Images/039151.png",
+	"ImageTitle": "/Images/000517.png",
+	"ImageIngame": "/Images/028073.png",
+	"ImageBoxArt": "/Images/000520.png",
+	"Publisher": "Sega",
+	"Developer": "Sega",
+	"Genre": "Beat 'em up",
+	"Released": "August 2, 1991",
+	"IsFinal": false,
+	"ConsoleName": "Mega Drive",
+	"RichPresencePatch": "Lookup:Stage\r\n0x0=on the City Street\r\n0x1=in the Inner City\r\n0x2=on the Beachfront\r\n0x3=on the Bridge\r\n0x4=aboard the Ship\r\n0x5=in the Factory\r\n0x6=in the Freight Elevator\r\n0x7=in the Syndicate Headquarters\r\n\r\nFormat:Score\r\nFormatType=VALUE\r\n\r\nFormat:Continue\r\nFormatType=VALUE\r\n\r\nLookup:Char\r\n0x0=Axel\r\n0x1=Adam\r\n0x2=Blaze\r\n\r\nLookup:Difficulty\r\n0x0=Easy\r\n0x1=Normal\r\n0x2=Hard\r\n0x3=Hardest\r\n\r\nFormat:Lives\r\nFormatType=VALUE\r\n\r\nFormat:Time\r\nFormatType=VALUE\r\n\r\nDisplay:\r\nBeating everyone with @Char(0xhff1f) @Stage(0xhff02), 🚶:@Lives(0xhff21), 💞:@Continue(0xhff1a), 🕐:@Time(b0xfb00), ⚖:@Difficulty(0xhffc6), 💯:@Score(0xuff08)@Score(0xlff08)@Score(0xuff0b)@Score(0xlff0b)00.",
+	"ImageIconURL": "https://media.retroachievements.org/Images/039151.png",
+	"ImageTitleURL": "https://media.retroachievements.org/Images/000517.png",
+	"ImageIngameURL": "https://media.retroachievements.org/Images/028073.png",
+	"ImageBoxArtURL": "https://media.retroachievements.org/Images/000520.png",
+	"Achievements": [
+		{
+			"ID": 88787,
+			"MemAddr": "0xHff20>d0xHff20.1._0xHff2b=0_d0xHff20!=0xHff20_0xHff00=22_R:0xHff00!=22_R:0xHb831>=80",
+			"Title": "Reinforcements!",
+			"Description": "Collect A Special Item",
+			"Points": 5,
+			"Author": "jplima",
+			"Modified": 1574987262,
+			"Created": 1574280971,
+			"BadgeName": "97717",
+			"Flags": 3,
+			"BadgeURL": "https://media.retroachievements.org/Badge/97717.png",
+			"BadgeLockedURL": "https://media.retroachievements.org/Badge/97717_lock.png"
+		}
+	]
+}
