@@ -1,0 +1,58 @@
+{
+	"ID": 6392,
+	"Title": "~Hack~ Vegetable Valley Nightmare",
+	"ConsoleID": 7,
+	"ForumTopicID": 16436,
+	"Flags": 0,
+	"ImageIcon": "/Images/057616.png",
+	"ImageTitle": "/Images/038754.png",
+	"ImageIngame": "/Images/057617.png",
+	"ImageBoxArt": "/Images/000002.png",
+	"Publisher": "Hack - Kirby",
+	"Developer": "RhysOwens101",
+	"Genre": "2D Platforming",
+	"Released": "January 8, 2017",
+	"IsFinal": false,
+	"ConsoleName": "NES",
+	"RichPresencePatch": "Lookup:LevelName\r\n0x00=Vegetable Valley Nightmare\r\n\r\nLookup:Powerup\r\n0=Fire\r\n1=Spark\r\n2=Cutter\r\n3=Sword\r\n4=Fireball\r\n0xb=Needle\r\n0xd=Freeze\r\n0xf=Beam\r\n0x13=Crash\r\n0x18=Star rod\r\n0x19=Bye bye\r\n0xff=\r\n\r\nLookup:Paused\r\n0=\r\n1=\r\n7=▌▌ \r\n\r\nLookup:Mode\r\n0xe=[Learning how to play the game]\r\n0x2a=[Learning the Story]\r\n0x34=[Sitting on the Title Screen]\r\n0xfa=[Watching the Intro]\r\n4=[Sitting on the Title Screen]\r\n0x6a=[Failed the Challenge]\r\n\r\nDisplay:\r\n@Paused(0xh51e)@Mode(0xh1fe)@Powerup(0xh5e3) Kirby is taking on the @LevelName(0xh558)\r\n\r\nOriginal Rich Presence by kdecks v2.0 18 November 2017, (v1.0 created April 2014 by pgj1997)\r\nModified for Vegitable Valley Nightmare by Alurith",
+	"ImageIconURL": "https://media.retroachievements.org/Images/057616.png",
+	"ImageTitleURL": "https://media.retroachievements.org/Images/038754.png",
+	"ImageIngameURL": "https://media.retroachievements.org/Images/057617.png",
+	"ImageBoxArtURL": "https://media.retroachievements.org/Images/000002.png",
+	"Achievements": [
+		{
+			"ID": 218731,
+			"MemAddr": "P:0xH0599>0.1._P:d0xH0597<47.1._N:0xH05e1!=d0xH05e1_P:0xH05e1=13.5._d0xH004e!=71_T:0xH004e=71_P:96=96.18000.SR:0xH0783=53",
+			"Title": "Speed Demon",
+			"Description": "Beat the game in under 5 minutes. (Good Luck)",
+			"Points": 25,
+			"Author": "Alurith",
+			"Modified": 1652722927,
+			"Created": 1652670157,
+			"BadgeName": "242028",
+			"Flags": 3,
+			"BadgeURL": "https://media.retroachievements.org/Badge/242028.png",
+			"BadgeLockedURL": "https://media.retroachievements.org/Badge/242028_lock.png"
+		}
+	],
+	"Leaderboards": [
+		{
+			"ID": 34794,
+			"Mem": "STA:0xH0783=0_0xH0191=19::CAN:O:0xH0783=53_0xH0783=11::SUB:d0xH004e!=71_0xH004e=71::VAL:M:96=96",
+			"Format": "TIME",
+			"LowerIsBetter": true,
+			"Title": "Speed Demon",
+			"Description": "Beat the game as fast as possible, no restrictions",
+			"Hidden": false
+		},
+		{
+			"ID": 34795,
+			"Mem": "STA:0xH0783=0_0xH0191=19::CAN:S0xH0783=53S0xH0783=11S0xH0599>0Sd0xH0597<47SN:0xH05e1!=d0xH05e1_0xH05e1=13.5.::SUB:d0xH004e!=71_0xH004e=71::VAL:M:96=96",
+			"Format": "TIME",
+			"LowerIsBetter": true,
+			"Title": "True Speed Demon Ultra",
+			"Description": "Beat the game as fast as possible, without taking a hit, or flying more than 4 times.",
+			"Hidden": false
+		}
+	]
+}
