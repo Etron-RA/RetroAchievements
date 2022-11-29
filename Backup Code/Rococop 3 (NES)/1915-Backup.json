@@ -1,0 +1,53 @@
+{
+	"ID": 1915,
+	"Title": "RoboCop 3",
+	"ConsoleID": 7,
+	"ForumTopicID": 4968,
+	"Flags": 0,
+	"ImageIcon": "/Images/034898.png",
+	"ImageTitle": "/Images/011432.png",
+	"ImageIngame": "/Images/011433.png",
+	"ImageBoxArt": "/Images/011430.png",
+	"Publisher": "Ocean Software",
+	"Developer": "Probe Software",
+	"Genre": "Action",
+	"Released": "August 1992",
+	"IsFinal": false,
+	"ConsoleName": "NES",
+	"RichPresencePatch": "Format:Efficiency\r\nFormatType=VALUE\r\n\r\nLookup:Level\r\n0x00= Patrolling Cadillac Heights at Dusk\r\n0x01= Patrolling Rocket Motors Factory\r\n0x02= Stopping the super tank\r\n0x03= Engaging the ED-209\r\n0x04= Hacking the Terminal at OCP\r\n0x05= Saving Nikko and Marie\r\n\r\nDisplay:\r\nEfficiency @Efficiency(0xH0e3e)％ 🌇@Level(0xH0003)  ",
+	"ImageIconURL": "https://media.retroachievements.org/Images/034898.png",
+	"ImageTitleURL": "https://media.retroachievements.org/Images/011432.png",
+	"ImageIngameURL": "https://media.retroachievements.org/Images/011433.png",
+	"ImageBoxArtURL": "https://media.retroachievements.org/Images/011430.png",
+	"Achievements": [
+	{
+			"ID": 112432,
+			"MemAddr": "0xH008f=5_0xH0003=1_0xH03c6=99.1._0xH03c6=0_R:0xH0e3e<d0xH0e3e_R:0xH0003!=1_R:0xH008f!=5_R:0xH08a0=166_R:0xH08a0=58_R:0xH08a0=135",
+			"Title": "Blue Ninja (zero damage) [m]",
+			"Description": "Defeated 1st blue ninja without being damaged after engaging",
+			"Points": 10,
+			"Author": "mopain85",
+			"Modified": 1592376031,
+			"Created": 1591366299,
+			"BadgeName": "122518",
+			"Flags": 3,
+			"BadgeURL": "https://media.retroachievements.org/Badge/122518.png",
+			"BadgeLockedURL": "https://media.retroachievements.org/Badge/122518_lock.png"
+		},
+		{
+			"ID": 112444,
+			"MemAddr": "0xH0775=13_0xH0776=21_0xH0777=18_0xH0778=16_0xH0779=8_0xH077a=25S0xH08a0=135_d0xH08a0=34S0xH08a0=166_d0xH08a0=34Sd0xH08a0=58_0xH08a0=34",
+			"Title": "Offer Up Your Highscore",
+			"Description": "Tribute to Murphy",
+			"Points": 1,
+			"Author": "mopain85",
+			"Modified": 1592005994,
+			"Created": 1591366337,
+			"BadgeName": "124319",
+			"Flags": 3,
+			"BadgeURL": "https://media.retroachievements.org/Badge/124319.png",
+			"BadgeLockedURL": "https://media.retroachievements.org/Badge/124319_lock.png"
+		}
+	],
+	"Leaderboards": []
+}
