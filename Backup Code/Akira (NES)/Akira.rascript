@@ -7,6 +7,9 @@ function ButtonPressed() => byte(0x000034)
 // $0052: is the area you are in
 function Area() => byte(0x000052)
 
+// $002d: [8-bit] Game State (0 = Title, 1 = In Game, 2 = Menu)
+function GameState() => byte(0x00002d)
+
 // $033D: This just tells what option what have selected when given an option.
 function Option() => byte(0x00033D)
 
@@ -35,8 +38,7 @@ AreaDictionary = {
     0x15: "at the final showdown",
     0x16: "at a good ending",
     0x17: "at a bad ending",
-
-
+    0x18: "at the credits"
 }
 
 // Ticket 50272: I got it after terrorist blow me up. I choose Yell->Tackle Take Cover. It's dead ending not jail.
@@ -140,3 +142,9 @@ achievement(
               byte(0x00020B) == 128 && byte(0x00020F) == 120 && byte(0x000213) == 128 && byte(0x000519) == 128 && 
               ButtonPressed() == 0
 )
+
+
+rich_presence_conditional_display(GameState() == 0, "Kaneda is at the title screen!")
+rich_presence_conditional_display(GameState() == 2, "Kaneda is at the main menu!")
+rich_presence_display("Kaneda is {0}!", rich_presence_lookup("Area", Area(), AreaDictionary, "with Akira"))
+
