@@ -1,0 +1,39 @@
+{
+	"ID": 6119,
+	"Title": "Akira",
+	"ConsoleID": 7,
+	"ForumTopicID": 3284,
+	"Flags": 0,
+	"ImageIcon": "/Images/014084.png",
+	"ImageTitle": "/Images/014083.png",
+	"ImageIngame": "/Images/014085.png",
+	"ImageBoxArt": "/Images/014082.png",
+	"Publisher": "Taito Corporation",
+	"Developer": "Taito Corporation",
+	"Genre": "Adventure, Visual Novel",
+	"Released": "Dec 24, 1988",
+	"IsFinal": false,
+	"ConsoleName": "NES",
+	"RichPresencePatch": null,
+	"ImageIconURL": "https://media.retroachievements.org/Images/014084.png",
+	"ImageTitleURL": "https://media.retroachievements.org/Images/014083.png",
+	"ImageIngameURL": "https://media.retroachievements.org/Images/014085.png",
+	"ImageBoxArtURL": "https://media.retroachievements.org/Images/014082.png",
+	"Achievements": [
+		{
+			"ID": 132224,
+			"MemAddr": "d0xH0052=2_0xH0052=23_P:0xH0034!=0",
+			"Title": "Go to Jail",
+			"Description": "Bad Ending 1",
+			"Points": 1,
+			"Author": "monkeytoung",
+			"Modified": 1605316623,
+			"Created": 1605142646,
+			"BadgeName": "144985",
+			"Flags": 3,
+			"BadgeURL": "https://media.retroachievements.org/Badge/144985.png",
+			"BadgeLockedURL": "https://media.retroachievements.org/Badge/144985_lock.png"
+		}
+	],
+	"Leaderboards": []
+}
