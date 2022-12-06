@@ -1,0 +1,38 @@
+{
+	"ID": 1871,
+	"Title": "Panic Restaurant",
+	"ConsoleID": 7,
+	"ForumTopicID": 541,
+	"Flags": 0,
+	"ImageIcon": "/Images/001370.png",
+	"ImageTitle": "/Images/001372.png",
+	"ImageIngame": "/Images/001371.png",
+	"ImageBoxArt": "/Images/049288.png",
+	"Publisher": "Taito Corporation",
+	"Developer": "EIM",
+	"Genre": "Platforming",
+	"Released": "October 1992",
+	"IsFinal": false,
+	"ConsoleName": "NES",
+	"RichPresencePatch": "Format:Stage\r\nFormatType=VALUE\r\n\r\nFormat:Lives\r\nFormatType=VALUE\r\n\r\nDisplay:\r\n?0xH000019=1?Titles\r\n?0xH000019=2?Intro\r\nStage @Stage(0xH000094), @Lives(0xH0000d6) lives\r\n",
+	"ImageIconURL": "https://media.retroachievements.org/Images/001370.png",
+	"ImageTitleURL": "https://media.retroachievements.org/Images/001372.png",
+	"ImageIngameURL": "https://media.retroachievements.org/Images/001371.png",
+	"ImageBoxArtURL": "https://media.retroachievements.org/Images/049288.png",
+	"Achievements": [
+		{
+			"ID": 5271,
+			"MemAddr": "0xH0019=6.10._R:0xH00d7<d0xH00d7_R:0xH00d6<d0xH00d6_0xH00df=0.10._0xH00df=1.10._0xH00df=2.10._0xH0094=4.10._R:0xH0094!=4_0xH006e=80.10._0xH00df=3.10._0xH00df=4.10.",
+			"Title": "Frozen Fritta",
+			"Description": "Reach Frozen Fritta Without Taking Damage - Stage 5",
+			"Points": 10,
+			"Author": "Rdannylor2",
+			"Modified": 1593890732,
+			"Created": 1392806055,
+			"BadgeName": "05464",
+			"Flags": 3,
+			"BadgeURL": "https://media.retroachievements.org/Badge/05464.png",
+			"BadgeLockedURL": "https://media.retroachievements.org/Badge/05464_lock.png"
+		}
+	]
+}
