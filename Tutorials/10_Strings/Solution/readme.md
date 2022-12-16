@@ -1,3 +1,7 @@
+# Example #10C: Boss Types
+The boss chosen for this example is beating the Tera Earth boss.  To fight this version of the Earth boss you need to shot down 98% or more of the enemies in Area 1. <br>
+![Rez fighting the Earth Tera Boss](Rez_Earth_Tera.png)<br> 
+```
 // Rez
 // #ID = 3419
 
@@ -34,13 +38,7 @@ EarthTera = [0x45,0x61,0x72,0x74,0x68,0x5B,0x54,0x65,0x72,0x61,0x5D]
 // Check if the string hex values equal the hex values at the passed address
 function StringCompare(address, string)
 {
-    strArray = []
-    for hexValue in string
-    {
-        array_push(strArray, byte(address) == hexValue)
-        address = address + 1
-    }
-    return all_of(strArray, a => a)
+    return all_of(range(0, length(string) - 1), i => byte(address + i) == string[i])
 }
 
 // Game state constant
@@ -80,3 +78,20 @@ achievement(
     10,
     BossTypeChallenge(EarthBossType(), EarthTera)
 )
+```
+
+## Start
+The challenge starts when the “Earth[Tera]” string is detected while the game pointer is active.  The achievement will not start if either immortal or infinite overdrive cheats are active.
+
+## Cancel
+The challenge cancels when the player dies or if the player exits the area.  This event is determined by when the game mode changes from the in game value of 0xffffffff to anything else.
+
+## Submit
+The challenge submits when the boss pointer is not null and the boss health values goes from above zero to zero or lower.  Note that when using the boss health to trigger events always check that the event does not occur if the player dies while the boss is almost dead.  Including the condition that the boss pointer must be active is protection against the challenge submitting if the boss health memory goes to zero for any other reason.<br>
+<br>
+[Complete Example #10C with the above solution](REZ_Example_10C.rascript)<br>
+### Links
+[Tutorial #10](../readme.md)<br>
+[Example #10A](../Example_10A.md)<br>
+[Example #10B](../Example_10B.md)<br>
+[Example #10C](../Example_10C.md)

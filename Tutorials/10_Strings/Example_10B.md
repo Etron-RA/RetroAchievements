@@ -1,3 +1,7 @@
+# Example #10B: Eden
+In Rez you control a hacker named Swayzak who is trying to infiltrate a computer system to stop a corrupt AI named Eden.  The game is a hybrid rhythm rail shooter where the area and your shots are timed to the music to create a sense of synesthesia.  The background models for each area is an ASCII string so instead of looking at area numbers we are looking for a specific area name. The final area is where Swayzak confronts Eden after a gauntlet of bosses that are similar to the bosses in the previous four areas.  The example below uses the model name for the end movie after Eden is beat to detect the end of the game.<br>
+![Rez confronting the final boss Eden](Rez_End_Boss.png)<br>
+ ```
 // Rez
 // #ID = 3419
 
@@ -99,4 +103,19 @@ achievement(
     10, 
     AreaChallenge(Area5)
 )
+```
 
+## Start
+The challenge starts when the player selects area five from the play menu. Since the menu selection changes as the player moves the cursor instead the achievement looks at when the game pointer goes from null to not null to tell when the game has started.  There is immortal and infinite overdrive cheats that you can unlock so the achievement will not start if either cheat is active.
+## Cancel
+The challenge cancels when the player dies or if the player exits the area.  This event is determined by when the game mode changes from the in game value of 0xffffffff to anything else.
+
+## Submit
+The challenges submit when the background model “eden_d5.pmm” is loaded during the final movie of the game.  Since the model name is a string the StringCompare() function is used to detect when the final movie is loaded.<br>
+<br>
+Scripts: [Example #10B script](REZ_Example_10B.rascript) <br>
+### Links
+[Tutorial #10](readme.md) <br>
+[Example #10A](Example_10A.md) <br>
+Example #10B <br>
+[Example #10C](Example_10C.md)

@@ -12,13 +12,7 @@ function GDROM(offset = 0) => 0x8040 + offset
 // Check if the string hex values equal the hex values at the passed address
 function StringCompare(address, string)
 {
-    strArray = []
-    for hexValue in string
-    {
-        array_push(strArray, byte(address) == hexValue)
-        address = address + 1
-    }
-    return all_of(strArray, a => a)
+    return all_of(range(0, length(string) - 1), i => byte(address + i) == string[i])
 }
 
 // "HDR-0178" = Japan GD-ROM Name
