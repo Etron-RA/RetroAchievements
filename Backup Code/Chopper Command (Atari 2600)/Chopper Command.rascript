@@ -4,7 +4,7 @@
 // $0061: 0x7f - died, after a short delay decrements to 1 by 1
 //        0x01 - ready to fly
 //        0x00 - flying
-function Status() => byte(0x000061)
+function Status() => bit0(0x0061)
 
 // $0062: Enemies Remaining
 function EnemiesRemaining() => byte(0x000062)
@@ -32,3 +32,17 @@ function Score() {
         Score0000X0() * 10 + 
         Score00000X()
 }
+
+
+rich_presence_conditional_display(
+    Status() == 1, 
+    "The 🚁 is ready for the mission!"
+)
+
+rich_presence_display(
+    "🚁 {0} | 💀 {1} | 🚩 {2} | 💯 {3}", 
+    rich_presence_value("LIVES", Lives()),
+    rich_presence_value("ENEMIES",  EnemiesRemaining()),
+    rich_presence_value("LEVEL",  Level()),
+    rich_presence_value("SCORE",  Score())
+)

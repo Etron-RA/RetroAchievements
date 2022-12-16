@@ -39,3 +39,24 @@ function Music() => byte(0x000036)
 //        bit7: 0=playing,1=title/demo
 function Demo() => bit7(0x00003A)
 function GameMode() => low4(0x00003A)
+
+Modes = {
+    0:"1P Novice",
+    1:"1P Advanced",
+    2:"2P Novice",
+    3:"2P Advanced"
+}
+
+rich_presence_conditional_display(
+    Demo() == 1, 
+    "The 🦘 is ready for action!"
+)
+
+rich_presence_display(
+    "{0} | 🦘 {1} | ♾ {2} | 🚩 {3} | 💯 {4}", 
+    rich_presence_lookup("MODES", GameMode(), Modes),
+    rich_presence_value("LIVES", Lives()),
+    rich_presence_value("LEVEL",  Level()),
+    rich_presence_value("SCREEN",  Screen()),
+    rich_presence_value("SCORE",  Score())
+)
