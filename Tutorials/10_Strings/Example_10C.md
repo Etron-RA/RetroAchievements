@@ -9,15 +9,15 @@ To complete the homework problem you’ll need the memory address:<br>
 0x2003BC -> [32-bit] Boss Pointer (not null when boss is spawned)<br>
 0x201270 -> [float] Boss Health (1.0 when full and 0.0 when dead)<br>
 
-The four boss types string locations:
-0x3A3304 -> [ASCII] Mars Boss Type ("Mars[Mega]", "Mars[Giga]", and "Mars[Tera]")
-0x3A7794 -> [ASCII] Uranus Boss Type ("Uranus[Mega]", "Uranus[Giga]", and "Uranus[Tera]")
-0x3A91F8 -> [ASCII] Venus Boss Type ("Venus[Mega]", "Venus[Giga]", and "Venus[Tera]")
+The four boss types string locations:<br>
+0x3A3304 -> [ASCII] Mars Boss Type ("Mars[Mega]", "Mars[Giga]", and "Mars[Tera]")<br>
+0x3A7794 -> [ASCII] Uranus Boss Type ("Uranus[Mega]", "Uranus[Giga]", and "Uranus[Tera]")<br>
+0x3A91F8 -> [ASCII] Venus Boss Type ("Venus[Mega]", "Venus[Giga]", and "Venus[Tera]")<br>
 0x3ADFF8 -> [ASCII] Earth Boss Type ("Earth[Mega]", "Earth[Giga]", and "Earth[Tera]")<br>
 <br>
 Solutions: [Tutorial #10 Solution](./Solution/readme.md)<br>
 ### Links
-[Tutorial #`0](readme.md)<br>
+[Tutorial #10](readme.md)<br>
 [Example #10A](Example_10A.md)<br>
 [Example #10B](Example_10B.md)<br>
 Example #10C

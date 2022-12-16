@@ -43,7 +43,7 @@ achievement(
 You could convert an ASCII string to hexadecimal using a table however, that is both time consuming and error prone.  If you have several strings to convert there are many online websites that will do the conversion for you like the [Online Hex Tools](https://onlinehextools.com/convert-ascii-to-hex).
 
 ## StringCompare
-The function StringCompare is passed the starting memory **address** of where the disc name is and an array of the expected hexadecimal values at that location.  The function uses all_of() to iterate through the array and creates a condition for each letter in order.  As the function iterates through the array it also iterates through the memory looking for a one to one match with the values in the array.  Note that strings are case sensitive since capital ‘A’ does not have the same value as lowercase ‘a’.<br>
+The function StringCompare is passed the starting memory **address** of where the disc name is and an array of the expected hexadecimal values at that location.  The function uses **all_of()** to iterate through the array and creates a condition for each letter in order.  As the function iterates through the array it also iterates through the memory looking for a one to one match with the values in the array.  Note that strings are case sensitive since capital ‘A’ does not have the same value as lowercase ‘a’.<br>
 <br>
 Scripts: [Example #10A script](REZ_Example_10A.rascript)<br>
 ### Links

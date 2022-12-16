@@ -81,7 +81,7 @@ achievement(
 ```
 
 ## Start
-The challenge starts when the “Earth[Tera]” string is detected while the game pointer is active.  The achievement will not start if either immortal or infinite overdrive cheats are active.
+The challenge starts when the “Earth[Tera]” string is detected, using the StringCompare() function, while the game pointer is active.  The achievement will not start if either immortal or infinite overdrive cheats are active.
 
 ## Cancel
 The challenge cancels when the player dies or if the player exits the area.  This event is determined by when the game mode changes from the in game value of 0xffffffff to anything else.

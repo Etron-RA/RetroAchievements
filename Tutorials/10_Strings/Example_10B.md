@@ -111,7 +111,7 @@ The challenge starts when the player selects area five from the play menu. Since
 The challenge cancels when the player dies or if the player exits the area.  This event is determined by when the game mode changes from the in game value of 0xffffffff to anything else.
 
 ## Submit
-The challenges submit when the background model “eden_d5.pmm” is loaded during the final movie of the game.  Since the model name is a string the StringCompare() function is used to detect when the final movie is loaded.<br>
+The challenges submit when the background model “eden_d5.pmm” is loaded during the final movie of the game.  Since the model name is a string the **StringCompare()** function is used to detect when the final movie is loaded.<br>
 <br>
 Scripts: [Example #10B script](REZ_Example_10B.rascript) <br>
 ### Links
