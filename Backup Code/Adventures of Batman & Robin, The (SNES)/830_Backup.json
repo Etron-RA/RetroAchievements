@@ -1,0 +1,39 @@
+{
+	"ID": 830,
+	"Title": "Adventures of Batman & Robin, The",
+	"ConsoleID": 3,
+	"ForumTopicID": 1108,
+	"Flags": 0,
+	"ImageIcon": "/Images/048996.png",
+	"ImageTitle": "/Images/035402.png",
+	"ImageIngame": "/Images/035403.png",
+	"ImageBoxArt": "/Images/005796.png",
+	"Publisher": "Konami",
+	"Developer": "Konami",
+	"Genre": "Action",
+	"Released": "1994",
+	"IsFinal": false,
+	"ConsoleName": "SNES",
+	"RichPresencePatch": "Rich Presence v1.1 by Arcaderama and StingX2\r\n\r\nLookup:LevelName\r\n0x0=Amused To Death\r\n0x1=No Green Peace\r\n0x2=Fowl Play \r\n0x3=Tale Of The Cat\r\n0x4=Trouble In Transit\r\n0x5=Perchance To Scream\r\n0x6=Riddle Me This\r\n0x7=The Gauntlet\r\n0x8=Watching The Ending\r\n\r\nLookup:Difficulty\r\n0x0=Easy\r\n0x8=Normal\r\n0x10=Hard\r\n\r\n\r\nFormat:Score\r\nFormatType=VALUE\r\n\r\nLookup:Paused\r\n0=\r\n0x2=▌▌\r\n0x4=▌▌\r\n\r\n\r\nDisplay:\r\n@Paused(0xh07c) @LevelName(0x00008c) on @Difficulty(0x000064) 💯:@Score(b0xh6a*10_b0xh6b*1000)",
+	"ImageIconURL": "https://media.retroachievements.org/Images/048996.png",
+	"ImageTitleURL": "https://media.retroachievements.org/Images/035402.png",
+	"ImageIngameURL": "https://media.retroachievements.org/Images/035403.png",
+	"ImageBoxArtURL": "https://media.retroachievements.org/Images/005796.png",
+	"Achievements": [
+		{
+			"ID": 61077,
+			"MemAddr": "M:0x 00006a>d0x 00006a.10._0xH0000cc=127_0xH00008e=2_R:0xH00008c!=4_R:0xH000096<d0xH000096_R:0xH0000cc<d0xH0000cc_R:0xH00008e<2_R:0xH0000a2=153",
+			"Title": "Road Chaser",
+			"Description": "Destroy 10 cars in area 2 and find Two-face",
+			"Points": 25,
+			"Author": "Arcaderama",
+			"Modified": 1626765741,
+			"Created": 1528662495,
+			"BadgeName": "64188",
+			"Flags": 3,
+			"BadgeURL": "https://media.retroachievements.org/Badge/64188.png",
+			"BadgeLockedURL": "https://media.retroachievements.org/Badge/64188_lock.png"
+		}
+	],
+	"Leaderboards": []
+}
