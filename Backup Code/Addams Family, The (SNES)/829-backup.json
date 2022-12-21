@@ -1,0 +1,39 @@
+{
+	"ID": 829,
+	"Title": "Addams Family, The",
+	"ConsoleID": 3,
+	"ForumTopicID": 3153,
+	"Flags": 0,
+	"ImageIcon": "/Images/049690.png",
+	"ImageTitle": "/Images/008295.png",
+	"ImageIngame": "/Images/008296.png",
+	"ImageBoxArt": "/Images/008297.png",
+	"Publisher": "Ocean Software",
+	"Developer": "Ocean Software",
+	"Genre": "Platforming",
+	"Released": "March 1992",
+	"IsFinal": false,
+	"ConsoleName": "SNES",
+	"RichPresencePatch": "",
+	"ImageIconURL": "https://media.retroachievements.org/Images/049690.png",
+	"ImageTitleURL": "https://media.retroachievements.org/Images/008295.png",
+	"ImageIngameURL": "https://media.retroachievements.org/Images/008296.png",
+	"ImageBoxArtURL": "https://media.retroachievements.org/Images/008297.png",
+	"Achievements": [
+	{
+			"ID": 36360,
+			"MemAddr": "0x 00008a=2051_R:0x 00008a!=2051_R:0x 0000d5<=1_0xH0000ac>d0xH0000ac.5._P:0xH0000ab!=d0xH0000ab",
+			"Title": "Monster Garden",
+			"Description": "Grab five 1-up in Monster Garden",
+			"Points": 5,
+			"Author": "zeldamaniak",
+			"Modified": 1572568177,
+			"Created": 1464040470,
+			"BadgeName": "37168",
+			"Flags": 3,
+			"BadgeURL": "https://media.retroachievements.org/Badge/37168.png",
+			"BadgeLockedURL": "https://media.retroachievements.org/Badge/37168_lock.png"
+		}
+	],
+	"Leaderboards": []
+}
