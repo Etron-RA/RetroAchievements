@@ -84,12 +84,12 @@ achievement(
     title = "Magical Island", points = 10,
     description = "Defeat the Boss on Magical Island",
     id = 770, badge = "01030", published = "2013-05-11 6:05:53 AM", modified = "2019-10-02 10:28:01 AM",
-    trigger = InGame() && CompleteRound(33)
+    trigger = InGame() && CompleteRound(32)
 )
 
 achievement(
     title = "Magical Island", points = 10,
     description = "Defeat the Boss on Magical Island",
     id = 771, badge = "01030", published = "2013-05-11 6:05:56 AM", modified = "2013-05-11 6:05:56 AM",
-    trigger = InGame() && CompleteRound(33)
+    trigger = InGame() && CompleteRound(32)
 )
