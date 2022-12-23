@@ -90,5 +90,5 @@ achievement(
     title = "This Ring is on Fire", points = 5,
     description = "Become on Fire",
     id = 23881, badge = "24262", published = "2015-06-20 6:13:40 PM", modified = "2015-06-21 6:51:08 AM",
-    trigger = PlayerThatIsOnFire() != 1 && PlayerThatIsOnFire() == 1 && Demo00() == 2
+    trigger = prev(PlayerThatIsOnFire()) != 1 && PlayerThatIsOnFire() == 1 && Demo00() == 2
 )
