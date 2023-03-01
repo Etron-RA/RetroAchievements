@@ -1,7 +1,7 @@
 // Muppet RaceMania
 // #ID = 13910
 
-// Give each langauge an unique value
+// Give each language an unique value
 EU = 0
 FR = 1
 DE = 2
@@ -9,8 +9,8 @@ IT = 3
 ES = 4
 US = 5
 
-// Array of each supported langauge
-Langauges = [EU, FR, DE, IT, ES, US]
+// Array of each supported language
+languages = [EU, FR, DE, IT, ES, US]
 
 // $00b8b7: [ASCII] CD-ROM Name
 //          SCES_020.01;1 = EU
@@ -242,7 +242,7 @@ function StringCompare(address, string)
     return all_of(strArray, a => a)
 }
 
-// Make 25 example achievements using that support multiple langauges
+// Make 25 example achievements using that support multiple languages
 for index in range(0,24)
 {
     // Setup the title and description of 
@@ -250,33 +250,33 @@ for index in range(0,24)
     description = "Select the racer " + Racers[index] + " with the vehicle " + Vehicles[index]
     triggers = []
         
-    for langauge in Langauges
+    for language in languages
     {
-        // Make a condition to check the current langauge disc region and racer/vehicle combo
+        // Make a condition to check the current language disc region and racer/vehicle combo
         array_push(triggers,
-            StringCompare(CDROM(), Discs[langauge]) &&
-            PlayerCharacter[langauge] == index &&
-            PlayerVehicle[langauge] == index
+            StringCompare(CDROM(), Discs[language]) &&
+            PlayerCharacter[language] == index &&
+            PlayerVehicle[language] == index
         )
     }
     achievement(title, description, 0, any_of(triggers, t => t))
 }
 
 // Example #11B - Rich Presence the supports mulitple regions
-for langauge in Langauges
+for language in languages
 {
-    disc = Discs[langauge]    
+    disc = Discs[language]    
     rich_presence_conditional_display(
         StringCompare(CDROM(), disc) &&
-            Set[langauge] != 0xff &&
-            Course[langauge] != 0xff &&
-            RacePosition[langauge] >= 1 && 
-            RacePosition[langauge] <= 12, 
+            Set[language] != 0xff &&
+            Course[language] != 0xff &&
+            RacePosition[language] >= 1 && 
+            RacePosition[language] <= 12, 
         "{0} is driving a {1} on the track {2} in {3} position!", 
-        rich_presence_lookup("Racer", PlayerCharacter[langauge], Racers),
-        rich_presence_lookup("Vehicle", PlayerVehicle[langauge], Vehicles),
-        rich_presence_lookup("Track", Set[langauge] * 0x10 + Course[langauge], Tracks),
-        rich_presence_lookup("Position", RacePosition[langauge], Place)
+        rich_presence_lookup("Racer", PlayerCharacter[language], Racers),
+        rich_presence_lookup("Vehicle", PlayerVehicle[language], Vehicles),
+        rich_presence_lookup("Track", Set[language] * 0x10 + Course[language], Tracks),
+        rich_presence_lookup("Position", RacePosition[language], Place)
     )
 }
 rich_presence_display("The muppets are in the menu!")

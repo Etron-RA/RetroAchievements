@@ -1,17 +1,17 @@
 // Pitfall!
 // #ID = 11191
 
-// $0000: Lives
+// $0000: [8-bit] Lives
 //        bit5=1st extra life
 //        bit7=2nd extra life
 function Lives() => bitcount(0x000000)
 
-// $001E: 00=game active
+// $001E: [8-bit] 00=game active
 function GameActive() => byte(0x00001E)
 
-// $0055: Score XX0000
-// $0056: Score 00XX00
-// $0057: Score 0000XX
+// $0055: [BCD] Score XX0000
+// $0056: [BCD] Score 00XX00
+// $0057: [BCD] Score 0000XX
 function ScoreX00000() => high4(0x000055)
 function Score0X0000() => low4(0x000055)
 function Score00X000() => high4(0x000056)
@@ -30,10 +30,10 @@ function Score()
         Score00000X()
 }
 
-// $0058: Time XX:00 (BCD)
+// $0058: [BCD] Time XX:00
 //        20=out of game
-// $0059: Time 00:XX (BCD)
-// $005A: Time (miliseconds)
+// $0059: [BCD] Time 00:XX
+// $005A: [8-bit] Time (miliseconds)
 function TimeX00000() => high4(0x000058)
 function Time0X0000() => low4(0x000058)
 function Time00X000() => high4(0x000059)
@@ -51,10 +51,10 @@ function Time()
         Time0000XX()
 }
 
-// $006D: Treasures flags
-// $006E: Treasures flags
-// $006F: Treasures flags
-// $0070: Treasures flags
+// $006D: [8-bit] Treasures flags 1-8 
+// $006E: [8-bit] Treasures flags 9-16
+// $006F: [8-bit] Treasures flags 17-24
+// $0070: [8-bit] Treasures flags 25-32 
 function Treasures1() => bitcount(0x00006D)
 function Treasures2() => bitcount(0x00006E)
 function Treasures3() => bitcount(0x00006F)
