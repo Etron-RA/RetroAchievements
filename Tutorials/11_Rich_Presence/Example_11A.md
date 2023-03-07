@@ -1,5 +1,5 @@
 # Example #11A: Super Mario Bros.
-The game selected for this example is [Super Mario Bros. (NES)](https://retroachievements.org/game/1446).  The reason why this game was selected is  because it is a well-known game and it was used as an example in the [RADocs](https://docs.retroachievements.org/Rich-Presence/).
+The game selected for this example is [Super Mario Bros. (NES)](https://retroachievements.org/game/1446).  The reason why this game was selected is  because it is a well-known game and it was used as an example in the [RADocs](https://docs.retroachievements.org/Rich-Presence/).<br>
 ![Super Mario Bros. Title Screen](SMB_Title.png)<br>
  
 ```
@@ -126,10 +126,9 @@ The ```StatusLookup``` has 12 different definitions for the ```PlayerState()```m
 ## {8} Lives 
 Like both the world and act, the current number of lives Mario has left is zero based meaning when Mario has 4 lives to memory accessor ```Lives()``` will be 3.  We use the same technique as the world and act to display the lives correctly by adding 1 to the value of ``` Lives()```.
 ## {9} Quest
-The ```QuestLookup``` has two values defined for the current loop of the game. Super Mario Bros. is a game that has a second harder loop to play when you beat the final boss, Bowser, for the first time. If the memory accessor ```SecondQuest()``` is 0 then it displays “1st”and if the value is 1 then it displays “2nd”.  Any other values will result in an empty string.
-
-<br>
-Scripts: [Example #XA script](Example_11A.rascript) <br>
+The ```QuestLookup``` has two values defined for the current loop of the game. Super Mario Bros. is a game that has a second harder loop to play when you beat the final boss, Bowser, for the first time. If the memory accessor ```SecondQuest()``` is 0 then it displays “1st”and if the value is 1 then it displays “2nd”.  Any other values will result in an empty string.<br>
+### Script
+[Example #XA script](Example_11A.rascript) <br>
 ### Links
 [Tutorial #11](readme.md) <br>
 Example #11A<br>

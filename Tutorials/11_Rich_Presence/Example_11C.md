@@ -18,7 +18,7 @@ To complete the homework problem you’ll need the memory addresses:<br>
 0x006E -> [8-bit] Treasures flags 9-16 <br>
 0x006F -> [8-bit] Treasures flags 17-24 <br>
 0x0070 -> [8-bit] Treasures flags 25-32 <br>
-<br>
+### Script
 Solutions: [Tutorial #11 Solution](./Solution/readme.md)<br>
 ### Links
 [Tutorial #11](readme.md)<br>

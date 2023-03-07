@@ -91,7 +91,7 @@ Pitfall! Has 32 total treasures to collect with each being marked collected by a
 Pitfall Harry has two extra lives from the beginning of each game.  Each extra life has its own bitflag so number of extra lives is calculated by adding the bits together with the ```Lives()``` function.
 ## {3} Score
 Starting with 2000 points the score will increase when Harry collects a treasure and decrease when Harry gets hit.  Like the time the score is a BCD value, the total score is calculated by multiplying each digit by its decimal place and adding them together with the ```Score()``` function.<br>
-<br>
+### Script
 [Complete Example #11C with the above solution](Example_11C.rascript)<br>
 ### Links
 [Tutorial #11](../readme.md)<br>

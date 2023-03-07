@@ -1,5 +1,5 @@
 # Example #11B: Muppet RaceMania
-The game [Muppet RaceMania](https://retroachievements.org/game/13910) was selected for this example because it has multiple regions linked to it. Each region has different memory locations so both the Rich Presence and Achievements need to have separate logic for each region supported.  Fortunately, RATools can help manage the memory differences and make equivalent logic for each region.
+The game [Muppet RaceMania](https://retroachievements.org/game/13910) was selected for this example because it has multiple regions linked to it. Each region has different memory locations so both the Rich Presence and Achievements need to have separate logic for each region supported.  Fortunately, RATools can help manage the memory differences and make equivalent logic for each region.<br>
 ![Muppet RaceMania Title Screen](Muppets_Title.png)<br>
  
 
@@ -306,7 +306,7 @@ The ```Tracks ``` lookup has all 24 possible tracks defined.  This value is a co
 
 ## {3} Position 
 The ```Place``` lookup has all 12 possible race placements defined.  Like the Racer and Vehicle, the memory accessor ```RacePosition[]``` has a one to one match for the values in the lookup.  Cardinal values (1, 2, …, 12) could be displayed directly however, a dictionary was chosen to display the ordinal values (1st, 2nd, …, 12th) instead.
-<br>
+### Script
 Scripts: [Example #11B script](Example_11B.rascript)<br>
 ### Links
 [Tutorial #11](readme.md) <br>
