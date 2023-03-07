@@ -128,7 +128,7 @@ Like both the world and act, the current number of lives Mario has left is zero 
 ## {9} Quest
 The ```QuestLookup``` has two values defined for the current loop of the game. Super Mario Bros. is a game that has a second harder loop to play when you beat the final boss, Bowser, for the first time. If the memory accessor ```SecondQuest()``` is 0 then it displays “1st”and if the value is 1 then it displays “2nd”.  Any other values will result in an empty string.<br>
 ### Script
-[Example #XA script](Example_11A.rascript) <br>
+[Example #11A script](Example_11A.rascript) <br>
 ### Links
 [Tutorial #11](readme.md) <br>
 Example #11A<br>
