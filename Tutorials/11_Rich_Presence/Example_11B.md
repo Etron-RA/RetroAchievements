@@ -296,13 +296,13 @@ Included in the above code is a silly example of how to create achievements usin
 In this example we used the command [rich_presence_conditional_display](https://github.com/Jamiras/RATools/wiki/Rich-Presence-Functions#rich_presence_conditional_displaycondition-format_string-parameters) to control what message is displayed depending on the disc name.  Each message format is exactly the same and the code will fill in the correct memory address for the region.  Remember that order matters when using the conditional display and it will display the string for the first condition that is met even if later conditions would also be true.
 
 ## {0} Racer
-The ```Racers ``` lookup has all 25 possible racers defined.  The memory accessor ```PlayerCharacter[]``` has a one to one match for the values in the lookup.
+The ```Racers``` lookup has all 25 possible racers defined.  The memory accessor ```PlayerCharacter[]``` has a one to one match for the values in the lookup.
 
 ## {1} Vehicle 
-The ```Vehicles ``` lookup has all 25 possible vehicles defined.  Like the Racer, the memory accessor ```PlayerVehicle[]``` has a one to one match for the values in the lookup.
+The ```Vehicles``` lookup has all 25 possible vehicles defined.  Like the Racer, the memory accessor ```PlayerVehicle[]``` has a one to one match for the values in the lookup.
 
 ## {2} Track 
-The ```Tracks ``` lookup has all 24 possible tracks defined.  This value is a composite value of the ```Set[]``` and ```Course[]``` accessors. By combining these values together we  can define all of the tracks in one lookup.  Note that the value of ```Set[]``` is multiplied by 16 to ensure each track value is unique.  The multiplier 16 was chose since in hex the ```Course[]``` would be the lower four bits and ```Set[]``` would be the upper four bits. Other multipliers could be used so long as the possible combinations all yield unique results.
+The ```Tracks``` lookup has all 24 possible tracks defined.  This value is a composite value of the ```Set[]``` and ```Course[]``` accessors. By combining these values together we  can define all of the tracks in one lookup.  Note that the value of ```Set[]``` is multiplied by 16 to ensure each track value is unique.  The multiplier 16 was chose since in hex the ```Course[]``` would be the lower four bits and ```Set[]``` would be the upper four bits. Other multipliers could be used so long as the possible combinations all yield unique results.
 
 ## {3} Position 
 The ```Place``` lookup has all 12 possible race placements defined.  Like the Racer and Vehicle, the memory accessor ```RacePosition[]``` has a one to one match for the values in the lookup.  Cardinal values (1, 2, …, 12) could be displayed directly however, a dictionary was chosen to display the ordinal values (1st, 2nd, …, 12th) instead.
