@@ -14,13 +14,13 @@ StatusLookup = {
     1: " taking a vine warp",
     2: " entering a warp pipe",
     3: " entering a warp pipe",
-    4: " ",
+    4: " 🚩",
     5: " [Stage Complete]",
     6: " [Game Over]",
     7: " [Entering Area]",
     9: " growing",
     0xA: " shrinking",
-    0xB: " ",
+    0xB: " 💀",
     0xC: " powering up",
 }
 
@@ -94,14 +94,13 @@ rich_presence_display("{0}{1}{2}{3} Mario in {4}-{5}{6}{7}, 🚶:{8}, {9} Quest"
     rich_presence_lookup("Paused", Pause(), PausedLookup),
     rich_presence_lookup("Star", StarBitcount(), StarLookup),
     rich_presence_lookup("Powerup", PowerUp(), PowerupLookup),
-    rich_presence_value("Digit", World() + 1),
-    rich_presence_value("Digit", Act() + 1),
+    rich_presence_macro("Number", World() + 1),
+    rich_presence_macro("Number", Act() + 1),
     rich_presence_lookup("Swimming", Swimming(), SwimmingLookup),
     rich_presence_lookup("Status", PlayerState(), StatusLookup),
-    rich_presence_value("Digit", Lives() + 1),
+    rich_presence_macro("Number", Lives() + 1),
     rich_presence_lookup("Quest", SecondQuest(), QuestLookup)
 )
-
 ```
 ## rich_presence_display()
 The ```rich_presence_display()``` function is used to define the default **Rich Presence**. It is used in a similar way to the format() function where the first parameter is the format string and the rest of the parameters are the values inserted into the format string. See the [RATools Wiki](https://github.com/Jamiras/RATools/wiki/Rich-Presence-Functions#rich_presence_displayformat_string-parameters) more information on ```rich_presence_display()```.

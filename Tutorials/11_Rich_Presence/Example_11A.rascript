@@ -89,10 +89,10 @@ rich_presence_display("{0}{1}{2}{3} Mario in {4}-{5}{6}{7}, 🚶:{8}, {9} Quest"
     rich_presence_lookup("Paused", Pause(), PausedLookup),
     rich_presence_lookup("Star", StarBitcount(), StarLookup),
     rich_presence_lookup("Powerup", PowerUp(), PowerupLookup),
-    rich_presence_value("Digit", World() + 1),
-    rich_presence_value("Digit", Act() + 1),
+    rich_presence_macro("Number", World() + 1),
+    rich_presence_macro("Number", Act() + 1),
     rich_presence_lookup("Swimming", Swimming(), SwimmingLookup),
     rich_presence_lookup("Status", PlayerState(), StatusLookup),
-    rich_presence_value("Digit", Lives() + 1),
+    rich_presence_macro("Number", Lives() + 1),
     rich_presence_lookup("Quest", SecondQuest(), QuestLookup)
 )
