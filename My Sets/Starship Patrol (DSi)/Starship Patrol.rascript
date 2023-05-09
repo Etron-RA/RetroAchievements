@@ -268,9 +268,9 @@ achievement("Bounty Hunter Ash","Hire the bounty hunter Ash", 5, UsedSOS(9))
 achievement("Bounty Hunter Amanda","Hire the bounty hunter Amanda", 5, UsedSOS(10))
 achievement("Bounty Hunter James","Hire the bounty hunter James", 10, UsedSOS(11))
 
-achievement("Energy Stores","Collect 1000 unspent energy during a mission", 5, CollectEnergy(1000))
-achievement("An Economy Is You","Collect 2500 unspent energy during a mission", 10, CollectEnergy(2500))
-achievement("War for Fun and Profit","Collect 5000 unspent energy during a mission", 25, CollectEnergy(5000))
+achievement("Energy Stores","Collect 500 unspent energy during a mission", 5, CollectEnergy(500))
+achievement("An Economy Is You","Collect 1000 unspent energy during a mission", 10, CollectEnergy(1000))
+achievement("War for Fun and Profit","Collect 2500 unspent energy during a mission", 25, CollectEnergy(2500))
 
 
 // Rich Presence
