@@ -101,36 +101,39 @@ lastDoom1Level = 0x1e
 lastDoom2Level = 0x36
 
 // Created a kill array to track if multiple monsters were killed at once
-killArray = []
-for index in range(0,64)
+function KillCounter(killMax)
 {
-   array_push(killArray, prev(TotalKills()) + index < TotalKills()) 
-}
+    killArray = []
+    for index in range(0,killMax)
+    {
+       array_push(killArray, prev(TotalKills()) + index < TotalKills()) 
+    }
 
-// Use the in-game timer for the time value
-killCounter = tally(2147483647, killArray)
+    // Use the in-game timer for the time value
+    return tally(2147483647, killArray)
+}
 
 /// Leaderboards ////////////////////////////////////////////////////////////
 leaderboard
 (
-   "Ultimate Doom Slayer",
-   "Most demons killed in one life starting from the first level of Ultimate Doom on Hurt Me Plenty or above",
-   StartMap(firstDoom1Level),
-   GoodiesCheat() || CheatsBitflags() || PasswordEntry(),
-   Death() || MainMenu() || EndMap(lastDoom1Level),
-   killCounter,
-   format = "VALUE",
-   lower_is_better = false
+    "Ultimate Doom Slayer",
+    "Most demons killed in one life starting from the first level of Ultimate Doom on Hurt Me Plenty or above",
+    StartMap(firstDoom1Level),
+    GoodiesCheat() || CheatsBitflags() || PasswordEntry(),
+    Death() || MainMenu() || EndMap(lastDoom1Level),
+    KillCounter(64),
+    format = "VALUE",
+    lower_is_better = false
 )
 
 leaderboard
 (
-   "Doom II Slayer",
-   "Most demons killed in one life starting from the first level of Doom II on Hurt Me Plenty or above",
-   StartMap(firstDoom2Level),
-   GoodiesCheat() || CheatsBitflags() || PasswordEntry(),
-   Death() || MainMenu() || EndMap(lastDoom2Level),
-   killCounter,
-   format = "VALUE",
-   lower_is_better = false
+    "Doom II Slayer",
+    "Most demons killed in one life starting from the first level of Doom II on Hurt Me Plenty or above",
+    StartMap(firstDoom2Level),
+    GoodiesCheat() || CheatsBitflags() || PasswordEntry(),
+    Death() || MainMenu() || EndMap(lastDoom2Level),
+    KillCounter(64),
+    format = "VALUE",
+    lower_is_better = false
 )
