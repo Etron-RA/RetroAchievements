@@ -41,9 +41,6 @@ function LastHudText() => word(0x098740)
 // $098744: HUD Text Timer in screen
 function HudTextTimerInScreen() => byte(0x098744)
 
-// $0A8810: Current Health (16bits)
-function Health() => word(0x0A8810)
-
 // $0A88AC: Cheats
 //          Bit1= God Mode
 //          Bit2= Full Map
@@ -51,10 +48,6 @@ function Health() => word(0x0A8810)
 //          Bit5= Level Warping
 //          Bit7= Invisible Walls
 function Cheats() => byte(0x0A88AC)
-
-// $0a88b4: Total Kills (32-bit)
-//          Reset when a level is loaded
-function TotalKills() => dword(0x0a88b4)
 
 /// Helper Functions ////////////////////////////////////////////////////////////
 
@@ -93,52 +86,33 @@ function PasswordEntry()
     Loading() == 0x10
 }
 
-// Submit when player dies
-function Death() => Health() == 0x0
-
-// Submit when main menu is open
-function MainMenu() => MapId() == 0x0
-
 // Level name constants
 firstDoom1Level = 0x1
 firstDoom2Level = 0x1f 
 lastDoom1Level = 0x1e 
 lastDoom2Level = 0x36
 
-// Created a kill array to track if multiple monsters were killed at once
-function KillCounter(killMax)
-{
-    killArray = []
-    for index in range(0,killMax)
-    {
-       array_push(killArray, prev(TotalKills()) + index < TotalKills()) 
-    }
-
-    // Use the in-game timer for the time value
-    return tally(2147483647, killArray)
-}
-
 /// Leaderboards ////////////////////////////////////////////////////////////
 leaderboard
 (
-    "Ultimate Doom Slayer",
-    "Most demons killed in one life starting from the first level of Ultimate Doom on Hurt Me Plenty or above",
-    StartMap(firstDoom1Level),
-    GoodiesCheat() || CheatsBitflags() || PasswordEntry(),
-    Death() || MainMenu() || EndMap(lastDoom1Level),
-    KillCounter(64),
-    format = "VALUE",
-    lower_is_better = false
+   "Ultimate Doom Speedrun",
+   "Quickest time to beat Ultimate Doom on Hurt Me Plenty or above",
+   StartMap(firstDoom1Level),
+   MainMenu() || GoodiesCheat() || CheatsBitflags()  || PasswordEntry(),
+   EndMap(lastDoom1Level),
+   always_true(),
+   format = "FRAMES",
+   lower_is_better = true
 )
 
 leaderboard
 (
-    "Doom II Slayer",
-    "Most demons killed in one life starting from the first level of Doom II on Hurt Me Plenty or above",
+   "Doom II Speedrun",
+   "Quickest time to beat Doom II on Hurt Me Plenty or above",
     StartMap(firstDoom2Level),
-    GoodiesCheat() || CheatsBitflags() || PasswordEntry(),
-    Death() || MainMenu() || EndMap(lastDoom2Level),
-    KillCounter(64),
-    format = "VALUE",
-    lower_is_better = false
+   MainMenu() || GoodiesCheat() || CheatsBitflags()  || PasswordEntry(),
+   EndMap(lastDoom2Level),
+   always_true(),
+   format = "FRAMES",
+   lower_is_better = true
 )

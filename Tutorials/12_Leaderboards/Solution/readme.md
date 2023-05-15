@@ -1,3 +1,7 @@
+# Solution #12C: Game Speedruns
+This example will create a speedrun leaderboard from the beginning map to the last map for both Doom and Doom II.<br>
+![Finishing a Map in Doom](Doom_Exit.png)<br>
+```
 // Doom
 // #ID = 11256
 
@@ -79,7 +83,12 @@ function CheatsBitflags() => Cheats() != 0
 function MainMenu() => MapId() == 0x0
 
 // Cancel when entering a password
-function PasswordEntry() => PasswordScreen() == 0x64
+function PasswordEntry()
+{
+    return PasswordScreen() == 0x64 && 
+    prev(Loading()) != 0x10 && 
+    Loading() == 0x10
+}
 
 // Level name constants
 firstDoom1Level = 0x1
@@ -111,3 +120,24 @@ leaderboard
    format = "FRAMES",
    lower_is_better = true
 )
+```
+## Start Event
+The function ```StartMap()``` is used to prime the leaderboard.  The Doom Speedrun leaderboard will start on map ID 0x1 and the Doom II leaderboard will start on map ID 0x1f.  The event also checks the player is on difficulty Hurt Me Plenty or higher, we are not on the result or intermission screen, and when the internal game timer steps from 0 to 2.
+## Cancel Event
+The leaderboard will cancel if the player quits the game and returns to the main menu, enables any cheats, or starts entering a password.
+## Submit Event
+The leaderboard will submit when the results screen at the end of map ID 0x1e and the Doom II leaderboard the end of map ID 0x36.  The result screen is only shown when the player completes a map so it is a good event to use for the leaderboard submission.
+## Value 
+The value ```always_true()``` is used to count the number of frames that the leaderboard has been active for.  The ```GameTimer()``` memory value will not work for this leaderboard since it is reset every map.
+## Lower is Better?
+In the case of speedruns leaderboards setting ```lower_is_better = true``` will mean that the leaderboard entries are sorted lowest to the highest with the player who completed the game in the least amount of time ranking the #1 spot.
+## Format
+Since the value is counting the number of frames a game took to complete it is displayed to the screen and the site using ```format=”FRAMES”```.
+
+### Script
+[Complete Example #XC with the above solution](Example_12C.rascript)<br>
+### Links
+[Tutorial #12](../readme.md)<br>
+[Example #12A](../Example_12A.md)<br>
+[Example #12B](../Example_12B.md)<br>
+[Example #12C](../Example_12C.md)
