@@ -135,7 +135,7 @@ In the case of speedruns leaderboards setting ```lower_is_better = true``` will 
 Since the value is counting the number of frames a game took to complete it is displayed to the screen and the site using ```format=”FRAMES”```.
 
 ### Script
-[Complete Example #XC with the above solution](Example_12C.rascript)<br>
+[Complete Example #12C with the above solution](Example_12C.rascript)<br>
 ### Links
 [Tutorial #12](../readme.md)<br>
 [Example #12A](../Example_12A.md)<br>

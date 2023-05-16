@@ -1,6 +1,6 @@
 # Tutorial #12 – Leaderboards
 ## Overview
-This tutorial will show a few examples of making leaderboards for the game [Doom](https://retroachievements.org/game/11256). Doom is an extremely popular first person shooter that was ported to many systems and still has the strong fan base to this day.  The main reason why Doom was selected for this tutorial is that it was one of the first games to have speedrun competitions.   Doom can record gameplay from user inputs making a small file that can be replayed on any computer with doom installed.  This prompted players to record how quickly they could finish a level and upload the recording to compare with other players.  Eventually, various categories of Doom speedruns were defined and the speedrun community grew and expanded to other games.<br>
+This tutorial will show a few examples of making leaderboards for the game [Doom](https://retroachievements.org/game/11256). Doom is an extremely popular first person shooter that was ported to many systems and still has the strong fan base to this day.  The main reason why Doom was selected for this tutorial is that it was one of the first games to have speedrun competitions.   Doom can record gameplay from user inputs making a small file that can be replayed on any computer with Doom installed.  This prompted players to record how quickly they could finish a level and upload the recording to compare with other players.  Eventually, various categories of Doom speedruns were defined and the speedrun community grew and expanded to other games.<br>
 ![Doom Title Screen](Doom_Title.png)<br>
  
 ## Leaderboards
@@ -20,11 +20,11 @@ Game events are a group of conditions used to determine when an important event 
 * Continue Used
 * Lost Life
 * Lost Health
-### Start Event
+## Start Event
 The start event is a group of conditions used to prime a leaderboard.  Once the leaderboard is primed the user will be notified and the value of the leaderboard will be displayed. Multiple start events can be defined by putting each event into separate alts.
-### Cancel Event
+## Cancel Event
  The cancel event is a group of conditions used to stop a primed leaderboard.  When a leaderboard is canceled the value is not submitted and the player is notified that they failed the leaderboard. Multiple cancel events can be defined by putting each event into separate alts.
-### Submit Event
+## Submit Event
 The cancel event is a group of conditions used to submit the value of a primed leaderboard.  When a leaderboard is submitted the value is recorded to the site and the player is notified that they completed the leaderboard. Multiple submit events can be defined by putting each event into separate alts.
 ## Leaderboard Value
 The leaderboard value is what gets submitted to the website when successfully completing a leaderboard.  The value can be an internal memory, a combination of memory values (ie. score memory is BCD and needs to be converted to a decimal value), or a count of hits.  If it can be measured then it can be used as a valued board value.

@@ -147,7 +147,7 @@ leaderboard
     lower_is_better = false
 )
 ```
-# Counting Game Actions
+## Counting Game Actions
 These achievements uses the changes in the memory ```TotalKills()``` to count how many kills the player has accumulated. We could use the ```TotalKills()``` directly however, it is reset every level. So instead we count the total number of hits by how much the value ```TotalKills()``` changes each frame with the function ```KillCounter()```.  We can get an accurate count of kills by making an array of delta checks that will add a hit if the kills has gone up by 1 or more, 2 or more, …, to ```maxKills``` or more each frame.   The value of ```maxKills``` can be set to any value but it should be high enough that it will account for the player killing multiple demons in the same frame with a large explosion.
 ## Start Event 
 The function ```StartMap()``` is used to prime the leaderboard.  In this case we only want to start on map ID 0x1 for Doom or map ID 0x1f for Doom II.  The event also checks that the player is on difficulty Hurt Me Plenty or higher, we are not on the result or intermission screen, and when the internal game timer steps from 0 to 2.

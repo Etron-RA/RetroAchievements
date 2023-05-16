@@ -15,3 +15,4 @@ The RAScript Tutorials series of coding by example tutorials to complement the [
 * [**Trigger and Measure**](/Tutorials/09_Trigger_and_Measure/readme.md): Examples of achievements with both a trigger and measure - Example Game: Street Fighter 2
 * [**Strings**](/Tutorials/10_Strings/readme.md): Examples of achievements using strings - Example Game: Rez
 * [**Rich Presence**](/Tutorials/11_Rich_Presence/readme.md): Examples of various rich presences - Example Games: Super Mario Bros., Muppet RaceMania, and Pitfall!
+* [**Leaderboards**](/Tutorials/12_Leaderboards/readme.md): Examples of leaderboards - Example Game: Doom
