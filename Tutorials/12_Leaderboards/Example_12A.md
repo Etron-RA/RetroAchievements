@@ -1,8 +1,7 @@
 # Example #12A: Level Speedruns
 Speedruns are a measure of how long it takes a player to accomplish a goal.  Most speedruns are for accomplishing a goal as quickly as possible however speedruns can have additional conditions that stipulate the difficulty level, collecting all the items, or other handicaps.  If the game is popular enough then it will have various types of speedruns listed on [Speedrun.com](https://www.speedrun.com/).  If the game isn’t listed feel free to come up with your own challenges. For the speedruns in this example the player must be on the difficulty Hurt Me Plenty (difficulty 2 of 4) or higher for the leaderboard to activate.  It is best practice to have some leaderboards that are active for the default settings before adding more complicated leaderboards.<br>
 ![Doom First level](Doom_Level_1.png)<br>
- 
-```
+```fsharp
 // Doom
 // #ID = 11256
 

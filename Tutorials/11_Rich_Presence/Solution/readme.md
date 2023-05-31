@@ -2,7 +2,7 @@
 The Rich Presence for Pitfall! shows the time left, the number of treasures collected, the number of lives left, and the players current score.
 ![Pitfall Harry is about to collect some gold](Pitfall_Golden_Scorpion.png)<br>
  
-```
+```fsharp
 // Pitfall!
 // #ID = 11191
 

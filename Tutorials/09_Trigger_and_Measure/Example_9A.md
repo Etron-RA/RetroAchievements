@@ -2,7 +2,7 @@
 To beat the game and become a **World Warrior** you must defeat all of the other seven playable and four boss fighters. The challenge for this achievement is to beat all the fighters in a row without losing a fight. This is a hard achievement since the difficulty ramps up quickly as you progress through the fighters.  Additionally, the computer cheats by being able to perform moves faster, or in some cases, impossible for a human player.  If you ever got stuck on a fighter in the past don’t feel bad, the computer wasn’t playing fair.<br>
 ![Street Fighter II: The World Warrior Guile Wins](Street_Fighter_2_Guile_Wins.png)<br>
  
-```
+```fsharp
 // Street Fighter II: The World Warrior
 // #ID = 11808
 
@@ -60,7 +60,7 @@ The achievement uses ```never()``` to remove the hit from the **start** event wh
 The **goal** requirements are satisfied when the player beats the final boss, M. Bison (or Vega in the Japan region). The code then defines the **submit** event by wrapping the **goal** event in the ```trigger_when()``` function.  Similarly, the **value** event is created by wrapping the same **goal** event in the ``` measured()``` function.  By coding the achievement this way the trigger will continue to show the indicator until the player loses a fight and the achievement overlay will show how many more fights the player has left to win to earn the achievement.
 ## Coding Alts
 When the function ```Beat1CC()``` returns the generated code to the achievement trigger it builds the code using the or operator ```||``` to place the **submit** event in one alt and the **value** event in a second alt.<br>
-```
+```fsharp
 return start && cancel && (submit || value)
 ```
 Note the parenthesis around the **submit** and **value** events.  The parenthesis separates the alt events from the core which will only contain the **start** and **cancel** events.<br>

@@ -1,9 +1,7 @@
 # Example #11B: Muppet RaceMania
 The game [Muppet RaceMania](https://retroachievements.org/game/13910) was selected for this example because it has multiple regions linked to it. Each region has different memory locations so both the Rich Presence and Achievements need to have separate logic for each region supported.  Fortunately, RATools can help manage the memory differences and make equivalent logic for each region.<br>
 ![Muppet RaceMania Title Screen](Muppets_Title.png)<br>
- 
-
-```
+```fsharp
 // Muppet RaceMania
 // #ID = 13910
 

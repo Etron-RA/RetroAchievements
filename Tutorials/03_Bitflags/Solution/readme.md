@@ -4,7 +4,7 @@ For this example we selected the team Ash used when fighting the gym leader Drak
 ![Screenshot of the Orange League Champions](Pokemon_Dream_Team.png)
 ## Solution B
 Since the **Bit Flags** for the selected Pokémon are non-consecutive we can’t use the **bitcount** optimizations from [Example #3B](../Example_3B.md).  Instead we are counting the number of **Bit Flags** that are similar to [Example #3A](../Example_3A.md) since it can handle **Bit Flags** that are all over the place.
-```
+```fsharp
 // Pokémon Red Version | Pokémon Blue Version
 // #ID = 724
 

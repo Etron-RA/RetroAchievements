@@ -1,7 +1,7 @@
 # Example 4A: Golden Log
 **Pitfall!** Is a platforming game where you help Pitfall Harry traverse 255 horizontally connected screens of jungle avoiding obstacles and dangerous animals along the way.  The goal of **Pitfall!** is to recover the 32 hidden treasures before the 20:00 time limit expires. Each collected treasure increases the score between 2,000 and 5,000 points depending on the treasure type.  The player will lose points by touching a log or falling down into a pit.  This makes the players score an excellent measure of how a player is preforming.<br> 
 ![Pitfall Harry about to collect a Money Bag](Pitfall_Golden_Log.png)
-```
+```fsharp
 // Pitfall!
 // #ID = 11191
 

@@ -1,7 +1,7 @@
 # Solution #12C: Game Speedruns
 This example will create a speedrun leaderboard from the beginning map to the last map for both Doom and Doom II.<br>
 ![Finishing a Map in Doom](Doom_Exit.png)<br>
-```
+```fsharp
 // Doom
 // #ID = 11256
 

@@ -3,7 +3,7 @@ Sonic the Hedgehog is divided into seven zones each with three acts (except the 
 
 ![Sonic the Hedgehohg in a boss fight before the end of an act.](Sonic_Boss.png)
 
-```
+```fsharp
 // Shortcut variables for each level
 GreenHillZoneAct1 = 0x0000
 GreenHillZoneAct2 = 0x0001
@@ -48,11 +48,11 @@ ZoneComplete("Final Zone", FinalZone, EndGame)
 ```
 ### Example Translation
 Like the previous example let’s dissect one of the achievement functions step by step until we get to the code used in RALibRetro.
-```
+```fsharp
 ZoneComplete("Green Hill Zone", GreenHillZoneAct3, MarbleZoneAct1)
 ```
 Being a function the compiler will jump to ZoneComplete() and use *zone* = "Green Hill Zone", *last* = GreenHillZoneAct3, and *next* = MarbleZoneAct1 for the parameter values.
-```
+```fsharp
 achievement(
     title = "Example 1B: Green Hill Zone",
     description = "Complete Green Hill Zone",
@@ -61,7 +61,7 @@ achievement(
 )
 ```
 Now let’s replace Active() and the Transition() functions with the parameters *last* = GreenHillZoneAct3 and *next* = MarbleZoneAct1.
-```
+```fsharp
 achievement(
     title = "Example 1B: Green Hill Zone",
     description = "Complete Green Hill Zone",
@@ -74,7 +74,7 @@ achievement(
 )
 ```
 Finally the variables are replaced with the actual memory addresses and values.
-```
+```fsharp
 achievement(
     title = "Example 1B: Green Hill Zone",
     description = "Complete Green Hill Zone",

@@ -2,7 +2,7 @@
 A) For this example we chose the “Tetris Deluxe” pattern which requires you to fill the bottom 4 rows with vertically stacked ‘I’ piece.  The ‘I’ piece is the most important Tetrimino type in the game since it is the only Tetrimino that can make a **Tetris** (clearing four lines at once). Note that the top, middle, and bottom cells of the ‘I’ piece are all different.  All of the other Tetrimino types share the same cell for every part of the block.<br> 
 ![Tetris DX screenshot of a the Tetris Deluxe pattern](Tetris_DX_Deluxe.png)<br>
 B) Source code for “Tetris Deluxe” pattern.<br>
-```
+```fsharp
 // Tetris DX
 // #ID = 4939
 

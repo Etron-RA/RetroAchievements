@@ -48,7 +48,7 @@ If you are just learning RAScripts then it is extremely useful to import a set y
 ![Screenshot of creating a new script](New_Script.PNG)
 ## Cleaning up Code
 When you import a new script, RATools will generate scripts with the memory addresses and values. Below is an example of what the achievement “Amateur Collector” looks like when imported.
-```
+```fsharp
 achievement(
     title = "Amateur Collector", description = "Collect 20 Rings", points = 2,
     id = 2, badge = "00199", published = "2012-11-02 12:03:12 AM", modified = "2021-03-01 5:48:45 PM",
@@ -58,7 +58,7 @@ achievement(
 To make the script easier to understand and maintain it is recommended that you replace the memory address with functions. By using the **Function** column on the *Referenced Memory Addresses* panel you can specify a function name for each address in the code notes.  These functions will replace the memory address when the code is generated. In the below example we import the same achievement and give a name to each memory function used.<br>
 ![Screenshot of creating a new script with functions](New_Script_With_Functions.PNG)
 
-```
+```fsharp
 // Sonic the Hedgehog
 // #ID = 1
 

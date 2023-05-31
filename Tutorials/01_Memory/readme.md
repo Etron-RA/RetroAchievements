@@ -17,7 +17,7 @@ In RAScripts a variable can be:
 * Dictionaries – Dictionaries are memory that can be indexed by either an integer or string using hash maps. Dictionaries are commonly used with rich presence and will be covered there.
 
 The following code is using variables to abstract memory locations with easy to understand names.  For example, it’s much easier to understand what the variable *Rings* is used for instead of *byte(0xFE20)*. One major point is that variables must be declared before you use them, therefore many scripts declare variables right at the beginning.
-```
+```fsharp
 // $F601: [8-bit] Stage type
 //        0x10 = special
 //        0x0C = normal?
@@ -55,7 +55,7 @@ Functions are modules of code that can be reused as many times as needed. If you
 \
 Like variables, functions need to be declared before they are called, therefore this example defines the following functions after the memory variables are defined. We define some helper functions that help further abstract the code from the raw memory address and values which help make it easier to understand.  These helper functions will be used later in the examples.
 
-```
+```fsharp
 // Check if we are in a normal stage
 function InNormalStage() => StageType == 0xC
 

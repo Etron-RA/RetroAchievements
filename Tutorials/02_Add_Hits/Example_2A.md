@@ -3,7 +3,7 @@ Streets of Rage 2 has four playable characters: Max, Axel, Blaze, and Skate. Eac
 ![Character selection screenshot with Skate selected](Skate_Select.png)<br>
 <br>
  The following code will track if the player has used each character at least once.  The achievement will pause with the *unless* command whenever the screen mode is not in game.  That way we don’t trigger *hits* during the character selection screen. Using the *once* command the character selected comparison will latch on when said character is selected and it will stay on indefinitely. When using *hits* you would usually want include a *never* statement to reset the logic however, in this case we don’t need to reset the logic since the scope of the achievement is for the entire play session.  Note that the *hits* would all be reset in a new session.
-```
+```fsharp
 // Streets of Rage 2
 // #ID = 3
 
@@ -37,7 +37,7 @@ achievement(
 )
 ```
 The above works perfectly fine for tracking which character is used.  A measure could be added to this function to give the player some feedback of how many characters they have used. To add the measure we will need to combine the *hits* using the *tally* function.  Since the pause would disable the achievement while not in-game another modification was made to check the game mode with the selected character at the same time.  When two or more comparisons are combined together like this in an *once* command they are grouped together with *AndNext* flags.  So the result of this following code is a *AddHits* and *AndNext* chain that will sum up to four when every character has been selected.
-```
+```fsharp
 // Record a hit for each character active during gameplay
 // This variation of the using add hits to support using measure
 achievement(

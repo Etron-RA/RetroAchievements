@@ -9,7 +9,7 @@ This tutorial will show a few examples of how to create achievements for a game 
 Dynamic memory is a modern feature so you’re more likely to run into *pointers* on newer systems like the N64, Playstation, or Dreamcast although they do show up occasionally on earlier systems.  Pointers are often 32-bits with the address being in the bottom 24-bits and the top 8-bits commonly being 0x80, 0x90, 0xc0, or 0xff. These prefixes are based on where the RAM is located in the memory map of the system. For example, Playstation and N64 starts at 0x80000000, so that's why the upper byte is 0x80 on those systems. Similiarly, the Mega Drive RAM starts at 0xFF0000, so you will often see pointers with that prefix on that system.  Knowing this, we can ignore the prefix and use the rest of the *pointer* value to figure out where the memory is located.  A 24-bit *pointer* can address up to 16MB of memory so later generation consoles may use the full 32-bits to represent higher memory addresses and likewise older generation consoles may have 16-bit *pointers*.
 ## Data Structures
 *Data structures* are a specialized way for organizing memory in object oriented programming. *Data structures* are used to group pieces of data together and are sometimes organized to improve performance.  Consider the *data structure* used for Spider-Man’s player stats below:
-```
+```fsharp
 Player Stats Data Structure
 +04 - X Coordinates
 +08 - Y Coordinates
@@ -31,24 +31,24 @@ Note that the *data structure* is incomplete and has many more variables that we
 # Finding Pointers
 How do you know if you have a *pointer*? *Pointers* can change at any time but are usually set during a load sequence.  To find a *pointer* it’s best to dig memory in multiple game instances. If you notice that a memory address differs between instances you might have a *pointer* on your hands.  To find a pointer:
 1.	Make three or more save states and save a note for the memory address of interest in each state.  For this example we will be using three states
-```
+```fsharp
 Mem_1 = Memory address in state 1
 Mem_2 = Memory address in state 2
 Mem_3 = Memory address in state 3
 ```
 2.	Find the address differences between the states by using a [hex calculator](https://www.calculator.net/hex-calculator.html).  For a three state example:
-```
+```fsharp
 MemDiff1_2 = Mem_2 – Mem_1
 MemDiff2_3 = Mem_3 – Mem_2
 ```
 3.	Start in state 1 and filter the memory for a 32-bit address (may be 16-bit for Mega Drive or SNES).
 4.	Switch to state 2 
-```
+```fsharp
 If MemDiff1_2 > 0 then filter “Last Value Plus” by MemDiff1_2
 If MemDiff1_2 < 0 then filter “Last Value Minus” abs(MemDiff1_2)
 ```
 5.	Switch to state 3 
-```
+```fsharp
 If MemDiff2_3 > 0 then filter “Last Value Plus” by MemDiff2_3
 If MemDiff2_3 < 0 then filter “Last Value Minus” by abs(MemDiff2_3)
 ```

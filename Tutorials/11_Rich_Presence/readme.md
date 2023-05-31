@@ -4,7 +4,7 @@ This tutorial will show a few examples of how to create **Rich Presence** (RP) f
 ![Rich Presence](RP_in_action.png)<br>
  ## Dictionaries
 A **dictionary** is a special type of data structure that organizes data by **key**/ **value** pairs.  The **key** is typically a number or a string which is converted into a **hash** that the computer uses to find where a **value** is in memory.  The **hash** function is very fast which makes **dictionaries** ideal for searching through large data sets.  For **Rich Presence**, **dictionaries** are used to convert in-game memory values to readable text.  For example, the first zone in Sonic the Hedgehog is Green Hill Zone Act 1.  By using a **dictionary** to define all the level names you could display “Green Hill Zone Act 1” in the **Rich Presence** instead of the level value of 0x0000. See the [RATools Wiki](https://github.com/Jamiras/RATools/wiki/Variables#dictionaries) for more information of how **dictionaries** works.
-```
+```fsharp
 // To create a dictionary
 dictionary = {
     key_1: value_1, 

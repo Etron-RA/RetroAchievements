@@ -3,7 +3,7 @@ The main goal of Streets of Rage 2 is to fight your way through eight different 
 ![Screenshot of Axel knocking out multiple enemies](Axel_Uppercut.png)<br>
  
 Since the number of total knockouts from stage one might not be the same value as how many knockouts the player has done in one life we must track the value differently. The following code will increment one hit every time the Player1KOs() value increases.  The knockout count will reset whenever the Player1Lives() value decreases.
-```
+```fsharp
 // Streets of Rage 2
 // #ID = 3
 
@@ -28,7 +28,7 @@ achievement(
 )
 ```
 Using *AddHits* to count like this has a potential issue that would throw the count off.  If the player knocks out two or more enemies at once the count would only increment by one. To remedy this you would need to add additional *hits* when the player knocks out two enemies, three enemies, four enemies, and five enemies.  Since Streets of Rage 2 has a maximum of five active enemies at once you would only need to track up to five simultaneous knock outs. The following code uses a combination of *AddHits* and *AddSource* to count how many knock outs have occurred:
-``` 
+```fsharp
 // Count how many enemies where knocked out in one life
 // This variation counts instance of multiple enemies getting knocked out at once.
 achievement(
@@ -49,7 +49,7 @@ achievement(
 )
 ```
 The above code might be easier to understand if we put some numbers to it. Let say that the previous number of knockouts prev(Player1KOs()) is 100 and the player just knocked out three enemies at once raising the current number knockouts Player1KOs() value to 103.  The following comparisons for that frame would evaluate to:
-```
+```fsharp
 prev(Player1KOs()) < Player1KOs() ➡ 100 < 103 ➡ TRUE add hit
 prev(Player1KOs()) + 1 < Player1KOs() ➡ 101 < 103 ➡ TRUE add hit
 prev(Player1KOs()) + 2 < Player1KOs() ➡ 102 < 103 ➡ TRUE add hit

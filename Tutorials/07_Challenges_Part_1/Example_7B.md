@@ -2,7 +2,7 @@
 Mega Man is a difficult game that relies on quick reaction time, knowledge of enemy patterns, and memorization of the order for disappearing blocks.  However, the game has very little Random Number Generation (RNG) so once you learn a pattern it will be the same the next time.  Despite its difficulty, completing a stage without dying is a reasonable challenge that most players can complete with a little practice.  Gutsman has one of the easier stages to beat which is why he was chosen for the deathless stage example.   Like the damageless challenge, this achievement can easily be modified for any of the other five bosses by changing the stage number on the start condition.
  <br>
 ![Mega Man on the Gutsman stage](Mega_Man_Survival.png)<br>
-```
+```fsharp
 // Mega Man
 // #ID = 1448
 

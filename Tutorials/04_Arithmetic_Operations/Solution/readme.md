@@ -1,7 +1,7 @@
 # Solution #4
 By adding the two life bitflags together we get a decimal value for how many **Lives()** the player has.  The example below could have been done by only checking if bit 7 was on however, the **Lives()** function return a value that we can use in other parts of the code like rich presences or leaderboards.<br>
 ![Pitfall Harry swinging over a pond of crocodiles](Pitfall_Vine_Swing.png)
-```
+```fsharp
 // Pitfall!
 // #ID = 11191
 

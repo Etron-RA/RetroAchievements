@@ -8,7 +8,7 @@ A)  Using the memory addresses provided in this example make a function that can
 B)  Using the same method as Example 1A and 1B dissect one of the achievement functions step by step until all the variables and functions are removed.\
 \
 The following variables have been created to help with figuring out which emerald is in which special stage.
-```
+```fsharp
 SpecialStageWhiteEmerald = 0
 SpecialStageBlueEmerald = 1
 SpecialStageYellowEmerald = 2

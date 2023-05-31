@@ -1,7 +1,7 @@
 # Example 4B: Golden Scorpion
 The challenge of **Pitfall!** comes from the strict time limit of needing to collect all 32 treasures in 20 minutes.  The time limit is so strict that you need to utilize some of the underground shortcuts to collect all the treasures in time.  Traversing an underground passage is equivalent to traversing three screens above ground so you can speed through very quickly underground. However, treasures only appear above ground and some underground passages are dead ends so you must map you route carefully to succeed. The following achievement rewards the player for scoring 70,000 points in under 15 minutes.  To accomplish this the player must utilize the underground passages.<br> 
 ![Pitfall Harry about to pickup a diamond ring](Pitfall_Golden_Scorpion.png)
-```
+```fsharp
 // Pitfall!
 // #ID = 11191
 
@@ -73,7 +73,7 @@ achievement(
 ```
 ## Time()
 The **Time()** function in this example handles the conversion from the displayed **BCD** time value to a decimal value in frames.  It uses a very similar method to convert the **BDC** value as **Score()** however, the values used for each place differ since there are 60 frames in a second and 60 seconds in a minute.  To get the multiplication values that we multiply each place value by we need to calculate how many frames are in one place value.  The easiest way to do it is to start at the lowest place value, one frame, and then figure how many frames are in the next place value.
-```
+```fsharp
 1 Frame = 1 Frame
 1 Second = 60 Frames
 10 Seconds = 600 Frames

@@ -2,7 +2,7 @@
 The game selected for this example is [Super Mario Bros. (NES)](https://retroachievements.org/game/1446).  The reason why this game was selected is  because it is a well-known game and it was used as an example in the [RADocs](https://docs.retroachievements.org/Rich-Presence/).<br>
 ![Super Mario Bros. Title Screen](SMB_Title.png)<br>
  
-```
+```fsharp
 // Super Mario Bros.
 // #ID = 1446
 

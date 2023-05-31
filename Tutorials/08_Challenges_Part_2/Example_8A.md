@@ -1,7 +1,7 @@
 # Example #8A: Yoshi's Island 1 Speedrun
 Yoshi’s Island 1 is the first level in Super Mario World and is one of the easiest levels to beat in the game.  The game gives you 300 seconds to complete the level however, once you reduce that time limit it becomes much more challenging.  When deciding on time limits for speedrun achievements be sure to add a small buffer of extra time to allow for a few mistakes.  Player’s can spend years perfecting a speedrun which is an unreasonable expectation for the average player.  Leave the world record times for leaderboards instead.<br>
 ![Speeding through Yoshi’s Island 1]( Super_Mario_World_Yoshi_Island.png)<br>
-```
+```fsharp
 // Super Mario World
 // #ID = 228
 

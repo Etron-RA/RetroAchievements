@@ -1,7 +1,7 @@
 # Example #10B: Eden
 In Rez you control a hacker named Swayzak who is trying to infiltrate a computer system to stop a corrupt AI named Eden.  The game is a hybrid rhythm rail shooter where the area and your shots are timed to the music to create a sense of synesthesia.  The background models for each area is an ASCII string so instead of looking at area numbers we are looking for a specific area name. The final area is where Swayzak confronts Eden after a gauntlet of bosses that are similar to the bosses in the previous four areas.  The example below uses the model name for the end movie after Eden is beat to detect the end of the game.<br>
 ![Rez confronting the final boss Eden](Rez_End_Boss.png)<br>
- ```
+ ```fsharp
 // Rez
 // #ID = 3419
 

@@ -1,7 +1,7 @@
 # Tutorial #1 Solution
 ## Solution A
 The below script is a possible solution to the achievements for collecting chaos emeralds. This solution uses the current special stage number to determine which emerald was obtained when the number of emeralds increments by one.  The line prev(ChaosEmeralds) < ChaosEmeralds could also have been used with the same results.
-```
+```fsharp
 SpecialStageWhiteEmerald = 0
 SpecialStageBlueEmerald = 1
 SpecialStageYellowEmerald = 2
@@ -31,11 +31,11 @@ ChaosEmeraldCollected("Red", SpecialStageRedEmerald)
 ```
 ## Solution B
 Let’s dissect the white emerald achievement function step by step until we get to the code used in RALibRetro.
-```
+```fsharp
 ChaosEmeraldCollected("White", SpecialStageWhiteEmerald)
 ```
 The compiler will jump to the ChaosEmeraldCollected() function and use the parameters *color* = "White" and *stage* = SpecialStageWhiteEmerald.
-```
+```fsharp
 achievement(
     title = "Example 1C: White Emerald",
     description = "Collect the White Emerald",
@@ -47,7 +47,7 @@ achievement(
 )
 ```
 Now let’s replace the Active() and the InSpecialStage() functions
-```
+```fsharp
 achievement(
     title = "Example 1C: White Emerald",
     description = "Collect the White Emerald",
@@ -61,7 +61,7 @@ achievement(
 )
 ```
 Finally the variables are replaced with the actual memory addresses and values.
-```
+```fsharp
 achievement(
     title = "Example 1C: White Emerald",
     description = "Collect the White Emerald",

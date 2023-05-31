@@ -1,7 +1,7 @@
 # Tutorial #2 Solution
 ## Solution A
 Using the same method found in Example 2B we use a *tally* to add *hits* for multiple knockouts. The *hits* are reset if the player is not holding a weapon, the weapon type changed, or if the game mode changes from in game.
-```
+```fsharp
 // Streets of Rage 2
 // #ID = 3
 

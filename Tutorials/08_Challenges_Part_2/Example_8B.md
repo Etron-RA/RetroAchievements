@@ -4,7 +4,7 @@ The ultimate goal of a speedrun is to complete a game in the shortest time possi
 Super Mario World has a total of 96 normal and secret exits which, at the time of writing, took [oosui 1h 21m 17s 530ms to get the 100% world record](https://www.speedrun.com/smw/run/mkeo46xm).  This is a **very long time** to base an achievement on so a better candidate is the 11 Exit speedrun is which, at the time of writing, took [Tsuake 9m 42s 983ms for the world record](https://www.speedrun.com/smw/run/z0pk0wjy).  The 11 Exit is a glitchless run which requires you to take a shortcut through the Star World to skip ahead to Bowser’s Castle.  When adding a time buffer to a multi-level speedrun it’s a good idea to allow for several errors in each level.  Even with adding over six minutes to world record, this example would still be a huge challenge to beat for the average player.  Unless the game is very short a full game speedrun like this example would fit better in a **Bonus** set.<br>
 ![Speeding through Super Mario World](Super_Mario_world_Bowser.png)<br>
  
-```
+```fsharp
 // Super Mario World
 // #ID = 228
 

@@ -4,7 +4,7 @@ Rings are the main object which Sonic collects and Sonic gets a life for every 1
 
 ![Sonic the Hedgehohg Collecting Rings](Sonic_Rings.png)
 
-```
+```fsharp
 // Create an achievement for when the player collects X rings
 function CollectRings(count)
 {
@@ -26,11 +26,11 @@ CollectRings(200)
 
 ### Example Translation
 To help understand how this script is compiled by RATools we will dissect it step by step until we get to the code used in RALibRetro.  Note that this might not be the exact steps the compiler takes however, it should give you a good picture of how the script is interpreted. We’ll use the function to collect 15 rings as an example.  The compiler will use the same process for each of the achievement functions.
- ```
+ ```fsharp
 CollectRings(15)
 ```
 Being a function the compiler will jump to CollectRings() and use 15 in place of the parameter *count*.
-```
+```fsharp
 achievement(
     title = "Example 1A: 15 Rings",
     description = "Collect 15 Rings",
@@ -41,7 +41,7 @@ achievement(
 )
 ```
 Next the compiler will jump to the functions Active() then InNormalStage() which would be the equivalent of writing.
-```
+```fsharp
 achievement(
     title = "Example 1A: 15 Rings",
     description = "Collect 15 Rings",

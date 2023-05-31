@@ -1,7 +1,7 @@
 # Tutorial #7 Solution
 For this example the player must complete Cutman’s stage only using the Mega Buster.<br> 
 ![Mega Man Mega Busting through Bomb Man’s stage](Mega_Man_Buster_Solution.png)<br>
-```
+```fsharp
 // Mega Man
 // #ID = 1448
 

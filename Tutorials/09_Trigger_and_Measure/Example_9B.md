@@ -2,7 +2,7 @@
 Every character in Street Fighter II has a unique move set of special moves to match there fighting style (except for Ken and Ryu since they were both taught to fight by the same master).  The Sumo wrestler E. Honda has a very powerful special move call the Hundred Hand Slap where his hands slap so fast that they start to blur on the screen.  This special move is easy to perform by rapidly pressing any of the three punch buttons. The goal of this achievement is to hit the opponent 4 times only using the Hundred Hand Slap. <br>
 ![Street Fighter II: The World Warrior Hundred Hand Slap](Street_Fighter_2_Honda_100_Hand_Slap.png)<br>
  
-```
+```fsharp
 // Street Fighter II: The World Warrior
 // #ID = 11808
 

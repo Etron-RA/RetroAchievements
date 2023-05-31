@@ -2,7 +2,7 @@
 The Tetris board is limited to 10 blocks across and 20 blocks high (10x19 on the game boy due to the reduced screen size).  Once blocks stack over the height limit the game is over.  To become a Tetris Grandmaster you must be able to control where the gaps in a line are no matter what pieces you are given.  One way to practice controlling the board is to perform the Grandmaster build which starts with a gap on the far bottom left of the board and then has a gap one cell to the right and up until the gap is on the other side of the board. Master this build and you are one step closer to becoming a Tetris Grandmaster!<br>
 ![Tetris DX screenshot of a Grandmaster build](Tetris_DX_Grandmaster.png)<br>
  
-```
+```fsharp
 // Tetris DX
 // #ID = 4939
 

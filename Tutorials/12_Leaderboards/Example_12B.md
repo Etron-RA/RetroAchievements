@@ -1,7 +1,7 @@
 # Example #12B: Kill Count
 Killing demons is not necessary to beating a level however, it does make it a lot easier to proceed through the map.  Each map in the Playstation set has three stacked achievements; one for beating the level, one for beating the level on Ultra-Violent (difficulty 4 of 4), and one for beating a map with 100% secrets and 100% kills.  As such the player will need to kill every demon on a map if they are going for a mastery of the game.  This leaderboard will track how many kills the player accumulates in one life for either Doom (maps 1-30) or Doom II (maps 31-54). <br>
 ![Doom Slayer killing a Demon](Doom_Slayer.png)<br>
-```
+```fsharp
 // Doom
 // #ID = 11256
 

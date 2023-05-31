@@ -2,7 +2,7 @@
 Besides beating up enemies with your bare knuckles the player can pick up and use weapons that the enemies drop.  Weapons significantly increase your damage so once you get a weapon, it is best to hold on to it for as long as possible.  The Steel Grip achievement rewards the player for holding on to the same weapon for ten or more knockouts.<br>
 ![Screenshot of Blaze knocking an enemy out with a knife](Blaze_Knife.png)<br>
  
-```
+```fsharp
 // Streets of Rage 2
 // #ID = 3
 

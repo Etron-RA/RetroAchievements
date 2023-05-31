@@ -1,7 +1,7 @@
 # Example #10A: Region Detection
 Disc based systems gives each release a unique name that can be used to detect which region the player is using.  The name for the disc is often found in the same region of memory used by the operating system to help identify the game.  Rez has a Japanese release named “HDR-0178” and a European/North American released named “MK-5119250” which are both found at 0x8040.  If you can find the disc name for your game online then you can search for it in the memory inspector using the “ASCII Text” filter. The Developer Documentation has some [console specific tips](https://docs.retroachievements.org/Console-Specific-Tips/#playstation) of where you would find the disc name for PlayStation games.<br>
 ![Rez Dreamcast Regions](Dreamcast_logos.png)<br> 
-```
+```fsharp
 // Rez
 // #ID = 3419
 

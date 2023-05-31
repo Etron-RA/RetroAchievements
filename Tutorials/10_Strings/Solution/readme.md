@@ -1,7 +1,7 @@
 # Example #10C: Boss Types
 The boss chosen for this example is beating the Tera Earth boss.  To fight this version of the Earth boss you need to shot down 98% or more of the enemies in Area 1. <br>
 ![Rez fighting the Earth Tera Boss](Rez_Earth_Tera.png)<br> 
-```
+```fsharp
 // Rez
 // #ID = 3419
 
