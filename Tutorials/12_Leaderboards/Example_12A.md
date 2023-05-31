@@ -162,7 +162,7 @@ for index in range(0x1, 0x3B)
     )
 }
 ```
-# One Logic to Rule Them All
+## One Logic to Rule Them All
 
 Notice that the above code creates a speedrun leaderboard for each level.  The logic for each leaderboard is very similar with the only difference being the ```MapID()```.  The code takes advantage of this similarity and creates all the leaderboards by looping through each possible ```MapID()```.  The ```MapLookup[]``` dictionary used to create the Rich Presence is also useful here to convert the ```MapID()``` to its name for the title and description of the leaderboard.  
 
@@ -171,7 +171,7 @@ The function ```StartMap()``` is used to prime the leaderboard.  The passed map 
 ## Cancel Event
 The leaderboard will cancel if the loading screen is shown which means the player died or quit.  It will also cancel if any of the cheat codes were activated.  To ensure fairness leaderboards should be aware of in game cheats and either cancel or never get primed to begin with while a cheat is active.  In this case the cheats were put in the cancel event in case the player activates a cheat during the level.
 ## Submit Event
-The leaderboard will submit when the results screen is shown for the current map.  The result screen is only shown when the player completes a map so it is a good event to use for the leaderboard submission.
+The function ```EndMap()``` will submit when the results screen is shown for the current map.  The result screen is only shown when the player completes a map so it is a good event to use for the leaderboard submission.
 ## Value 
 The value ```always_true()``` is used to count the number of frames that the leaderboard has been active for.  The ```GameTimer()``` memory value would have been a good candidate for the value as well however, unfortunately the timer is reset on the result screen so would always submit zero.
 ## Lower is Better?

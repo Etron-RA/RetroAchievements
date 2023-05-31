@@ -7,7 +7,7 @@ Create a leaderboard from the beginning map to the last map for both Doom and Do
 You need to use the map ID at byte 0x077E10 to complete the homework. Here’s the values for all the maps:
 | ID | Name | Notes |
 |:----:|-----------------------------------|-----------------------------------|
-| 0x0 | Main Menu | Show Map the title screen |
+| 0x0 | Main Menu | The title screen |
 | 0x1 | Hangar | First Map of Doom |
 | 0x2 | Plant |  |
 | 0x3 | Toxin Refinery |  |
