@@ -39,6 +39,9 @@ function PeachOverworldY() => byte(0x000075)
 // $0079: [8-bit] Peach's Location on Overworld Map - X Coordinate
 function PeachOverworldX() => byte(0x000079)
 
+// $007f: [bit 5] On overworld (1 = overworld, 0 = in level)
+function OnOverwold() => bit5(0x00007f)
+
 // $0083: [8-bit] Koopalings Bosses Health (3=Dead, 0=FullHealth)
 function KoopaHP() => byte(0x000083)
 
@@ -65,6 +68,11 @@ PowerNames = {
    6: "Candy Cane",
 }
 
+// $00f1: [bit 0] Dead bit (0 = alive, 1 = dead)
+function DeathStatus() => bit0(0x00f1)
+function Alive() => DeathStatus() == 0
+function Dead() => DeathStatus() == 1
+
 // $04E2: [8-bit] Currently playing Sound, reads from directly below
 function SFX() => byte(0x0004E2)
 
@@ -75,6 +83,22 @@ function Music() => byte(0x0004E5)
 // $0503: [8-bit] Game Over Screen (0xf8 when game over)
 function GameOverScreen() => byte(0x000503)
 function GameOver() => prev(GameOverScreen()) == 0 && GameOverScreen() == 0xf8
+
+
+// $05ee: [BCD] Time hundreds column
+// $05ef: [BCD] Time tens column
+// $05f0: [BCD] Time ones column
+function TimeX00() => low4(0x05ee)
+function Time0X0() => low4(0x05ef)
+function Time00X() => low4(0x05f0)
+function Time() {
+    return TimeX00() * 100 +
+        Time0X0() * 10 +
+        Time00X()
+}
+
+// $05f1: [8-bit] Time milliseconds (0x28 to 0x0)
+function Milliseconds() => byte(0x05f1)
 
 // $0711: [8-bit] Timer: Countdown to Spawning on Overworld Map
 //        When this hits zero, the stars effect takes place.
@@ -125,12 +149,12 @@ function TitleScreen() => MapEvents() == 0
 
 // Starting Level Tansisiton Screens (values found at beginning of levels)
 StartingScreen = {
-    1: [0x6f, 0xb4],    
-    2: [0x0e, 0x32],
-    3: [0x3f, 0x6c],
-    4: [0xa0, 0xca],
-    5: [0x35, 0x4b],
-    6: [0x2c, 0x5a]
+    1: 0xb4,    
+    2: 0x32,
+    3: 0x6c,
+    4: 0xca,
+    5: 0x4b,
+    6: 0x5a
 }
 
 // Ending Levels Screens
@@ -166,7 +190,7 @@ function InGame()
         ActivePlayer() == 0
 }
 
-
+// Checks if the game has been reset
 function ResetGame()
 {
     return InGame() && 
@@ -176,6 +200,7 @@ function ResetGame()
         StartCountdown() == 1
 }
 
+// Checks if a new game has been started
 function StartGame()
 {
     return InGame() && 
@@ -195,19 +220,22 @@ function ObtainPowerUp(powerup)
 // Transistioning from the overworld to a level
 function StartLevel(level)
 {
-    transisition = StartingScreen[level]
     return InGame() && 
-        prev(Level()) == transisition[0] &&
-        Level() == transisition[1]
+        Level() == StartingScreen[level] && 
+        Time() == 300 && 
+        prev(Milliseconds()) == 0x28 &&
+        Milliseconds() == 0x27
 }
 
 // Beating the game when bowser hits the floor
 function BeatGame()
 {
     return InGame() &&
+        Alive() &&
         Level() == 0x46 &&
-        SFX() == 8 &&
-        Music() == 0
+        Music() == 0 &&
+        prev(SFX()) != 8 &&
+        SFX() == 8
 }
 
 // Checks for the end level flag (or beat condtions if last level)
@@ -320,7 +348,7 @@ achievement("Filling the Royal Treasury","Collect 100 coins to get a 1up", 2, Co
 achievement("Secret Stash","Find the secret mushroom in the castle", 1, FoundMushroom())
 
 // Progression achievements
-achievement("Winter Wonderland","Beat level 1 ", 1, BeatLevel(1))
+achievement("Winter Wonderland","Beat level 1", 1, BeatLevel(1))
 achievement("Hilltops","Beat level 2", 2, BeatLevel(2))
 achievement("Blooper's Garden","Beat level 3", 3, BeatLevel(3))
 achievement("Frozen Outpost","Beat level 4", 4, BeatLevel(4))
