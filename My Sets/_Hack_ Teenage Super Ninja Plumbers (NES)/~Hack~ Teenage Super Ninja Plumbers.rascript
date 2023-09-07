@@ -109,6 +109,9 @@ function CanSwimFlag() => byte(0x000704)
 // $071A: [8-bit] Screen Offset
 function ScreenOffset() => byte(0x00071A)
 
+// $071B: [8-bit] Next Screen Offset
+function ScreenNext() => byte(0x00071B)
+
 // $074A: [8-bit] Controller Input, Bits are:
 //        0, 1, 2, 3, 4, 5, 6, 7
 //        R, L, D, U, Start, Select, B, A
@@ -118,7 +121,7 @@ function LeftButton() => bit1(0x00074A)
 function CoinsCollectedThisPhase() => byte(0x000748)
 
 // $0750: [8-bit] Area ID Loaded
-function AreaIdLoaded() => byte(0x000750)
+function AreaID() => byte(0x000750)
 
 // $0752: [8-bit] Starting location:
 //        0 = normal/undergroud/underwater
@@ -188,6 +191,9 @@ Players = {
     0: "Mario",
     1: "Luigi"
 }
+
+// $0787: [8-bit] Timer Ticks (Ticks down from 0x18 to 0x0)
+function ClockTimer() => byte(0x0787)
 
 // $079D: [8-bit] Timer: Multi-coin block
 function MulticoinTimer() => byte(0x00079d)
@@ -405,6 +411,26 @@ Bowser = [
 
 EndLevel = [2, 2, 2, 2, 1, 0, 0, 0]
 
+LevelTimer = {
+    0x00: 300,
+    0x01: 400,
+    0x02: 300,
+    0x10: 400,
+    0x11: 400,
+    0x12: 300,
+    0x20: 400,
+    0x21: 400,
+    0x22: 300,
+    0x30: 400,
+    0x31: 300,
+    0x32: 300,
+    0x40: 400,
+    0x41: 300,
+    0x50: 300,
+    0x60: 400,
+    0x70: 400
+}
+
 // Helper function that converts time to frames
 function TimeSpan(minutes, seconds, frames) => (minutes * 3600) + (seconds * 60) + frames
 
@@ -421,20 +447,42 @@ function OnLevel(world, act)
 function LevelStart(world, act)
 {
     unique_level = (world - 1) * 0x10 + (act - 1)
-    if (unique_level == 0)
-    {
-        return World() == world - 1 &&
-            Act() == act - 1 &&
-            ScreenOffset() == 0 && 
-            SinglePlayerMode() == 0 &&
-            prev(GameplayMode()) == 0 &&
-            GameplayMode() == 1
-    }
     
-    return  SinglePlayerMode() == 0 &&
+    // Start from the main menu
+    newStart = World() == world - 1 &&
+        Act() == act - 1 &&
+        ScreenOffset() == 0 && 
+        SinglePlayerMode() == 0 &&
+        prev(GameplayMode()) == 0 &&
+        GameplayMode() == 1
+        
+    // Start from last level transistion
+    nextStart = SinglePlayerMode() == 0 &&
         GameplayMode() == 1 &&
         prev(UniqueLevel()) != unique_level &&
         UniqueLevel() == unique_level
+        
+    // Start of a bonus level based on the clock   
+    time_start = LevelTimer[unique_level]
+    bonusStart = SinglePlayerMode() == 0 &&
+        GameplayMode() == 1 &&
+        ScreenOffset() == 0 && 
+        UniqueLevel() == unique_level &&
+        prev(Time()) == time_start + 1 &&
+        prev(ClockTimer()) == 0x0 &&
+        Time() == time_start &&
+        ClockTimer() == 0x18
+    
+    // If 1-1 then always new start
+    if (world == 1 && act == 1)
+        return newStart    
+        
+    // If 5-1, 6-1, 7-1, or 8-1 then always bonus start
+    if (world >= 5 && act == 1)
+        return bonusStart    
+    
+    // Any other level use next start
+    return  nextStart
 }
 
 // Event when beating a level
@@ -445,11 +493,17 @@ function LevelBeat(world, act)
         
     if (EndLevel[world - 1] == act - 1)
     {
+        trigger = trigger && SinglePlayerMode() == 0
+        
+        // If world 5 or greater then look at next screen offset instead
+        if (world >= 5)
+            trigger = trigger && ScreenNext() != 0 
+        else
+            trigger = trigger && ScreenOffset() != 0 
+            
         trigger = trigger &&
-            SinglePlayerMode() == 0 &&
-            ScreenOffset() != 0 && 
-            prev(GameplayMode()) == 1 && 
-            GameplayMode() == 2
+                prev(GameplayMode()) == 1 && 
+                GameplayMode() == 2
     }
     else
     {
@@ -578,14 +632,19 @@ function WarpZone()
 }
 
 // Challenge to beat a level without taking damage or dying
-function Damageless(world, act)
+function Damageless(world, act, layout, offset)
 {
-    start = once(LevelStart(world, act))
+    start = once(
+            OnLevel(world, act) &&
+            LevelLayout() == layout &&
+            ScreenOffset() <= offset &&
+            PowerUpState() != 0
+        )
     
     cancel =  never(GameOver()) &&
         never(World() != world - 1) &&    
         never(Act() != act - 1) &&    
-        never(PowerDown()) &&
+        never(PowerUpState() == 0) &&
         never(PlayerKo())
         
     submit = trigger_when(LevelBeat(world, act))
@@ -875,9 +934,10 @@ achievement("Righteous Adventurer!","Complete world 1-1 without pressing left", 
 
 achievement("Sewer Speedrun!","Complete world 1-2 in under 50s", 5, Speedrun(1, 2, TimeSpan(0,50,0)))
 achievement("Warp Navigator!","Find the warp zone in level 1-2", 3, WarpZone())
-achievement("Save the Dam!","Complete world 2-1 without losing a powerup or dying", 10, Damageless(2, 1))
+achievement("Save the Dam!","Start big or obtain a power-up in the 1st area of 2-1 and keep it for the rest of the level.", 10, Damageless(2, 1, 0xc0, 1))
 achievement("Save the Turtles!","Complete world 2-2 without harming any enemies", 10, BeatPacifist(2, 2))
 achievement("Hazard Pay!","Collect 37 or more coins on world 3-1 without dying", 10, CoinCollector(3, 1, 37))
+achievement("Missle Dodger!","Start big or obtain a power-up in the 1st area of 3-1 and keep it for the rest of the level.", 10, Damageless(3, 2, 0xe4, 4))
 achievement("Spiny Speedrun!","Complete world 4-1 in under 40s", 10, Speedrun(4, 1, TimeSpan(0,40,0)))
 achievement("Double Nunchucks Dynamo!","In world 4-2 get a second super nunchucks before the invincibility of the first one runs out", 10, DoubleInvincible(4, 2))
 achievement("Sunken Treasure!","Collect 27 or more coins on world 5-1 without dying", 10, CoinCollector(5, 1, 27))
@@ -896,11 +956,11 @@ achievement("The Little Legend!","Beat World 3 without powering up", 25, BeatWor
 achievement("Small Size, Big Success!","Beat World 4 without powering up", 25, BeatWorldSmall(4))
 
 achievement("Reptilian Rampage!","Kill 13 or more Tiny Turtles (Goombas) on world 1-1 without dying", 5, HitList(1, 1, 13, Goombas))
-achievement("The Mutant Menace!","Kill 6 or more Koopas or Paratroopas on world 1-2 without dying (shelled enemies need to be knocked out or kicked of the screen)", 5, HitList(1, 2, 6, Koopas))
-achievement("Buzzy Beetle Bane!","Kill 7 or more Buzzy Turtles (Buzzy Beetles) on world 1-2 without dying (2nd Quest, shelled enemies need to be knocked out or kicked of the screen)", 10, HitList(1, 2, 7, BuzzyBeetles, true))
+achievement("The Mutant Menace!","Kill 6 or more Koopas or Paratroopas on world 1-2 without dying (shelled enemies need to be knocked out or kicked off the screen)", 5, HitList(1, 2, 6, Koopas))
+achievement("Buzzy Beetle Bane!","Kill 7 or more Buzzy Turtles (Buzzy Beetles) on world 1-2 without dying (2nd Quest, shelled enemies need to be knocked out or kicked off the screen)", 10, HitList(1, 2, 7, BuzzyBeetles, true))
 achievement("Dam Demolition Diffuser!","Kill 15 or more grey or red Missles (Cheep Cheeps) on world 2-1 without dying", 5, HitList(2, 1, 15, CheepCheeps))
 achievement("Blooper Buster!","Kill 3 or more Bloopers on world 2-1 without dying (2nd Quest)", 10, HitList(2, 1, 3, Bloopers, true))
-achievement("Shell Slaughterer!","Kill 10 or more Koopas or Paratroopas on world 2-2 without dying (shelled enemies need to be knocked out or kicked of the screen)", 5, HitList(2, 2, 10, Koopas))
+achievement("Shell Slaughterer!","Kill 10 or more Koopas or Paratroopas on world 2-2 without dying (shelled enemies need to be knocked out or kicked off the screen)", 5, HitList(2, 2, 10, Koopas))
 achievement("Turtle Bro Terminator!","Kill 3 or more Turtle Bros (Hammer Bros) on world 3-1 without dying", 10, HitList(3, 1, 3, HammerBros))
 achievement("Missile Bill Massacre!","Kill 15 or more Missle Bills (Bullets Bills) on world 3-2 without dying", 5, HitList(3, 2, 15, BulletBills))
 achievement("Krang Crusher!","Kill 3 or more Lakitus on world 4-1 without dying", 5, HitList(4, 1, 3, Lakitus))
@@ -972,7 +1032,6 @@ for world in range(1,5)
     )
 }
 
-
 for world in range(1,8)
 {
     lastLevel = EndLevel[world - 1] + 1   
@@ -994,7 +1053,7 @@ for world in range(1,8)
 
 leaderboard(
     "Shell Slayer",
-    "Most enemies killed (shelled enemies need to be knocked out or kicked of the screen).",
+    "Most enemies killed (shelled enemies need to be knocked out or kicked off the screen).",
     LevelStart(1, 1),
     always_false(),
     GameOver() || LevelBeat(4, 3),
