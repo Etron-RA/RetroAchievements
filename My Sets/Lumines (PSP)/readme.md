@@ -1,0 +1,9 @@
+# Lumines (PSP) Achievement Design
+## Game Site
+https://retroachievements.org/game/3223
+## Overview
+Lumines is a puzzle video game originally released for the PlayStation Portable (PSP). Developed by Q Entertainment and designed by Tetsuya Mizuguchi, the game combines elements of music and synchronized visuals with classic block-dropping puzzle mechanics. Players arrange falling 2x2 blocks of two different colors to create squares of the same color, which then disappear, earning points. The game's unique feature is its integration of music and visuals that change dynamically as players progress, creating a mesmerizing and immersive experience. With its engaging gameplay and audio-visual synchronization, Lumines received positive reviews for its innovative approach to the puzzle genre and remains a notable title on the PSP platform.
+## Set Design
+In Lumines, achievements are closely tied to in-game unlocks. The set has save protection so a player must preform the unlock goals even if the it is recorded as unlocked in the save. As players progress through the puzzle challenges, they unlock various achievements that not only signify their accomplishments but also grant access to new features, levels, or customization options. These in-game unlocks serve as both rewards and milestones, motivating players to explore different aspects of the game and master its challenges. Whether it's unlocking new music tracks, visual themes, or advanced difficulty levels, the achievement system in Lumines provides a dynamic and engaging progression system, encouraging players to delve deeper into the game's content while showcasing their skill and dedication.
+### Board Configurations
+There are to script files inclued in this repo. **Lumines.rascript** is for the core achievements and **Lumines Board Configuration.rascript** was used to generate test achievement that aided in setting up certain board configurations.
