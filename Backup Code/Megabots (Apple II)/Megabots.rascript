@@ -202,6 +202,7 @@ function LevelEnd() => LevelStat() == 19256
 function LevelStart() => prev(RowA()) == 30 && RowA() != 30
 function GameStart() => Level() == Level4 && LevelStart()
 function GameEnd() => LevelEnd() && ClearY() >= 48 && ClearX() >= 48
+function GameEndFewestSteps() => ClearY() >= 48 && ClearX() >= 48
 function Steps(count) => tally(count, Y() < 5 && Y() != prev(Y()), X() < 5 && X() != prev(X()))
 function Damage(level, hit) =>  Power() + hit <= prev(Power()) && Level() == level
 function PlayerRecharge() => Power() == 0
@@ -293,7 +294,7 @@ achievement(
 
 achievement(
     title = "Taste of Power", 
-    description = "Clear level 4 with 100+ power",
+    description = "Clear level 4 with 100+ power credits",
     points = 10, 
     id = 73138,
     trigger = Level() == Level4 && LevelEnd() && Power() >= 100
@@ -301,7 +302,7 @@ achievement(
 
 achievement(
     title = "Hour of Power",
-    description = "Clear level 3 with 100+ power",
+    description = "Clear level 3 with 100+ power credits",
     points = 10,
     id = 73139,
     trigger = Level() == Level3 && LevelEnd() && Power() >= 100
@@ -309,7 +310,7 @@ achievement(
 
 achievement(
     title = "Powered Armor", 
-    description = "Clear level 2 with 100+ power",
+    description = "Clear level 2 with 100+ power credits",
     points = 10,
     id = 73140,
     trigger = Level() == Level2 && LevelEnd() && Power() >= 100
@@ -324,7 +325,7 @@ achievement(
 )
 achievement(
     title = "Logic Gate Analysis", 
-    description = "Clear level 4 in 10 steps or less [5 NS - 5 EW]", 
+    description = "Clear level 4 in 10 steps or less", 
     points = 10,
     id = 73146,
     trigger = once(LevelStart()) && never(RowA() == 30) && never(Level() != Level4) && never(Steps(10)) && trigger_when(LevelEnd())
@@ -332,7 +333,7 @@ achievement(
 
 achievement(
     title = "Elimination Grid", 
-    description = "Clear level 3 in 10 steps or less [5 NS - 5 EW]", 
+    description = "Clear level 3 in 10 steps or less", 
     points = 10, 
     id = 73147,
     trigger = once(LevelStart()) && never(RowA() == 30) && never(Level() != Level3) && never(Steps(10)) && trigger_when(LevelEnd())
@@ -340,7 +341,7 @@ achievement(
 
 achievement(
     title = "Ockham's Razor",
-    description = "Clear level 2 in 10 steps or less [5 NS - 5 EW]", 
+    description = "Clear level 2 in 10 steps or less", 
     points = 10,
     id = 73148,
     trigger = once(LevelStart()) && never(RowA() == 30) && never(Level() != Level2) && never(Steps(10)) && trigger_when(LevelEnd())
@@ -348,10 +349,10 @@ achievement(
 
 achievement(
     title = "Mastermind",
-    description = "Clear level 1 in 10 steps or less [5 NS - 5 EW]", 
+    description = "Clear level 1 in 10 steps or less", 
     points = 10,
     id = 73149,
-    trigger = once(LevelStart()) && never(RowA() == 30) && never(Level() != Level1) && never(Steps(10)) && trigger_when(GameEnd())
+    trigger = once(LevelStart()) && never(RowA() == 30) && never(Level() != Level1) && never(Steps(10)) && trigger_when(GameEndFewestSteps())
 )
 
 achievement(
@@ -426,7 +427,7 @@ achievement(
 
 achievement(
     title = "Quick Draw", 
-    description = "Defeat 3 bad robots in a row without taking damage or an emergency recharge (shooting good robots doesn't add to count)", 
+    description = "Defeat 3 bad robots in a row without taking damage or an emergency recharge, shooting good robots does not add to count", 
     points = 5,
     trigger = ResetOnPlayerHit() && measured(repeated(3, MonsterDefeated()))
 )
@@ -434,14 +435,14 @@ achievement(
 
 achievement(
     title = "Robot Reflexes", 
-    description = "Defeat 5 bad robots in a row without taking damage or an emergency recharge (shooting good robots doesn't add to count)",
+    description = "Defeat 5 bad robots in a row without taking damage or an emergency recharge, shooting good robots does not add to count",
     points = 10,
     trigger = ResetOnPlayerHit() && measured(repeated(5, MonsterDefeated()))
 )
 
 achievement(
     title = "Quickest Gun on the Grid", 
-    description = "Defeat 10 bad robots in a row without taking damage or an emergency recharge (shooting good robots doesn't add to count)", 
+    description = "Defeat 10 bad robots in a row without taking damage or an emergency recharge, shooting good robots does not add to count", 
     points = 25,
     trigger = ResetOnPlayerHit() && measured(repeated(10, MonsterDefeated()))
 )
