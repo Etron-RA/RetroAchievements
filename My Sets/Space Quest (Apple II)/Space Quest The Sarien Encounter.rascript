@@ -313,7 +313,7 @@ function XenoCultured(name, description, points)
     
     achievement(name, description, points, DebugInactive() && bandsSeen)
 }
-XenoCultured("Xeno Cultured!","Catch all of the bands in the Ulence Flats bar (must listen to each band for a minute)", 3)
+XenoCultured("Xeno Cultured!","Catch all of the bands in the Ulence Flats bar and listen to each band for a minute or more", 3)
 
 // Break the slots machine by earning > 249 Buck-A-Zoids
 function BuckAZoidBankBusted(name, description, points)
