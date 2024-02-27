@@ -71,6 +71,8 @@ bug_wave_lookup = {
 // Macro for testing if 1 player and currently playing
 function in_game() => mode() == 0 && game_state() >= 2
 
+function start_lb()  => mode() == 0 && game_state() > 2
+
 // Macro for resetting the hits when at the title, demo, in two player mode, 
 // or if the player presses reset.
 function in_menu() => never(mode() == 1) && never(game_state() < 2) 
@@ -145,8 +147,8 @@ achievementWaves("Groundskeeper", 5, 0x2e, 5)
 function achievementBugHunter(name, level, points) {
     achievement(
         name,
-        "Get a " + level + "x multiplier! (Beat all four bug waves to " + 
-        "increase a multiplier, losing a floor will decrease a multiplier)", 
+        "Get a " + level + "x multiplier! Beat all four bug waves to " + 
+        "increase a multiplier, losing a floor will decrease a multiplier.", 
         points=points,    
         trigger=
             in_game() && 
@@ -198,8 +200,8 @@ achievementBugExterminator("Green Bug Exterminator", "green", 10)
 function achievementCombo(name, combo, points) {
     achievement(
         name,
-        "Squash " + combo + " bugs in a combo! (Combos end when all the " + 
-        "pots have been reset)", 
+        "Squash " + combo + " bugs in a combo! Combos end when all the " + 
+        "pots have been reset.", 
         points=points,    
         trigger=
             in_game() &&
@@ -257,7 +259,7 @@ rich_presence_display("Multiplier {0}x | Score {1} | Potsy is on top of a {2}, "
 leaderboard(
     "Highest Score",
     "Starting from wave 1, highest score before the building is condemned!",
-    in_game(),
+    start_lb(),
     always_false(),
     end_game(),
         bcd(ones()) + 
@@ -270,25 +272,18 @@ leaderboard(
 leaderboard(
     "Highest Wave",
     "Starting from wave 1, most number of waves completed before the building is condemned!",
-    in_game(),
+    start_lb(),
     always_false(),
     end_game(),
-    always_false()
-    // Acutal leaderboard code in core
-    // R:d0xH0017<0xH0017_N:d0xH0073=0_C:0xH0073=1_N:d0xH0073=1_C:0xH0073=2_N:d0xH0073=2_C:0xH0073=3_N:d0xH0073=3_C:0xH0073=0_M:1=0
-    //
-    // NOTE: the below code is what was intended however, it cause an out of memory error
-    // so I ended up copying over one of the wave achievements and took off the hit counts 
-    // and some of the resets covered by the cancel code.
-    //player_reset() &&
-    //measured(
-    //    tally(
-    //        0,
-    //        prev(bug_wave()) == 0 && bug_wave() == 1,
-    //        prev(bug_wave()) == 1 && bug_wave() == 2,
-    //        prev(bug_wave()) == 2 && bug_wave() == 3,
-    //        prev(bug_wave()) == 3 && bug_wave() == 0,
-    //        always_false()
-    //    )
-    //)
+    player_reset() &&
+    measured(
+        tally(
+            0,
+            prev(bug_wave()) == 0 && bug_wave() == 1,
+            prev(bug_wave()) == 1 && bug_wave() == 2,
+            prev(bug_wave()) == 2 && bug_wave() == 3,
+            prev(bug_wave()) == 3 && bug_wave() == 0,
+            always_false()
+        )
+    )
 )
