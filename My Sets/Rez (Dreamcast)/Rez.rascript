@@ -182,12 +182,13 @@ function GameStart() => NoCheats() && prev(GamePointer()) == 0 && GamePointer() 
 function GameEnd() => prev(GameMode()) == 0xffffffff && GameMode() != 0xffffffff
 function GameWon() => NoCheats() && StringCompare(ModelLoaded(), GameWon)
 function TitleScreen() => StringCompare(ModelLoaded(), GameTitle)
+function UpgradeActive() => NoCheats() && GameMode() == 0xffffffff
 
 // Boss active functions
 function BossActive() => NoCheats() && BossPointer() != 0
 function BossInactive() => NoCheats() && BossPointer() == 0
 function BossStart() => BossActive() && prev(BossHealth()) <= 0.0 && BossHealth() == 1.0 
-function BossEnd() =>  BossActive() && prev(BossHealth()) > 0.0 && prev(BossHealth()) <= 0.1  && BossHealth() <= 0.0 
+function BossEnd() =>  BossActive() && prev(BossHealth()) > 0.0 && prev(BossHealth()) <= 1.0  && BossHealth() <= 0.0 
 
 function BossLoaded(model) => BossStart() && StringCompare(ModelLoaded(), model)
 function ShowingModel(model) => GameActive() && StringCompare(ModelLoaded(), model)
@@ -311,7 +312,7 @@ function BossTypeChallenge(bossMemory, bossType)
 function LowLevelChallenge(start, end, lowestForm)
 {
     return Challenge(
-        [start], 
+        start, 
         [GameEnd(), CurrentForm() >= lowestForm], 
         [end]
     )
@@ -330,10 +331,10 @@ function TopScoreChallenge(start, firstPlace, secondPlace)
 //---------------------------------------------------------------------------
 // Progression Achievements
 
-achievement("Earth","Complete Area 1", 2, Challenge([MenuPlayArea(Area1)], [GameEnd()], [ShowingModel(Results)]))
-achievement("Mars","Complete Area 2", 3, Challenge([MenuPlayArea(Area2)], [GameEnd()], [ShowingModel(Results)]))
-achievement("Venus","Complete Area 3", 5, Challenge([MenuPlayArea(Area3)], [GameEnd()], [ShowingModel(Results)]))
-achievement("Uranus","Complete Area 4", 5, Challenge([MenuPlayArea(Area4)], [GameEnd()], [ShowingModel(Results)]))
+achievement("Earth","Complete Area 1", 2, Challenge([MenuPlayArea(Area1)], [GameEnd()], [BossEnd()]))
+achievement("Mars","Complete Area 2", 3, Challenge([MenuPlayArea(Area2)], [GameEnd()], [BossEnd()]))
+achievement("Venus","Complete Area 3", 5, Challenge([MenuPlayArea(Area3)], [GameEnd()], [BossEnd()]))
+achievement("Uranus","Complete Area 4", 5, Challenge([MenuPlayArea(Area4)], [GameEnd()], [BossEnd()]))
 achievement("Eden","Complete Area 5", 10, Challenge([MenuPlayArea(Area5)], [GameEnd()], [GameWon()]))
 
 achievement("Lost Area","Complete Lost Area", 10, Challenge([BeyondMenu(LostArea)], [GameEnd()], [ShowingModel(Results)]))
@@ -375,11 +376,16 @@ achievement("Final Evolution","Defeat the Final Eden boss in Area 5 without devo
 //---------------------------------------------------------------------------
 // Low Level Challenges
 
-achievement("Primal Earth","Beat Area 1 without evolving past the default starting form of level 1", 10, LowLevelChallenge(MenuPlayArea(Area1), ShowingModel(Results), 2))
-achievement("Primal Mars","Beat Area 2 without evolving past the default starting form of level 1", 10, LowLevelChallenge(MenuPlayArea(Area2), ShowingModel(Results), 2))
-achievement("Primal Venus","Beat Area 3 without evolving past the default starting form of level 1", 10, LowLevelChallenge(MenuPlayArea(Area3), ShowingModel(Results), 2))
-achievement("Primal Uranus","Beat Area 4 without evolving past the default starting form of level 1", 10, LowLevelChallenge(MenuPlayArea(Area4), ShowingModel(Results), 2))
-achievement("Primal Lost Area","Beat Lost Area without evolving past the default starting form of level 1", 10, LowLevelChallenge(BeyondMenu(LostArea), ShowingModel(Results), 2))
+achievement("Primal Earth","Beat Area 1 without evolving past the default starting level 1 form in play or score attack mode", 10,
+    LowLevelChallenge([MenuPlayArea(Area1),MenuScoreArea(Area1)], BossEnd(), 2))
+achievement("Primal Mars","Beat Area 2 without evolving past the default starting level 1 form in play or score attack mode", 10,
+    LowLevelChallenge([MenuPlayArea(Area2),MenuScoreArea(Area2)], BossEnd(), 2))
+achievement("Primal Venus","Beat Area 3 without evolving past the default starting level 1 form in play or score attack mode", 10,
+    LowLevelChallenge([MenuPlayArea(Area3),MenuScoreArea(Area3)], BossEnd(), 2))
+achievement("Primal Uranus","Beat Area 4 without evolving past the default starting level 1 form in play or score attack mode", 10,
+    LowLevelChallenge([MenuPlayArea(Area4),MenuScoreArea(Area4)], BossEnd(), 2))
+achievement("Primal Lost Area","Beat Lost Area without evolving past the default starting level 1 form", 10, 
+    LowLevelChallenge([BeyondMenu(LostArea)], ShowingModel(Results), 2))
 
 //---------------------------------------------------------------------------
 // Score challenges
@@ -395,12 +401,12 @@ achievement("Direct Assault High Score","Score 1,000,000 or higher in any Direct
 //---------------------------------------------------------------------------
 // Upgrade achievements
 
-achievement("Autonomous","Reach Evolution Level 02", 1, GameActive() && PlayMode() && prev(CurrentForm()) == 1 && CurrentForm() == 2)
-achievement("Cognitive","Reach Evolution Level 03", 2, GameActive() && PlayMode() && prev(CurrentForm()) == 2 && CurrentForm() == 3)
-achievement("Analysis","Reach Evolution Level 04", 3, GameActive() && PlayMode() && prev(CurrentForm()) == 3 && CurrentForm() == 4)
-achievement("Synthesis","Reach Evolution Level 05", 4, GameActive() && PlayMode() && prev(CurrentForm()) == 4 && CurrentForm() == 5)
+achievement("Autonomous","Reach Evolution Level 02", 1, UpgradeActive() && PlayMode() && prev(CurrentForm()) == 1 && CurrentForm() == 2)
+achievement("Cognitive","Reach Evolution Level 03", 2, UpgradeActive() && PlayMode() && prev(CurrentForm()) == 2 && CurrentForm() == 3)
+achievement("Analysis","Reach Evolution Level 04", 3, UpgradeActive() && PlayMode() && prev(CurrentForm()) == 3 && CurrentForm() == 4)
+achievement("Synthesis","Reach Evolution Level 05", 4, UpgradeActive() && PlayMode() && prev(CurrentForm()) == 4 && CurrentForm() == 5)
 achievement("Enlightenment","Reach Evolution Level 06", 5, GameActive() && PlayMode() && prev(CurrentForm()) <= 5 && CurrentForm() == 6)
-achievement("Maximum Overdrive","Have 4 overdrive attacks built up at once", 5, GameActive() && PlayMode() && prev(Overloads()) == 3 && Overloads() == 4)
+achievement("Maximum Overdrive","Have 4 overdrive attacks built up at once", 5, UpgradeActive() && PlayMode() && prev(Overloads()) == 3 && Overloads() == 4)
 
 //---------------------------------------------------------------------------
 //  Leaderboards
