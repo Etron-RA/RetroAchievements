@@ -355,7 +355,7 @@ function CentralControl(count)
         sum_of(center, b => prev(b)) == count - 1 &&
         measured(sum_of(center, b => b) == count)
 }
-achievement("Control Center!","Have five pieces in the middle of the board at once (between rows 3 to 6 and columns 3 to 6)", 5, CentralControl(5))
+achievement("Control Center!","Have five pieces in the middle of the board at once, between rows 3 to 6 and columns 3 to 6", 5, CentralControl(5))
 
 // Check if six red pieces are on the right or left of the board
 function Flanked(count)
@@ -395,10 +395,7 @@ function Reserves(count)
         array_push(bottomRow, Red_Piece_Array[4][0])
         array_push(bottomRow, Red_Piece_Array[6][0])
        
-    cancel = never(
-        sum_of(bottomRow, b => prev(b)) == 4 &&
-        sum_of(bottomRow, b => b) == 3
-    )
+    cancel = never(sum_of(bottomRow, b => b) < 4)
     
     submit = trigger_when(repeated(count + 1, NextTurn()))
     
@@ -496,7 +493,7 @@ leaderboard(
 // Value is the number of turn from the start
 leaderboard(
     "Rage Quit!", 
-    "Least number of turns to get the CPU to rage quit (resign the game with moves still availible)",
+    "Least number of moves to get the CPU to rage quit, meaning the AI resigns the game with moves still availible",
     NewGame(), 
     Reset(),
     RageQuit(),
