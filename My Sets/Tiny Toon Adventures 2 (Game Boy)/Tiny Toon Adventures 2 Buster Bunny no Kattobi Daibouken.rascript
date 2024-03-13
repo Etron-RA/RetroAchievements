@@ -415,8 +415,8 @@ achievement("Buster the Were-Rabbit","Beat the monster movie with " + StageTimes
 achievement("Buster the Fast and the Furriest","Beat the studio movie with " + StageTimes[Studio] + "s or more left in the clock", 5, Speedrun(Studio))
 
 // Deathless Sections
-achievement("Buster Rogers of the 24½th Century","Beat the rocket auto-scroller without dying (future movie 3-3 to 3-4)", 10, Deathless(FutureMovie, 3, 4))
-achievement("Buster the Rising Star","Beat the rising water auto-scroller without dying (monster movie 4-5 to 4-8)", 10, Deathless(MonsterMovie, 5, 8))
+achievement("Buster Rogers of the 24½th Century","Beat the rocket auto-scroller section of the future movie 3-3 to 3-4 without dying", 10, Deathless(FutureMovie, 3, 4))
+achievement("Buster the Rising Star","Beat the rising water auto-scroller section of the monster movie 4-5 to 4-8 without dying", 10, Deathless(MonsterMovie, 5, 8))
 
 // Misc. Challenges
 achievement("Buster the Strong","Have 4 hearts at once", 5, BusterHearts(4))
@@ -439,10 +439,10 @@ rich_presence_display("Buster is filming a {0} | 🐰 {1} | 🥕 {2} | ⏲ {3} |
 )
 
 // Leaderboards
-leaderboard("Speedrun","Fastest time to complete the game",GameStart(),GameOver(),GameWon(),always_true(),format="MILLISECS",lower_is_better=true)
-leaderboard("Western Speedrun","Fastest time to complete the western movie",StageStart(WesternMovie),GameOver()||ContinueScreen(),StageBeat(WesternMovie),always_true(),format="MILLISECS",lower_is_better=true)    
-leaderboard("Samurai Speedrun","Fastest time to complete the samurai movie",StageStart(SamuraiMovie),GameOver()||ContinueScreen(),StageBeat(SamuraiMovie),always_true(),format="MILLISECS",lower_is_better=true)    
-leaderboard("Future Speedrun","Fastest time to complete the future movie",StageStart(FutureMovie),GameOver()||ContinueScreen(),StageBeat(FutureMovie),always_true(),format="MILLISECS",lower_is_better=true)    
-leaderboard("Monster Speedrun","Fastest time to complete the movie movie",StageStart(MonsterMovie),GameOver()||ContinueScreen(),StageBeat(MonsterMovie),always_true(),format="MILLISECS",lower_is_better=true)    
-leaderboard("Studio Speedrun","Fastest time to complete the studio",StageStart(Studio),GameOver()||ContinueScreen(),StageBeat(Studio),always_true(),format="MILLISECS",lower_is_better=true)
+leaderboard("Speedrun","Fastest time to complete the game",GameStart(),GameOver(),GameWon(),always_true(),format="FRAMES",lower_is_better=true)
+leaderboard("Western Speedrun","Fastest time to complete the western movie",StageStart(WesternMovie),GameOver()||ContinueScreen(),StageBeat(WesternMovie),always_true(),format="FRAMES",lower_is_better=true)    
+leaderboard("Samurai Speedrun","Fastest time to complete the samurai movie",StageStart(SamuraiMovie),GameOver()||ContinueScreen(),StageBeat(SamuraiMovie),always_true(),format="FRAMES",lower_is_better=true)    
+leaderboard("Future Speedrun","Fastest time to complete the future movie",StageStart(FutureMovie),GameOver()||ContinueScreen(),StageBeat(FutureMovie),always_true(),format="FRAMES",lower_is_better=true)    
+leaderboard("Monster Speedrun","Fastest time to complete the movie movie",StageStart(MonsterMovie),GameOver()||ContinueScreen(),StageBeat(MonsterMovie),always_true(),format="FRAMES",lower_is_better=true)    
+leaderboard("Studio Speedrun","Fastest time to complete the studio",StageStart(Studio),GameOver()||ContinueScreen(),StageBeat(Studio),always_true(),format="FRAMES",lower_is_better=true)
 leaderboard("Top Score","Highest score",GameStart(),always_false(),EndResults()||GameOver()||ContinueScreen(),Score(),format="VALUE",lower_is_better=false)
