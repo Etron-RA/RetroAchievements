@@ -385,7 +385,7 @@ function SE() => SETens() * 10 + SEOnes()
 // Stage Progression Achievements
 function CompletionAchievement(name, stage, difficulty, points)
 {
-    description = "Complete stage " + stage + " (" + DifficultyTextLookup[difficulty] + ")"
+    description = "Complete stage " + stage
     
     trigger = once(NoCheats()) && never(GameReset())
     
@@ -409,7 +409,7 @@ function CompletionAchievement(name, stage, difficulty, points)
 // Character Progression Achievements
 function CharacterAchievement(name, character, points)
 {
-    description = "Beat game with " + character + " (no swapping, on normal or higher difficulty)"
+    description = "Beat game with " + character + " without swapping on normal or higher difficulty"
     trigger = once(NoCheats()) &&
               never(GameReset()) &&
               CompletedGame() && 
@@ -422,7 +422,7 @@ function CharacterAchievement(name, character, points)
 // Score Progression Achievements
 function ScoreAchievement(name, score, lower, points)
 {
-    description = "Score higher than " + score / 1000 + "K (on any difficulty)"
+    description = "Score " + score / 1000 + "K or higher"
     trigger = once(NoCheats()) &&
               never(GameReset()) && 
               Easy() && 
@@ -436,7 +436,7 @@ function ScoreAchievement(name, score, lower, points)
 // Knockout Enemy Achievements
 function KnockoutAchievement(name, count, weapon, points)
 {
-    description = "Knock out " + count + " number of enemies with " + weapon + " (on normal or higher difficulty)"
+    description = "Knock out " + count + " number of enemies with " + weapon + " on normal or higher difficulty"
 
     trigger = once(NoCheats()) && 
         never(GameReset()) && 
@@ -456,7 +456,7 @@ function KnockoutAchievement(name, count, weapon, points)
 // Knock out an enemy
 function KnockoutEnemyAchievement(name, enemy, points)
 {
-    description = "Knock out " + enemy + " (on normal or higher difficulty)"
+    description = "Knock out " + enemy + " on normal or higher difficulty"
     trigger = once(NoCheats()) && never(GameReset()) && Normal() && KnockOutEnemy(enemy)
     achievement(name, description, points, trigger)
 }
@@ -464,7 +464,7 @@ function KnockoutEnemyAchievement(name, enemy, points)
 // Knock out an boss
 function KnockoutBossAchievement(name, boss, endcondition, points)
 {
-    description = "Knock out the " + boss + " (on normal or higher difficulty)"
+    description = "Knock out the " + boss + " on normal or higher difficulty"
     trigger = once(NoCheats()) && never(GameReset()) && Normal() && endcondition 
     achievement(name, description, points, trigger)
 }
@@ -473,7 +473,7 @@ function KnockoutBossAchievement(name, boss, endcondition, points)
 // Challenges Achievement
 function ChallengeAchievement(name, challenge, start, cancel, points)
 {
-    description = challenge + "on hard difficulty, level select allowed)"
+    description = challenge + "on hard difficulty, level select allowed"
     trigger = start &&  
         never(GameReset()) && 
         never(cancel) 
@@ -486,7 +486,6 @@ function ChallengeAchievement(name, challenge, start, cancel, points)
 // Triggers when the plays collects the 1st item passed
 function CollectOneAchievement(name, description, item, points)
 {
-    description = description + " (on any difficulty)"
     trigger = once(NoCheats()) &&
               never(GameReset()) &&
               Easy() &&
@@ -498,7 +497,7 @@ function CollectOneAchievement(name, description, item, points)
 // while the lives remain the same
 function HealAchievement(name, description, lower, points)
 {
-    description = description + " (on normal or higher difficulty)"
+    description = description + " on normal or higher difficulty"
     trigger = once(NoCheats()) && 
         never(GameReset()) &&
         Normal() &&
@@ -510,7 +509,7 @@ function HealAchievement(name, description, lower, points)
 // Triggers when the player collects the passed count of any two items
 function CollectCountAchievement(name, description, item1, item2, count, points)
 {
-    description = description + " (on normal or higher difficulty)"
+    description = description + " on normal or higher difficulty"
     trigger = once(NoCheats()) && 
         never(GameReset()) &&
         Normal() &&
@@ -534,7 +533,7 @@ function CollectCountAchievement(name, description, item1, item2, count, points)
 // Triggers after the last level if the player does not collect the two passed items
 function NoCollectAchievement(name, description, item1, item2, points)
 {
-    description = description + " (on normal or higher difficulty)"
+    description = description + " on normal or higher difficulty"
     trigger = once(NoCheats()) && 
         never(GameReset()) &&
         never(PickUpItem1(item1)) &&
@@ -553,7 +552,7 @@ function NoCollectAchievement(name, description, item1, item2, points)
 // Triggers when a players stats (live, specials, etc...) reachs the passed count
 function StatCountAchievement(name, description, stat, count, points)
 {
-    description = description + " (on normal or higher difficulty)"
+    description = description + " on normal or higher difficulty"
     trigger = once(NoCheats()) && 
         never(GameReset()) &&
         Normal() && 
@@ -565,7 +564,6 @@ function StatCountAchievement(name, description, stat, count, points)
 // Triggered when one of the characters uses a special
 function SpecialAchievement(name, description, condition, points)
 {
-    description = description + " (on any difficulty)"
     trigger = once(NoCheats()) &&
               never(GameReset()) &&
               Easy() &&
@@ -575,7 +573,6 @@ function SpecialAchievement(name, description, condition, points)
 
 function AirRecovery(name, description, points)
 {
-    description = description + " (on any difficulty)"
     trigger = once(NoCheats()) &&
         never(GameReset()) &&
         Easy() &&
@@ -591,7 +588,6 @@ function AirRecovery(name, description, points)
 // Triggers when time is below the lower value and goes to the upper while the player is still alive
 function TimeAchievement(name, description, lower, points)
 {
-    description = description + " (on any difficulty)"
     trigger = once(NoCheats()) &&
         never(GameReset()) &&
         Easy() &&        
@@ -637,22 +633,22 @@ function HardCompletionAchievements()
 
 // Stage Challenges
 ChallengeAchievement("Gimme a Glass of Milk... in a Dirty Glass!",
-    "Survive a bar brawl without dying (complete stage 1-2 ", 
+    "Survive a bar brawl in stage 1-2 without dying ", 
     ChallengeSubStage(1,2), LifeLost(), 5)
 ChallengeAchievement("Look Out Above!",
-    "Survive the ambush in the Amusement Park without dying (complete stage 2-3 ", 
+    "Survive the ambush in stage 2-3 without dying ", 
     ChallengeSubStage(2,3), LifeLost(), 5)
 ChallengeAchievement("Into the Maw of Madness!",
-    "Survive the second spiker attack without taking damage (middle of stage 3-2 ", 
+    "Survive the first spiker attack in stage 3-2 without taking damage ", 
     ChallengeSubsection(3,2,3), HealthLost(), 10)
 ChallengeAchievement("All Hands on Deck!",
-    "Survive the lower decks without dying (complete stage 4-2 ", 
+    "Survive the lower decks in stage 4-2 without dying ", 
     ChallengeSubStage(4,2), LifeLost(), 25)
 ChallengeAchievement("It’s Always Good to Know Where the Emergency Exit Is!",
-    "Fight through the factory without dying (complete stage 5-2 ", 
+    "Survive the factory in stage 5-2 without dying on ", 
     ChallengeSubStage(5,2), LifeLost(), 50)
 ChallengeAchievement("Elevator of Doom!",
-    "Survive the elevator gauntlet without dying (complete stage 6-2 ", 
+    "Survive the elevator gauntlet on stage 6-2 without dying ", 
     ChallengeSubStage(6,2), LifeLost(), 50)
 
 
@@ -680,22 +676,22 @@ KnockoutBossAchievement("The X Factor!", "stage 6 boss, Mr. X", CompletedStage6(
 
 // Boss Challenges
 ChallengeAchievement("Barbon Bounced!",
-    "Knock out the stage 1 boss, the Bouncer, without taking damage (", 
+    "Knock out the stage 1 boss, the Bouncer, without taking damage ", 
     ChallengeSubsection(1, 3, 2), HealthLost(), 5)
 ChallengeAchievement("Twin Shinobi!",
-    "Knock out the stage 2 bosses, the Knife Ninjas, without taking damage (", 
+    "Knock out the stage 2 bosses, the Knife Ninjas, without taking damage ", 
     ChallengeSubsection(2, 4, 3), HealthLost(), 5)
 ChallengeAchievement("The Yautja!",
-    "Knock out the stage 3 boss, the Teleporter, without taking damage (", 
+    "Knock out the stage 3 boss, the Teleporter, without taking damage ", 
     ChallengeSubsection(3, 3, 4), HealthLost(), 5)
 ChallengeAchievement("I Need a Montage!",
-    "Knock out the stage 4 boss, Rocky Bear, without taking damage (", 
+    "Knock out the stage 4 boss, Rocky Bear, without taking damage ", 
     ChallengeSubsection(4, 3, 3), HealthLost(), 10)
 ChallengeAchievement("We Robots!",
-    "Knock out the stage 5 bosses, Particle and Molecule, without taking damage (", 
+    "Knock out the stage 5 bosses, Particle and Molecule, without taking damage ", 
     ChallengeSubsection(5, 3, 2), HealthLost(), 25)
 ChallengeAchievement("X minus One!",
-    "Knock out the stage 6 boss, Mr. X, without dying (", 
+    "Knock out the stage 6 boss, Mr. X, without dying ", 
     ChallengeSubsection(6, 3, 2), LifeLost(), 25)
 
 // Knockout Weapon Counts Achievements
@@ -736,7 +732,7 @@ StatCountAchievement("I Feel So Special", "Build-up 5 specials at once", Special
 SpecialAchievement("Soul Striker", "Perform Axel's special attack", SpecialAxel(), 1)
 SpecialAchievement("Whirlwind Attack", "Perform Blaze's special attack", SpecialBlaze(), 1)
 SpecialAchievement("Pinball Assault", "Perform Skate's special attack", SpecialSkate(), 1)
-AirRecovery("Air Recovery", "Escape a throw (on normal or higher difficulty)", 2)
+AirRecovery("Air Recovery", "Escape a throw", 2)
 TimeAchievement("Nick of Time", "Reset the stage timer with 5 or less seconds remaining",5, 2)
 
 function TestAchivements()
@@ -839,7 +835,7 @@ function LeaderboardTime(title, difficulty)
     condition = Difficulty() == ReverseLookup(DifficultyLookup,difficulty)
     leaderboard(
         title,
-        "Starting from stage 1 on " + difficulty + " difficulty, lowest time to win the game (no cheats)",
+        "Starting from stage 1 on " + difficulty + " difficulty, lowest time to win the game",
         NoCheats() && condition,
         GameReset(),
         CompletedGame(),
@@ -856,7 +852,7 @@ function LeaderboardScore(title, difficulty)
     condition = Difficulty() == ReverseLookup(DifficultyLookup,difficulty)
     leaderboard(
         title,
-        "Starting from stage 1 on " + difficulty + " difficulty, highest score before using a continue, a game over, or winning the game (no cheats)",
+        "Starting from stage 1 on " + difficulty + " difficulty, highest score before using a continue, a game over, or winning the game",
         NoCheats() && condition,
         always_false(),
         InGame() && ContinueUsed() || GameReset() || prev(GameMode()) == 5 && GameMode() == 6,
