@@ -610,27 +610,27 @@ achievement("Underground Mysteries","Open a manhole cover in stage 2-3", 1, Manh
 achievement("Cleaning the Streets","Take out an enemy while dancing on a fire hydrant in stage 2 any round", 2, HydrantKill())
 achievement("Groove and Swing","Swing from a branch in stage 3 any round", 1, BranchSwing())
 achievement("Footloose","Break a no dancing sign in stage 4 any round", 1, NoDancing())
-achievement("Non-stick Dancing","Moonwalk through a spider web in stage 4 any round (start Moonwalk before entering web, no turning around)", 3, WebWalker())
-achievement("CTRL+Alt+Destroyer","Break all computers and servers in stage 5-1 (9 total)", 5, NoComputers())
-achievement("Faster Going Backwards","Moonwalk across the bottom floor conveyor in stage 5-2 travelling against the direction of conveyor (left to right, no turning around)", 5, ConveyorWalker())
+achievement("Non-stick Dancing","Moonwalk through a spider web in stage 4 any round, start Moonwalk before entering web, no turning around", 3, WebWalker())
+achievement("CTRL+Alt+Destroyer","Break all nine computers and servers in stage 5-1", 5, NoComputers())
+achievement("Faster Going Backwards","Moonwalk over the entire bottom floor conveyor in stage 5-2 travelling against the direction of conveyor, left to right without turning around", 5, ConveyorWalker())
 achievement("Form a Group ","Dance with 7 or more people at once", 10, DanceGroup(7), id = 3592)
 
 // Speedwalk Achievements
-achievement("Speed Demon ","Complete Stage 1-1 under 1m10s [Normal+]", 25, Speedwalk(1, 1, TimeSpan(1,10)), id = 3594)
-achievement("Nightlife Dash","Complete Stage 1-1 under the par time 2m00s [Normal+]", 5, Speedwalk(1, 1, TimeSpan(2,0)))
-achievement("Club Fever Frenzy","Complete Stage 1-2 under the par time 2m00s [Normal+]", 5, Speedwalk(1, 2, TimeSpan(2,0)))
-achievement("Speed Walk","Complete Stage 1-3 under the par time 2m00s [Normal+]", 10, Speedwalk(1, 3, TimeSpan(2,0)))
-achievement("Midnight Street Race","Complete Stage 2-1 under the par time 3m00s [Normal+]", 5, Speedwalk(2, 1, TimeSpan(3,0)))
-achievement("Chasing the Urban Beat","Complete Stage 2-2 under the par time 3m00s [Normal+]", 5, Speedwalk(2, 2, TimeSpan(3,0)))
-achievement("Streets of Speed","Complete Stage 2-3 under the par time 3m00s [Normal+]", 5, Speedwalk(2, 3, TimeSpan(3,0)))
-achievement("Moonlit Zombie Blitz","Complete Stage 3-1 under the par time 4m00s [Normal+]", 5, Speedwalk(3, 1, TimeSpan(4,0)))
-achievement("Chasing Shadows in the Haunted Woods","Complete Stage 3-2 under the par time 4m00s [Normal+]", 5, Speedwalk(3, 2, TimeSpan(4,0)))
-achievement("Survivor’s Dance of the Living Dead","Complete Stage 3-3 under the par time 4m00s [Normal+]", 5, Speedwalk(3, 3, TimeSpan(4,0)))
-achievement("Cave of Eight-Legged Tango","Complete Stage 4-1 under the par time 5m00s [Normal+]", 5, Speedwalk(4, 1, TimeSpan(5,0)))
-achievement("Dancing Through the Spider’s Lair","Complete Stage 4-2 under the par time 5m00s [Normal+]", 5, Speedwalk(4, 2, TimeSpan(5,0)))
-achievement("Underground Escape","Complete Stage 4-3 under the par time 5m00s [Normal+]", 5, Speedwalk(4, 3, TimeSpan(5,0)))
-achievement("Sprint Through Hostile Territory","Complete Stage 5-1 under the par time 6m00s [Normal+]", 5, Speedwalk(5, 1, TimeSpan(6,0)))
-achievement("Dance of Infiltration","Complete Stage 5-2 under the par time 6m00s [Normal+]", 5, Speedwalk(5, 2, TimeSpan(6,0)))
+achievement("Speed Demon ","Complete Stage 1-1 under 1m10s on Normal+", 25, Speedwalk(1, 1, TimeSpan(1,10)), id = 3594)
+achievement("Nightlife Dash","Complete Stage 1-1 under the par time 2m00s on Normal+", 5, Speedwalk(1, 1, TimeSpan(2,0)))
+achievement("Club Fever Frenzy","Complete Stage 1-2 under the par time 2m00s on Normal+", 5, Speedwalk(1, 2, TimeSpan(2,0)))
+achievement("Speed Walk","Complete Stage 1-3 under the par time 2m00s on Normal+", 10, Speedwalk(1, 3, TimeSpan(2,0)))
+achievement("Midnight Street Race","Complete Stage 2-1 under the par time 3m00s on Normal+", 5, Speedwalk(2, 1, TimeSpan(3,0)))
+achievement("Chasing the Urban Beat","Complete Stage 2-2 under the par time 3m00s on Normal+", 5, Speedwalk(2, 2, TimeSpan(3,0)))
+achievement("Streets of Speed","Complete Stage 2-3 under the par time 3m00s on Normal+", 5, Speedwalk(2, 3, TimeSpan(3,0)))
+achievement("Moonlit Zombie Blitz","Complete Stage 3-1 under the par time 4m00s on Normal+", 5, Speedwalk(3, 1, TimeSpan(4,0)))
+achievement("Chasing Shadows in the Haunted Woods","Complete Stage 3-2 under the par time 4m00s on Normal+", 5, Speedwalk(3, 2, TimeSpan(4,0)))
+achievement("Survivor’s Dance of the Living Dead","Complete Stage 3-3 under the par time 4m00s on Normal+", 5, Speedwalk(3, 3, TimeSpan(4,0)))
+achievement("Cave of Eight-Legged Tango","Complete Stage 4-1 under the par time 5m00s on Normal+", 5, Speedwalk(4, 1, TimeSpan(5,0)))
+achievement("Dancing Through the Spider’s Lair","Complete Stage 4-2 under the par time 5m00s on Normal+", 5, Speedwalk(4, 2, TimeSpan(5,0)))
+achievement("Underground Escape","Complete Stage 4-3 under the par time 5m00s on Normal+", 5, Speedwalk(4, 3, TimeSpan(5,0)))
+achievement("Sprint Through Hostile Territory","Complete Stage 5-1 under the par time 6m00s on Normal+", 5, Speedwalk(5, 1, TimeSpan(6,0)))
+achievement("Dance of Infiltration","Complete Stage 5-2 under the par time 6m00s on Normal+", 5, Speedwalk(5, 2, TimeSpan(6,0)))
 
 // Shooting star achievements
 achievement("[void] Moonwalker ","Transform into a robot", 0, RobotMode() && InGame(), id = 366)
@@ -660,15 +660,15 @@ achievement("Thriller","Clear Stage 3-3", 10, EndStage(3,3), id = 368)
 achievement("Billie Jean","Clear Stage 4-3", 10, EndStage(4,3), id = 370)
 achievement("Who's Bad?","Clear Stage 5-3", 25, EndStage(5,3), id = 371)
 achievement("Mr. Big","Clear Stage 6-1", 10, EndStage(6,1))
-achievement("King of Pop ","Clear Stage 6-1 [Hard]", 50, Difficulty() == 2 && EndStage(6,1) , id = 2676)
-achievement("Moonwalker","Clear Stage 6-1 without using a continue [Normal+]", 50, NoContinues(1))
+achievement("King of Pop ","Clear Stage 6-1 Hard", 50, Difficulty() == 2 && EndStage(6,1) , id = 2676)
+achievement("Moonwalker","Clear Stage 6-1 without using a continue on Normal+", 50, NoContinues(1))
 
 // -- Leaderboards ----------------------------------------------------------------------
 
 // Fastest to complete the game
 leaderboard(
     "Speed Demon",
-    "Fastest time to complete the game (real time)",
+    "Fastest time to complete the game in real time",
     StartStage(1,1),
     Title() || GameOver(),
     EndStage(6,1),
@@ -682,7 +682,7 @@ for stage in range(1,5)
 {
     leaderboard(
         "Speed Walk Stage " + stage,
-        "Fastest time to complete all three rounds in stage " + stage + " (real time)",
+        "Fastest time to complete all three rounds in stage " + stage + " in real time",
         StartStage(stage,1),
         Title() || GameOver(),
         EndStage(stage,3),
@@ -699,7 +699,7 @@ for stage in range(1,5)
     {
         leaderboard(
             "Speed Walk Round " + stage + "-" + round,
-            "Fastest time to complete " + stage + "-" + round + " (in game time)",
+            "Fastest time to complete " + stage + "-" + round + " in game time",
             StartStage(stage,round),
             Title() || GameOver(),
             EndStage(stage,round),
@@ -713,7 +713,7 @@ for stage in range(1,5)
 // Fastest to complete the last round
 leaderboard(
     "Speed Walk Round 6-1",
-    "Fastest time to complete 6-1 (real time)",
+    "Fastest time to complete 6-1 real time",
     StartStage(6,1),
     Title() || GameOver(),
     EndStage(6,1),
