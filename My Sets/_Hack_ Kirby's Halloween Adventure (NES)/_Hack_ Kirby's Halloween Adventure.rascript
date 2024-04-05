@@ -718,9 +718,9 @@ function QuickDraw()
 }
 
 achievement("Bonus Chance!","Collect the 1up bonus at the end of any level", 3, BonusChance())
-achievement("Crane Fever!","Get 4 lives in the crane fever bonus (any difficulty)", 5, CraneFever())
-achievement("Egg Catcher!","Get 3 lives in the egg catcher bonus (any difficulty)", 5, EggCatcher())
-achievement("Quick Draw!","Get 3 lives in the quick draw bonus (any difficulty)", 5, QuickDraw())
+achievement("Crane Fever!","Get 4 lives in the crane fever bonus on any difficulty", 5, CraneFever())
+achievement("Egg Catcher!","Get 3 lives in the egg catcher bonus on any difficulty", 5, EggCatcher())
+achievement("Quick Draw!","Get 3 lives in the quick draw bonus on any difficulty", 5, QuickDraw())
 
 //------------------------------------------------------------------
 // Hidden Switches
