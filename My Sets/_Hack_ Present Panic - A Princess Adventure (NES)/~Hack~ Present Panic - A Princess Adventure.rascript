@@ -1,6 +1,17 @@
 // ~Hack~ Present Panic - A Princess Adventure
 // #ID = 20504
 
+// $0017: [8-bit] Button Input
+//        Bit0 = Right
+//        Bit1 = Left
+//        Bit2 = Down
+//        Bit3 = Up
+//        Bit4 = Start
+//        Bit5 = Select
+//        Bit6 = B
+//        Bit7 = A
+function LeftButton() => bit1(0x000017)
+
 // $0061: [8-bit] Current Level
 //        0x00 = Overworld
 //        0x46 = Peach's Castle
@@ -45,6 +56,15 @@ function OnOverwold() => bit5(0x00007f)
 // $0083: [8-bit] Koopalings Bosses Health (3=Dead, 0=FullHealth)
 function KoopaHP() => byte(0x000083)
 
+// $009e: [8-bit] Bowser Fight State
+//        0 = Before Bowser battle
+//        1 = Bowser battle
+//        2 = Bowser falling
+//        3 = Bowser hit ground
+//        4 = Waiting for door to open
+//        5 = Door open
+function KoopaState() => byte(0x00009e)
+
 // $00C4: [8-bit] End of Level (Switches to 0xff when level is beat)
 function EndFlag() => byte(0x0000C4)
 
@@ -67,23 +87,30 @@ PowerNames = {
    4: "Blooper",
    6: "Candy Cane",
 }
+SmallPowerUp = 0
+BigPowerUp = 1
+FirePowerUp = 2
+RaccoonPowerUp = 3
+BlooperPowerUp = 4
+CandyCanePowerUp = 6
+
+// $00ee:  [8-bit] Princess Peach Frame
+//         0xf = Crouch
+function Crouch() => byte(0xee) == 0xf
 
 // $00f1: [bit 0] Dead bit (0 = alive, 1 = dead)
 function DeathStatus() => bit0(0x00f1)
 function Alive() => DeathStatus() == 0
 function Dead() => DeathStatus() == 1
 
-// $04E2: [8-bit] Currently playing Sound, reads from directly below
-function SFX() => byte(0x0004E2)
-
-// $04E5: [8-bit] Currently playing Music, reads from directly below
-//        F=FindPeachANDcredits B=WarpWhistleAndZone
-function Music() => byte(0x0004E5)
+// $03f3: [8-bit] Character selection on map
+//        (0xED value or 7-cloud, 8-p-wing)
+//        1=BigMario, 2=FireMario, 3=Raccoon, 4=Frog, 5=Tanooki, 6=Hammer
+function MapSelection() => byte(0x3f3)
 
 // $0503: [8-bit] Game Over Screen (0xf8 when game over)
 function GameOverScreen() => byte(0x000503)
 function GameOver() => prev(GameOverScreen()) == 0 && GameOverScreen() == 0xf8
-
 
 // $05ee: [BCD] Time hundreds column
 // $05ef: [BCD] Time tens column
@@ -217,6 +244,15 @@ function ObtainPowerUp(powerup)
         PowerUps() == powerup
 }
 
+
+// Checks if the player is couching with the candy cane power up
+function FireProofShell()
+{
+    return InGame() &&
+        PowerUps() == CandyCanePowerUp &&
+        Crouch()        
+}
+
 // Transistioning from the overworld to a level
 function StartLevel(level)
 {
@@ -233,9 +269,8 @@ function BeatGame()
     return InGame() &&
         Alive() &&
         Level() == 0x46 &&
-        Music() == 0 &&
-        prev(SFX()) != 8 &&
-        SFX() == 8
+        prev(KoopaState()) == 2 &&
+        KoopaState() == 3
 }
 
 // Checks for the end level flag (or beat condtions if last level)
@@ -334,6 +369,55 @@ function Revealed1Up(hiddenLocation)
         )
 }
 
+// Challenge to only go right during a level
+function RightOnly(level)
+{
+    start = once(
+            MapSelection() == 0 && 
+            StartLevel(level)
+        )
+    
+    cancel = never(prev(LeftButton()) < LeftButton()) &&
+        never(Death()) &&
+        never(GameOver())
+        
+    submit = trigger_when(BeatLevel(level))
+     
+    return start && cancel && submit
+}
+
+// Challenge to beat a level with a certain power
+function BeatWithPower(power, level)
+{
+    start = once(
+            InGame() &&
+            prev(PowerUps()) != power && 
+            PowerUps() == power
+        )
+    
+    cancel = never(PowerUps() != power) &&
+        never(Death()) &&
+        never(GameOver())
+        
+    submit = trigger_when(BeatLevel(level))
+     
+    return start && cancel && submit
+}
+
+// Checks that the play completes a level in acertain amount of time
+function TimedChallenge(time, level)
+{
+    start = once(StartLevel(level))
+    
+    cancel = never(repeated(time, start && always_true())) &&
+        never(ResetGame()) &&
+        never(GameOver())
+        
+    submit = trigger_when(BeatLevel(level))
+     
+    return start && cancel && submit
+}
+
 // Achievements /////////////////////////////////////////////////////////////////////////
 
 // Power up achievements
@@ -342,6 +426,7 @@ achievement("Firey Passion","Obtain the fire flower", 1, ObtainPowerUp(2))
 achievement("Power Gives You Wings","Obtain the racoon leaf", 1, ObtainPowerUp(3))
 achievement("Bloop","Obtain the blooper suit", 1, ObtainPowerUp(4))
 achievement("Candy Striper","Obtain the candy cane suit", 1, ObtainPowerUp(6))
+achievement("Flameproof Princess of Mirth","Become invulnerable to fireballs while wearing the candy cane suit", 0, FireProofShell())
 
 // Item achievements
 achievement("Filling the Royal Treasury","Collect 100 coins to get a 1up", 2, Coin1Up())
@@ -350,20 +435,27 @@ achievement("Secret Stash","Find the secret mushroom in the castle", 1, FoundMus
 // Progression achievements
 achievement("Winter Wonderland","Beat level 1", 1, BeatLevel(1))
 achievement("Hilltops","Beat level 2", 2, BeatLevel(2))
-achievement("Blooper's Garden","Beat level 3", 3, BeatLevel(3))
-achievement("Frozen Outpost","Beat level 4", 4, BeatLevel(4))
-achievement("Frozen Entrée","Beat level 5", 5, BeatLevel(5))
+achievement("Blooper's Garden","Beat level 3", 1, BeatLevel(3))
+achievement("Frozen Outpost","Beat level 4", 3, BeatLevel(4))
+achievement("Frozen Entrée","Beat level 5", 2, BeatLevel(5))
 achievement("Bowser The Grinch","Beat bowser on the final level", 5, BeatLevel(6))
 
+// Revision Achievements
+achievement("Righteous Royalty","Beat level 1 without pressing left starting as small Peach", 5, RightOnly(1))
+achievement("Fast Flight","Beat level 2 in 15s or less", 5, TimedChallenge(TimeSpan(0,15,0), 2))
+achievement("Frozen Calamari","Beat level 4 with blooper power", 10,  BeatWithPower(BlooperPowerUp, 4))
+achievement("Barbeque Bowser","Beat the game with fire flower power", 10, BeatWithPower(FirePowerUp, 6))
+achievement("Sweet Victory","Beat the game with candy cane power", 10, BeatWithPower(CandyCanePowerUp, 6))
+
 // Challenge achievements
-achievement("Little Lady Challenge I","Beat level 1 without powering up", 2, LittleLadyChallenge(1))
-achievement("Little Lady Challenge II","Beat level 2 without powering up", 3, LittleLadyChallenge(2))
-achievement("Little Lady Challenge III","Beat level 3 without powering up", 5, LittleLadyChallenge(3))
-achievement("Little Lady Challenge IV","Beat level 4 without powering up", 5, LittleLadyChallenge(4))
-achievement("Little Lady Challenge V","Beat level 5 without powering up", 5, LittleLadyChallenge(5))
-achievement("Little Lady Challenge VI","Beat level 6 without powering up", 10, LittleLadyChallenge(6))
-achievement("Little Lady World Challenge","Beat the game without powering up", 25, LittleLadyWorldChallenge())
-achievement("Express Delivery World Challenge","Beat the game in under 7:00 minutes", 25, ExpressWorldChallenge(TimeSpan(7,0,0)))
+achievement("Little Lady Challenge I","Beat level 1 without powering up", 1, LittleLadyChallenge(1))
+achievement("Little Lady Challenge II","Beat level 2 without powering up", 2, LittleLadyChallenge(2))
+achievement("Little Lady Challenge III","Beat level 3 without powering up", 1, LittleLadyChallenge(3))
+achievement("Little Lady Challenge IV","Beat level 4 without powering up", 4, LittleLadyChallenge(4))
+achievement("Little Lady Challenge V","Beat level 5 without powering up", 3, LittleLadyChallenge(5))
+achievement("Little Lady Challenge VI","Beat level 6 without powering up", 5, LittleLadyChallenge(6))
+achievement("Little Lady World Challenge","Beat the game without powering up", 10, LittleLadyWorldChallenge())
+achievement("Express Delivery World Challenge","Beat the game in under 6:00 minutes", 25, ExpressWorldChallenge(TimeSpan(6,0,0)))
 
 // Hidden Mushroom achievements
 achievement("Early Present I","Find the 1up mushroom in level 1", 1, Revealed1Up(Hidden1Ups[0]))
@@ -436,7 +528,6 @@ leaderboard(
     format = "FRAMES",
     lower_is_better = true
 )
-
 
 // Leaderboard for the whole game
 leaderboard(
