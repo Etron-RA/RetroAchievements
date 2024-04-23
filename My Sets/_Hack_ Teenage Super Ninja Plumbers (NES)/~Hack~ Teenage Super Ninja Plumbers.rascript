@@ -906,6 +906,7 @@ function Speedrun(world, act, timespan)
     return start && cancel && submit
 }
 
+// Achievements ////////////////////////////////////////////////////////////////////////////////////
 
 achievement("Pizza Power-Up!","Obtain the growth pizza", 1, ObtainPowerUp(PowerUpBigMario), id = 306306)
 achievement("Fiery Ninja Arsenal!","Obtain the flaming ninja stars", 1, ObtainPowerUp(PowerUpFireMario), id = 306307)
@@ -942,7 +943,7 @@ achievement("Spiny Speedrun!","Complete world 4-1 in under 40s", 10, Speedrun(4,
 achievement("Double Nunchucks Dynamo!","In world 4-2 get a second super nunchucks before the invincibility of the first one runs out", 10, DoubleInvincible(4, 2))
 achievement("Sunken Treasure!","Collect 27 or more coins on world 5-1 without dying", 10, CoinCollector(5, 1, 27))
 
-achievement("No Pipe, No Problem!","Finish the game completing every level from World 1 to 4 (no warp pipes)", 25, Warpless())
+achievement("No Pipe, No Problem!","Finish the game completing every level from World 1 to 4 without using warp pipes", 25, Warpless())
 achievement("The Tortoise and the Ninja!","Finish the game in under 5 minutes", 25, GameSpeedrun(TimeSpan(5,0,0)))
 
 achievement("Blazing Shell Slayer!","Defeat the Ninja Turtle boss on World 1-3 with flaming ninja stars", 10, BeatWithPowerUp(1,3,PowerUpFireMario))
@@ -955,14 +956,14 @@ achievement("Unyielding Underdog!","Beat World 2 without powering up", 25, BeatW
 achievement("The Little Legend!","Beat World 3 without powering up", 25, BeatWorldSmall(3))
 achievement("Small Size, Big Success!","Beat World 4 without powering up", 25, BeatWorldSmall(4))
 
-achievement("Reptilian Rampage!","Kill 13 or more Tiny Turtles (Goombas) on world 1-1 without dying", 5, HitList(1, 1, 13, Goombas))
-achievement("The Mutant Menace!","Kill 6 or more Koopas or Paratroopas on world 1-2 without dying (shelled enemies need to be knocked out or kicked off the screen)", 5, HitList(1, 2, 6, Koopas))
-achievement("Buzzy Beetle Bane!","Kill 7 or more Buzzy Turtles (Buzzy Beetles) on world 1-2 without dying (2nd Quest, shelled enemies need to be knocked out or kicked off the screen)", 10, HitList(1, 2, 7, BuzzyBeetles, true))
-achievement("Dam Demolition Diffuser!","Kill 15 or more grey or red Missles (Cheep Cheeps) on world 2-1 without dying", 5, HitList(2, 1, 15, CheepCheeps))
-achievement("Blooper Buster!","Kill 3 or more Bloopers on world 2-1 without dying (2nd Quest)", 10, HitList(2, 1, 3, Bloopers, true))
-achievement("Shell Slaughterer!","Kill 10 or more Koopas or Paratroopas on world 2-2 without dying (shelled enemies need to be knocked out or kicked off the screen)", 5, HitList(2, 2, 10, Koopas))
-achievement("Turtle Bro Terminator!","Kill 3 or more Turtle Bros (Hammer Bros) on world 3-1 without dying", 10, HitList(3, 1, 3, HammerBros))
-achievement("Missile Bill Massacre!","Kill 15 or more Missle Bills (Bullets Bills) on world 3-2 without dying", 5, HitList(3, 2, 15, BulletBills))
+achievement("Reptilian Rampage!","Kill 13 or more Tiny Turtles, also known as Goombas, on world 1-1 without dying", 5, HitList(1, 1, 13, Goombas))
+achievement("The Mutant Menace!","Kill 6 or more Koopas or Paratroopas on world 1-2 without dying, shelled enemies need to be knocked out or kicked of the screen", 5, HitList(1, 2, 6, Koopas))
+achievement("Buzzy Beetle Bane!","Kill 7 or more Buzzy Turtles, also known as Buzzy Beetles, on the 2nd Quest of world 1-2 without dying, shelled enemies need to be knocked out or kicked of the screen", 10, HitList(1, 2, 7, BuzzyBeetles, true))
+achievement("Dam Demolition Diffuser!","Kill 15 or more grey or red Missles, also known as Cheep Cheeps, on world 2-1 without dying", 5, HitList(2, 1, 15, CheepCheeps))
+achievement("Blooper Buster!","Kill 3 or more Bloopers on the 2nd Quest world 2-1 without dying", 10, HitList(2, 1, 3, Bloopers, true))
+achievement("Shell Slaughterer!","Kill 10 or more Koopas or Paratroopas on world 2-2 without dying, shelled enemies need to be knocked out or kicked of the screen", 5, HitList(2, 2, 10, Koopas))
+achievement("Turtle Bro Terminator!","Kill 3 or more Turtle Bros, also known as Hammer Bros, on world 3-1 without dying", 10, HitList(3, 1, 3, HammerBros))
+achievement("Missile Bill Massacre!","Kill 15 or more Missle Bills, also known as Bullets Bills, on world 3-2 without dying", 5, HitList(3, 2, 15, BulletBills))
 achievement("Krang Crusher!","Kill 3 or more Lakitus on world 4-1 without dying", 5, HitList(4, 1, 3, Lakitus))
 achievement("Spiny Smackdown!","Kill 15 or more Spiny Turtles on world 4-1 without dying", 5, HitList(4, 1, 15, Spinys))
 achievement("Vegetation Vendetta!","Kill 11 or more Piranha Plants on world 4-2 without dying", 10, HitList(4, 2, 11, PiranhaPlants))
@@ -1053,7 +1054,7 @@ for world in range(1,8)
 
 leaderboard(
     "Shell Slayer",
-    "Most enemies killed (shelled enemies need to be knocked out or kicked off the screen).",
+    "Most enemies killed, shelled enemies need to be knocked out or kicked off the screen",
     LevelStart(1, 1),
     always_false(),
     GameOver() || LevelBeat(4, 3),
