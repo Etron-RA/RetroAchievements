@@ -221,8 +221,8 @@ function Camping(time)
 }
 
 // Camping achievements
-achievement("Happy Camper","Survive without moving for 1 minute (rotating and shooting allowed)", 2, Camping(TimeSpan(1,0,0)))
-achievement("Wilderness Survival","Survive without moving for 3 minutes (rotating and shooting allowed)", 5, Camping(TimeSpan(3,0,0)))
+achievement("Happy Camper","Survive without moving for 1 minute, rotating and shooting allowed", 2, Camping(TimeSpan(1,0,0)))
+achievement("Wilderness Survival","Survive without moving for 3 minutes, rotating and shooting allowed", 5, Camping(TimeSpan(3,0,0)))
 
 // Check if the player shot something (and gained points)
 function NoKills() => prev(ScoreAdder()) == ScoreAdder()
@@ -308,9 +308,9 @@ function TanksDestroyedByPlayer(count)
 }
 
 // Destroy tanks achievements
-achievement("Tanks for Nothing!","Fully destroy 10 tanks (requires two shots)", 2, TanksDestroyedByPlayer(10))
-achievement("Go Get 'em Tiger!","Fully destroy 20 tanks (requires two shots)", 3, TanksDestroyedByPlayer(20))
-achievement("Doom Turtles All the Way Down!","Fully destroy 30 tanks (requires two shots)", 5, TanksDestroyedByPlayer(30))
+achievement("Tanks for Nothing!","Fully destroy 10 tanks, tanks requires two shots to destroy", 2, TanksDestroyedByPlayer(10))
+achievement("Go Get 'em Tiger!","Fully destroy 20 tanks, tanks requires two shots to destroy", 3, TanksDestroyedByPlayer(20))
+achievement("Doom Turtles All the Way Down!","Fully destroy 30 tanks, tanks requires two shots to destroy", 5, TanksDestroyedByPlayer(30))
 
 // Check if a helicoptor was shot down
 function HelicoptorDown()
@@ -389,7 +389,7 @@ function KingOfTheHillLB(title, description, delay)
     
     leaderboard(title, description, start, cancle, submit, measure, "FRAMES")
 }
-KingOfTheHillLB("King of the Hill", "Longest time in the center of the maze (starts after 15 seconds staying in the middle)", TimeSpan(0,15,0))
+KingOfTheHillLB("King of the Hill", "Longest time in the center of the maze, starts after 15 seconds staying in the middle", TimeSpan(0,15,0))
 
 function CamperLB(title, description, delay)
 {
@@ -419,7 +419,7 @@ function CamperLB(title, description, delay)
     
     leaderboard(title, description, start, cancle, submit, measure, "FRAMES")
 }
-CamperLB("Happy Camper", "Longest time surviving without moving (starts after 15 seconds of not moving)", TimeSpan(0,15,0))
+CamperLB("Happy Camper", "Longest time surviving without moving, starts after 15 seconds of not moving", TimeSpan(0,15,0))
 
 function PeaceKeeperLB(title, description, delay)
 {
@@ -449,7 +449,7 @@ function PeaceKeeperLB(title, description, delay)
     
     leaderboard(title, description, start, cancle, submit, measure, "FRAMES")
 }
-PeaceKeeperLB("Peace Keeper", "Longest time surviving without destroying an enemy (starts after 20 seconds of not killing)", TimeSpan(0,20,0))
+PeaceKeeperLB("Peace Keeper", "Longest time surviving without destroying an enemy, starts after 20 seconds of not killing", TimeSpan(0,20,0))
 
 //------------------------------------------------------------
 // Rich Presence
