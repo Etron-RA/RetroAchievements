@@ -366,12 +366,12 @@ function CompleteStage(stage)
            end
 }
 
-achievement("Docking Bay","Complete stage 1 (on easy+ difficulty)", 2, CompleteStage(1))
-achievement("Underground Cave","Complete stage 2 (on easy+ difficulty)", 2, CompleteStage(2))
-achievement("Underwater Passage","Complete stage 3 (on easy+ difficulty)", 3, CompleteStage(3))
-achievement("Ancient Temple","Complete stage 4 (on easy+ difficulty)", 3, CompleteStage(4))
-achievement("Fortress Defenses","Complete stage 5 (on easy+ difficulty)", 5, CompleteStage(5))
-achievement("Mainframe","Complete stage 6 (on easy+ difficulty)", 10, CompleteStage(6))
+achievement("Docking Bay","Complete stage 1 on easy+ difficulty", 2, CompleteStage(1))
+achievement("Underground Cave","Complete stage 2 on easy+ difficulty", 2, CompleteStage(2))
+achievement("Underwater Passage","Complete stage 3 on easy+ difficulty", 3, CompleteStage(3))
+achievement("Ancient Temple","Complete stage 4 on easy+ difficulty", 3, CompleteStage(4))
+achievement("Fortress Defenses","Complete stage 5 on easy+ difficulty", 5, CompleteStage(5))
+achievement("Mainframe","Complete stage 6 on easy+ difficulty", 10, CompleteStage(6))
 
 // Challenge stage from start to finish without dying
 function ChallengeStage(stage)
@@ -395,12 +395,12 @@ function ChallengeStage(stage)
                 end
            )
 }
-achievement("Docking Bay Ace","Complete stage 1 without dying (on hard difficulty)", 10, ChallengeStage(1))
-achievement("Underground Cave Ace","Complete stage 2 without dying (on hard difficulty)", 10, ChallengeStage(2))
-achievement("Underwater Passage Ace","Complete stage 3 without dying (on hard difficulty)", 10, ChallengeStage(3))
-achievement("Ancient Temple Ace","Complete stage 4 without dying (on hard difficulty)", 25, ChallengeStage(4))
-achievement("Fortress Defenses Ace","Complete stage 5 without dying (on hard difficulty)", 50, ChallengeStage(5))
-achievement("Mainframe Ace","Complete stage 6 without dying (on hard difficulty)", 25, ChallengeStage(6))
+achievement("Docking Bay Ace","Complete stage 1 without dying on hard difficulty", 10, ChallengeStage(1))
+achievement("Underground Cave Ace","Complete stage 2 without dying on hard difficulty", 10, ChallengeStage(2))
+achievement("Underwater Passage Ace","Complete stage 3 without dying on hard difficulty", 10, ChallengeStage(3))
+achievement("Ancient Temple Ace","Complete stage 4 without dying on hard difficulty", 25, ChallengeStage(4))
+achievement("Fortress Defenses Ace","Complete stage 5 without dying on hard difficulty", 50, ChallengeStage(5))
+achievement("Mainframe Ace","Complete stage 6 without dying on hard difficulty", 25, ChallengeStage(6))
 
 // Challenge game from start to finish without dying
 function ChallengeGame(difficulty)
@@ -412,9 +412,9 @@ function ChallengeGame(difficulty)
            once(StartGame()) &&
            trigger_when(WonGame())
 }
-achievement("Easy Game Ace","Complete the game without dying (on easy+ difficulty)", 10, ChallengeGame(Easy()))
-achievement("Normal Game Ace","Complete the game without dying (on normal+ difficulty)", 25, ChallengeGame(Normal()))
-//achievement("Hard Game Ace","Complete the game without dying (on hard difficulty)", 50, ChallengeGame(Hard()))
+achievement("Easy Game Ace","Complete the game without dying on easy+ difficulty", 10, ChallengeGame(Easy()))
+achievement("Normal Game Ace","Complete the game without dying on normal+ difficulty", 25, ChallengeGame(Normal()))
+//achievement("Hard Game Ace","Complete the game without dying on hard difficulty", 50, ChallengeGame(Hard()))
 
 // --------------------------------------------------------------------------------------
 // Enemies/Boss achievements
@@ -438,10 +438,10 @@ function EnemiesDestroyed(count)
           )
 }
 
-achievement("Bronze Star Medal","Destroy 100 Enemies (on normal+ difficulty, resets on new session)", 2, EnemiesDestroyed(100))
-achievement("Silver Star Medal","Destroy 250 Enemies (on normal+ difficulty, resets on new session)", 3, EnemiesDestroyed(250))
-achievement("Distinguished Flying Cross","Destroy 500 Enemies (on normal+ difficulty, resets on new session)", 5, EnemiesDestroyed(500))
-achievement("Medal of Honor","Destroy 1000 Enemies (on normal+ difficulty, resets on new session)", 10, EnemiesDestroyed(1000))
+achievement("Bronze Star Medal","Destroy 100 Enemies on normal+ difficulty, resets on new session", 2, EnemiesDestroyed(100))
+achievement("Silver Star Medal","Destroy 250 Enemies on normal+ difficulty, resets on new session", 3, EnemiesDestroyed(250))
+achievement("Distinguished Flying Cross","Destroy 500 Enemies on normal+ difficulty, resets on new session", 5, EnemiesDestroyed(500))
+achievement("Medal of Honor","Destroy 1000 Enemies on normal+ difficulty, resets on new session", 10, EnemiesDestroyed(1000))
 
 // Count how many enemies of any type were destroyed
 function BossDestroyed(count, boss)
@@ -463,15 +463,15 @@ function BossDestroyed(count, boss)
            )
 }
 
-achievement("Man-E-Faces ","Beat the multi-faced mini boss in stage 1 (on normal+ difficulty)", 5, BossDestroyed(1, "Multiface"))
-achievement("Heilong ","Beat the dragon mini boss in stage 2 (on normal+ difficulty)", 5, BossDestroyed(1, "Dragon"))
-achievement("Temple Guardian","Beat the guardian mini boss in stage 4 (on normal+ difficulty)", 5, BossDestroyed(1, "Guardian"))
-achievement("Hork Lander","Beat stage 1 boss (on normal+ difficulty)", 10, BossDestroyed(1, "Hork Lander"))
-achievement("Barabary","Beat stage 2 boss (on normal+ difficulty)", 10, BossDestroyed(1, "Barabary"))
-achievement("Karkinos","Beat stage 3 boss (on normal+ difficulty)", 10, BossDestroyed(3, "Gaint Crab"))
-achievement("Mechatotem","Beat stage 4 boss (on normal+ difficulty)", 10, BossDestroyed(4, "Totem"))
-achievement("Battle Angel Mech","Beat stage 5 boss (on normal+ difficulty)", 10, BossDestroyed(1, "Battle Angel Mech"))
-achievement("KAOS","Beat stage 6 boss (on normal+ difficulty)", 10, BossDestroyed(1, "KAOS Core"))
+achievement("Man-E-Faces ","Beat the multi-faced mini boss in stage 1 on normal+ difficulty", 5, BossDestroyed(1, "Multiface"))
+achievement("Heilong ","Beat the dragon mini boss in stage 2 on normal+ difficulty", 5, BossDestroyed(1, "Dragon"))
+achievement("Temple Guardian","Beat the guardian mini boss in stage 4 on normal+ difficulty", 5, BossDestroyed(1, "Guardian"))
+achievement("Hork Lander","Beat stage 1 boss on normal+ difficulty", 10, BossDestroyed(1, "Hork Lander"))
+achievement("Barabary","Beat stage 2 boss on normal+ difficulty", 10, BossDestroyed(1, "Barabary"))
+achievement("Karkinos","Beat stage 3 boss on normal+ difficulty", 10, BossDestroyed(3, "Gaint Crab"))
+achievement("Mechatotem","Beat stage 4 boss on normal+ difficulty", 10, BossDestroyed(4, "Totem"))
+achievement("Battle Angel Mech","Beat stage 5 boss on normal+ difficulty", 10, BossDestroyed(1, "Battle Angel Mech"))
+achievement("KAOS","Beat stage 6 boss on normal+ difficulty", 10, BossDestroyed(1, "KAOS Core"))
 
 // --------------------------------------------------------------------------------------
 // Score achievements
@@ -489,11 +489,11 @@ function ScoreRange(lowScore, highScore)
            )
 }
         
-achievement("Space Cadet","Score 100k or higher (on normal+ difficulty, resets on new game)", 5, ScoreRange(10000, 100000))
-achievement("Warrant Officer","Score 200k or higher (on normal+ difficulty, resets on new game)", 5, ScoreRange(100000, 200000))
-achievement("Lieutenant","Score 300k or higher (on normal+ difficulty, resets on new game)", 10, ScoreRange(200000, 300000))
-achievement("Squadron Leader","Score 400k or higher (on normal+ difficulty, resets on new game)", 10, ScoreRange(300000, 400000))
-achievement("Wing Commander","Score 500k or higher (on normal+ difficulty, resets on new game)", 25, ScoreRange(400000, 500000))
+achievement("Space Cadet","Score 100k or higher on normal+ difficulty, resets on new game", 5, ScoreRange(10000, 100000))
+achievement("Warrant Officer","Score 200k or higher on normal+ difficulty, resets on new game", 5, ScoreRange(100000, 200000))
+achievement("Lieutenant","Score 300k or higher on normal+ difficulty, resets on new game", 10, ScoreRange(200000, 300000))
+achievement("Squadron Leader","Score 400k or higher on normal+ difficulty, resets on new game", 10, ScoreRange(300000, 400000))
+achievement("Wing Commander","Score 500k or higher on normal+ difficulty, resets on new game", 25, ScoreRange(400000, 500000))
 
 // --------------------------------------------------------------------------------------
 // Bonus achievements
@@ -519,12 +519,12 @@ function Bonus(stage, bowwows, mirows)
 }
 
 
-achievement("Puppy Bonus","Find a Bowwow in stage 1 (on normal+ difficulty, resets on new game)", 5, Bonus(1, 1, 0))
-achievement("Kitty Bonus","Find a Bowwow and a Mirow in stage 2 (on normal+ difficulty, resets on new game)", 5, Bonus(2, 1, 1))
-achievement("Seapuppies Bonus","Find two Bowwows and a Mirow in stage 3 (on normal+ difficulty, resets on new game)", 10, Bonus(3, 2, 1))
-achievement("Cat's Eye Bonus","Find a Bowwow and two Mirows in stage 4 (on normal+ difficulty, resets on new game)", 10, Bonus(4, 1, 2))
-achievement("Guard Dog Bonus","Find three Bowwows and two Mirows in stage 5 (on normal+ difficulty, resets on new game)", 10, Bonus(5, 3, 2))
-achievement("Final Bonus","Find three Bowwows and three Mirows in stage 6 (on normal+ difficulty, resets on game)", 10, Bonus(6, 3, 3))
+achievement("Puppy Bonus","Find a Bowwow in stage 1 on normal+ difficulty, resets on new game", 5, Bonus(1, 1, 0))
+achievement("Kitty Bonus","Find a Bowwow and a Mirow in stage 2 on normal+ difficulty, resets on new game", 5, Bonus(2, 1, 1))
+achievement("Seapuppies Bonus","Find two Bowwows and a Mirow in stage 3 on normal+ difficulty, resets on new game", 10, Bonus(3, 2, 1))
+achievement("Cat's Eye Bonus","Find a Bowwow and two Mirows in stage 4 on normal+ difficulty, resets on new game", 10, Bonus(4, 1, 2))
+achievement("Guard Dog Bonus","Find three Bowwows and two Mirows in stage 5 on normal+ difficulty, resets on new game", 10, Bonus(5, 3, 2))
+achievement("Final Bonus","Find three Bowwows and three Mirows in stage 6 on normal+ difficulty, resets on game", 10, Bonus(6, 3, 3))
 
 // Find a list of objects hidden in the level
 function FindHidden(objects)
@@ -557,12 +557,12 @@ stage4objects = ["Fox Face 1", "Fox Face 2", "Fox Face 3", "Fox Face 4", "Flower
 stage5objects = ["Man Waving Flag"]
 stage6objects = ["Woman Holding Final", "Free Alien"]
 
-achievement("Little House on the Docking Bay","Find a hidden miniature house, grabber, Game Boy, Virtual Boy, and VB controller in stage 1 (on normal+ difficulty, resets on new game)", 5, FindHidden(stage1objects))
-achievement("Upstream Battle","Find a hidden fish and bikini woman in stage 2 (on normal+ difficulty, resets on new game)", 5, FindHidden(stage2objects))
-achievement("Under da Sea","Find a hidden hermit crab in stage 3 (on normal+ difficulty, resets on new game)", 5, FindHidden(stage3objects))
-achievement("Clan McCloud","Find four fox busts, two flowers, and two fox statues in stage 4 (on normal+ difficulty, resets on new game)", 10, FindHidden(stage4objects))
-achievement("Down the Homestretch","Find the hidden man with a flag in stage 5 (on normal+ difficulty, resets on new game)", 5, FindHidden(stage5objects))
-achievement("Extra Terrestrial","Find the bikini woman and free the alien in stage 6 (on normal+ difficulty, resets on new game)", 10, FindHidden(stage6objects))
+achievement("Little House on the Docking Bay","Find a hidden miniature house, grabber, Game Boy, Virtual Boy, and VB controller in stage 1 on normal+ difficulty, resets on new game", 5, FindHidden(stage1objects))
+achievement("Upstream Battle","Find a hidden fish and bikini woman in stage 2 on normal+ difficulty, resets on new game", 5, FindHidden(stage2objects))
+achievement("Under da Sea","Find a hidden hermit crab in stage 3 on normal+ difficulty, resets on new game", 5, FindHidden(stage3objects))
+achievement("Clan McCloud","Find four fox busts, two flowers, and two fox statues in stage 4 on normal+ difficulty, resets on new game", 10, FindHidden(stage4objects))
+achievement("Down the Homestretch","Find the hidden man with a flag in stage 5 on normal+ difficulty, resets on new game", 5, FindHidden(stage5objects))
+achievement("Extra Terrestrial","Find the bikini woman and free the alien in stage 6 on normal+ difficulty, resets on new game", 10, FindHidden(stage6objects))
 
 // --------------------------------------------------------------------------------------
 // Item achievements
@@ -575,8 +575,8 @@ function BoosterUpgrade(boosters)
            Easy() &&
            Complete(Booster(), boosters)
 }
-achievement("Booster Upgrade","Get a booster upgrade (on easy+ difficulty)", 1, BoosterUpgrade(1))
-achievement("Super Booster Upgrade","Have four booster upgrades at once (on easy+ difficulty)", 10, BoosterUpgrade(4))
+achievement("Booster Upgrade","Get a booster upgrade on easy+ difficulty", 1, BoosterUpgrade(1))
+achievement("Super Booster Upgrade","Have four booster upgrades at once on easy+ difficulty", 10, BoosterUpgrade(4))
 
 // 
 function FullSpeed()
@@ -588,7 +588,7 @@ function FullSpeed()
            prev(Speed()) < 79 &&
            Speed() >= 60
 }
-achievement("Need for Speed","Go turbo speed (on easy+ difficulty)", 2, FullSpeed())
+achievement("Need for Speed","Go turbo speed on easy+ difficulty", 2, FullSpeed())
 
 // Check when the missles reach a certian level
 function MissleUpgrade(missles)
@@ -598,8 +598,8 @@ function MissleUpgrade(missles)
            Easy() &&
            Complete(Missles(), missles)
 }
-achievement("Missile Upgrade","Get a missile upgrade (on easy+ difficulty)", 5, MissleUpgrade(3))
-achievement("Full Missile Upgrade","Have four missile upgrades at once (on easy+ difficulty)", 10, MissleUpgrade(6))
+achievement("Missile Upgrade","Get a missile upgrade on easy+ difficulty", 5, MissleUpgrade(3))
+achievement("Full Missile Upgrade","Have four missile upgrades at once on easy+ difficulty", 10, MissleUpgrade(6))
 
 // Check when the shields have been restore by 1 of 2 levels
 function PowerRestored()
@@ -611,7 +611,7 @@ function PowerRestored()
            (prev(Sheilds()) + 1 == Sheilds() ||
            prev(Sheilds()) + 2 == Sheilds())
 }
-achievement("Power Restored!","Restore your sheilds (on easy+ difficulty)", 2, PowerRestored())
+achievement("Power Restored!","Restore your sheilds on easy+ difficulty", 2, PowerRestored())
 
 // Check how many shields the player has when beating a level
 function ShieldsBeat(shields)
@@ -622,8 +622,8 @@ function ShieldsBeat(shields)
            prev(Sheilds()) == shields &&
            prev(Stage()) + 1 == Stage()
 }
-achievement("Skin of your teeth!","Beat a boss with no sheilds remaining (on easy+ difficulty)", 5, ShieldsBeat(0))
-achievement("Untouchable!","Beat a boss with 10 sheilds remaining (on easy+ difficulty)", 10, ShieldsBeat(10))
+achievement("Skin of your teeth!","Beat a boss with no sheilds remaining on easy+ difficulty", 5, ShieldsBeat(0))
+achievement("Untouchable!","Beat a boss with 10 sheilds remaining on easy+ difficulty", 10, ShieldsBeat(10))
 
 // --------------------------------------------------------------------------------------
 // Fuel achievements
@@ -637,7 +637,7 @@ function SpeedRun(stage, fuel)
            Complete(Stage(), stage + 1) &&
            Fuel() >= fuel
 }
-achievement("Stage 1 Speed Run","Beat stage 1 with 500,000 or more fuel remainging (on easy+ difficulty)", 5, SpeedRun(1, 500000))
+achievement("Stage 1 Speed Run","Beat stage 1 with 500,000 or more fuel remainging on easy+ difficulty", 5, SpeedRun(1, 500000))
 
 // Check if the player has a certain fuel level or less when beating a stage
 function LowFuel(fuel)
@@ -649,7 +649,7 @@ function LowFuel(fuel)
            Fuel() <= fuel
     
 }
-achievement("Running on Fumes","Beat any stage with 100,000 or less fuel remainging (on easy+ difficulty)", 5, LowFuel(100000))
+achievement("Running on Fumes","Beat any stage with 100,000 or less fuel remainging on easy+ difficulty", 5, LowFuel(100000))
 
 // Check if the player has use less than X fuel during the game
 function ConserveFuel(fuel)
@@ -684,7 +684,7 @@ function ConserveFuel(fuel)
            )
            
 }
-achievement("Fuel Conservationist","Consume less than 4,000,000 fuel in a game (on easy+ difficulty, resets on new game)", 25, ConserveFuel(4000000))
+achievement("Fuel Conservationist","Consume less than 4,000,000 fuel in a game on easy+ difficulty, resets on new game", 25, ConserveFuel(4000000))
 
 // --------------------------------------------------------------------------------------
 // Dodge achievements
@@ -704,10 +704,10 @@ function DodgeCount(count, distance)
           )
 }
 
-achievement("Bullet Time","Dodge 25 projectiles (on easy+ difficulty, resets on new session)", 2, DodgeCount(25, 80))
-achievement("Slippery Tactics","Dodge 50 projectiles (on easy+ difficulty, resets on new session)", 3, DodgeCount(50, 80))
-achievement("Evasive Maneuvers","Dodge 100 projectiles (on easy+ difficulty, resets on new session)", 5, DodgeCount(100, 80))
-achievement("Impossible to Pin Down","Dodge 250 projectiles (on easy+ difficulty, resets on new session)", 10, DodgeCount(250, 80))
+achievement("Bullet Time","Dodge 25 projectiles on easy+ difficulty, resets on new session", 2, DodgeCount(25, 80))
+achievement("Slippery Tactics","Dodge 50 projectiles on easy+ difficulty, resets on new session", 3, DodgeCount(50, 80))
+achievement("Evasive Maneuvers","Dodge 100 projectiles on easy+ difficulty, resets on new session", 5, DodgeCount(100, 80))
+achievement("Impossible to Pin Down","Dodge 250 projectiles on easy+ difficulty, resets on new session", 10, DodgeCount(250, 80))
 
 // ---------------------------------------------------------------------------
 // Dynamic Rich Presence
@@ -749,7 +749,7 @@ function LeaderboardScore(title, difficulty)
     condition = Difficulty() == ReverseLookup(DifficultyLookup,difficulty)
     leaderboard(
         title,
-        "Starting from stage 1 on " + difficulty + " difficulty, highest score before using a continue, a game over, or winning the game (no cheats)",
+        "Starting from stage 1 on " + difficulty + " difficulty, highest score before using a continue, a game over, or winning the game",
         StartGame() && !Cheats() && condition,
         always_false(),
         ContinueUsed() || GameOver() || WonGame(),
