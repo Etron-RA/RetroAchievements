@@ -82,18 +82,18 @@ function StageComplete(startStage, endStage, damageless = false)
 }
 
 // Progression Achievements
-achievement("Cadet","Complete stages 0 to 10 (going out of bounds resets achievement)", 1, StageComplete(0, 10), id=243129)
-achievement("Second Officer","Complete stages 11 to 20 (going out of bounds resets achievement)", 2, StageComplete(10, 20), id=243130)
-achievement("First Officer","Complete stages 21 to 30 (going out of bounds resets achievement)", 3, StageComplete(20, 30), id=243131)
-achievement("Senior Officer","Complete stages 31 to 40 (going out of bounds resets achievement)", 4, StageComplete(30, 40), id=243132)
-achievement("Captain ","Complete stages 41 to 50 (going out of bounds resets achievement)", 5, StageComplete(40, 50), id=243133)
-achievement("Major","Complete stages 51 to 75 (going out of bounds resets achievement)", 10, StageComplete(50, 75), id=244112)
-achievement("Colonel","Complete stages 75 to 100 (going out of bounds resets achievement)", 25, StageComplete(75, 100), id=244113)
+achievement("Cadet","Complete stages 0 to 10, going out of bounds resets achievement", 1, StageComplete(0, 10), id=243129)
+achievement("Second Officer","Complete stages 11 to 20, going out of bounds resets achievement", 2, StageComplete(10, 20), id=243130)
+achievement("First Officer","Complete stages 21 to 30, going out of bounds resets achievement", 3, StageComplete(20, 30), id=243131)
+achievement("Senior Officer","Complete stages 31 to 40, going out of bounds resets achievement", 4, StageComplete(30, 40), id=243132)
+achievement("Captain ","Complete stages 41 to 50, going out of bounds resets achievement", 5, StageComplete(40, 50), id=243133)
+achievement("Major","Complete stages 51 to 75, going out of bounds resets achievement", 10, StageComplete(50, 75), id=244112)
+achievement("Colonel","Complete stages 75 to 100, going out of bounds resets achievement", 25, StageComplete(75, 100), id=244113)
 
 // Damageless Achievements
-achievement("Flight Specialist","Complete stages 0 to 10 without taking damage (going out of bounds resets achievement)", 2, StageComplete(0,10,true),id=243134)
-achievement("Aerial Acrobat","Complete stages 0 to 20 without taking damage (going out of bounds resets achievement)", 3, StageComplete(0,20,true), id=244109)
-achievement("Ace Pilot","Complete stages 0 to 30 without taking damage (going out of bounds resets achievement)", 5, StageComplete(0,30,true), id=244110)
+achievement("Flight Specialist","Complete stages 0 to 10 without taking damage, going out of bounds resets achievement", 2, StageComplete(0,10,true),id=243134)
+achievement("Aerial Acrobat","Complete stages 0 to 20 without taking damage, going out of bounds resets achievement", 3, StageComplete(0,20,true), id=244109)
+achievement("Ace Pilot","Complete stages 0 to 30 without taking damage, going out of bounds resets achievement", 5, StageComplete(0,30,true), id=244110)
 
 // Achievement to count how many astroids in a stage
 function DestroyAstroids(count)
@@ -126,9 +126,9 @@ function GateBoostChallenge(count)
         OutOfBoundsReset() &&
         measured(repeated(count,GateBoost()))
 }
-achievement("Learning to Fly","Boost through 10 gates in one life (going out of bounds resets achievement)", 2, GateBoostChallenge(10), id=243138)
-achievement("Straighten Up and Fly Right","Boost through 25 gates in one life (going out of bounds resets achievement)", 3, GateBoostChallenge(25), id=243139)
-achievement("Thread the Needle","Boost through 50 gates in one life (going out of bounds resets achievement)", 5, GateBoostChallenge(50),id=243140)
+achievement("Learning to Fly","Boost through 10 gates in one life, going out of bounds resets achievement", 2, GateBoostChallenge(10), id=243138)
+achievement("Straighten Up and Fly Right","Boost through 25 gates in one life, going out of bounds resets achievement", 3, GateBoostChallenge(25), id=243139)
+achievement("Thread the Needle","Boost through 50 gates in one life, going out of bounds resets achievement", 5, GateBoostChallenge(50),id=243140)
 
 // Check if the player is out of bounds in one direction
 function OutOfBoundsDirection(direction, buffer = 900)
@@ -152,7 +152,7 @@ function OutOfBoundsIndicator(buffer = 900)
         OutOfBoundsDirection(YAxis() > 32.0, buffer)
     )
 }
-achievement("Out of Bounds","Go out of bounds for an accumulative 15 seconds (cancels other achievements and leaderboards)", 0, OutOfBoundsIndicator(), id=244111)
+achievement("Out of Bounds","Go out of bounds for an accumulative 15 second, cancels other achievements and leaderboards", 0, OutOfBoundsIndicator(), id=244111)
 
 // Rich Presence
 rich_presence_conditional_display(
@@ -172,7 +172,7 @@ rich_presence_display("Star Pilot W is ready to start the mission")
 // Score Leaderboard
 leaderboard(
     "Highest Score",
-    "Highest score (cancels if player goes out of bounds, submits on death)",
+    "Highest score, cancels if player goes out of bounds, submits on death",
     StartGame(),
     OutOfBoundsResetLB(),
     EndGame(),
@@ -184,7 +184,7 @@ leaderboard(
 // Boost Leaderboard
 leaderboard(
     "Gate Booster",
-    "Most gates passed through while boosted (cancels if player goes out of bounds, submits on death)",
+    "Most gates passed through while boosted, cancels if player goes out of bounds, submits on death",
     StartGame(),
     OutOfBoundsResetLB(),
     EndGame(),
