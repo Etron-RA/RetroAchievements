@@ -332,8 +332,8 @@ function MoonwalkDance()
     return trigger_when(InGame()) &&  
         never(!Moonwalking()) &&
         (
-            trigger_when(tally(600,moonwalking)) ||
-            measured(tally(600,moonwalking), Moonwalking(), format = "percent")
+            trigger_when(tally(300,moonwalking)) ||
+            measured(tally(300,moonwalking), Moonwalking(), format = "percent")
         )        
 }
 
