@@ -45,7 +45,7 @@ function EndGame()
 
 // Converts the time minutes:seconds:frames to frames (NTSC = 1/60s, PAL = 1/50s)
 function TimeSpanNTSC(minutes, seconds, frames) => minutes * 3600 + seconds * 60 + frames
-function TimeSpanPAL(minutes, seconds, frames) => minutes * 2500 + seconds * 50 + frames
+function TimeSpanPAL(minutes, seconds, frames) => minutes * 3000  + seconds * 50 + frames
 
 // Speedrun challenge to complete Super Mario World in under the time parameter
 // Start: When the player creates a new game file
