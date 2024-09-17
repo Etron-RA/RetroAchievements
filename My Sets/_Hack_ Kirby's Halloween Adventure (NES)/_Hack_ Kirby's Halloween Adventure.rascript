@@ -519,7 +519,7 @@ function StartWorld(world, mode = 3)
         trigger = trigger && 
            WorldProgress(0) == 0 &&
            WorldsActivated() == 0 &&
-           GameMode() == 0x51
+           StartMode()
     }
     else if (world == 8)
     {
@@ -543,12 +543,15 @@ function EndWorld(world, mode = 3)
 {
     trigger = !DemoMode()&&
         !Credits() 
-        
+    
+    if (world == 1)
+        trigger = trigger && Score() != 0
+    
     if (mode == 3)
         trigger = trigger && Difficulty() < 2
     else
         trigger = trigger && Difficulty() == mode
-        
+    
     if (world == 7)
     {
         trigger = trigger && 
