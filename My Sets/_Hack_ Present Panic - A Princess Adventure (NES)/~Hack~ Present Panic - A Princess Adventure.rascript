@@ -430,7 +430,7 @@ achievement("Flameproof Princess of Mirth","Become invulnerable to fireballs whi
 
 // Item achievements
 achievement("Filling the Royal Treasury","Collect 100 coins to get a 1up", 2, Coin1Up())
-achievement("Secret Stash","Find the secret mushroom in the castle", 1, FoundMushroom())
+achievement("Secret Stash","Find the secret mushroom in Princess Peach's Castle", 1, FoundMushroom())
 
 // Progression achievements
 achievement("Winter Wonderland","Beat level 1", 1, BeatLevel(1))
