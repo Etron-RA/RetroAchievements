@@ -49,6 +49,9 @@ function GameType() => byte(0x20d8d4)
 // $210AC4: [24-bit] Game Pointer (null in menu)
 function GamePointer() => tbyte(0x210AC4)
 
+// $210ADC: [8-bit] Downgrade (0 = Stable, 1 = Downgrading)
+function Downgrading() => byte(0x210AD4)
+
 // $210ADC: [8-bit] Current form (0-6)
 function CurrentForm() => byte(0x210ADC)
 
@@ -180,6 +183,7 @@ function GameActive() => NoCheats() && GamePointer() != 0
 function GameInactive() => NoCheats() && GamePointer() == 0 
 function GameStart() => NoCheats() && prev(GamePointer()) == 0 && GamePointer() != 0
 function GameEnd() => prev(GameMode()) == 0xffffffff && GameMode() != 0xffffffff
+function Death() => prev(CurrentForm()) == 0 && prev(Downgrading() == 0) && Downgrading() == 1
 function GameWon() => NoCheats() && StringCompare(ModelLoaded(), GameWon)
 function TitleScreen() => StringCompare(ModelLoaded(), GameTitle)
 function UpgradeActive() => NoCheats() && GameMode() == 0xffffffff
@@ -187,8 +191,9 @@ function UpgradeActive() => NoCheats() && GameMode() == 0xffffffff
 // Boss active functions
 function BossActive() => NoCheats() && BossPointer() != 0
 function BossInactive() => NoCheats() && BossPointer() == 0
+function BossFullHealth() => BossActive() && BossHealth() == 1.0 
 function BossStart() => BossActive() && prev(BossHealth()) <= 0.0 && BossHealth() == 1.0 
-function BossEnd() =>  BossActive() && prev(BossHealth()) > 0.0 && prev(BossHealth()) <= 1.0  && BossHealth() <= 0.0 
+function BossEnd() =>  BossActive() && prev(BossHealth()) > 0.0 && prev(BossHealth()) < 1.0  && BossHealth() <= 0.0 
 
 function BossLoaded(model) => BossStart() && StringCompare(ModelLoaded(), model)
 function ShowingModel(model) => GameActive() && StringCompare(ModelLoaded(), model)
@@ -303,8 +308,8 @@ function ScoreChallenge(start, lowScore, highScore)
 function BossTypeChallenge(bossMemory, bossType)
 {
     return Challenge(
-        [GameActive() && StringCompare(bossMemory, bossType)],
-        [GameEnd()],
+        [GameActive() && StringCompare(bossMemory, bossType) && BossFullHealth()],
+        [GameEnd(), Death()],
         [BossEnd()])
 }
 
