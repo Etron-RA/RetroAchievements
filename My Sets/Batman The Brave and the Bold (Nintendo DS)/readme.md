@@ -11,7 +11,7 @@ Every level has achievements for completion, named with titles inspired by the s
 ### Challenge Without Frustration
 The no-death clears and damage-free section goals are designed to reward careful play without being punishing. They’re tough, but fair—meant to feel like "heroic feats" rather than grinds.
 
-###️ Hero Highlights
+### Hero Highlights
 I really wanted to showcase the supporting cast. Each team-up character gets their own spotlight with focused missions, and the alternate Batsuits offer gameplay twists with weapon-specific runs that bring out the DS version’s variety.
 
 ### Collectibles, Combat, and Codes
@@ -23,8 +23,8 @@ Finally, the “Complete Crusader” achievement ties it all together. It’s me
 ### Speedrunning: Caped Crusader at Top Speed
 As a huge fan of handheld speedruns, I wanted to make sure this set gave runners something special. The DS version has tight movement, fast transitions, and just enough enemy RNG to keep things exciting. So I built three core speedrun achievements, each tailored to a different type of player:
 
-Any% – Classic new file sprint, starting from New Game and ending with Brain post-Scarecrow. Ideal for newcomers or anyone chasing personal bests.
-100% – The ultimate marathon: collect every capsule, complete every challenge, max all upgrades, and wrap it with the final trial. Hardcore, but satisfying.
-New Game+ – Starts with GO and takes you through to Brain again, but with your upgrades intact. A fun power-fantasy dash through the game’s best content.
+* Any% – Classic new file sprint, starting from New Game and ending with Brain post-Scarecrow. Ideal for newcomers or anyone chasing personal bests.
+* 100% – The ultimate marathon: collect every capsule, complete every challenge, max all upgrades, and wrap it with the final trial. Hardcore, but satisfying.
+* New Game+ – Starts with GO and takes you through to Brain again, but with your upgrades intact. A fun power-fantasy dash through the game’s best content.
 
 These categories match real routing strategies and track progress in a way that’s clean and rewarding. I hope to see them spark some friendly leaderboard competition and give the DS version the speedrun love it deserves.
