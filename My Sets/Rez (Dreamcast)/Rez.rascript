@@ -406,11 +406,11 @@ achievement("Direct Assault High Score","Score 1,000,000 or higher in any Direct
 //---------------------------------------------------------------------------
 // Upgrade achievements
 
-achievement("Autonomous","Reach Evolution Level 02", 1, UpgradeActive() && PlayMode() && prev(CurrentForm()) == 1 && CurrentForm() == 2)
-achievement("Cognitive","Reach Evolution Level 03", 2, UpgradeActive() && PlayMode() && prev(CurrentForm()) == 2 && CurrentForm() == 3)
-achievement("Analysis","Reach Evolution Level 04", 3, UpgradeActive() && PlayMode() && prev(CurrentForm()) == 3 && CurrentForm() == 4)
-achievement("Synthesis","Reach Evolution Level 05", 4, UpgradeActive() && PlayMode() && prev(CurrentForm()) == 4 && CurrentForm() == 5)
-achievement("Enlightenment","Reach Evolution Level 06", 5, GameActive() && PlayMode() && prev(CurrentForm()) <= 5 && CurrentForm() == 6)
+achievement("Autonomous","Evolve to the second form", 1, UpgradeActive() && PlayMode() && prev(CurrentForm()) == 1 && CurrentForm() == 2)
+achievement("Cognitive","Evolve to the third form", 2, UpgradeActive() && PlayMode() && prev(CurrentForm()) == 2 && CurrentForm() == 3)
+achievement("Analysis","Evolve to the fouth form", 3, UpgradeActive() && PlayMode() && prev(CurrentForm()) == 3 && CurrentForm() == 4)
+achievement("Synthesis","Evolve to the fifth form", 4, UpgradeActive() && PlayMode() && prev(CurrentForm()) == 4 && CurrentForm() == 5)
+achievement("Enlightenment","Evolve to the sixth form", 5, GameActive() && PlayMode() && prev(CurrentForm()) <= 5 && CurrentForm() == 6)
 achievement("Maximum Overdrive","Have 4 overdrive attacks built up at once", 5, UpgradeActive() && PlayMode() && prev(Overloads()) == 3 && Overloads() == 4)
 
 //---------------------------------------------------------------------------
