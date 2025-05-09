@@ -738,6 +738,15 @@ function GroupHolograms(hologram)
         measured(sum_of(group, h => h) == max)
 }
 
+// Count all upgrades
+function CompleteUpgrades()
+{
+    return InGame() &&
+        BatMiteBoost() == 0 &&
+        prev(UpgradeCount()) < 20 &&
+        measured(UpgradeCount() == 20)
+}
+
 // Count all missions, challenges, upgrades, and holograms
 function CompleteCrusader()
 {
@@ -1254,32 +1263,32 @@ achievement("Cosmic Crusader!","Complete Space Lab playing primarily as Hal Jord
 // Play Primarily as Batman Achievements
 achievement("Shadow of the Bat!","Complete Gotham playing primarily as Dark Suit Batman using only Batarangs, " + 
     "starts when equipping Batarangs on the first screen and resets if Plastic Man for 20s consecutively. " + 
-    "Enter 3756448 into the Batcompter to unlock Dark Batsuit.", 10, 
+    "Enter 3756448 on Batcomputer to unlock Dark Batsuit.", 10, 
     PlayAsBatman(story["Gotham"], 0x2, suits["Dark"], gadgets["Batarangs"], TimeSpan(0,20,0)))    
     
 achievement("Primed for Justice!","Complete Atlantis playing primarily as Dark Suit Batman using only the Bat Grenade, " + 
     "starts when equipping Bat Grenade on the second screen and resets if Aquaman for 20s consecutively. "+
-    "Enter 3756448 into the Batcompter to unlock Dark Batsuit.", 10, 
+    "Enter 3756448 on Batcomputer to unlock Dark Batsuit.", 10, 
     PlayAsBatman(story["Atlantis"], 0x3, suits["Dark"], gadgets["Bat Grenade"], TimeSpan(0,20,0)))
 
 achievement("Flash of Inspiration!","Complete Science Island playing primarily as Rainbow Suit Batman using only the Flashbang, " +
     "starts when equipping Flashbang on the second screen and resets if Blue Beetle for 20s consecutively. " +
-    "Enter 7629863 into the Batcompter to unlock Rainbow Batsuit.", 10, 
+    "Enter 7629863 on Batcomputer to unlock Rainbow Batsuit.", 10, 
     PlayAsBatman(story["Science Island"], 0x3, suits["Rainbow"], gadgets["Flashbang"], TimeSpan(0,20,0)))																							
 
 achievement("Sword of the Dark Knight!","Complete London playing primarily as Medieval Suit Batman using only the Belt Sword, " +
     "starts when equipping Belt Sword on the first screen and resets if Green Arrow for 20s consecutively. " + 
-    "Enter 5644863 into the Batcompter to unlock Medieval Batsuit.", 10, 
+    "Enter 5644863 on Batcomputer to unlock Medieval Batsuit.", 10, 
     PlayAsBatman(story["London"], 0x2, suits["Medieval"], gadgets["Belt Sword"], TimeSpan(0,20,0)))
     
 achievement("From Camelot to Cretaceous!","Complete Dinosaur Island playing primarily as Medieval Suit Batman using only Smoke Pellets, " + 
     "starts when equipping Smoke Pellets on the first screen and resets if Red Tornado for 20s consecutively. " +
-    "Enter 5644863 into the Batcompter to unlock Medieval Batsuit.", 10, 
+    "Enter 5644863 on Batcomputer to unlock Medieval Batsuit.", 10, 
     PlayAsBatman(story["Dinosaur Island"], 0x2, suits["Medieval"], gadgets["Smoke Pellet"], TimeSpan(0,20,0)))																								
 
 achievement("The Brightest Day and the Blackest Knight!","Complete Space Lab playing primarily as Rainbow Suit Batman using only the Barrier, " +
     "starts when equipping Barrier on the first screen and resets if Hal Jordan for 20s consecutively. " +
-    "Enter 7629863 into the Batcompter to unlock Rainbow Batsuit.", 10, 
+    "Enter 7629863 on Batcomputer to unlock Rainbow Batsuit.", 10, 
     PlayAsBatman(story["Space Lab"], 0x2, suits["Rainbow"], gadgets["Barrier"], TimeSpan(0,20,0)))
 
 // Holograms Achievements
@@ -1295,7 +1304,7 @@ achievement("Fistful of Justice!","Complete all of the Battle Challenges.", 10, 
 achievement("Boss of the Bosses!","Complete all of the Boss Rush Challenges.", 25, GroupChallenge("Boss Rush"))
 achievement("Justice Served!","Complete all of the Hero Challenges.", 10, GroupChallenge("Hero"))
 achievement("Codebreaker Crusader!","Complete all of the Code Challenges. "+
-    "Enter 4846348, 7262348, and 6677686 into the Batcompter to unlock all five.", 
+    "Enter 4846348, 7262348, and 6677686 on Batcomputer to unlock all five.", 
     10, GroupChallenge("Code"))
 
 // Damageless Bosses
@@ -1317,14 +1326,7 @@ achievement("Scream Silencer!","Defeat Scream Queen in the Boss Rush challenge w
 achievement("Fearless Knight!","Defeat Scarecrow in the Boss Rush challenge without taking damage.", 25, DamagelessChallenge("Scarecrow",false))
 
 // Upgrade Achievements
-achievement("Batarang Arsenal!","Purchase all the Batrangs upgrades.", 2, ObtainUpgrade("Batarangs"))
-achievement("Shock Specialist!","Purchase the Shock Batarang upgrade.", 1, ObtainUpgrade("Shock Batarang"))
-achievement("Mirror, Mirror!","Purchase the Reflector upgrade.", 1, ObtainUpgrade("Reflector"))
-achievement("Blade of the Bat!","Purchase the Belt Sword Mk II upgrade.", 1, ObtainUpgrade("Belt Sword"))
-achievement("Hammers of Justice!","Purchase the Power Punches upgrade.", 1, ObtainUpgrade("Power Punches"))
-achievement("Stormbringer!","Purchase the Lightning Glove upgrade.", 1, ObtainUpgrade("Lightning Glove"))
-achievement("Dark Knight’s Defense!","Purchase all the Bat Armor upgrades.", 3, ObtainUpgrade("Armor"))
-achievement("Healing Factor!","Purchase the Regeneration upgrade.", 2, ObtainUpgrade("Regeneration"))
+achievement("Batteries Not Included!","Fully unlock and purchase all of the upgrades.", 10, CompleteUpgrades())
 achievement("Complete Crusader!","Complete every episode, every challenge, fully upgrade, and collect all holograms.", 25, CompleteCrusader())
 
 
