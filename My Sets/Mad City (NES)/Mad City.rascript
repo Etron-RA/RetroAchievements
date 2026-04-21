@@ -181,6 +181,9 @@ function GameOver() => prev(Lives()) == 0x0 && Lives() == 0xff
 // Test if a credit was used
 function CreditUsed() => prev(Credits()) + 1 == Credits()
 
+// Test if game has looped
+function Looped() => prev(Loop()) < Loop()
+
 // Test if we are curretly in a stage
 function InStage() => LevelState() == 0x1
 function InTraining() => LevelState() == 0x7
@@ -1459,109 +1462,109 @@ Stages = {
 
 // Training Achievements ///////////////////////////////////////////////////////////////
 
-achievement("Meat Your Match","Earn the Meatball reward from Street Fighting Training", 2, CompleteStage("Training Beat Em' Up"), type="")
-achievement("Fists of the Bayou","Complete the Street Fighting Training without using a weapon", 2, TrainingNoWeapons("Training Beat Em' Up"), type="")
-achievement("Lean and Mean","Complete the Street Fighting Training without dying or healing with raw meat", 5, TrainingNoHeal("Training Beat Em' Up"), type="")
-achievement("Cajun Cruise Control","Earn the Extra Life reward from Action Driving Training", 2, CompleteStage("Training Driving"), type="")
-achievement("Life in the Fast Lane","Complete the Action Driving Training with 500 or more time left", 3, TrainingRace("Training Driving", 500), type="")
-achievement("True Grit in Transit","Complete the Action Driving Training without dying or healing with a life can", 3, TrainingDeathlessRace("Training Driving"), type="")
-achievement("Swamp Drift Champion","Complete the Action Driving Training without hitting an obstacle or taking damage", 5, TrainingDamagelessRace("Training Driving"), type="")
-achievement("Locked and Loaded","Win the Extra Bullets reward from Shoot 'Em Up Training A or B", 3, CompleteStage("Training Shoot Em' Up"), type="")
-achievement("Bulletproof in the Bayou","Complete Shoot 'Em Up Training A or B without dying or healing with a first aid kit", 5, TrainingDeathlessShootEmUp("Training Shoot Em' Up"), type="")
-achievement("Quick Shot","Complete the final gauntlet within 20s on the screen stoping in Shoot 'Em Up Training A or B", 5, TrainingGauntletShootEmUp("Training Shoot Em' Up", TimeSpan(0,20,0)), type="")
-achievement("Strong as Gordon","Earn all three training rewards", 5, AllTrainingComplete(), type="")
+achievement("Meat Your Match","Earn the Meatball reward from Street Fighting Training", 2, CompleteStage("Training Beat Em' Up"), type="", id=602928)
+achievement("Fists of the Bayou","Complete the Street Fighting Training without using a weapon", 2, TrainingNoWeapons("Training Beat Em' Up"), type="", id=602929)
+achievement("Lean and Mean","Complete the Street Fighting Training without dying or healing with raw meat", 5, TrainingNoHeal("Training Beat Em' Up"), type="", id=602930)
+achievement("Cajun Cruise Control","Earn the Extra Life reward from Action Driving Training", 2, CompleteStage("Training Driving"), type="", id=602931)
+achievement("Life in the Fast Lane","Complete the Action Driving Training with 500 or more time left", 3, TrainingRace("Training Driving", 500), type="", id=602932)
+achievement("True Grit in Transit","Complete the Action Driving Training without dying or healing with a life can", 3, TrainingDeathlessRace("Training Driving"), type="", id=602933)
+achievement("Swamp Drift Champion","Complete the Action Driving Training without hitting an obstacle or taking damage", 5, TrainingDamagelessRace("Training Driving"), type="", id=602934)
+achievement("Locked and Loaded","Win the Extra Bullets reward from Shoot 'Em Up Training A or B", 3, CompleteStage("Training Shoot Em' Up"), type="", id=602935)
+achievement("Bulletproof in the Bayou","Complete Shoot 'Em Up Training A or B without dying or healing with a first aid kit", 5, TrainingDeathlessShootEmUp("Training Shoot Em' Up"), type="", id=602936)
+achievement("Quick Shot","Complete the final gauntlet within 20s on the screen stoping in Shoot 'Em Up Training A or B", 5, TrainingGauntletShootEmUp("Training Shoot Em' Up", TimeSpan(0,20,0)), type="", id=602937)
+achievement("Strong as Gordon","Earn all three training rewards", 5, AllTrainingComplete(), type="", id=602938)
 
 // Stage 1 Achievements /////////////////////////////////////////////////////////////////
 
-achievement("First Blood in the Bayou","Complete Stage 1", 2, CompleteStage("Bayou's Backyard"), type="progression")
-achievement("City Folk Wouldn’t Last a Minute","Complete Stage 1 without dying or eating the meatball reward", 5, Deathless("Bayou's Backyard"), type="")
-achievement("Swamp Speedrun","Clear Stage 1 in under 3:00 minutes", 5, Speedrun("Bayou's Backyard", TimeSpan(3,00,0)), type="")
-achievement("Crocodile Dundamageless","Defeat 6 crocodiles in Stage 1 without being bitten", 5, CrocKiller("Bayou's Backyard", 6), type="")
-achievement("Never Knew What Hit 'Em","Defeat 12 enemies with a stick in Stage 1, count resets on death", 5, KillCount("Bayou's Backyard", BeatEmUpStickKill(), 12), type="")
+achievement("First Blood in the Bayou","Complete Stage 1", 2, CompleteStage("Bayou's Backyard"), type="progression", id=602939)
+achievement("City Folk Wouldn’t Last a Minute","Complete Stage 1 without dying or eating the meatball reward", 5, Deathless("Bayou's Backyard"), type="", id=602940)
+achievement("Swamp Speedrun","Clear Stage 1 in under 3:00 minutes", 5, Speedrun("Bayou's Backyard", TimeSpan(3,00,0)), type="", id=602941)
+achievement("Crocodile Dundamageless","Defeat 6 crocodiles in Stage 1 without being bitten", 5, CrocKiller("Bayou's Backyard", 6), type="", id=602942)
+achievement("Never Knew What Hit 'Em","Defeat 12 enemies with a stick in Stage 1, count resets on death", 5, KillCount("Bayou's Backyard", BeatEmUpStickKill(), 12), type="", id=602943)
 
 // Stage 2 Achievements /////////////////////////////////////////////////////////////////
 
-achievement("Swampfire Showdown","Complete Stage 2 in Game A", 2, CompleteStage("Deep in the Heart of the Dixie Swamp Game A"), type="")
-achievement("Got a Permit for That?","Complete Stage 2 in Game B", 2, CompleteStage("Deep in the Heart of the Dixie Swamp Game B"), type="")
-achievement("Bulletproof Bushman","Complete Stage 2 without dying", 5, Deathless("Deep in the Heart of the Dixie Swamp"), type="")
-achievement("Spray and Pray","Defeat 10 enemies while the hourglass is active during Stage 2 or 7", 5, TimerKillCount("Deep in the Heart of the Dixie Swamp", "Gordon's Gateway", 10, HourglassCounter()), type="")
-achievement("Didn't Even Need It","Don't take damage while the bulletproof vest is active during Stage 2 or 7", 5, NoDamageTimer("Deep in the Heart of the Dixie Swamp", "Gordon's Gateway", 5, VestCounter()), type="")
-achievement("Boomstick Banisher","Destroy 6 incoming missiles or dynamite in Stage 2", 5, ExplosiveKillCount("Deep in the Heart of the Dixie Swamp", 6), type="")
-achievement("Life in the Bayou","Find the 1up in Stage 2", 5,  ShootEmUpKillCount("Deep in the Heart of the Dixie Swamp", ShootEmUpDeath(OneUpItem), 1), type="")
-achievement("Torn Rotator Blade","Defeat the Stage 2 helicopter within 30 seconds", 5, QuickKillBoss("Deep in the Heart of the Dixie Swamp",TimeSpan(0,30,0),[Whirlibird]), type="")
+achievement("Swampfire Showdown","Complete Stage 2 in Game A", 2, CompleteStage("Deep in the Heart of the Dixie Swamp Game A"), type="", id=602944)
+achievement("Got a Permit for That?","Complete Stage 2 in Game B", 2, CompleteStage("Deep in the Heart of the Dixie Swamp Game B"), type="", id=602945)
+achievement("Bulletproof Bushman","Complete Stage 2 without dying", 5, Deathless("Deep in the Heart of the Dixie Swamp"), type="", id=602946)
+achievement("Spray and Pray","Defeat 10 enemies while the hourglass is active during Stage 2 or 7", 5, TimerKillCount("Deep in the Heart of the Dixie Swamp", "Gordon's Gateway", 10, HourglassCounter()), type="", id=602947)
+achievement("Didn't Even Need It","Don't take damage while the bulletproof vest is active during Stage 2 or 7", 5, NoDamageTimer("Deep in the Heart of the Dixie Swamp", "Gordon's Gateway", 5, VestCounter()), type="", id=602948)
+achievement("Boomstick Banisher","Destroy 6 incoming missiles or dynamite in Stage 2", 5, ExplosiveKillCount("Deep in the Heart of the Dixie Swamp", 6), type="", id=602949)
+achievement("Life in the Bayou","Find the 1up in Stage 2", 5,  ShootEmUpKillCount("Deep in the Heart of the Dixie Swamp", ShootEmUpDeath(OneUpItem), 1), type="", id=602950)
+achievement("Torn Rotator Blade","Defeat the Stage 2 helicopter within 30 seconds", 5, QuickKillBoss("Deep in the Heart of the Dixie Swamp",TimeSpan(0,30,0),[Whirlibird]), type="", id=602951)
 
 // Stage 3 Achievements /////////////////////////////////////////////////////////////////
 
-achievement("Bayou Ironhide","Complete Stage 3", 3, CompleteStage("Gator Alley"), type="progression")
-achievement("Hard to Swallow","Complete Stage 3 without dying or eating the meatball reward", 5, Deathless("Gator Alley"), type="")
-achievement("Slice of the Bayou","Damage Matthew Brich 4 times with a knife in Stage 3, count resets on death", 5, KnifeHits("Gator Alley", MatthewBirch, 4), type="")
-achievement("No Roughhousing","Defeat Matthew Brich without being thrown in Stage 3", 5, NoThrows("Gator Alley", 0x21F), type="")
+achievement("Bayou Ironhide","Complete Stage 3", 3, CompleteStage("Gator Alley"), type="progression", id=602952)
+achievement("Hard to Swallow","Complete Stage 3 without dying or eating the meatball reward", 5, Deathless("Gator Alley"), type="", id=602953)
+achievement("Slice of the Bayou","Damage Matthew Brich 4 times with a knife in Stage 3, count resets on death", 5, KnifeHits("Gator Alley", MatthewBirch, 4), type="", id=602954)
+achievement("No Roughhousing","Defeat Matthew Brich without being thrown in Stage 3", 5, NoThrows("Gator Alley", 0x21F), type="", id=602955)
 
 // Stage 4 Achievements /////////////////////////////////////////////////////////////////
 
-achievement("Bayou Burnout","Complete Stage 4", 2, CompleteStage("I-10, the Road to New Orleans"), type="progression")
-achievement("Gumbo-Fueled Getaway","Complete Stage 4 without dying or picking up items", 5, DeathlessDriver("I-10, the Road to New Orleans"), type="")
-achievement("No Worries on the I-10","Complete Stage 4 without hitting an obstacle or taking damage", 5, DamagelessDriver("I-10, the Road to New Orleans"), type="")
-achievement("Crikey, Look at That Drift","Complete Stage 4 with 500 or more time left without the timer hitting zero", 5, SpeedrunDriver("I-10, the Road to New Orleans", 500), type="")
-achievement("Bodywork Wrecker","Land enough hits on Gordon's car to force him to fle in either Stage 4 or 5", 5, MakeGordonFlee(), type="")
-achievement("Sky Sweeper","Defeat 6 planes in Stage 4, count resets on death", 5, DrivingKillCount("I-10, the Road to New Orleans", PlaneDeath(), 6), type="")
+achievement("Bayou Burnout","Complete Stage 4", 2, CompleteStage("I-10, the Road to New Orleans"), type="progression", id=602956)
+achievement("Gumbo-Fueled Getaway","Complete Stage 4 without dying or picking up items", 5, DeathlessDriver("I-10, the Road to New Orleans"), type="", id=602957)
+achievement("No Worries on the I-10","Complete Stage 4 without hitting an obstacle or taking damage", 5, DamagelessDriver("I-10, the Road to New Orleans"), type="", id=602958)
+achievement("Crikey, Look at That Drift","Complete Stage 4 with 500 or more time left without the timer hitting zero", 5, SpeedrunDriver("I-10, the Road to New Orleans", 500), type="", id=602959)
+achievement("Bodywork Wrecker","Land enough hits on Gordon's car to force him to fle in either Stage 4 or 5", 5, MakeGordonFlee(), type="", id=602960)
+achievement("Sky Sweeper","Defeat 6 planes in Stage 4, count resets on death", 5, DrivingKillCount("I-10, the Road to New Orleans", PlaneDeath(), 6), type="", id=602961)
 
 // Stage 5 Achievements /////////////////////////////////////////////////////////////////
 
-achievement("Bourbon Street Racer","Complete Stage 5", 3, CompleteStage("Superdome Drive"), type="progression")
-achievement("Bushman Driver’s License","Complete Stage 5 without dying or picking up items", 5, DeathlessDriver("Superdome Drive"), type="")
-achievement("That’s Not a Road… This Is a Road!","Complete Stage 5 without hitting an obstacle or taking damage", 5, DamagelessDriver("Superdome Drive"), type="")
-achievement("Faster Than a Gator Snap","Complete Stage 5 with 500 or more time left without the timer hitting zero", 5, SpeedrunDriver("Superdome Drive", 500), type="")
-achievement("Heli Hunter","Defeat 8 helicopters in Stage 8, count resets on death", 5, DrivingKillCount("Superdome Drive", HelicopterDeath(), 8), type="")
+achievement("Bourbon Street Racer","Complete Stage 5", 3, CompleteStage("Superdome Drive"), type="progression", id=602962)
+achievement("Bushman Driver’s License","Complete Stage 5 without dying or picking up items", 5, DeathlessDriver("Superdome Drive"), type="", id=602963)
+achievement("That’s Not a Road… This Is a Road!","Complete Stage 5 without hitting an obstacle or taking damage", 5, DamagelessDriver("Superdome Drive"), type="", id=602964)
+achievement("Faster Than a Gator Snap","Complete Stage 5 with 500 or more time left without the timer hitting zero", 5, SpeedrunDriver("Superdome Drive", 500), type="", id=602965)
+achievement("Heli Hunter","Defeat 8 helicopters in Stage 8, count resets on death", 5, DrivingKillCount("Superdome Drive", HelicopterDeath(), 8), type="", id=602966)
 
 // Stage 6 Achievements /////////////////////////////////////////////////////////////////
 
-achievement("Creole Combat","Complete Stage 6", 5, CompleteStage("The French Quarter"), type="progression")
-achievement("French Quarter Finalist","Complete Stage 6 without dying or eating the meatball reward", 5, Deathless("The French Quarter"), type="")
-achievement("Street Performer","Complete Stage 6 using only kicks and jump kicks", 5, KicksOnly("The French Quarter"), type="")
-achievement("Billy Belmont","Defeat 12 enemies with a whip in Stage 6, count resets on death", 5, KillCount("The French Quarter", BeatEmUpWhipKill(), 12), type="")
+achievement("Creole Combat","Complete Stage 6", 5, CompleteStage("The French Quarter"), type="progression", id=602967)
+achievement("French Quarter Finalist","Complete Stage 6 without dying or eating the meatball reward", 5, Deathless("The French Quarter"), type="", id=602968)
+achievement("Street Performer","Complete Stage 6 using only kicks and jump kicks", 5, KicksOnly("The French Quarter"), type="", id=602969)
+achievement("Billy Belmont","Defeat 12 enemies with a whip in Stage 6, count resets on death", 5, KillCount("The French Quarter", BeatEmUpWhipKill(), 12), type="", id=602970)
 
 // Stage 7 Achievements /////////////////////////////////////////////////////////////////
 
-achievement("Bayou Blockade","Complete Stage 7 in Game A", 3, CompleteStage("Gordon's Gateway Game A"), type="")
-achievement("Gordon's Gauntlet","Complete Stage 7 in Game B", 3, CompleteStage("Gordon's Gateway Game B"), type="")
-achievement("Shoot First, Ask No Questions","Complete Stage 7 without dying", 5, Deathless("Gordon's Gateway"), type="")
-achievement("Helmet Crackin’ Time","Defeat 3 bikers in Stage 7, count resets on death", 5, ShootEmUpKillCount("Gordon's Gateway", ShootEmUpDeath(TheAccelerator), 3), type="")
-achievement("Life on the Streets","Find the 1up in Stage 7", 5,  ShootEmUpKillCount("Gordon's Gateway", ShootEmUpDeath(OneUpItem), 1), type="")
-achievement("Quickdraw Showdown","Defeat the both bosses in Stage 7 within 20 seconds of them entering the screen", 5, QuickKillBoss("Gordon's Gateway",TimeSpan(0,20,0),[LightningRod,StevenBarone]), type="")
+achievement("Bayou Blockade","Complete Stage 7 in Game A", 3, CompleteStage("Gordon's Gateway Game A"), type="", id=602971)
+achievement("Gordon's Gauntlet","Complete Stage 7 in Game B", 3, CompleteStage("Gordon's Gateway Game B"), type="", id=602972)
+achievement("Shoot First, Ask No Questions","Complete Stage 7 without dying", 5, Deathless("Gordon's Gateway"), type="", id=602973)
+achievement("Helmet Crackin’ Time","Defeat 3 bikers in Stage 7, count resets on death", 5, ShootEmUpKillCount("Gordon's Gateway", ShootEmUpDeath(TheAccelerator), 3), type="", id=602974)
+achievement("Life on the Streets","Find the 1up in Stage 7", 5,  ShootEmUpKillCount("Gordon's Gateway", ShootEmUpDeath(OneUpItem), 1), type="", id=602975)
+achievement("Quickdraw Showdown","Defeat the both bosses in Stage 7 within 20 seconds of them entering the screen", 5, QuickKillBoss("Gordon's Gateway",TimeSpan(0,20,0),[LightningRod,StevenBarone]), type="", id=602976)
 
 // Stage 8 Achievements //////////////////////////////////////////////////////////////////
 
-achievement("No Where Left to Run Gordon","Complete Stage 8", 5, CompleteStage("Hitman's Yard"), type="progression")
-achievement("You Hit Like a Tourist","Complete Stage 8 without dying or eating the meatball reward", 5, Deathless("Hitman's Yard"), type="")
-achievement("Bite the Bullet","Defeat 5 enemies with a bullet in Stage 8, dogs do not add to count and count resets on death", 5, KillCount("Hitman's Yard", BeatEmUpBulletKill(), 5), type="")
-achievement("Dog Whisperer","Defeat Tom Ogawa and any spawned dogs in Stage 8 without taking damage", 5, DamagelessEnemy("Hitman's Yard", TomOgawa), type="")
+achievement("No Where Left to Run Gordon","Complete Stage 8", 5, CompleteStage("Hitman's Yard"), type="progression", id=602977)
+achievement("You Hit Like a Tourist","Complete Stage 8 without dying or eating the meatball reward", 5, Deathless("Hitman's Yard"), type="", id=602978)
+achievement("Bite the Bullet","Defeat 5 enemies with a bullet in Stage 8, dogs do not add to count and count resets on death", 5, KillCount("Hitman's Yard", BeatEmUpBulletKill(), 5), type="", id=602979)
+achievement("Dog Whisperer","Defeat Tom Ogawa and any spawned dogs in Stage 8 without taking damage", 5, DamagelessEnemy("Hitman's Yard", TomOgawa), type="", id=602980)
 
 // Stage 9 Achievements //////////////////////////////////////////////////////////////////
 
 //achievement("Just These Hands","Complete Stage 9 without using a weapon", 5, CompleteNoWeapons("The Perilous Plantation Parlor"), type="")
-achievement("Parlor of Pain","Complete Stage 9 without dying or eating the meatball reward", 5, Deathless("The Perilous Plantation Parlor"), type="")
-achievement("Slippery as a Gator","Complete Stage 9 without being grabbed by Gordon, John Martin, or Grant Martin", 5, NoGrabbing("The Perilous Plantation Parlor"), type="")
-achievement("Not a Scratch","Defeat Gordon without taking damage", 5, DamagelessEnemy("The Perilous Plantation Parlor", RobertGordon), type="")
-achievement("Cajun Crime Bros.","Defeat John and Grant Martin without taking damage", 10, DamagelessEnemy("The Perilous Plantation Parlor", JohnMartin), type="")
+achievement("Parlor of Pain","Complete Stage 9 without dying or eating the meatball reward", 5, Deathless("The Perilous Plantation Parlor"), type="", id=602981)
+achievement("Slippery as a Gator","Complete Stage 9 without being grabbed by Gordon, John Martin, or Grant Martin", 5, NoGrabbing("The Perilous Plantation Parlor"), type="", id=602982)
+achievement("Not a Scratch","Defeat Gordon without taking damage", 5, DamagelessEnemy("The Perilous Plantation Parlor", RobertGordon), type="", id=602983)
+achievement("Cajun Crime Bros.","Defeat John and Grant Martin without taking damage", 10, DamagelessEnemy("The Perilous Plantation Parlor", JohnMartin), type="", id=602984)
 
 // Endings Achievements ///////////////////////////////////////////////////////////////////
 
-achievement("Big Easy","Get the Easy Ending by beating the game with training rewards", 5, CompleteEasyEnding(), type="")
-achievement("North American","Get the Normal Ending by beating the game without any training rewards and save Annabelle", 10, CompleteNormalEnding(GoodEnding), type="win_condition")
-achievement("Hard to Catch","Get the Jerkass Ending by beating the game without any training rewards and avoiding Annabelle", 10, CompleteNormalEnding(JerkassEnding), type="win_condition")
-achievement("Cajun Kansai Code","Get the Kansai-ben Ending by beating the game without any training rewards and hold Up + Select while hugging Annabelle", 10, CompleteNormalEnding(KansaiBenEnding), type="win_condition")
+achievement("Big Easy","Get the Easy Ending by beating the game with training rewards", 5, CompleteEasyEnding(), type="", id=602985)
+achievement("North American","Get the Normal Ending by beating the game without any training rewards and save Annabelle", 10, CompleteNormalEnding(GoodEnding), type="win_condition", id=602986)
+achievement("Hard to Catch","Get the Jerkass Ending by beating the game without any training rewards and avoiding Annabelle", 10, CompleteNormalEnding(JerkassEnding), type="win_condition", id=602987)
+achievement("Cajun Kansai Code","Get the Kansai-ben Ending by beating the game without any training rewards and hold Up + Select while hugging Annabelle", 10, CompleteNormalEnding(KansaiBenEnding), type="win_condition", id=602988)
 
 // Whole Game Achievements ////////////////////////////////////////////////////////////////
 
-achievement("Bayou Combat","Beat the game without using a weapon in the beat 'em up stages", 25, CompleteGame([], [BeatEmUpMode() && WeaponUsed()], []), type="")
-achievement("Mad City Godfather","Beat the game without any training items or using a continue", 25, CompleteGame([NoTraining()], [CreditUsed()], []), type="")
-achievement("Return to the Bayou","Beat the game a second time without any training items", 25, CompleteGame([NoTraining()], [Loop()==0x0],[]), type="")
+achievement("Bayou Combat","Beat the game without using a weapon in the beat 'em up stages", 25, CompleteGame([], [BeatEmUpMode() && WeaponUsed(), Looped()], []), type="", id=602989)
+achievement("Mad City Godfather","Beat the game without any training items or using a continue", 25, CompleteGame([NoTraining()], [CreditUsed(), Looped()], []), type="", id=602990)
+achievement("Return to the Bayou","Beat the game a second time without any training items", 25, CompleteGame([NoTraining()], [Loop()==0x0, Looped()],[]), type="", id=602991)
 
 // Misc Achievements //////////////////////////////////////////////////////////////////////
 
-achievement("I Am Rubber and You Are Glue","Deflect 5 bullets in Beat Em' Up mode", 1, BeatEmUpKillCount(BeatEmUpEnemyBulletDeflected(), 5), type="")
-achievement("Bayou Brainiac","Complete the Quiz", 0, CompleteQuiz(), type="")
+achievement("I Am Rubber and You Are Glue","Deflect 5 bullets in Beat Em' Up mode", 1, BeatEmUpKillCount(BeatEmUpEnemyBulletDeflected(), 5), type="", id=602992)
+achievement("Bayou Brainiac","Complete the Quiz", 0, CompleteQuiz(), type="", id=602993)
 
 // Rich Presence /////////////////////////////////////////////////////////////////////////
 StageRP = {
