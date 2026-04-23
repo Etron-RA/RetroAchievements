@@ -1251,6 +1251,7 @@ function NoThrows(name, progress)
         HorizontalScrolling() >= progress
         
     cancel = !InGame() || 
+        Looped() ||
         AnimationFrameSprite(0) == UpsideDown
     
     submit = tally(1,BeatEmUpDeath(MatthewBirch))
@@ -1378,7 +1379,7 @@ function NoGrabbing(name)
 {
     info = Stages[name]
     start = info[0]
-    cancel = info[1] || any_of(BossGrab(), b => b)
+    cancel = info[1] || any_of(BossGrab(), b => b) || Looped()
     submit = info[2]
     
     return once(start) && never(cancel) && trigger_when(submit)
