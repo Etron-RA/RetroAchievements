@@ -269,6 +269,22 @@ function StartStage(stage, round)
     return trigger
 }
 
+// Event when starting a stage/round with stage select allowed
+function SelectStartStage(stage, round)
+{
+    id = StageID(stage, round)
+    
+    trigger = WasFading() && 
+        InGame() &&
+        Round() == id
+        
+     if (stage != 6)
+        trigger = trigger && TimeWord() == 0
+    
+    return trigger
+}
+
+
 // Event when completing a stage
 function EndStage(stage, round)
 {
@@ -288,7 +304,7 @@ function Speedwalk(stage, round, time)
     id = StageID(stage, round)
     
     // Start at beginning of stage on normal+
-    start = once(StartStage(stage, round) && Difficulty() >= 1) 
+    start = once(SelectStartStage(stage, round) && Difficulty() >= 1) 
     
     // Cancel when game over, over par time, or on different stage
     cancel = never(Title()) &&
@@ -358,7 +374,7 @@ function ShootingStar(stage, round)
     id = StageID(stage, round) 
     
     // Start at beginning of stage if no childern are found
-    start = once(StartStage(stage, round) && ChildenBitflag() == 0) 
+    start = once(SelectStartStage(stage, round) && ChildenBitflag() == 0) 
     
     // Cancel if game over, changed levels, missed shooting star, or non star child found first
     cancel = never(Title()) &&
@@ -425,7 +441,9 @@ function HydrantKill()
             prev(Score00X00000()) < Score00X00000() ||
             prev(Score000X0000()) < Score000X0000() ||
             prev(Score0000X000()) < Score0000X000() ||
-            prev(Score00000X00()) < Score00000X00()
+            prev(Score00000X00()) < Score00000X00() ||
+            prev(Score000000X0()) < Score000000X0() ||
+            prev(Score0000000X()) < Score0000000X()
         )
         
     return prime && trigger  
@@ -603,65 +621,65 @@ function NoContinues(difficulty)
 
 // Misc Achievements
 achievement("Annie, Are You Okay?","Rescue a child", 1, RescueChild(), id = 363)
-achievement("Fool Gravity","Perform a Moonwalk for 5 seconds (counts time while moving, resets when Moonwalk ends)", 3, MoonwalkDance(), id = 3591)
+achievement("Fool Gravity","Perform a Moonwalk for 5 seconds, counts time while moving, resets when Moonwalk ends", 3, MoonwalkDance(), id = 3591)
 achievement("Hoooooo!!!","Slide down some stairs", 2, SliddingStairs(), id = 3593)
-achievement("Emergency Entrance","Activate the movable stairs in stage 1 any round", 1,  StaircaseLowered())
-achievement("Underground Mysteries","Open a manhole cover in stage 2-3", 1, ManholeCovers())
-achievement("Cleaning the Streets","Take out an enemy while dancing on a fire hydrant in stage 2 any round", 2, HydrantKill())
-achievement("Groove and Swing","Swing from a branch in stage 3 any round", 1, BranchSwing())
-achievement("Footloose","Break a no dancing sign in stage 4 any round", 1, NoDancing())
-achievement("Non-stick Dancing","Moonwalk through a spider web in stage 4 any round, start Moonwalk before entering web, no turning around", 3, WebWalker())
-achievement("CTRL+Alt+Destroyer","Break all nine computers and servers in stage 5-1", 5, NoComputers())
-achievement("Faster Going Backwards","Moonwalk over the entire bottom floor conveyor in stage 5-2 travelling against the direction of conveyor, left to right without turning around", 5, ConveyorWalker())
+achievement("Emergency Entrance","Activate the movable stairs in stage 1 any round", 1,  StaircaseLowered(), id=366616)
+achievement("Underground Mysteries","Open a manhole cover in stage 2-3, level select allowed", 1, ManholeCovers(), id=366617)
+achievement("Cleaning the Streets","Take out an enemy while dancing on a fire hydrant in stage 2 any round, level select allowed", 2, HydrantKill(), id=366618)
+achievement("Groove and Swing","Swing from a branch in stage 3 any round, level select allowed", 1, BranchSwing(), id=366619)
+achievement("Footloose","Break a no dancing sign in stage 4 any round, level select allowed", 1, NoDancing(), id=366620)
+achievement("Non-stick Dancing","Moonwalk through a spider web in stage 4 any round, start Moonwalk before entering web, no turning around, level select allowed", 3, WebWalker(), id=366621)
+achievement("CTRL+Alt+Destroyer","Break all nine computers and servers in stage 5-1, level select allowed", 5, NoComputers(), id=366622)
+achievement("Faster Going Backwards","Moonwalk over the entire bottom floor conveyor in stage 5-2 travelling against the direction of conveyor, left to right without turning around, level select allowed", 5, ConveyorWalker(), id=366623)
 achievement("Form a Group ","Dance with 7 or more people at once", 10, DanceGroup(7), id = 3592)
 
 // Speedwalk Achievements
 achievement("Speed Demon ","Complete Stage 1-1 under 1m10s on Normal+", 25, Speedwalk(1, 1, TimeSpan(1,10)), id = 3594)
-achievement("Nightlife Dash","Complete Stage 1-1 under the par time 2m00s on Normal+", 5, Speedwalk(1, 1, TimeSpan(2,0)))
-achievement("Club Fever Frenzy","Complete Stage 1-2 under the par time 2m00s on Normal+", 5, Speedwalk(1, 2, TimeSpan(2,0)))
-achievement("Speed Walk","Complete Stage 1-3 under the par time 2m00s on Normal+", 10, Speedwalk(1, 3, TimeSpan(2,0)))
-achievement("Midnight Street Race","Complete Stage 2-1 under the par time 3m00s on Normal+", 5, Speedwalk(2, 1, TimeSpan(3,0)))
-achievement("Chasing the Urban Beat","Complete Stage 2-2 under the par time 3m00s on Normal+", 5, Speedwalk(2, 2, TimeSpan(3,0)))
-achievement("Streets of Speed","Complete Stage 2-3 under the par time 3m00s on Normal+", 5, Speedwalk(2, 3, TimeSpan(3,0)))
-achievement("Moonlit Zombie Blitz","Complete Stage 3-1 under the par time 4m00s on Normal+", 5, Speedwalk(3, 1, TimeSpan(4,0)))
-achievement("Chasing Shadows in the Haunted Woods","Complete Stage 3-2 under the par time 4m00s on Normal+", 5, Speedwalk(3, 2, TimeSpan(4,0)))
-achievement("Survivor’s Dance of the Living Dead","Complete Stage 3-3 under the par time 4m00s on Normal+", 5, Speedwalk(3, 3, TimeSpan(4,0)))
-achievement("Cave of Eight-Legged Tango","Complete Stage 4-1 under the par time 5m00s on Normal+", 5, Speedwalk(4, 1, TimeSpan(5,0)))
-achievement("Dancing Through the Spider’s Lair","Complete Stage 4-2 under the par time 5m00s on Normal+", 5, Speedwalk(4, 2, TimeSpan(5,0)))
-achievement("Underground Escape","Complete Stage 4-3 under the par time 5m00s on Normal+", 5, Speedwalk(4, 3, TimeSpan(5,0)))
-achievement("Sprint Through Hostile Territory","Complete Stage 5-1 under the par time 6m00s on Normal+", 5, Speedwalk(5, 1, TimeSpan(6,0)))
-achievement("Dance of Infiltration","Complete Stage 5-2 under the par time 6m00s on Normal+", 5, Speedwalk(5, 2, TimeSpan(6,0)))
+achievement("Nightlife Dash","Complete Stage 1-1 under the par time 2m00s on Normal+", 5, Speedwalk(1, 1, TimeSpan(2,0)), id=366624)
+achievement("Club Fever Frenzy","Complete Stage 1-2 under the par time 2m00s on Normal+", 5, Speedwalk(1, 2, TimeSpan(2,0)), id=366625)
+achievement("Speed Walk","Complete Stage 1-3 under the par time 2m00s on Normal+", 10, Speedwalk(1, 3, TimeSpan(2,0)), id=366626)
+achievement("Midnight Street Race","Complete Stage 2-1 under the par time 3m00s on Normal+, level select allowed", 5, Speedwalk(2, 1, TimeSpan(3,0)), id=366627)
+achievement("Chasing the Urban Beat","Complete Stage 2-2 under the par time 3m00s on Normal+, level select allowed", 5, Speedwalk(2, 2, TimeSpan(3,0)), id=366628)
+achievement("Streets of Speed","Complete Stage 2-3 under the par time 3m00s on Normal+, level select allowed", 5, Speedwalk(2, 3, TimeSpan(3,0)), id=366629)
+achievement("Moonlit Zombie Blitz","Complete Stage 3-1 under the par time 4m00s on Normal+, level select allowed", 5, Speedwalk(3, 1, TimeSpan(4,0)), id=366630)
+achievement("Chasing Shadows in the Haunted Woods","Complete Stage 3-2 under the par time 4m00s on Normal+, level select allowed", 5, Speedwalk(3, 2, TimeSpan(4,0)), id=366631)
+achievement("Survivor’s Dance of the Living Dead","Complete Stage 3-3 under the par time 4m00s on Normal+, level select allowed", 5, Speedwalk(3, 3, TimeSpan(4,0)), id=366632)
+achievement("Cave of Eight-Legged Tango","Complete Stage 4-1 under the par time 5m00s on Normal+, level select allowed", 5, Speedwalk(4, 1, TimeSpan(5,0)), id=366633)
+achievement("Dancing Through the Spider’s Lair","Complete Stage 4-2 under the par time 5m00s on Normal+, level select allowed", 5, Speedwalk(4, 2, TimeSpan(5,0)), id=366634)
+achievement("Underground Escape","Complete Stage 4-3 under the par time 5m00s on Normal+, level select allowed", 5, Speedwalk(4, 3, TimeSpan(5,0)), id=366635)
+achievement("Sprint Through Hostile Territory","Complete Stage 5-1 under the par time 6m00s on Normal+, level select allowed", 5, Speedwalk(5, 1, TimeSpan(6,0)), id=366636)
+achievement("Dance of Infiltration","Complete Stage 5-2 under the par time 6m00s on Normal+, level select allowed", 5, Speedwalk(5, 2, TimeSpan(6,0)), id=366637)
 
 // Shooting star achievements
 achievement("[void] Moonwalker ","Transform into a robot", 0, RobotMode() && InGame(), id = 366)
-achievement("Starstruck on Sunset Street","Collect the falling star in Stage 2-1", 3, ShootingStar(2,1))
-achievement("Electric Avenue Transformation","Collect the falling star in Stage 2-2", 3, ShootingStar(2,2))
-achievement("Robot Boogie in the City","Collect the falling star in Stage 2-3", 3, ShootingStar(2,3))
-achievement("Moonwalk Among the Walking Dead","Collect the falling star in Stage 3-1", 3, ShootingStar(3,1))
-achievement("Electro-Dance Battle in the Zombie Abyss","Collect the falling star in Stage 3-2", 3, ShootingStar(3,2))
-achievement("Cybernetic Savior vs. the Undead","Collect the falling star in Stage 3-3", 3,  ShootingStar(3,3))
-achievement("Starry Secrets Among the Stalactites","Collect the falling star in Stage 4-1", 4, ShootingStar(4,1))
-achievement("Dance of the Arachnid Annihilation","Collect the falling star in Stage 4-2", 4, ShootingStar(4,2))
-achievement("Bionic Battle with the Spider Swarm","Collect the falling star in Stage 4-3", 4, ShootingStar(4,3))
-achievement("Starlit Dancefloor","Collect the falling star in Stage 5-1", 5, ShootingStar(5,1))
-achievement("Battlefield of the Dancing Machine","Collect the falling star in Stage 5-2", 5, ShootingStar(5,2))
+achievement("Starstruck on Sunset Street","Collect the falling star in Stage 2-1, level select allowed", 3, ShootingStar(2,1), id=366638)
+achievement("Electric Avenue Transformation","Collect the falling star in Stage 2-2, level select allowed", 3, ShootingStar(2,2), id=366639)
+achievement("Robot Boogie in the City","Collect the falling star in Stage 2-3, level select allowed", 3, ShootingStar(2,3), id=366640)
+achievement("Moonwalk Among the Walking Dead","Collect the falling star in Stage 3-1, level select allowed", 3, ShootingStar(3,1), id=366641)
+achievement("Electro-Dance Battle in the Zombie Abyss","Collect the falling star in Stage 3-2, level select allowed", 3, ShootingStar(3,2), id=366642)
+achievement("Cybernetic Savior vs. the Undead","Collect the falling star in Stage 3-3, level select allowed", 3,  ShootingStar(3,3), id=366643)
+achievement("Starry Secrets Among the Stalactites","Collect the falling star in Stage 4-1, level select allowed", 4, ShootingStar(4,1), id=366644)
+achievement("Dance of the Arachnid Annihilation","Collect the falling star in Stage 4-2, level select allowed", 4, ShootingStar(4,2), id=366645)
+achievement("Bionic Battle with the Spider Swarm","Collect the falling star in Stage 4-3, level select allowed", 4, ShootingStar(4,3), id=366646)
+achievement("Starlit Dancefloor","Collect the falling star in Stage 5-1, level select allowed", 5, ShootingStar(5,1), id=366647)
+achievement("Battlefield of the Dancing Machine","Collect the falling star in Stage 5-2, level select allowed", 5, ShootingStar(5,2), id=366648)
 
 // Score Achievements
 achievement("Hit Artist","Score over 10,000 Points", 5, ObtainScore(10000), id = 367)
 achievement("Platinum Artist","Score over 100,000 Points", 10, ObtainScore(100000), id = 369)
-achievement("International Superstar","Score over 400,000 Points", 10,  ObtainScore(400000))
+achievement("International Superstar","Score over 400,000 Points", 10,  ObtainScore(400000), id=366649)
 achievement("Legend","Score over 800,000 Points", 25,  ObtainScore(800000), id = 1091)
 achievement("[void] Immortal","Score over 1,000,000 Points", 0, ObtainScore(1000000), id = 2677)
 
 // Progress Achievements
-achievement("Smooth Criminal","Clear Stage 1-3", 10, EndStage(1,3), id = 364)
-achievement("Beat it","Clear Stage 2-3", 10, EndStage(2,3), id = 365)
-achievement("Thriller","Clear Stage 3-3", 10, EndStage(3,3), id = 368)
-achievement("Billie Jean","Clear Stage 4-3", 10, EndStage(4,3), id = 370)
-achievement("Who's Bad?","Clear Stage 5-3", 25, EndStage(5,3), id = 371)
-achievement("Mr. Big","Clear Stage 6-1", 10, EndStage(6,1))
-achievement("King of Pop ","Clear Stage 6-1 Hard", 50, Difficulty() == 2 && EndStage(6,1) , id = 2676)
-achievement("Moonwalker","Clear Stage 6-1 without using a continue on Normal+", 50, NoContinues(1))
+achievement("Smooth Criminal","Clear Stage 1-3", 10, EndStage(1,3), type="progression", id = 364)
+achievement("Beat it","Clear Stage 2-3", 10, EndStage(2,3), type="progression", id = 365)
+achievement("Thriller","Clear Stage 3-3", 10, EndStage(3,3), type="progression", id = 368)
+achievement("Billie Jean","Clear Stage 4-3", 10, EndStage(4,3), type="progression", id = 370)
+achievement("Who's Bad?","Clear Stage 5-3", 25, EndStage(5,3), type="progression", id = 371)
+achievement("Mr. Big","Clear Stage 6-1", 10, EndStage(6,1), type="win_condition", id=366650)
+achievement("King of Pop ","Clear Stage 6-1 Hard", 50, Difficulty() == 2 && EndStage(6,1), type="win_condition", id = 2676)
+achievement("Moonwalker","Clear Stage 6-1 without using a continue on Normal+", 50, NoContinues(1), id=366651)
 
 // -- Leaderboards ----------------------------------------------------------------------
 
