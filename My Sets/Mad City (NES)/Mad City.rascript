@@ -1492,7 +1492,7 @@ achievement("Spray and Pray","Defeat 10 enemies while the hourglass is active du
 achievement("Didn't Even Need It","Don't take damage while the bulletproof vest is active during Stage 2 or 7", 5, NoDamageTimer("Deep in the Heart of the Dixie Swamp", "Gordon's Gateway", 5, VestCounter()), type="", id=602948)
 achievement("Boomstick Banisher","Destroy 6 incoming missiles or dynamite in Stage 2", 5, ExplosiveKillCount("Deep in the Heart of the Dixie Swamp", 6), type="", id=602949)
 achievement("Life in the Bayou","Find the 1up in Stage 2", 5,  ShootEmUpKillCount("Deep in the Heart of the Dixie Swamp", ShootEmUpDeath(OneUpItem), 1), type="", id=602950)
-achievement("Torn Rotator Blade","Defeat the Stage 2 helicopter within 30 seconds", 5, QuickKillBoss("Deep in the Heart of the Dixie Swamp",TimeSpan(0,30,0),[Whirlibird]), type="", id=602951)
+achievement("Torn Rotator Blade","Defeat the Stage 2 helicopter within 18 seconds", 5, QuickKillBoss("Deep in the Heart of the Dixie Swamp",TimeSpan(0,18,0),[Whirlibird]), type="", id=602951)
 
 // Stage 3 Achievements /////////////////////////////////////////////////////////////////
 
