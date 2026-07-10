@@ -1243,20 +1243,21 @@ function NoThrows(name, progress)
     info = Stages[name]
     stage = info[3]
 
-    start = InGame() &&
+
+    initial = InGame() &&
         InStage() &&
         BeatEmUpMode() &&
-        Stage() == stage &&
-        prev(HorizontalScrolling()) < progress &&
-        HorizontalScrolling() >= progress
-        
+        Stage() == stage
+    
+    start = tally(1, Apply(initial, BeatEmUpSpawn(MatthewBirch)))
+                
     cancel = !InGame() || 
         Looped() ||
         AnimationFrameSprite(0) == UpsideDown
     
-    submit = tally(1,BeatEmUpDeath(MatthewBirch))
+    submit = AllEnemiesDead()
     
-    return once(start) && never(cancel) && trigger_when(submit)    
+    return start && never(cancel) && trigger_when(submit)    
 }
 
 // Counts the number of knife hits on a enemy
