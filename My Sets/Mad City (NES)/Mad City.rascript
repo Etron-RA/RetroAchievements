@@ -1253,6 +1253,7 @@ function NoThrows(name, progress)
                 
     cancel = !InGame() || 
         Looped() ||
+        LostLife() ||
         AnimationFrameSprite(0) == UpsideDown
     
     submit = AllEnemiesDead()
