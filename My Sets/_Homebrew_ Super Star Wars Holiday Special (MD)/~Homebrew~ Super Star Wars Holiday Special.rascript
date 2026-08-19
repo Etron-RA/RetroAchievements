@@ -395,10 +395,10 @@ achievement("Treetop Acrobatics","Clear the Treetops without using A-button atta
 achievement("Hypersonic Oven","Collect all Rebel Alliance tokens in the Tree Tops without dying for Malla's Life Day gift", 3, CollectTokens(4,75), type="")
 
 achievement("He’s No Good to Me Dead","Defeat Boba Fett", 25, EndStage(5), type="win_condition")
-achievement("Trust Your Instincts","Defeat Boba Fett without using C-button deflects", 10, CompleteNoButton(5, ButtonC() == 1), type="")
+achievement("Trust Your Instincts","Defeat Boba Fett without using C-button deflects", 25, CompleteNoButton(5, ButtonC() == 1), type="")
 
 achievement("Chewie’s Holiday Bonus","Collect 100 Rebel Alliance tokens", 5, TokenLife(), type="")
-achievement("Cheap Budget Broadcast","Keep the Holiday Special under budget and beat the game without having more than 5 lives at once", 25, BeatWithLivesLimit(5), type="")
+achievement("Cheap Budget Broadcast","Keep the Holiday Special under budget and beat the game without having more than 5 lives at once", 50, BeatWithLivesLimit(5), type="")
 
 ///////// Leaderboards /////////////////////////////////////////////////////////////////////////////
 
