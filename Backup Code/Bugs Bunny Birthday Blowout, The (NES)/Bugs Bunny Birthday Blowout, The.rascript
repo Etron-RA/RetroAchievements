@@ -17,13 +17,16 @@ function Round() => byte(0x000421)
 
 // $0428: Player's health
 function Health() => byte(0x000428)
+function Damaged() => prev(Health()) > Health()
 
 // $0429: Extra Lives (00 = Last Life, FF = Game Over)
 function Lives() => byte(0x000429)
 function GameOver() => Lives() == 0xff
+function LostLife() => prev(Lives()) > Lives()
 
 // $042A: Carrots address 1
 function Carrots() => byte(0x00042A)
+function CarrotCollected() => prev(Carrots()) != Carrots()
 
 // $0702: [8-bit] Weasel game status (0x0 -> 0x85 = start, 0x85 -> 0x86 = end)
 function WeaselStatus() => byte(0x000702)
@@ -49,6 +52,18 @@ function LevelEnd(stage, round)
         Round() == round -1 &&
         prev(EndStage()) == 0x29 &&
         EndStage() == 0x37
+}
+
+function NoCarrots(stage, round)
+{
+    start = LevelStart(stage, round)
+    cancel = Damaged() || 
+        LostLife() ||
+        GameOver() ||
+        CarrotCollected()
+    submit = LevelEnd(stage, round)
+    
+    return once(start) && never(cancel) && trigger_when(submit)
 }
 
 // Carrot collection data
@@ -110,35 +125,48 @@ achievement(
         title = "Grasslands",
         points = 5,
         description = "Beat stage 1 round 4",
-        trigger = LevelEnd(1, 4)
+        trigger = LevelEnd(1, 4),
+        type="progression"
 )
 
 achievement(
         title = "Desert",
         points = 5,
         description = "Beat stage 2 round 4",
-        trigger = LevelEnd(2, 4)
+        trigger = LevelEnd(2, 4),
+        type="progression"
 )
 
 achievement(
         title = "Mountains",
         points = 5,
         description = "Beat stage 3 round 4",
-        trigger = LevelEnd(3, 4)
+        trigger = LevelEnd(3, 4),
+        type="progression"
 )
 
 achievement(
         title = "Caves",
         points = 10,
         description = "Beat stage 4 round 4",
-        trigger = LevelEnd(4, 4)
+        trigger = LevelEnd(4, 4),
+        type="progression"
 )
 
 achievement(
         title = "Forest",
         points = 10,
         description = "Beat stage 5 round 4",
-        trigger = LevelEnd(5, 4)
+        trigger = LevelEnd(5, 4),
+        type="progression"
+)
+
+achievement(
+    title = "Defiantly Despicable 1",
+    points = 3,
+    description = "Complete Stage 1 Round 1 without taking damage and without getting any carrots",
+    trigger = NoCarrots(1, 1)
+
 )
 
 // Create speedrun leaderboard for the whole game
